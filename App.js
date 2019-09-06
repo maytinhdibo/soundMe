@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Platform,Text, View, ScrollView, Image } from 'react-native';
+import { StyleSheet, Platform, Text, View, ScrollView, Image } from 'react-native';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { createAppContainer, SafeAreaView } from 'react-navigation';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
@@ -8,6 +8,9 @@ import { changeNavigationBarColor } from 'react-native-navigation-bar-color';
 import Home from './page/Home';
 import Search from './page/Search';
 import { registerRootComponent } from 'expo';
+
+import Leaf from './assets/Leaf';
+import IconUI from './icon/IconUI';
 
 try {
   if (Platform.OS == 'android') {
@@ -18,6 +21,8 @@ try {
 }
 
 console.ignoredYellowBox = true;
+
+
 function Profile() {
   return (
     <View style={styles.container}>
@@ -25,25 +30,53 @@ function Profile() {
         <Text>Open up App.js to start working on your app!</Text>
       </View>
       <Text>Profile!</Text>
+      <IconUI icon={Leaf} size={40} color="#282" />
     </View>
   );
 }
 
 const AppNavigator = createMaterialTopTabNavigator(
   {
-    Feed: Home,
-    Search: Search,
-    Help: Home,
+    HomePage: {
+      screen: Home,
+
+      navigationOptions: {
+        tabBarLabel: "Home Page",
+        tabBarIcon: ({ tintColor }) => (
+          <IconUI icon={Leaf} size={20} color={tintColor} />
+        )
+      },
+    },
+    SearchPage: {
+      screen: Search,
+      navigationOptions: {
+        tabBarLabel: "Search Page",
+        tabBarIcon: ({ tintColor }) => (
+          <IconUI icon={Leaf} size={20} color={tintColor} />
+        )
+      }
+    },
+    ProfilePage: {
+      screen: Profile,
+      navigationOptions: {
+        tabBarLabel: "Profile Page",
+        tabBarIcon: ({ tintColor }) => (
+          <IconUI icon={Leaf} size={20} color={tintColor} />
+        )
+      }
+    },
   },
   {
     tabBarPosition: 'bottom',
     swipeEnable: true,
-    initialRouteName: 'Feed',
-    activeColor: '#f0edf6',
-    inactiveColor: '#444321',
+    initialRouteName: 'HomePage',
     tabBarOptions: {
+      activeTintColor: "#4267b2",
+      inactiveTintColor: "#606770",
+      showIcon: true,
+      showLabel: false,
       indicatorStyle: {
-        backgroundColor: '#f72',
+        backgroundColor: '#4267b2',
         top: 0,
       },
       labelStyle: {
