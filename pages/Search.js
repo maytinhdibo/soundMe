@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, TouchableOpacity, StatusBar, TextInput } from 'react-native';
-import { homeStyle } from '../style/homeStyle';
+import { homeStyle } from '../styles/homeStyle';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 export default class Search extends Component {
@@ -23,7 +23,7 @@ export default class Search extends Component {
                     placeholder="Tìm kiếm bài hát mà bạn ưa thích..."
                     style={{ 
                         height: 40, 
-                         borderWidth: 0, 
+                        borderWidth: 0, 
                         padding: 6,
                         backgroundColor: "rgba(255,255,255,0.3)",
                         margin: 26,

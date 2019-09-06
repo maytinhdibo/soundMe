@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, Platform, Text, View, ScrollView, Image } from 'react-native';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import { createAppContainer, SafeAreaView } from 'react-navigation';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { changeNavigationBarColor } from 'react-native-navigation-bar-color';
 
-import Home from './page/Home';
-import Search from './page/Search';
-import { registerRootComponent } from 'expo';
+import Home from './pages/Home';
+import Search from './pages/Search';
 
-import Leaf from './assets/Leaf';
-import IconUI from './icon/IconUI';
+import Leaf from './icons/icon-pack/Leaf';
+import IconUI from './icons/IconUI';
 
 try {
   if (Platform.OS == 'android') {
@@ -39,7 +37,15 @@ const AppNavigator = createMaterialTopTabNavigator(
   {
     HomePage: {
       screen: Home,
-
+      navigationOptions: {
+        tabBarLabel: "Home Page",
+        tabBarIcon: ({ tintColor }) => (
+          <IconUI icon={Leaf} size={20} color={tintColor} />
+        )
+      },
+    },
+    PagePage: {
+      screen: Home,
       navigationOptions: {
         tabBarLabel: "Home Page",
         tabBarIcon: ({ tintColor }) => (
