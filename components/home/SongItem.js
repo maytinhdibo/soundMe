@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import { homeStyle } from '../../styles/homeStyle';
+import * as Animatable from 'react-native-animatable';
 
 export default class SongItem extends Component {
     constructor(props) {
@@ -8,9 +9,25 @@ export default class SongItem extends Component {
     }
     render() {
         return (
-            <View style={homeStyle.songItem}>
-                <Text>{this.props.name}</Text>
-            </View>
+                <Animatable.View animation="bounceInRight" easing="ease-out" style={homeStyle.songItem}>
+                <Image
+                source={require("../../assets/demcuu.jpg")}
+                style={{
+                    height: 120,
+                    width: 120,
+                    resizeMode:"cover",
+                    width: "100%",
+                    }} />
+                    <View>
+                <Text
+                style={{
+                    padding: 6,
+                    fontSize: 14,
+                    textTransform: 'uppercase'
+                }}
+                >{this.props.name}</Text>
+                </View>
+            </Animatable.View>
         );
     }
 }

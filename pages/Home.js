@@ -47,12 +47,12 @@ export default class Home extends Component {
           </Swiper>
         </View>
         <Text style={homeStyle.sectionTitle}>Đề xuất cho bạn</Text>
-        <View style={{ height: 130 }}>
+        <View>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ backgroundColor: "#eee" }}>
-            <SongItem imgUrl={""} name={"ahihi"}/>
-            <SongItem imgUrl={""} name={"ahoho"}/>
-            <SongItem imgUrl={""} name={"ahihi"}/>
-            <SongItem imgUrl={""} name={"ahihi"}/>
+            <SongItem imgUrl={""} name={"Nửa hồn thương đau"}/>
+            <SongItem imgUrl={""} name={"Giấc mộng trong mơ"}/>
+            <SongItem imgUrl={""} name={"Con đi đâu để thấy hoa bay"}/>
+            <SongItem imgUrl={""} name={"Đi đu đưa đi"}/>
           </ScrollView>
         </View>
       </View>
