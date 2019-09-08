@@ -7,8 +7,10 @@ import { changeNavigationBarColor } from 'react-native-navigation-bar-color';
 import Home from './pages/Home';
 import Search from './pages/Search';
 
-import Leaf from './icons/icon-pack/Leaf';
-import IconUI from './icons/IconUI';
+import PlayerBar from './components/player/PlayerBar';
+
+import meLeaf from './icons/icon-pack/meLeaf';
+import MeIcon from './icons/MeIcon';
 
 try {
   if (Platform.OS == 'android') {
@@ -18,7 +20,7 @@ try {
   console.log(e)// {success: false}
 }
 
-console.ignoredYellowBox = true;
+console.ignoredYellowBox = ['Accessing'];
 
 
 function Profile() {
@@ -28,7 +30,7 @@ function Profile() {
         <Text>Open up App.js to start working on your app!</Text>
       </View>
       <Text>Profile!</Text>
-      <IconUI icon={Leaf} size={40} color="#282" />
+      <MeIcon icon={meLeaf} size={40} color="#282" />
     </View>
   );
 }
@@ -40,7 +42,7 @@ const AppNavigator = createMaterialTopTabNavigator(
       navigationOptions: {
         tabBarLabel: "Home Page",
         tabBarIcon: ({ tintColor }) => (
-          <IconUI icon={Leaf} size={20} color={tintColor} />
+          <MeIcon icon={meLeaf} size={20} color={tintColor} />
         )
       },
     },
@@ -49,7 +51,7 @@ const AppNavigator = createMaterialTopTabNavigator(
       navigationOptions: {
         tabBarLabel: "Home Page",
         tabBarIcon: ({ tintColor }) => (
-          <IconUI icon={Leaf} size={20} color={tintColor} />
+          <MeIcon icon={meLeaf} size={20} color={tintColor} />
         )
       },
     },
@@ -58,7 +60,7 @@ const AppNavigator = createMaterialTopTabNavigator(
       navigationOptions: {
         tabBarLabel: "Search Page",
         tabBarIcon: ({ tintColor }) => (
-          <IconUI icon={Leaf} size={20} color={tintColor} />
+          <MeIcon icon={meLeaf} size={20} color={tintColor} />
         )
       }
     },
@@ -67,7 +69,7 @@ const AppNavigator = createMaterialTopTabNavigator(
       navigationOptions: {
         tabBarLabel: "Profile Page",
         tabBarIcon: ({ tintColor }) => (
-          <IconUI icon={Leaf} size={20} color={tintColor} />
+          <MeIcon icon={meLeaf} size={20} color={tintColor} />
         )
       }
     },
@@ -112,8 +114,12 @@ const AppContainer = createAppContainer(AppNavigator);
 export default class App extends Component {
   render() {
     return (
-      <SafeAreaView forceInset={{ top: 'never' }} style={{ flex: 1 }}>
-        <AppContainer />
+      <SafeAreaView
+        forceInset={{ top: "never" }} style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
+          <AppContainer />
+          <PlayerBar />
+        </View>
       </SafeAreaView>
     )
   }
