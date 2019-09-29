@@ -27,11 +27,10 @@ export default class Player extends Component {
           position: 'absolute',
           zIndex: 100,
           width: '100%',
-          height: '100%',
-          bottom: this.props.open ? '0%' : '-100%',
+          height: '100%'
         }}>
         <Text>Ahihi</Text>
-        <Button onPress={this.props.closePlayer} title="Close" />
+        <Button title="Close" />
       </View>
     );
   }
