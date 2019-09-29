@@ -1,29 +1,31 @@
-import React, { Component } from 'react';
-import { StyleSheet, Platform, Text, View, ScrollView, Image } from 'react-native';
-import { createAppContainer, SafeAreaView } from 'react-navigation';
-import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
-import { changeNavigationBarColor } from 'react-native-navigation-bar-color';
+import React, {Component} from 'react';
+import {
+  StyleSheet,
+  Platform,
+  Text,
+  View,
+  ScrollView,
+  StatusBar,
+  Image,
+} from 'react-native';
+import {createAppContainer, SafeAreaView} from 'react-navigation';
+import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
+import {changeNavigationBarColor} from 'react-native-navigation-bar-color';
+import {createStackNavigator} from 'react-navigation-stack';
 
 import Home from './pages/Home';
 import Search from './pages/Search';
+import Profile from './pages/Profile';
+import Player from './pages/Player';
 
 import PlayerBar from './components/player/PlayerBar';
 
 import meLeaf from './icons/icon-pack/meLeaf';
 import MeIcon from './icons/MeIcon';
 
-try {
-  if (Platform.OS == 'android') {
-    changeNavigationBarColor('#ffffff');
-  }
-} catch (e) {
-  console.log(e)// {success: false}
-}
-
 console.ignoredYellowBox = ['Accessing'];
 
-
-function Profile() {
+function Playlist() {
   return (
     <View style={styles.container}>
       <View>
@@ -35,43 +37,67 @@ function Profile() {
   );
 }
 
+const HomeNavigator = createStackNavigator({
+  Home: {
+    screen: Home,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  Playlist: {
+    screen: Search,
+    navigationOptions: {
+      header: null,
+    },
+  },
+});
+
+const ProfileNavigator = createStackNavigator({
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      title: 'Cá nhân',
+    },
+  },
+});
+
 const AppNavigator = createMaterialTopTabNavigator(
   {
     HomePage: {
-      screen: Home,
+      screen: HomeNavigator,
       navigationOptions: {
-        tabBarLabel: "Home Page",
-        tabBarIcon: ({ tintColor }) => (
+        tabBarLabel: 'Home Page',
+        tabBarIcon: ({tintColor}) => (
           <MeIcon icon={meLeaf} size={20} color={tintColor} />
-        )
+        ),
       },
     },
     PagePage: {
       screen: Home,
       navigationOptions: {
-        tabBarLabel: "Home Page",
-        tabBarIcon: ({ tintColor }) => (
+        tabBarLabel: 'Home Page',
+        tabBarIcon: ({tintColor}) => (
           <MeIcon icon={meLeaf} size={20} color={tintColor} />
-        )
+        ),
       },
     },
     SearchPage: {
       screen: Search,
       navigationOptions: {
-        tabBarLabel: "Search Page",
-        tabBarIcon: ({ tintColor }) => (
+        tabBarLabel: 'Search Page',
+        tabBarIcon: ({tintColor}) => (
           <MeIcon icon={meLeaf} size={20} color={tintColor} />
-        )
-      }
+        ),
+      },
     },
     ProfilePage: {
-      screen: Profile,
+      screen: ProfileNavigator,
       navigationOptions: {
-        tabBarLabel: "Profile Page",
-        tabBarIcon: ({ tintColor }) => (
+        tabBarLabel: 'Profile Page',
+        tabBarIcon: ({tintColor}) => (
           <MeIcon icon={meLeaf} size={20} color={tintColor} />
-        )
-      }
+        ),
+      },
     },
   },
   {
@@ -79,8 +105,8 @@ const AppNavigator = createMaterialTopTabNavigator(
     swipeEnable: true,
     initialRouteName: 'HomePage',
     tabBarOptions: {
-      activeTintColor: "#4267b2",
-      inactiveTintColor: "#606770",
+      activeTintColor: '#4267b2',
+      inactiveTintColor: '#606770',
       showIcon: true,
       showLabel: false,
       indicatorStyle: {
@@ -89,13 +115,13 @@ const AppNavigator = createMaterialTopTabNavigator(
       },
       labelStyle: {
         fontSize: 12,
-        color: "#345",
+        color: '#345',
       },
       tabStyle: {
         // width: 100,
       },
       style: {
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: {
           width: 0,
           height: 2,
@@ -105,26 +131,42 @@ const AppNavigator = createMaterialTopTabNavigator(
         elevation: 5,
         backgroundColor: '#fff',
       },
-    }
-  }
+    },
+  },
 );
 
 const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playerVisible: false,
+    };
+  }
+  openPlayer=()=> {
+    this.setState({playerVisible: true});
+  }
+  closePlayer=()=> {
+    this.setState({playerVisible: false});
+  }
   render() {
     return (
-      <SafeAreaView
-        forceInset={{ top: "never" }} style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
+      <SafeAreaView forceInset={{top: 'never'}} style={{flex: 1}}>
+        <View style={{flex: 1}}>
+          <Player closePlayer={this.closePlayer} open={this.state.playerVisible} />
+          <PlayerBar openPlayer={this.openPlayer} />
           <AppContainer />
-          <PlayerBar />
+          <StatusBar
+            translucent
+            backgroundColor="transparent"
+            barStyle="dark-content"
+          />
         </View>
       </SafeAreaView>
-    )
+    );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {

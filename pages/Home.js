@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity, Button, StatusBar} from 'react-native';
 import { homeStyle } from '../styles/homeStyle';
 import Swiper from "react-native-web-swiper";
 import SongItem from '../components/home/SongItem';
@@ -55,6 +55,10 @@ export default class Home extends Component {
             <SongItem imgUrl={""} name={"Đi đu đưa đi"}/>
           </ScrollView>
         </View>
+        <Button
+          title="Go to Details"
+          onPress={() => this.props.navigation.navigate('Playlist')}
+        />
       </View>
     );
   }

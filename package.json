@@ -1,20 +1,32 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "soundMenative",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest"
   },
   "dependencies": {
-    "expo": "^34.0.1",
-    "prop-types": "^15.7.2",
-    "react": "16.8.3",
-    "react-dom": "^16.8.6",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
+    "react": "16.8.1",
+    "react-native": "0.61.1",
+    "react-native-android-dialog-picker": "^0.0.2",
+    "react-native-picker-module": "^1.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/runtime": "^7.5.0",
+    "@react-native-community/eslint-config": "^0.0.3",
+    "babel-jest": "^24.1.0",
+    "jest": "^24.1.0",
+    "metro-react-native-babel-preset": "^0.51.1",
+    "react-native-action-picker": "1.0.2",
     "react-native-animatable": "^1.3.2",
     "react-native-gesture-handler": "1.3.0",
+    "react-native-marquee": "^0.3.2",
+    "react-native-modal": "^11.4.0",
+    "react-native-modal-selector": "^1.1.1",
     "react-native-navigation-bar-color": "^0.1.0",
     "react-native-paper": "^2.16.0",
     "react-native-reanimated": "^1.2.0",
@@ -26,10 +38,11 @@
     "react-native-web-swiper": "^2.0.5",
     "react-navigation": "^4.0.0",
     "react-navigation-material-bottom-tabs": "^1.1.1",
-    "react-navigation-tabs": "^2.4.0"
+    "react-navigation-stack": "^1.9.0",
+    "react-navigation-tabs": "^2.4.0",
+    "react-test-renderer": "16.8.1"
   },
-  "devDependencies": {
-    "babel-preset-expo": "^6.0.0"
-  },
-  "private": true
+  "jest": {
+    "preset": "react-native"
+  }
 }
