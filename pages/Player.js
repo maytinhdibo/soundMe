@@ -5,12 +5,12 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar,
+  Slider,
   ImageBackground,
   Image,
   Dimensions
 } from "react-native";
 import { playerStyle } from "../styles/playerStyle";
-import { getStatusBarHeight } from "react-native-status-bar-height";
 
 export default class Player extends Component {
   constructor(props) {
@@ -19,153 +19,157 @@ export default class Player extends Component {
       searchValue: ""
     };
   }
+  componentDidMount() {
+    const willBlurSubscription = this.props.navigation.addListener(
+      "willBlur",
+      payload => {
+        StatusBar.setBarStyle("dark-content");
+      }
+    );
+    const willFocusSubscription = this.props.navigation.addListener(
+      "willFocus",
+      payload => {
+        StatusBar.setBarStyle("light-content");
+      }
+    );
+  }
   render() {
     return (
-      <ImageBackground blurRadius={32} source={require("../assets/hongnhung.jpg")} style={{width: '100%', height: '100%'}}>
-
+      <ImageBackground
+        blurRadius={42}
+        source={require("../assets/hongnhung.jpg")}
+        style={{ flex: 1 }}
+      >
         <View
-          style={{
-            height: 50,
-            flexDirection: "row",
-            paddingRight: 12,
-            paddingLeft: 12,
-            marginTop: getStatusBarHeight()
-          }}
+          ref="overlay"
+          style={playerStyle.overlay}
         >
-          <TouchableOpacity
-            onPress={() => this.props.navigation.goBack()}
-            style={{
-              backgroundColor: "#938",
-              width: 50
-            }}
-          ></TouchableOpacity>
-
           <View
-            style={{
-              flex: 1,
-              alignSelf: "center"
-            }}
+            style={playerStyle.header}
           >
-            <Text
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
               style={{
-                alignSelf: "center",
-                color: "#fff",
-                fontSize: 18,
-                fontWeight: "700",
-                textShadowColor: "rgba(0, 0, 0, 0.5)",
-                textShadowOffset: { width: -1, height: 1 },
-                textShadowRadius: 10
+                backgroundColor: "#938",
+                width: 50
+              }}
+            ></TouchableOpacity>
+
+            <View
+              style={{
+                flex: 1,
+                alignSelf: "center"
               }}
             >
-              Now Playing
+              <Text
+                style={playerStyle.nowPlaying}
+              >
+                Now Playing
+              </Text>
+            </View>
+
+            <View
+              style={{
+                backgroundColor: "#938",
+                width: 50
+              }}
+            ></View>
+          </View>
+          <View style={{ flex: 1, alignItems: "center", paddingTop: "10%" }}>
+            <Image
+              source={require("../assets/hongnhung.jpg")}
+              style={playerStyle.coverImage}
+            />
+            <Text
+              style={playerStyle.songName}
+            >
+              Ru Em Từng Ngón Xuân Nồng
+            </Text>
+            <Text
+              style={playerStyle.artistName}
+            >
+              Hồng Nhung
             </Text>
           </View>
-
-          <View
-            style={{
-              backgroundColor: "#938",
-              width: 50
-            }}
-          ></View>
-        </View>
-        <View style={{ flex: 1, alignItems: "center", paddingTop: "10%" }}>
-          <Image
-            source={require("../assets/hongnhung.jpg")}
-            style={{
-              alignSelf: "center",
-              height: Math.round(Dimensions.get("window").width) * 0.7,
-              width: "70%",
-              resizeMode: "cover",
-              borderRadius: 27,
-            }}
-          />
-          <Text
-            style={{
-              color: "#fff",
-              fontSize: 20,
-              padding: 12,
-              paddingBottom:3,
-              textShadowColor: "rgba(0, 0, 0, 0.5)",
-              textShadowOffset: { width: -1, height: 1 },
-              textShadowRadius: 10
-            }}
-          >
-            Ru Em Từng Ngón Xuân Nồng
-          </Text>
-          <Text
-            style={{
-              color: "#fff",
-              fontSize: 16,
-              fontWeight: "700",
-              textShadowColor: "rgba(0, 0, 0, 0.5)",
-              textShadowOffset: { width: -1, height: 1 },
-              textShadowRadius: 10
-            }}
-          >
-            Hồng Nhung
-          </Text>
-        </View>
-        <View
-        name="button"
-          style={{
-            height: 90,
-            marginBottom: 40,
-            flexDirection: "row",
-            backgroundColor:"#556",
-            justifyContent: 'space-evenly',
-          
-          }}
-        >
+          <View ref="process">
+            <Slider
+              minimumTrackTintColor="#fff"
+              // maximumTrackTintColor="#1e88e5"
+              thumbTintColor="#fff"
+              value={0.4}
+              style={{ width: "100%" }}
+            ></Slider>
             <View
-            style={{
-              backgroundColor: "#2980cc",
-              width: 50,
-              height: 50,
-              margin:9,
-              alignSelf:"center" 
-            }}
-          ></View>
-           <View
-            style={{
-              backgroundColor: "#2980cc",
-              width: 50,
-              height: 50,
-              margin:9,
-              borderRadius: 100,    
-              alignSelf:"center" 
-            }}
-          ></View>
-            <View
-            style={{
-              backgroundColor: "#0b5ca3",
-              width: 72,
-              margin:9,
-              borderRadius: 100
-            }}
-          ></View>
-            <View
-            style={{
-              backgroundColor: "#2980cc",
-              width: 50,
-              height: 50,
-              margin:9,
-              borderRadius: 100,
-              alignSelf:"center" 
-            }}
-          ></View>
-           <View
-            style={{
-              backgroundColor: "#2980cc",
-              width: 50,
-              height: 50,
-              margin:9,   
-              alignSelf:"center" 
-            }}
-          ></View>
+              style={{
+                justifyContent: "space-between",
+                flexDirection: "row-reverse",
+                padding: 14,
+                paddingTop: 0
+              }}
+            >
+              <Text style={{ color: "#fff" }}>00:00</Text>
+              <Text style={{ color: "#fff" }}>02:14</Text>
+            </View>
           </View>
-         
-          </ImageBackground>
-            
+          <View
+            name="button"
+            style={{
+              height: 90,
+              marginBottom: 20,
+              flexDirection: "row",
+              backgroundColor: "#556",
+              justifyContent: "space-evenly"
+            }}
+          >
+            <View
+              style={{
+                backgroundColor: "#2980cc",
+                width: 50,
+                height: 50,
+                margin: 9,
+                alignSelf: "center"
+              }}
+            ></View>
+            <View
+              style={{
+                backgroundColor: "#2980cc",
+                width: 50,
+                height: 50,
+                margin: 9,
+                borderRadius: 100,
+                alignSelf: "center"
+              }}
+            ></View>
+            <View
+              style={{
+                backgroundColor: "#0b5ca3",
+                width: 72,
+                margin: 9,
+                borderRadius: 100
+              }}
+            ></View>
+            <View
+              style={{
+                backgroundColor: "#2980cc",
+                width: 50,
+                height: 50,
+                margin: 9,
+                borderRadius: 100,
+                alignSelf: "center"
+              }}
+            ></View>
+            <View
+              style={{
+                backgroundColor: "#2980cc",
+                width: 50,
+                height: 50,
+                margin: 9,
+                alignSelf: "center"
+              }}
+            ></View>
+          </View>
+        </View>
+      </ImageBackground>
     );
   }
 }
