@@ -5,6 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar,
+  ImageBackground,
   Image,
   Dimensions
 } from "react-native";
@@ -20,12 +21,8 @@ export default class Player extends Component {
   }
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: "#667"
-        }}
-      >
+      <ImageBackground blurRadius={32} source={require("../assets/hongnhung.jpg")} style={{width: '100%', height: '100%'}}>
+
         <View
           style={{
             height: 50,
@@ -166,7 +163,9 @@ export default class Player extends Component {
             }}
           ></View>
           </View>
-      </View>
+         
+          </ImageBackground>
+            
     );
   }
 }
