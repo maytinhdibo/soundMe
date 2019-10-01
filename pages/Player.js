@@ -73,7 +73,7 @@ export default class Player extends Component {
         </View>
         <View style={{ flex: 1, alignItems: "center", paddingTop: "10%" }}>
           <Image
-            source={require("../assets/mytam.jpg")}
+            source={require("../assets/hongnhung.jpg")}
             style={{
               alignSelf: "center",
               height: Math.round(Dimensions.get("window").width) * 0.7,
@@ -93,7 +93,7 @@ export default class Player extends Component {
               textShadowRadius: 10
             }}
           >
-            Cho Một Tình Yêu
+            Ru Em Từng Ngón Xuân Nồng
           </Text>
           <Text
             style={{
@@ -105,7 +105,7 @@ export default class Player extends Component {
               textShadowRadius: 10
             }}
           >
-            Mỹ Tâm
+            Hồng Nhung
           </Text>
         </View>
         <View
