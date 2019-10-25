@@ -71,7 +71,7 @@ export default class SongItem extends Component {
         >
 
             <MarqueeText
-              style={{ flex: 1,fontSize: 14, fontWeight: "700"}}
+              style={{ flex: 1,fontSize: 14, fontWeight: "700", fontFamily: "quickSand"}}
               duration={6000}
               marqueeOnStart
               loop

@@ -18,6 +18,7 @@ export default class Search extends Component {
                     height: getStatusBarHeight(),
                     // backgroundColor: "#433"
                 }}></View>
+
                 <TextInput
                     placeholder="Tìm kiếm bài hát mà bạn ưa thích..."
                     style={{ 
