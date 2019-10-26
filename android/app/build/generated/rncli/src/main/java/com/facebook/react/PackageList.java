@@ -18,6 +18,8 @@ import com.soundmenative.R;
 import com.androiddialogpicker.RNAndroidDialogPickerPackage;
 // react-native-picker-module
 import com.taluttasgiran.pickermodule.ReactNativePickerModulePackage;
+// react-native-sound-player
+import com.johnsonsu.rnsoundplayer.RNSoundPlayerPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 // react-native-navigation-bar-color
@@ -73,6 +75,7 @@ public class PackageList {
       new MainReactPackage(mConfig),
       new RNAndroidDialogPickerPackage(),
       new ReactNativePickerModulePackage(),
+      new RNSoundPlayerPackage(),
       new RNGestureHandlerPackage(),
       new NavigationBarColorPackage(),
       new ReanimatedPackage(),

@@ -5,6 +5,7 @@ INJECTED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManif
 INJECTED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml:1:1-26:12
 INJECTED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml:1:1-26:12
 MERGED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml:1:1-26:12
+MERGED from [:react-native-sound-player] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-sound-player/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-android-dialog-picker] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-android-dialog-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-picker-module] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-picker-module/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-navigation-bar-color] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-navigation-bar-color/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
@@ -140,6 +141,8 @@ uses-sdk
 INJECTED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml
 INJECTED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-sound-player] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-sound-player/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-sound-player] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-sound-player/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-android-dialog-picker] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-android-dialog-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-android-dialog-picker] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-android-dialog-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-picker-module] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-picker-module/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41

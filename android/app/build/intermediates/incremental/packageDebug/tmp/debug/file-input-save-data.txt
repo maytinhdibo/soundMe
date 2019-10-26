@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat Oct 26 12:04:00 ICT 2019
+#Sat Oct 26 14:59:35 ICT 2019
 56.path=lib/armeabi-v7a/libglog.so
 5.base=/home/nd/Desktop/soundMe/soundMe/android/app/build/intermediates/transforms/mergeJniLibs/debug/0
 42.base=/home/nd/Desktop/soundMe/soundMe/android/app/build/intermediates/transforms/mergeJniLibs/debug/0

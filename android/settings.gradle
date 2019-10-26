@@ -1,4 +1,6 @@
 rootProject.name = 'soundMenative'
+include ':react-native-sound-player'
+project(':react-native-sound-player').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sound-player/android')
 include ':react-native-android-dialog-picker'
 project(':react-native-android-dialog-picker').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-android-dialog-picker/android')
 include ':react-native-picker-module'

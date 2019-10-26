@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   Text,
   View,
+  Button,
   ScrollView,
   TouchableOpacity,
   StatusBar,
@@ -12,13 +13,23 @@ import {
 } from "react-native";
 import { playerStyle } from "../styles/playerStyle";
 import { textStyle } from "../styles/textStyle";
+import MeIcon from "../icons/MeIcon";
+import mePlay from "../icons/icon-pack/mePlay";
+import SoundPlayer from 'react-native-sound-player';
+
 export default class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      playerState: 0,
+      playing: true,
+      loading: true,
+      duration: 0,
+      startValue: 0,
       searchValue: ""
     };
   }
+
   componentDidMount() {
     const willBlurSubscription = this.props.navigation.addListener(
       "willBlur",
@@ -33,6 +44,41 @@ export default class Player extends Component {
       }
     );
   }
+
+
+  onPlay = () => {
+    let playing = !this.state.playing;
+    this.setState({ playing: playing });
+    console.log(this.state.playing);
+    // TrackPlayer.play();
+    try {
+      // play the file tone.mp3
+      //SoundPlayer.playSoundFile('tone', 'mp3')
+      // or play from url
+      SoundPlayer.playUrl('https://data25.chiasenhac.com/downloads/2039/6/2038231-e4db0911/128/Het%20Thuong%20Can%20Nho%20-%20Duc%20Phuc.mp3')
+    } catch (e) {
+      console.log('cannot play the sound file', e)
+    }
+  }
+
+  onPause = () => {
+    let playing = !this.state.playing;
+    this.setState({ playing: playing });
+    // TrackPlayer.pause();
+  }
+
+  renderPlayerPlayPause = (playing, style) => {
+    return (this.state.playing === false)
+      ? (<Button transparent style={playerStyle.coverImage} onPress={this.onPause}
+      title = "paus">
+        <MeIcon icon={mePlay} style={style} /> 
+      </Button>)
+      : (<Button transparent style={playerStyle.coverImage} onPress={this.onPlay}
+      title = "play">
+        <MeIcon icon={mePlay} style={[style, { left: 4 }]} /> 
+      </Button>);
+  };
+
   render() {
     return (
       <ImageBackground
@@ -62,7 +108,7 @@ export default class Player extends Component {
               }}
             >
               <Text
-                style={[playerStyle.nowPlaying,textStyle.bold]}
+                style={[playerStyle.nowPlaying, textStyle.bold]}
               >
                 Now Playing
               </Text>
@@ -75,7 +121,7 @@ export default class Player extends Component {
               }}
             ></View>
           </View>
-          <View style={{ flex: 1, alignItems: "center", paddingTop: "10%"}}>
+          <View style={{ flex: 1, alignItems: "center", paddingTop: "10%" }}>
             <Image
               source={require("../assets/hongnhung.jpg")}
               style={playerStyle.coverImage}
@@ -140,14 +186,11 @@ export default class Player extends Component {
                 alignSelf: "center"
               }}
             ></View>
-            <View
-              style={{
-                backgroundColor: "#0b5ca3",
-                width: 72,
-                margin: 9,
-                borderRadius: 100
-              }}
-            ></View>
+            <View style={playerStyle.nowPlaying}>
+              <TouchableOpacity>
+                {this.renderPlayerPlayPause(this.state.playing,playerStyle.coverImage)} 
+              </TouchableOpacity>
+            </View>
             <View
               style={{
                 backgroundColor: "#2980cc",
