@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.Resources;
 
 import com.facebook.react.ReactPackage;
+import com.facebook.react.shell.MainPackageConfig;
 import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ import com.soundmenative.R;
 import com.androiddialogpicker.RNAndroidDialogPickerPackage;
 // react-native-picker-module
 import com.taluttasgiran.pickermodule.ReactNativePickerModulePackage;
+// react-native-sound-player
+import com.johnsonsu.rnsoundplayer.RNSoundPlayerPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 // react-native-navigation-bar-color
@@ -29,13 +32,25 @@ import com.horcrux.svg.SvgPackage;
 public class PackageList {
   private Application application;
   private ReactNativeHost reactNativeHost;
+  private MainPackageConfig mConfig;
+
   public PackageList(ReactNativeHost reactNativeHost) {
-    this.reactNativeHost = reactNativeHost;
+    this(reactNativeHost, null);
   }
 
   public PackageList(Application application) {
+    this(application, null);
+  }
+
+  public PackageList(ReactNativeHost reactNativeHost, MainPackageConfig config) {
+    this.reactNativeHost = reactNativeHost;
+    mConfig = config;
+  }
+
+  public PackageList(Application application, MainPackageConfig config) {
     this.reactNativeHost = null;
     this.application = application;
+    mConfig = config;
   }
 
   private ReactNativeHost getReactNativeHost() {
@@ -57,9 +72,10 @@ public class PackageList {
 
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
-      new MainReactPackage(),
+      new MainReactPackage(mConfig),
       new RNAndroidDialogPickerPackage(),
       new ReactNativePickerModulePackage(),
+      new RNSoundPlayerPackage(),
       new RNGestureHandlerPackage(),
       new NavigationBarColorPackage(),
       new ReanimatedPackage(),

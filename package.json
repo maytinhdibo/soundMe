@@ -9,10 +9,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "16.8.1",
-    "react-native": "0.61.1",
+    "react": "16.9.0",
+    "react-native": "0.61.2",
     "react-native-android-dialog-picker": "^0.0.2",
-    "react-native-picker-module": "^1.2.0"
+    "react-native-picker-module": "^1.2.0",
+    "react-native-sound-player": "^0.10.1"
   },
   "devDependencies": {
     "@babel/core": "^7.5.0",
@@ -44,5 +45,10 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
   }
 }

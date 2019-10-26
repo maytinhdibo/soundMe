@@ -17,7 +17,6 @@ export const playerStyle = StyleSheet.create({
     alignSelf: "center",
     color: "#fff",
     fontSize: 18,
-    fontWeight: "700",
     textShadowColor: "rgba(0, 0, 0, 0.5)",
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10
@@ -40,10 +39,10 @@ export const playerStyle = StyleSheet.create({
   },
   artistName: {
     color: "#fff",
-    fontSize: 16,
-    fontWeight: "700",
+    fontSize: 16, 
     textShadowColor: "rgba(0, 0, 0, 0.5)",
     textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10
   }
+  
 });

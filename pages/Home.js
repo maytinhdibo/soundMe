@@ -11,7 +11,7 @@ import { homeStyle } from "../styles/homeStyle";
 import Swiper from "react-native-web-swiper";
 import SongItem from "../components/home/SongItem";
 import { getStatusBarHeight } from 'react-native-status-bar-height';
-
+import { textStyle } from "../styles/textStyle";
 export default class Home extends Component {
   render() {
     return (
@@ -25,7 +25,7 @@ export default class Home extends Component {
         ></View>
         <View style={{ flexDirection: "row", paddingLeft: 12, paddingRight: 9, marginBottom: 2 }}>
           <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 27, fontWeight: "900", justifyContent:"center" }}>Trang chủ</Text>
+            <Text style={[{ fontSize: 27, fontWeight: "900", justifyContent:"center" }, textStyle.bold]}>Trang chủ</Text>
           </View>
           <View
             style={{ width: 50, height: 50, backgroundColor: "#345" }}
@@ -45,7 +45,7 @@ export default class Home extends Component {
               PrevComponent: ({ onPress }) => (
                 <TouchableOpacity onPress={onPress}>
                   <Text
-                    style={{ color: "white", fontSize: 24, fontWeight: "500" }}
+                    style={{fontFamily:"Quicksand", color: "white", fontSize: 24, fontWeight: "500" }}
                   >
                     {/* {'Prev'} */}
                   </Text>
@@ -94,7 +94,7 @@ export default class Home extends Component {
             </View>
           </Swiper>
         </View>
-        <Text style={homeStyle.sectionTitle}>Đề xuất cho bạn</Text>
+        <Text style={[homeStyle.sectionTitle,textStyle.regular]}>Đề xuất cho bạn</Text>
         <View>
           <ScrollView
             horizontal={true}
