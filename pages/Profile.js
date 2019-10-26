@@ -13,7 +13,7 @@ import {
 import {homeStyle} from '../styles/homeStyle';
 import AndroidDialogPicker from 'react-native-android-dialog-picker';
 import RNAndroidDialogPicker from 'react-native-android-dialog-picker';
-
+import { textStyle } from "../styles/textStyle";
 const theme = ['Sáng', 'Tối', 'Tự động'];
 export default class Profile extends Component {
   constructor(props) {
@@ -61,20 +61,20 @@ export default class Profile extends Component {
           backgroundColor: '#fbfbfb',
         }}>
         <TouchableOpacity onPress={this.showPicker} style={listStyle.item}>
-          <View style={listStyle.label}>
-            <Text>Giao diện</Text>
+          <View>
+            <Text style={[listStyle.label,textStyle.regular]}>Giao diện</Text>
           </View>
           <View style={listStyle.action}>
-            <Text>{theme[this.state.theme]}</Text>
+            <Text style={textStyle.regular}>{theme[this.state.theme]}</Text>
           </View>
         </TouchableOpacity>
 
         <TouchableOpacity style={listStyle.item}>
-          <Text style={listStyle.label}>Cá nhân</Text>
+          <Text  style={[listStyle.label,textStyle.regular]}>Cá nhân</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={listStyle.item}>
-          <Text style={listStyle.label}>Cá nhân</Text>
+          <Text  style={[listStyle.label,textStyle.regular]}>Cá nhân</Text>
         </TouchableOpacity>
       </View>
     );

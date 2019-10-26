@@ -13,6 +13,7 @@ export default class SongItem extends Component {
                 <Image
                 source={require("../../assets/demcuu.jpg")}
                 style={{
+                    fontFamily:"Quicksand-Regular",
                     height: 120,
                     width: 120,
                     resizeMode:"cover",
@@ -21,6 +22,7 @@ export default class SongItem extends Component {
                     <View>
                 <Text
                 style={{
+                    fontFamily:"Quicksand-Regular",
                     padding: 6,
                     fontSize: 14,
                     textTransform: 'uppercase'

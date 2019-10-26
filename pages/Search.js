@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, TouchableOpacity, StatusBar, TextInput } from 'react-native';
 import { homeStyle } from '../styles/homeStyle';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
-
+import { textStyle } from "../styles/textStyle";
 export default class Search extends Component {
     constructor(props) {
         super(props);
@@ -12,7 +12,7 @@ export default class Search extends Component {
     }
     render() {
         return (
-            <View style={{ flex: 1, backgroundColor:'#345' }}>
+            <View style={{ flex: 1, backgroundColor:'#345'}}>
                 <View style={{
                     flexDirection: 'column',
                     height: getStatusBarHeight(),
@@ -33,7 +33,7 @@ export default class Search extends Component {
                     onChangeText={text => this.setState({ searchValue: text })}
                     value={this.searchValue}
                 />
-                <Text>Search nè!</Text>
+                <Text  style={textStyle.regular}>Search nè!</Text>
 
             </View>
         );

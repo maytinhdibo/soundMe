@@ -6,6 +6,7 @@ import mePlay from "../../icons/icon-pack/mePlay";
 import MeIcon from "../../icons/MeIcon";
 
 import MarqueeText from 'react-native-marquee';
+import { textStyle } from "../../styles/textStyle";
 
 export default class SongItem extends Component {
   constructor(props) {
@@ -71,7 +72,7 @@ export default class SongItem extends Component {
         >
 
             <MarqueeText
-              style={{ flex: 1,fontSize: 14, fontWeight: "700", fontFamily: "quickSand"}}
+              style={{ flex: 1,fontSize: 14, fontFamily: "Quicksand-Bold"}}
               duration={6000}
               marqueeOnStart
               loop
@@ -79,7 +80,7 @@ export default class SongItem extends Component {
               Tên Bài Hát Thật Hay
             </MarqueeText>
 
-          <Text>Ca sĩ</Text>
+          <Text style={textStyle.regular}>Ca sĩ</Text>
         </TouchableOpacity>
         <View
           style={{

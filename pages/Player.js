@@ -11,7 +11,7 @@ import {
   Dimensions
 } from "react-native";
 import { playerStyle } from "../styles/playerStyle";
-
+import { textStyle } from "../styles/textStyle";
 export default class Player extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +62,7 @@ export default class Player extends Component {
               }}
             >
               <Text
-                style={playerStyle.nowPlaying}
+                style={[playerStyle.nowPlaying,textStyle.bold]}
               >
                 Now Playing
               </Text>
@@ -75,18 +75,18 @@ export default class Player extends Component {
               }}
             ></View>
           </View>
-          <View style={{ flex: 1, alignItems: "center", paddingTop: "10%" }}>
+          <View style={{ flex: 1, alignItems: "center", paddingTop: "10%"}}>
             <Image
               source={require("../assets/hongnhung.jpg")}
               style={playerStyle.coverImage}
             />
             <Text
-              style={playerStyle.songName}
+              style={[playerStyle.songName, textStyle.regular]}
             >
               Ru Em Từng Ngón Xuân Nồng
             </Text>
             <Text
-              style={playerStyle.artistName}
+              style={[playerStyle.artistName, textStyle.bold]}
             >
               Hồng Nhung
             </Text>
@@ -107,8 +107,8 @@ export default class Player extends Component {
                 paddingTop: 0
               }}
             >
-              <Text style={{ color: "#fff" }}>00:00</Text>
-              <Text style={{ color: "#fff" }}>02:14</Text>
+              <Text style={[{ color: "#fff" }, textStyle.regular]}>00:00</Text>
+              <Text style={[{ color: "#fff" }, textStyle.regular]}>02:14</Text>
             </View>
           </View>
           <View

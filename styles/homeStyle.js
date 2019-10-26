@@ -6,7 +6,6 @@ export const homeStyle = StyleSheet.create({
     },
     sectionTitle: {
         fontSize: 20,
-        fontWeight: "700",
         color: "#345",
         padding: 16,
         paddingLeft: 12
