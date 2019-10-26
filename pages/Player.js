@@ -116,6 +116,14 @@ export default class Player extends Component {
       </Button>);
   };
 
+  secondToMinuteString = (second) => {
+    if (second > 0) {
+      let i = parseInt(second);
+      return Math.floor(i / 60) + ':' + ('0' + Math.floor(i % 60)).slice(-2);
+    }
+    return "--:--";
+  };
+  
 
   onSliderComplete = (position) => {
     console.log(position)
@@ -188,7 +196,7 @@ export default class Player extends Component {
               minimumTrackTintColor="#fff"
               // maximumTrackTintColor="#1e88e5"
               thumbTintColor="#fff"
-              value={0.4}
+              value={this.state.presentPosition}
               style={{ width: "100%" }}
               
               onSlidingComplete={position => this.onSliderComplete(position)}
@@ -201,8 +209,8 @@ export default class Player extends Component {
                 paddingTop: 0
               }}
             >
-              <Text style={[{ color: "#fff" }, textStyle.regular]}>00:00</Text>
-              <Text style={[{ color: "#fff" }, textStyle.regular]}>02:14</Text>
+              <Text style={[{ color: "#fff" }, textStyle.regular]}>{this.secondToMinuteString(this.state.duration)}</Text>
+              <Text style={[{ color: "#fff" }, textStyle.regular]}>{this.secondToMinuteString(this.state.presentPosition)}</Text>
             </View>
           </View>
           <View
