@@ -16,6 +16,7 @@ import { textStyle } from "../styles/textStyle";
 import MeIcon from "../icons/MeIcon";
 import mePlay from "../icons/icon-pack/mePlay";
 import SoundPlayer from 'react-native-sound-player';
+import { returnStatement } from "@babel/types";
 
 export default class Player extends Component {
   constructor(props) {
@@ -26,11 +27,33 @@ export default class Player extends Component {
       loading: true,
       duration: 0,
       startValue: 0,
+      presentPosition: 0,
       searchValue: ""
     };
   }
 
-  componentDidMount() {
+  async getInfo() { // You need the keyword `async`
+    try {
+      const info = await SoundPlayer.getInfo() // Also, you need to await this because it is async
+      this.setState({ duration: info.duration})
+      // console.log('getInfo: ', info) // {duration: 12.416, currentTime: 7.691}
+    } catch (e) {
+      console.log('There is no song playing', e)
+    }
+  }
+
+  async getCurrentTime(){
+    try{
+      const info2 = await SoundPlayer.getInfo()
+      this.setState({presentPosition:info2.currentTime})
+      console.log("currrentTime:"+  info2.currentTime)
+    } catch(e){
+      console.log('Can not get current time', e)
+      
+    }
+  }
+
+  async componentDidMount() {
     const willBlurSubscription = this.props.navigation.addListener(
       "willBlur",
       payload => {
@@ -43,40 +66,61 @@ export default class Player extends Component {
         StatusBar.setBarStyle("light-content");
       }
     );
+    this.loadAndPlayMusic();
+
+    setInterval(() => {
+        this.getCurrentTime()
+
+    },1000);
   }
 
+
+  loadAndPlayMusic() {
+    try {
+      // play the file mp3 located at /android/app/src/main/res/raw/
+      SoundPlayer.playSoundFile('a', 'mp3')
+      // play from mp3. IT'S WORKING
+      // SoundPlayer.playUrl('https://data25.chiasenhac.com/downloads/2039/6/2038231-e4db0911/128/Het%20Thuong%20Can%20Nho%20-%20Duc%20Phuc.mp3')
+      this.getInfo()
+    } catch (e) {
+      console.log('Task failed successfully', e)
+    }
+  }
 
   onPlay = () => {
     let playing = !this.state.playing;
     this.setState({ playing: playing });
-    console.log(this.state.playing);
-    // TrackPlayer.play();
-    try {
-      // play the file tone.mp3
-      //SoundPlayer.playSoundFile('tone', 'mp3')
-      // or play from url
-      SoundPlayer.playUrl('https://data25.chiasenhac.com/downloads/2039/6/2038231-e4db0911/128/Het%20Thuong%20Can%20Nho%20-%20Duc%20Phuc.mp3')
-    } catch (e) {
-      console.log('cannot play the sound file', e)
-    }
+    // console.log("play pressed")
+    // console.log(this.state.playing);
+    SoundPlayer.play()
   }
 
   onPause = () => {
     let playing = !this.state.playing;
     this.setState({ playing: playing });
+    // this.getInfo();
+    SoundPlayer.pause();
     // TrackPlayer.pause();
   }
 
+
   renderPlayerPlayPause = (playing, style) => {
-    return (this.state.playing === false)
+    return (this.state.playing === true)
       ? (<Button transparent style={playerStyle.coverImage} onPress={this.onPause}
-      title = "paus">
-        <MeIcon icon={mePlay} style={style} /> 
+        title="paus">
+        <MeIcon icon={mePlay} style={style} />
       </Button>)
       : (<Button transparent style={playerStyle.coverImage} onPress={this.onPlay}
-      title = "play">
-        <MeIcon icon={mePlay} style={[style, { left: 4 }]} /> 
+        title="play">
+        <MeIcon icon={mePlay} style={[style, { left: 4 }]} />
       </Button>);
+  };
+
+
+  onSliderComplete = (position) => {
+    console.log(position)
+    this.setState({ presentPosition: position });
+    SoundPlayer.seek(parseInt(position));
   };
 
   render() {
@@ -139,11 +183,15 @@ export default class Player extends Component {
           </View>
           <View ref="process">
             <Slider
+              minimumValue={0}
+              maximumValue={this.state.duration}
               minimumTrackTintColor="#fff"
               // maximumTrackTintColor="#1e88e5"
               thumbTintColor="#fff"
               value={0.4}
               style={{ width: "100%" }}
+              
+              onSlidingComplete={position => this.onSliderComplete(position)}
             ></Slider>
             <View
               style={{
@@ -188,7 +236,7 @@ export default class Player extends Component {
             ></View>
             <View style={playerStyle.nowPlaying}>
               <TouchableOpacity>
-                {this.renderPlayerPlayPause(this.state.playing,playerStyle.coverImage)} 
+                {this.renderPlayerPlayPause(this.state.playing, playerStyle.coverImage)}
               </TouchableOpacity>
             </View>
             <View
