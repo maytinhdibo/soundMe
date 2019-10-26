@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/nd/Desktop/soundMe/soundMe/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sq/values-sq.xml",
+            "outputFile": "/Users/maytinhdibo/Project/UI/soundMe/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sq/values-sq.xml",
             "map": [
                 {
-                    "source": "/home/nd/.gradle/caches/transforms-2/files-2.1/103f3e30ea69143c7ffb523e5eeaeb1e/res/values-sq/values-sq.xml",
+                    "source": "/Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/2bd5ff5ec9c60750c2b80b454bc76a62/res/values-sq/values-sq.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/nd/.gradle/caches/transforms-2/files-2.1/4865bb7b024b968d364677e9e837f037/res/values-sq/values-sq.xml",
+                    "source": "/Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/2eb47fba2d04bbd72e2462f36043cf9f/res/values-sq/values-sq.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

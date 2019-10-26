@@ -5,27 +5,44 @@ import {
   ScrollView,
   TouchableOpacity,
   Button,
-  StatusBar
+  ImageBackground
 } from "react-native";
 import { homeStyle } from "../styles/homeStyle";
 import Swiper from "react-native-web-swiper";
-import SongItem from "../components/home/SongItem";
-import { getStatusBarHeight } from 'react-native-status-bar-height';
+import PlaylistItem from "../components/home/PlaylistItem";
+import SliderDot from "../components/common/SliderDot";
+import { getStatusBarHeight } from "react-native-status-bar-height";
 import { textStyle } from "../styles/textStyle";
+import SongItem from "../components/home/SongItem";
+import SliderItem from "../components/common/SliderItem";
 export default class Home extends Component {
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }}>
         <View
           style={{
             flexDirection: "column",
-            height: getStatusBarHeight(),
+            height: getStatusBarHeight()
             // backgroundColor: "#433"
           }}
         ></View>
-        <View style={{ flexDirection: "row", paddingLeft: 12, paddingRight: 9, marginBottom: 2 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            paddingLeft: 12,
+            paddingRight: 9,
+            marginBottom: 2
+          }}
+        >
           <View style={{ flex: 1 }}>
-            <Text style={[{ fontSize: 27, fontWeight: "900", justifyContent:"center" }, textStyle.bold]}>Trang chủ</Text>
+            <Text
+              style={[
+                { fontSize: 27, fontWeight: "900", justifyContent: "center" },
+                textStyle.bold
+              ]}
+            >
+              Trang chủ
+            </Text>
           </View>
           <View
             style={{ width: 50, height: 50, backgroundColor: "#345" }}
@@ -34,84 +51,130 @@ export default class Home extends Component {
         <View style={homeStyle.slideShow}>
           <Swiper
             timeout={4.5}
-            from={1}
+            from={0}
+            slideWrapperStyle={{ padding: 12, paddingBottom: 30 }}
             minDistanceForAction={0.1}
             controlsProps={{
-              dotsTouchable: true,
+              DotComponent: ({ index, isActive, onPress }) => (
+                <SliderDot onPress={onPress} isActive={isActive} />
+              ),
               prevPos: "left",
               nextPos: "right",
               nextTitle: ">",
               nextTitleStyle: { color: "red", fontSize: 24, fontWeight: "500" },
               PrevComponent: ({ onPress }) => (
-                <TouchableOpacity onPress={onPress}>
-                  <Text
-                    style={{fontFamily:"Quicksand", color: "white", fontSize: 24, fontWeight: "500" }}
-                  >
-                    {/* {'Prev'} */}
-                  </Text>
+                <TouchableOpacity
+                  style={{ flex: 1, height: "100%" }}
+                  onPress={onPress}
+                >
+                  <View style={{ height: 150, width: 40 }}></View>
                 </TouchableOpacity>
               ),
               NextComponent: ({ onPress }) => (
-                <TouchableOpacity onPress={onPress}>
-                  <Text
-                    style={{ color: "white", fontSize: 24, fontWeight: "500" }}
-                  >
-                    {/* {'Next'} */}
-                  </Text>
+                <TouchableOpacity
+                  style={{ flex: 1, height: "100%" }}
+                  onPress={onPress}
+                >
+                  <View style={{ height: 150, width: 40 }}></View>
                 </TouchableOpacity>
               )
             }}
           >
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "rgba(20,20,200, 1)"
+            <SliderItem
+              index={1}
+              image={{
+                uri:
+                  "https://avatar-nct.nixcdn.com/mv/2019/10/23/f/2/2/5/1571805287222_840.jpg"
               }}
-            >
-              <Text>Slide 1</Text>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "rgba(20,200,20,1)"
+            />
+
+            <SliderItem
+              index={1}
+              image={{
+                uri:
+                  "https://avatar-nct.nixcdn.com/mv/2019/10/17/d/f/d/6/1571316241353_840.jpg"
               }}
-            >
-              <Text>Slide 2</Text>
-            </View>
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "rgba(200,20,20,1)"
+            />
+
+            <SliderItem
+              index={1}
+              image={{
+                uri:
+                  "https://avatar-nct.nixcdn.com/mv/2019/10/21/b/3/9/8/1571633065834_840.jpg"
               }}
-            >
-              <Text>Slide 3</Text>
-            </View>
+            />
           </Swiper>
         </View>
-        <Text style={[homeStyle.sectionTitle,textStyle.regular]}>Đề xuất cho bạn</Text>
+        <Text
+          style={[homeStyle.sectionTitle, { paddingTop: 0 }, textStyle.bold]}
+        >
+          Playlist nghe gần đây
+        </Text>
         <View>
-          <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-            style={{ backgroundColor: "#eee" }}
-          >
-            <SongItem imgUrl={""} name={"Nửa hồn thương đau"} />
-            <SongItem imgUrl={""} name={"Giấc mộng trong mơ"} />
-            <SongItem imgUrl={""} name={"Con đi đâu để thấy hoa bay"} />
-            <SongItem imgUrl={""} name={"Đi đu đưa đi"} />
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <PlaylistItem
+              imgUrl={require("../assets/nuocmat.jpg")}
+              name={"Nửa hồn thương đau"}
+              actorName={"Thu Phương"}
+            />
+            <PlaylistItem
+              imgUrl={{
+                uri:
+                  "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg"
+              }}
+              name={"Giấc mộng trong mơ"}
+              actorName={"Hồng Nhung"}
+            />
+            <PlaylistItem
+              imgUrl={require("../assets/nuocmat.jpg")}
+              name={"Con đi đâu để thấy hoa bay"}
+              actorName={"Nhiều ca sĩ"}
+            />
+            <PlaylistItem
+              imgUrl={require("../assets/nuocmat.jpg")}
+              name={"Đi đu đưa đi"}
+              actorName={"Tuấn Hưng"}
+            />
           </ScrollView>
         </View>
+
+        <Text
+          style={[homeStyle.sectionTitle, { paddingTop: 0 }, textStyle.bold]}
+        >
+          Bài hát đề xuất
+        </Text>
+
+        <View>
+          <SongItem
+            imgUrl={require("../assets/nuocmat.jpg")}
+            name={"Nửa hồn thương đau"}
+            actorName={"Thu Phương"}
+          />
+          <SongItem
+            imgUrl={{
+              uri:
+                "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg"
+            }}
+            name={"Giấc mộng trong mơ"}
+            actorName={"Hồng Nhung"}
+          />
+          <SongItem
+            imgUrl={require("../assets/nuocmat.jpg")}
+            name={"Con đi đâu để thấy hoa bay"}
+            actorName={"Nhiều ca sĩ"}
+          />
+          <SongItem
+            imgUrl={require("../assets/nuocmat.jpg")}
+            name={"Đi đu đưa đi"}
+            actorName={"Tuấn Hưng"}
+          />
+        </View>
+
         <Button
           title="Go to Details"
           onPress={() => this.props.navigation.navigate("Playlist")}
         />
-      </View>
+      </ScrollView>
     );
   }
 }

@@ -2,7 +2,9 @@ import { StyleSheet } from 'react-native';
 
 export const homeStyle = StyleSheet.create({
     slideShow: {
-        height: 275
+        height: 230,
+        overflow: "visible",
+        // backgroundColor:"#443"
     },
     sectionTitle: {
         fontSize: 20,
@@ -23,16 +25,31 @@ export const homeStyle = StyleSheet.create({
         shadowOpacity: 0.3,
         shadowRadius: 2,
     },
-    songItem: {
+    playlistItem: {
         flex: 1,
-        backgroundColor: '#fff',
+        // backgroundColor: '#fff',
         margin: 12,
         marginEnd: 0,
-        width: 120,
+        width: 150,
         alignContent: "center",
         textAlign: "center",
-        borderRadius: 5,
-        overflow: "hidden",
+        // overflow: "hidden",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 0,
+        },
+        shadowOpacity: 0.05,
+        shadowRadius: 3,
+    },
+    songItem: {
+        flex: 1,
+        flexDirection:"row",
+        // backgroundColor: '#fff',
+        margin: 12,
+        alignContent: "center",
+        textAlign: "center",
+        // overflow: "hidden",
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
