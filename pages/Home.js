@@ -15,39 +15,25 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 import { textStyle } from "../styles/textStyle";
 import SongItem from "../components/home/SongItem";
 import SliderItem from "../components/common/SliderItem";
+
+import { CollapsibleHeaderScrollView } from 'react-native-collapsible-header-views';
+
+
+import meArrowRight from "../icons/icon-pack/meArrowRight";
+import MeIcon from "../icons/MeIcon";
+
+import SectionTitle from "../components/home/SectionTitle";
+import HomeHeader from "../components/home/HomeHeader";
+
 export default class Home extends Component {
   render() {
     return (
-      <ScrollView style={{ flex: 1 }}>
-        <View
-          style={{
-            flexDirection: "column",
-            height: getStatusBarHeight()
-            // backgroundColor: "#433"
-          }}
-        ></View>
-        <View
-          style={{
-            flexDirection: "row",
-            paddingLeft: 12,
-            paddingRight: 9,
-            marginBottom: 2
-          }}
-        >
-          <View style={{ flex: 1 }}>
-            <Text
-              style={[
-                { fontSize: 27, fontWeight: "900", justifyContent: "center" },
-                textStyle.bold
-              ]}
-            >
-              Trang chủ
-            </Text>
-          </View>
-          <View
-            style={{ width: 50, height: 50, backgroundColor:"#456"}}
-          ></View>
-        </View>
+       <CollapsibleHeaderScrollView
+    CollapsibleHeaderComponent={<HomeHeader/>}
+    headerHeight={115}
+    statusBarHeight={Platform.OS === 'ios' ? 20 : 0}
+  >       
+
         <View style={homeStyle.slideShow}>
           <Swiper
             timeout={4.5}
@@ -64,7 +50,7 @@ export default class Home extends Component {
               nextTitleStyle: { color: "red", fontSize: 24, fontWeight: "500" },
               PrevComponent: ({ onPress }) => (
                 <TouchableOpacity
-                  style={{ flex: 1, height: "100%"}}
+                  style={{ flex: 1, height: "100%" }}
                   onPress={onPress}
                 >
                   <View style={{ height: 150, width: 40 }}></View>
@@ -72,7 +58,7 @@ export default class Home extends Component {
               ),
               NextComponent: ({ onPress }) => (
                 <TouchableOpacity
-                  style={{ flex: 1, height: "100%"}}
+                  style={{ flex: 1, height: "100%" }}
                   onPress={onPress}
                 >
                   <View style={{ height: 150, width: 40 }}></View>
@@ -105,17 +91,13 @@ export default class Home extends Component {
             />
           </Swiper>
         </View>
-        <Text
-          style={[homeStyle.sectionTitle, { paddingTop: 0, shadowColor: '#000',
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: 0.8,
-          shadowRadius: 2,
-          elevation: 9,}, textStyle.bold]}
-        >
-          Playlist nghe gần đây
-        </Text>
+        <SectionTitle title={"Playlist gần đây"} />
         <View>
-          <ScrollView style={{shadowOffset: { width: 10, height: 10 }}} horizontal={true} showsHorizontalScrollIndicator={false}>
+          <ScrollView
+            style={{ shadowOffset: { width: 10, height: 10 } }}
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+          >
             <PlaylistItem
               imgUrl={require("../assets/nuocmat.jpg")}
               name={"Nửa hồn thương đau"}
@@ -142,11 +124,7 @@ export default class Home extends Component {
           </ScrollView>
         </View>
 
-        <Text
-          style={[homeStyle.sectionTitle, { paddingTop: 0 }, textStyle.bold]}
-        >
-          Bài hát đề xuất
-        </Text>
+        <SectionTitle title={"Bài hát đề xuất"} />
 
         <View>
           <SongItem
@@ -178,7 +156,7 @@ export default class Home extends Component {
           title="Go to Details"
           onPress={() => this.props.navigation.navigate("Playlist")}
         />
-      </ScrollView>
+      </CollapsibleHeaderScrollView>
     );
   }
 }

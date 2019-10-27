@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { View } from 'react-native';
-export default function Leaf(props) {
+export default function MeIcon(props) {
   return (
-    <View>{props.icon(props)}</View>
+    <View {...props}>{props.icon(props)}</View>
   );
 }
