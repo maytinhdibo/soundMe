@@ -45,14 +45,14 @@ export default class Home extends Component {
             </Text>
           </View>
           <View
-            style={{ width: 50, height: 50, backgroundColor: "#345" }}
+            style={{ width: 50, height: 50, backgroundColor:"#456"}}
           ></View>
         </View>
         <View style={homeStyle.slideShow}>
           <Swiper
             timeout={4.5}
             from={0}
-            slideWrapperStyle={{ padding: 12, paddingBottom: 30 }}
+            slideWrapperStyle={{ paddingBottom: 20 }}
             minDistanceForAction={0.1}
             controlsProps={{
               DotComponent: ({ index, isActive, onPress }) => (
@@ -64,7 +64,7 @@ export default class Home extends Component {
               nextTitleStyle: { color: "red", fontSize: 24, fontWeight: "500" },
               PrevComponent: ({ onPress }) => (
                 <TouchableOpacity
-                  style={{ flex: 1, height: "100%" }}
+                  style={{ flex: 1, height: "100%"}}
                   onPress={onPress}
                 >
                   <View style={{ height: 150, width: 40 }}></View>
@@ -72,7 +72,7 @@ export default class Home extends Component {
               ),
               NextComponent: ({ onPress }) => (
                 <TouchableOpacity
-                  style={{ flex: 1, height: "100%" }}
+                  style={{ flex: 1, height: "100%"}}
                   onPress={onPress}
                 >
                   <View style={{ height: 150, width: 40 }}></View>
@@ -106,12 +106,16 @@ export default class Home extends Component {
           </Swiper>
         </View>
         <Text
-          style={[homeStyle.sectionTitle, { paddingTop: 0 }, textStyle.bold]}
+          style={[homeStyle.sectionTitle, { paddingTop: 0, shadowColor: '#000',
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.8,
+          shadowRadius: 2,
+          elevation: 9,}, textStyle.bold]}
         >
           Playlist nghe gần đây
         </Text>
         <View>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          <ScrollView style={{shadowOffset: { width: 10, height: 10 }}} horizontal={true} showsHorizontalScrollIndicator={false}>
             <PlaylistItem
               imgUrl={require("../assets/nuocmat.jpg")}
               name={"Nửa hồn thương đau"}

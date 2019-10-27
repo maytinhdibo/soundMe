@@ -5,15 +5,18 @@ INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/Android
 INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:1:1-26:12
 INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:1:1-26:12
 MERGED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:1:1-26:12
+MERGED from [:react-native-cardview] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-cardview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-simple-shadow-view] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-simple-shadow-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-sound-player] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-sound-player/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-android-dialog-picker] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-android-dialog-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-picker-module] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-picker-module/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-svg] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-navigation-bar-color] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-navigation-bar-color/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-reanimated] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [:react-native-svg] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.react:react-native:0.61.2] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/61ace0f7fb80b4e589045c8c557d3d5a/AndroidManifest.xml:2:1-13:12
 MERGED from [org.webkit:android-jsc:r245459] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/679643f91323445675b6e5d2aa58ac79/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-gesture-handler] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/a51fe3bbeff33a79f8e89bf44ebd4789/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/9c917a4cc5892c02737943872964299d/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/2bd5ff5ec9c60750c2b80b454bc76a62/AndroidManifest.xml:17:1-22:12
 MERGED from [com.facebook.fresco:fresco:2.0.0] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/e0177f87133b5103fc131d0fc6685fc4/AndroidManifest.xml:2:1-9:12
@@ -141,24 +144,30 @@ uses-sdk
 INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-cardview] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-cardview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-cardview] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-cardview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-simple-shadow-view] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-simple-shadow-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-simple-shadow-view] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-simple-shadow-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-sound-player] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-sound-player/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-sound-player] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-sound-player/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-android-dialog-picker] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-android-dialog-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-android-dialog-picker] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-android-dialog-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-picker-module] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-picker-module/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-picker-module] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-picker-module/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-svg] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-svg] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-navigation-bar-color] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-navigation-bar-color/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-navigation-bar-color] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-navigation-bar-color/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-reanimated] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-reanimated] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-svg] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-svg] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.react:react-native:0.61.2] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/61ace0f7fb80b4e589045c8c557d3d5a/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.61.2] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/61ace0f7fb80b4e589045c8c557d3d5a/AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/679643f91323445675b6e5d2aa58ac79/AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/679643f91323445675b6e5d2aa58ac79/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-gesture-handler] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-gesture-handler] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/a51fe3bbeff33a79f8e89bf44ebd4789/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/a51fe3bbeff33a79f8e89bf44ebd4789/AndroidManifest.xml:20:5-44
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/9c917a4cc5892c02737943872964299d/AndroidManifest.xml:20:5-44
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/9c917a4cc5892c02737943872964299d/AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.0.2] /Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/2bd5ff5ec9c60750c2b80b454bc76a62/AndroidManifest.xml:20:5-44

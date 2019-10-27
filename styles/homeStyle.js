@@ -9,7 +9,7 @@ export const homeStyle = StyleSheet.create({
     sectionTitle: {
         fontSize: 20,
         color: "#345",
-        padding: 16,
+        padding: 6,
         paddingLeft: 12
     },
     listItem: {
@@ -28,19 +28,12 @@ export const homeStyle = StyleSheet.create({
     playlistItem: {
         flex: 1,
         // backgroundColor: '#fff',
-        margin: 12,
-        marginEnd: 0,
-        width: 150,
+        padding: 12,
+        paddingHorizontal: 6,
+        width: 162,
         alignContent: "center",
         textAlign: "center",
         // overflow: "hidden",
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 0,
-        },
-        shadowOpacity: 0.05,
-        shadowRadius: 3,
     },
     songItem: {
         flex: 1,

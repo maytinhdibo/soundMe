@@ -15,18 +15,22 @@ import com.soundmenative.R;
 
 // react-native-android-dialog-picker
 import com.androiddialogpicker.RNAndroidDialogPickerPackage;
+// react-native-cardview
+import com.kishanjvaghela.cardview.RNCardViewPackage;
 // react-native-picker-module
 import com.taluttasgiran.pickermodule.ReactNativePickerModulePackage;
+// react-native-simple-shadow-view
+import com.como.RNTShadowView.ShadowViewPackage;
 // react-native-sound-player
 import com.johnsonsu.rnsoundplayer.RNSoundPlayerPackage;
+// react-native-svg
+import com.horcrux.svg.SvgPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 // react-native-navigation-bar-color
 import com.thebylito.navigationbarcolor.NavigationBarColorPackage;
 // react-native-reanimated
 import com.swmansion.reanimated.ReanimatedPackage;
-// react-native-svg
-import com.horcrux.svg.SvgPackage;
 
 public class PackageList {
   private Application application;
@@ -61,12 +65,14 @@ public class PackageList {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(),
       new RNAndroidDialogPickerPackage(),
+      new RNCardViewPackage(),
       new ReactNativePickerModulePackage(),
+      new ShadowViewPackage(),
       new RNSoundPlayerPackage(),
+      new SvgPackage(),
       new RNGestureHandlerPackage(),
       new NavigationBarColorPackage(),
-      new ReanimatedPackage(),
-      new SvgPackage()
+      new ReanimatedPackage()
     ));
   }
 }

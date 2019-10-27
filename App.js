@@ -129,7 +129,7 @@ const AppNavigator = createMaterialTopTabNavigator(
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation: 5,
+        elevation: 50,
         backgroundColor: "#fff"
       }
     }
