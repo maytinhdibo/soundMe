@@ -6,7 +6,6 @@ INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/Android
 INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:1:1-26:12
 MERGED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:1:1-26:12
 MERGED from [:react-native-cardview] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-cardview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
-MERGED from [:react-native-simple-shadow-view] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-simple-shadow-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-sound-player] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-sound-player/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-android-dialog-picker] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-android-dialog-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-picker-module] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-picker-module/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
@@ -146,8 +145,6 @@ INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/Android
 INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml
 MERGED from [:react-native-cardview] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-cardview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-cardview] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-cardview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
-MERGED from [:react-native-simple-shadow-view] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-simple-shadow-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
-MERGED from [:react-native-simple-shadow-view] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-simple-shadow-view/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-sound-player] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-sound-player/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-sound-player] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-sound-player/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-android-dialog-picker] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-android-dialog-picker/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41

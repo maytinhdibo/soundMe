@@ -180,7 +180,6 @@ android {
 
 dependencies {
     implementation project(':react-native-cardview')
-    implementation project(':react-native-simple-shadow-view')
     implementation project(':react-native-sound-player')
     implementation project(':react-native-android-dialog-picker')
     implementation project(':react-native-picker-module')

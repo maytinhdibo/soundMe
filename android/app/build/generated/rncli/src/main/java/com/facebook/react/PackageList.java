@@ -19,8 +19,6 @@ import com.androiddialogpicker.RNAndroidDialogPickerPackage;
 import com.kishanjvaghela.cardview.RNCardViewPackage;
 // react-native-picker-module
 import com.taluttasgiran.pickermodule.ReactNativePickerModulePackage;
-// react-native-simple-shadow-view
-import com.como.RNTShadowView.ShadowViewPackage;
 // react-native-sound-player
 import com.johnsonsu.rnsoundplayer.RNSoundPlayerPackage;
 // react-native-svg
@@ -67,7 +65,6 @@ public class PackageList {
       new RNAndroidDialogPickerPackage(),
       new RNCardViewPackage(),
       new ReactNativePickerModulePackage(),
-      new ShadowViewPackage(),
       new RNSoundPlayerPackage(),
       new SvgPackage(),
       new RNGestureHandlerPackage(),

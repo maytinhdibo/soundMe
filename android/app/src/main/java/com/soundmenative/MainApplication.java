@@ -5,7 +5,6 @@ import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.kishanjvaghela.cardview.RNCardViewPackage;
-import com.como.RNTShadowView.ShadowViewPackage;
 import com.johnsonsu.rnsoundplayer.RNSoundPlayerPackage;
 import com.androiddialogpicker.RNAndroidDialogPickerPackage;
 import com.taluttasgiran.pickermodule.ReactNativePickerModulePackage;
