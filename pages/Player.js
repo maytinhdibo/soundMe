@@ -22,13 +22,15 @@ export default class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      
       playerState: 0,
       playing: true,
       loading: true,
       duration: 0,
       startValue: 0,
       presentPosition: 0,
-      searchValue: ""
+      searchValue: "",
+      repeat: false
     };
   }
 
@@ -115,10 +117,24 @@ export default class Player extends Component {
   }
 
   onStop = () =>{
-    SoundPlayer.stop();
-    this.setState({playing:false})
+    if(this.state.repeat){
+      //replay
+      this.replay();
+    } else{
+      //stop 
+      SoundPlayer.seek(0)
+      this.setState({
+        playing:true
+      })
+    }
   }
 
+  replay = () =>{
+    SoundPlayer.seek(0)
+    this.setState({
+      playing:true
+    })
+  }
 
   renderPlayerPlayPause = (playing, style) => {
     return (this.state.playing === true)
