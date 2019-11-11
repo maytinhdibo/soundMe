@@ -35,21 +35,21 @@ export default class Player extends Component {
   async getInfo() { // You need the keyword `async`
     try {
       const info = await SoundPlayer.getInfo() // Also, you need to await this because it is async
-      this.setState({ duration: info.duration})
+      this.setState({ duration: info.duration })
       // console.log('getInfo: ', info) // {duration: 12.416, currentTime: 7.691}
     } catch (e) {
       console.log('There is no song playing', e)
     }
   }
 
-  async getCurrentTime(){
-    try{
+  async getCurrentTime() {
+    try {
       const info2 = await SoundPlayer.getInfo()
-      this.setState({presentPosition:info2.currentTime})
-      console.log("currrentTime:"+  info2.currentTime)
-    } catch(e){
+      this.setState({ presentPosition: info2.currentTime })
+      console.log("currrentTime:" + info2.currentTime)
+    } catch (e) {
       console.log('Can not get current time', e)
-      
+
     }
   }
 
@@ -69,9 +69,9 @@ export default class Player extends Component {
     this.loadAndPlayMusic();
 
     setInterval(() => {
-        this.getCurrentTime()
+      this.getCurrentTime()
 
-    },1000);
+    }, 1000);
   }
 
 
@@ -123,7 +123,7 @@ export default class Player extends Component {
     }
     return "--:--";
   };
-  
+
 
   onSliderComplete = (position) => {
     console.log(position)
@@ -198,7 +198,7 @@ export default class Player extends Component {
               thumbTintColor="#fff"
               value={this.state.presentPosition}
               style={{ width: "100%" }}
-              
+
               onSlidingComplete={position => this.onSliderComplete(position)}
             ></Slider>
             <View
@@ -209,8 +209,12 @@ export default class Player extends Component {
                 paddingTop: 0
               }}
             >
-              <Text style={[{ color: "#fff" }, textStyle.regular]}>{this.secondToMinuteString(this.state.duration)}</Text>
-              <Text style={[{ color: "#fff" }, textStyle.regular]}>{this.secondToMinuteString(this.state.presentPosition)}</Text>
+              <Text style={[{ color: "#fff" }, textStyle.regular]}
+                  >{this.secondToMinuteString(this.state.duration)}
+              </Text>
+              <Text style={[{ color: "#fff" }, textStyle.regular]}
+                  >{this.secondToMinuteString(this.state.presentPosition)}
+              </Text>
             </View>
           </View>
           <View
