@@ -22,20 +22,22 @@ export default class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      
       playerState: 0,
       playing: true,
       loading: true,
       duration: 0,
       startValue: 0,
       presentPosition: 0,
-      searchValue: ""
+      searchValue: "",
+      repeat: true
     };
   }
 
-  async getInfo() { // You need the keyword `async`
+  async getInfo() { 
     try {
-      const info = await SoundPlayer.getInfo() // Also, you need to await this because it is async
-      this.setState({ duration: info.duration })
+      const info = await SoundPlayer.getInfo() 
+      this.setState({ duration: info.duration})
       // console.log('getInfo: ', info) // {duration: 12.416, currentTime: 7.691}
     } catch (e) {
       console.log('There is no song playing', e)
@@ -46,7 +48,7 @@ export default class Player extends Component {
     try {
       const info2 = await SoundPlayer.getInfo()
       this.setState({ presentPosition: info2.currentTime })
-      console.log("currrentTime:" + info2.currentTime)
+      // console.log("currrentTime:" + info2.currentTime)
     } catch (e) {
       console.log('Can not get current time', e)
 
@@ -71,7 +73,13 @@ export default class Player extends Component {
     setInterval(() => {
       this.getCurrentTime()
 
-    }, 1000);
+    },1000);
+
+    //onFinishPlay
+    _onFinishedPlayingSubscription = SoundPlayer.addEventListener('FinishedPlaying', ({ success }) => {
+      console.log('finished playing', success)
+      this.onFinishPlay()
+    })
   }
 
 
@@ -104,6 +112,28 @@ export default class Player extends Component {
   }
 
 
+  onFinishPlay = () =>{
+    if(this.state.repeat){
+      console.log("rePLay")
+      //replay
+      this.replay();
+    } else{
+      //stop 
+      console.log("Stop")
+      SoundPlayer.seek(0)
+      SoundPlayer.pause()
+      this.setState({
+        playing:false
+      })
+    }
+  }
+
+  replay = () =>{
+    this.setState({ presentPosition: 0 });
+    SoundPlayer.seek(0)
+    SoundPlayer.play()
+  }
+
   renderPlayerPlayPause = (playing, style) => {
     return (this.state.playing === true)
       ? (<Button transparent style={playerStyle.coverImage} onPress={this.onPause}
@@ -129,6 +159,8 @@ export default class Player extends Component {
     console.log(position)
     this.setState({ presentPosition: position });
     SoundPlayer.seek(parseInt(position));
+    SoundPlayer.play()
+    this.setState({playing:true})
   };
 
   render() {
