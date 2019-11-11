@@ -17,24 +17,28 @@ import MeIcon from "../icons/MeIcon";
 import mePlay from "../icons/icon-pack/mePlay";
 import SoundPlayer from 'react-native-sound-player';
 import { returnStatement } from "@babel/types";
+import MusicControl from 'react-native-music-control';
+
 
 export default class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      
       playerState: 0,
       playing: true,
       loading: true,
       duration: 0,
       startValue: 0,
       presentPosition: 0,
-      searchValue: ""
+      searchValue: "",
+      repeat: true
     };
   }
 
-  async getInfo() { // You need the keyword `async`
+  async getInfo() { 
     try {
-      const info = await SoundPlayer.getInfo() // Also, you need to await this because it is async
+      const info = await SoundPlayer.getInfo() 
       this.setState({ duration: info.duration})
       // console.log('getInfo: ', info) // {duration: 12.416, currentTime: 7.691}
     } catch (e) {
@@ -42,14 +46,14 @@ export default class Player extends Component {
     }
   }
 
-  async getCurrentTime(){
-    try{
+  async getCurrentTime() {
+    try {
       const info2 = await SoundPlayer.getInfo()
-      this.setState({presentPosition:info2.currentTime})
-      console.log("currrentTime:"+  info2.currentTime)
-    } catch(e){
+      this.setState({ presentPosition: info2.currentTime })
+      // console.log("currrentTime:" + info2.currentTime)
+    } catch (e) {
       console.log('Can not get current time', e)
-      
+
     }
   }
 
@@ -69,9 +73,30 @@ export default class Player extends Component {
     this.loadAndPlayMusic();
 
     setInterval(() => {
-        this.getCurrentTime()
+      this.getCurrentTime()
 
     },1000);
+
+    //onFinishPlay
+    _onFinishedPlayingSubscription = SoundPlayer.addEventListener('FinishedPlaying', ({ success }) => {
+      console.log('finished playing', success)
+      this.onFinishPlay()
+    })
+
+
+    MusicControl.setNowPlaying({
+      title: 'Billie Jean',
+      artwork: 'https://i.imgur.com/e1cpwdo.png', // URL or RN's image require()
+      artist: 'Michael Jackson',
+      album: 'Thriller',
+      genre: 'Post-disco, Rhythm and Blues, Funk, Dance-pop',
+      duration: 294, // (Seconds)
+      description: '', // Android Only
+      color: 0xFFFFFF, // Notification Color - Android Only
+      date: '1983-01-02T00:00:00Z', // Release Date (RFC 3339) - Android Only
+      rating: 84, // Android Only (Boolean or Number depending on the type)
+      notificationIcon: 'my_custom_icon' // Android Only (String), Android Drawable resource name for a custom notification icon
+    })
   }
 
 
@@ -104,6 +129,28 @@ export default class Player extends Component {
   }
 
 
+  onFinishPlay = () =>{
+    if(this.state.repeat){
+      console.log("rePLay")
+      //replay
+      this.replay();
+    } else{
+      //stop 
+      console.log("Stop")
+      SoundPlayer.seek(0)
+      SoundPlayer.pause()
+      this.setState({
+        playing:false
+      })
+    }
+  }
+
+  replay = () =>{
+    this.setState({ presentPosition: 0 });
+    SoundPlayer.seek(0)
+    SoundPlayer.play()
+  }
+
   renderPlayerPlayPause = (playing, style) => {
     return (this.state.playing === true)
       ? (<Button transparent style={playerStyle.coverImage} onPress={this.onPause}
@@ -123,12 +170,14 @@ export default class Player extends Component {
     }
     return "--:--";
   };
-  
+
 
   onSliderComplete = (position) => {
     console.log(position)
     this.setState({ presentPosition: position });
     SoundPlayer.seek(parseInt(position));
+    SoundPlayer.play()
+    this.setState({playing:true})
   };
 
   render() {
@@ -198,7 +247,7 @@ export default class Player extends Component {
               thumbTintColor="#fff"
               value={this.state.presentPosition}
               style={{ width: "100%" }}
-              
+
               onSlidingComplete={position => this.onSliderComplete(position)}
             ></Slider>
             <View
@@ -209,8 +258,12 @@ export default class Player extends Component {
                 paddingTop: 0
               }}
             >
-              <Text style={[{ color: "#fff" }, textStyle.regular]}>{this.secondToMinuteString(this.state.duration)}</Text>
-              <Text style={[{ color: "#fff" }, textStyle.regular]}>{this.secondToMinuteString(this.state.presentPosition)}</Text>
+              <Text style={[{ color: "#fff" }, textStyle.regular]}
+                  >{this.secondToMinuteString(this.state.duration)}
+              </Text>
+              <Text style={[{ color: "#fff" }, textStyle.regular]}
+                  >{this.secondToMinuteString(this.state.presentPosition)}
+              </Text>
             </View>
           </View>
           <View

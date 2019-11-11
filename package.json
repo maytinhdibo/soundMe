@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "react": "16.9.0",
-    "react-native": "0.61.2",
+    "react-native": "0.61.4",
     "react-native-android-dialog-picker": "^0.0.2",
     "react-native-cardview": "^2.0.5",
     "react-native-collapsible-header-views": "^1.0.2",
