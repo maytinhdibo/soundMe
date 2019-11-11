@@ -148,8 +148,9 @@ export default class Player extends Component {
       rating: 84, // Android Only (Boolean or Number depending on the type)
       notificationIcon: 'my_custom_icon' // Android Only (String), Android Drawable resource name for a custom notification icon
     })
+    
     MusicControl.updatePlayback({
-      state: MusicControl.STATE_PLAYING, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
+      state: MusicControl.STATE_PLAYING, 
       })
   }
 
@@ -167,9 +168,11 @@ export default class Player extends Component {
   }
 
   onPlay = () => {
+    //Playing  on notif
     MusicControl.updatePlayback({
-      state: MusicControl.STATE_PLAYING, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
+      state: MusicControl.STATE_PLAYING,
       })
+
     let playing = !this.state.playing;
     this.setState({ playing: playing });
     // console.log("play pressed")
@@ -178,9 +181,11 @@ export default class Player extends Component {
   }
 
   onPause = () => {
+    //Pause on notif
     MusicControl.updatePlayback({
-      state: MusicControl.STATE_PAUSED, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
+      state: MusicControl.STATE_PAUSED,
       })
+
     let playing = !this.state.playing;
     this.setState({ playing: playing });
     // this.getInfo();
