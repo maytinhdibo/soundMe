@@ -32,9 +32,9 @@ export default class Player extends Component {
     };
   }
 
-  async getInfo() { // You need the keyword `async`
+  async getInfo() { 
     try {
-      const info = await SoundPlayer.getInfo() // Also, you need to await this because it is async
+      const info = await SoundPlayer.getInfo() 
       this.setState({ duration: info.duration})
       // console.log('getInfo: ', info) // {duration: 12.416, currentTime: 7.691}
     } catch (e) {
@@ -72,6 +72,12 @@ export default class Player extends Component {
         this.getCurrentTime()
 
     },1000);
+
+    //onFinishPlay
+    _onFinishedPlayingSubscription = SoundPlayer.addEventListener('FinishedPlaying', ({ success }) => {
+      console.log('finished playing', success)
+      this.onStop();
+    })
   }
 
 
@@ -101,6 +107,16 @@ export default class Player extends Component {
     // this.getInfo();
     SoundPlayer.pause();
     // TrackPlayer.pause();
+  }
+
+
+  onFinishPlay = () =>{
+
+  }
+
+  onStop = () =>{
+    SoundPlayer.stop();
+    this.setState({playing:false})
   }
 
 
