@@ -20,12 +20,14 @@ import { returnStatement } from "@babel/types";
 import MusicControl from 'react-native-music-control';
 //npm install react-native-music-control --save
 //react-native link
-
+/**
+ * Add following to your project AndroidManifest.xml
+ * <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+ **/ 
 export default class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
       playerState: 0,
       playing: true,
       loading: true,
@@ -33,7 +35,11 @@ export default class Player extends Component {
       startValue: 0,
       presentPosition: 0,
       searchValue: "",
-      repeat: true
+      repeat: false,
+      title : "Ru em trên từng ngón hồng",
+      artist : "Hồng Nhung",
+      songImage : require("../assets/hongnhung.jpg"),
+      albumName : "Album Hồng Nhung"
     };
   }
 
@@ -106,12 +112,12 @@ export default class Player extends Component {
     // Default - Allow user to close notification on swipe when audio is paused
     MusicControl.enableControl('closeNotification', true, { when: 'paused' })
     MusicControl.setNowPlaying({
-      title: 'Ru Em Từng Ngón Xuân Hồng',
-      artwork: require("../assets/hongnhung.jpg"), // URL or RN's image require()
-      artist: 'Hồng Nhung',
-      album: 'Thriller',
+      title: this.state.title,
+      artwork: this.state.songImage, // URL or RN's image require()
+      artist: this.state.artist,
+      album: this.state.albumName,
       genre: 'Post-disco, Rhythm and Blues, Funk, Dance-pop',
-      duration: 294, // (Seconds)
+      duration: this.state.duration, // (Seconds)
       description: 'Một vài mô tả về bài hát', // Android Only
       color: 0xFFFFFF, // Notification Color - Android Only
       date: '1983-01-02T00:00:00Z', // Release Date (RFC 3339) - Android Only
@@ -205,7 +211,7 @@ export default class Player extends Component {
     return (
       <ImageBackground
         blurRadius={42}
-        source={require("../assets/hongnhung.jpg")}
+        source={this.state.songImage}
         style={{ flex: 1 }}
       >
         <View
@@ -245,18 +251,18 @@ export default class Player extends Component {
           </View>
           <View style={{ flex: 1, alignItems: "center", paddingTop: "10%" }}>
             <Image
-              source={require("../assets/hongnhung.jpg")}
+              source={this.state.songImage}
               style={playerStyle.coverImage}
             />
             <Text
               style={[playerStyle.songName, textStyle.regular]}
             >
-              Ru Em Từng Ngón Xuân Nồng
+              {this.state.title}
             </Text>
             <Text
               style={[playerStyle.artistName, textStyle.bold]}
             >
-              Hồng Nhung
+              {this.state.artist}
             </Text>
           </View>
           <View ref="process">
