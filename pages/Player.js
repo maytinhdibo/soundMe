@@ -18,13 +18,14 @@ import mePlay from "../icons/icon-pack/mePlay";
 import SoundPlayer from 'react-native-sound-player';
 import { returnStatement } from "@babel/types";
 import MusicControl from 'react-native-music-control';
-
+//npm install react-native-music-control --save
+//react-native link
 
 export default class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
+
       playerState: 0,
       playing: true,
       loading: true,
@@ -36,10 +37,10 @@ export default class Player extends Component {
     };
   }
 
-  async getInfo() { 
+  async getInfo() {
     try {
-      const info = await SoundPlayer.getInfo() 
-      this.setState({ duration: info.duration})
+      const info = await SoundPlayer.getInfo()
+      this.setState({ duration: info.duration })
       // console.log('getInfo: ', info) // {duration: 12.416, currentTime: 7.691}
     } catch (e) {
       console.log('There is no song playing', e)
@@ -75,7 +76,7 @@ export default class Player extends Component {
     setInterval(() => {
       this.getCurrentTime()
 
-    },1000);
+    }, 1000);
 
     //onFinishPlay
     _onFinishedPlayingSubscription = SoundPlayer.addEventListener('FinishedPlaying', ({ success }) => {
@@ -84,14 +85,34 @@ export default class Player extends Component {
     })
 
 
+
+    // Basic Controls
+    MusicControl.enableControl('play', true)
+    MusicControl.enableControl('pause', true)
+    MusicControl.enableControl('stop', false)
+    MusicControl.enableControl('nextTrack', true)
+    MusicControl.enableControl('previousTrack', false)
+
+    // Changing track position on lockscreen
+    MusicControl.enableControl('changePlaybackPosition', true)
+
+    // Seeking
+    MusicControl.enableControl('seekForward', false) // iOS only
+    MusicControl.enableControl('seekBackward', false) // iOS only
+    MusicControl.enableControl('seek', false) // Android only
+    MusicControl.enableControl('skipForward', false)
+    MusicControl.enableControl('skipBackward', false)
+
+    // Default - Allow user to close notification on swipe when audio is paused
+    MusicControl.enableControl('closeNotification', true, { when: 'paused' })
     MusicControl.setNowPlaying({
-      title: 'Billie Jean',
-      artwork: 'https://i.imgur.com/e1cpwdo.png', // URL or RN's image require()
-      artist: 'Michael Jackson',
+      title: 'Ru Em Từng Ngón Xuân Hồng',
+      artwork: require("../assets/hongnhung.jpg"), // URL or RN's image require()
+      artist: 'Hồng Nhung',
       album: 'Thriller',
       genre: 'Post-disco, Rhythm and Blues, Funk, Dance-pop',
       duration: 294, // (Seconds)
-      description: '', // Android Only
+      description: 'Một vài mô tả về bài hát', // Android Only
       color: 0xFFFFFF, // Notification Color - Android Only
       date: '1983-01-02T00:00:00Z', // Release Date (RFC 3339) - Android Only
       rating: 84, // Android Only (Boolean or Number depending on the type)
@@ -129,23 +150,23 @@ export default class Player extends Component {
   }
 
 
-  onFinishPlay = () =>{
-    if(this.state.repeat){
+  onFinishPlay = () => {
+    if (this.state.repeat) {
       console.log("rePLay")
       //replay
       this.replay();
-    } else{
+    } else {
       //stop 
       console.log("Stop")
       SoundPlayer.seek(0)
       SoundPlayer.pause()
       this.setState({
-        playing:false
+        playing: false
       })
     }
   }
 
-  replay = () =>{
+  replay = () => {
     this.setState({ presentPosition: 0 });
     SoundPlayer.seek(0)
     SoundPlayer.play()
@@ -177,7 +198,7 @@ export default class Player extends Component {
     this.setState({ presentPosition: position });
     SoundPlayer.seek(parseInt(position));
     SoundPlayer.play()
-    this.setState({playing:true})
+    this.setState({ playing: true })
   };
 
   render() {
@@ -259,10 +280,10 @@ export default class Player extends Component {
               }}
             >
               <Text style={[{ color: "#fff" }, textStyle.regular]}
-                  >{this.secondToMinuteString(this.state.duration)}
+              >{this.secondToMinuteString(this.state.duration)}
               </Text>
               <Text style={[{ color: "#fff" }, textStyle.regular]}
-                  >{this.secondToMinuteString(this.state.presentPosition)}
+              >{this.secondToMinuteString(this.state.presentPosition)}
               </Text>
             </View>
           </View>
