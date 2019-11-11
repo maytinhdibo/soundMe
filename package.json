@@ -12,6 +12,7 @@
     "react": "16.9.0",
     "react-native": "0.61.2",
     "react-native-android-dialog-picker": "^0.0.2",
+    "react-native-music-control": "^0.10.7",
     "react-native-picker-module": "^1.2.0",
     "react-native-sound-player": "^0.10.1"
   },

@@ -13,6 +13,7 @@ MERGED from [:react-native-reanimated] /home/nd/Desktop/soundMe/soundMe/node_mod
 MERGED from [:react-native-svg] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-svg/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.react:react-native:0.61.2] /home/nd/.gradle/caches/transforms-2/files-2.1/d459a695580c5411355003978d2f5e57/AndroidManifest.xml:2:1-13:12
 MERGED from [org.webkit:android-jsc:r245459] /home/nd/.gradle/caches/transforms-2/files-2.1/ca3516eae64cea5e6626b476fb20b58c/AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-music-control] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-music-control/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-17:12
 MERGED from [:react-native-gesture-handler] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/cdecf15c8a906c4a9d7c667ac6248c3b/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat:1.0.2] /home/nd/.gradle/caches/transforms-2/files-2.1/103f3e30ea69143c7ffb523e5eeaeb1e/AndroidManifest.xml:17:1-22:12
@@ -24,6 +25,7 @@ MERGED from [com.facebook.fresco:imagepipeline:2.0.0] /home/nd/.gradle/caches/tr
 MERGED from [com.facebook.fresco:nativeimagetranscoder:2.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/8a1c8beee768701b80f71e6dfc2766b1/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/b19b39872324185ebf9bf84f62b747b5/AndroidManifest.xml:2:1-9:12
 MERGED from [com.facebook.soloader:soloader:0.6.0] /home/nd/.gradle/caches/transforms-2/files-2.1/db664f3c18b293dd2dc29c10dd7b1f00/AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.media:media:1.0.1] /home/nd/.gradle/caches/transforms-2/files-2.1/43c43019bc4dbb2d83a00cc06941420a/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.transition:transition:1.1.0] /home/nd/.gradle/caches/transforms-2/files-2.1/d2d4f9b6cdf2cba022b6b9394f3b0f85/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.fragment:fragment:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/4246724776110c9c750264a98efdaa8e/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/d0008be42ede503978dc0b1a9b8174fd/AndroidManifest.xml:17:1-22:12
@@ -38,11 +40,11 @@ MERGED from [androidx.customview:customview:1.0.0] /home/nd/.gradle/caches/trans
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/04847d1aca59fdba8534376333da80c6/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/f7184c775528a741fb972d763555f9eb/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/453ac2f0569a5971dfd7bfeeed3b7be5/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core:1.0.1] /home/nd/.gradle/caches/transforms-2/files-2.1/4865bb7b024b968d364677e9e837f037/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.0.2] /home/nd/.gradle/caches/transforms-2/files-2.1/9c9b195d1025a2bf47505cdf9daaca57/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/9d3083eab21e75d1004bf9d1d7bc9320/AndroidManifest.xml:17:1-25:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/7e076922096bfa0ae976e251a007ff51/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/67ee89f5b58e3c5a646da20ff1ea735e/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/9a02bc4ffa55097d21405be7c3d09827/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/67ee89f5b58e3c5a646da20ff1ea735e/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/ac45c9de316430cd149c0edee3eda274/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/f3a19d2676d3cd8c0b8fb1e6facce932/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/5aa35d00bfffa0466d199f9f8c632035/AndroidManifest.xml:17:1-22:12
@@ -75,20 +77,26 @@ uses-permission#android.permission.INTERNET
 ADDED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml:4:5-67
 	android:name
 		ADDED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml:4:22-64
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml:5:5-77
+	android:name
+		ADDED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml:5:22-74
 application
 ADDED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml:6:5-24:19
 MERGED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml:6:5-24:19
 MERGED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml:6:5-24:19
 MERGED from [com.facebook.react:react-native:0.61.2] /home/nd/.gradle/caches/transforms-2/files-2.1/d459a695580c5411355003978d2f5e57/AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.react:react-native:0.61.2] /home/nd/.gradle/caches/transforms-2/files-2.1/d459a695580c5411355003978d2f5e57/AndroidManifest.xml:11:5-20
+MERGED from [:react-native-music-control] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-music-control/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-15:19
+MERGED from [:react-native-music-control] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-music-control/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:11:5-15:19
 MERGED from [com.facebook.soloader:soloader:0.6.0] /home/nd/.gradle/caches/transforms-2/files-2.1/db664f3c18b293dd2dc29c10dd7b1f00/AndroidManifest.xml:11:5-20
 MERGED from [com.facebook.soloader:soloader:0.6.0] /home/nd/.gradle/caches/transforms-2/files-2.1/db664f3c18b293dd2dc29c10dd7b1f00/AndroidManifest.xml:11:5-20
-MERGED from [androidx.core:core:1.0.1] /home/nd/.gradle/caches/transforms-2/files-2.1/4865bb7b024b968d364677e9e837f037/AndroidManifest.xml:22:5-89
-MERGED from [androidx.core:core:1.0.1] /home/nd/.gradle/caches/transforms-2/files-2.1/4865bb7b024b968d364677e9e837f037/AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.0.2] /home/nd/.gradle/caches/transforms-2/files-2.1/9c9b195d1025a2bf47505cdf9daaca57/AndroidManifest.xml:22:5-89
+MERGED from [androidx.core:core:1.0.2] /home/nd/.gradle/caches/transforms-2/files-2.1/9c9b195d1025a2bf47505cdf9daaca57/AndroidManifest.xml:22:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/9d3083eab21e75d1004bf9d1d7bc9320/AndroidManifest.xml:22:5-23:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/9d3083eab21e75d1004bf9d1d7bc9320/AndroidManifest.xml:22:5-23:19
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.0.1] /home/nd/.gradle/caches/transforms-2/files-2.1/4865bb7b024b968d364677e9e837f037/AndroidManifest.xml:22:18-86
+		ADDED from [androidx.core:core:1.0.2] /home/nd/.gradle/caches/transforms-2/files-2.1/9c9b195d1025a2bf47505cdf9daaca57/AndroidManifest.xml:22:18-86
 	android:label
 		ADDED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml:8:7-39
 		ADDED from /home/nd/Desktop/soundMe/soundMe/android/app/src/main/AndroidManifest.xml:8:7-39
@@ -157,6 +165,8 @@ MERGED from [com.facebook.react:react-native:0.61.2] /home/nd/.gradle/caches/tra
 MERGED from [com.facebook.react:react-native:0.61.2] /home/nd/.gradle/caches/transforms-2/files-2.1/d459a695580c5411355003978d2f5e57/AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] /home/nd/.gradle/caches/transforms-2/files-2.1/ca3516eae64cea5e6626b476fb20b58c/AndroidManifest.xml:7:5-9:41
 MERGED from [org.webkit:android-jsc:r245459] /home/nd/.gradle/caches/transforms-2/files-2.1/ca3516eae64cea5e6626b476fb20b58c/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-music-control] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-music-control/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-music-control] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-music-control/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-gesture-handler] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-gesture-handler] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [androidx.recyclerview:recyclerview:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/cdecf15c8a906c4a9d7c667ac6248c3b/AndroidManifest.xml:20:5-44
@@ -179,6 +189,8 @@ MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /home/nd/.gradle/cach
 MERGED from [com.facebook.fresco:imagepipeline-base:2.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/b19b39872324185ebf9bf84f62b747b5/AndroidManifest.xml:5:5-7:41
 MERGED from [com.facebook.soloader:soloader:0.6.0] /home/nd/.gradle/caches/transforms-2/files-2.1/db664f3c18b293dd2dc29c10dd7b1f00/AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.soloader:soloader:0.6.0] /home/nd/.gradle/caches/transforms-2/files-2.1/db664f3c18b293dd2dc29c10dd7b1f00/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.media:media:1.0.1] /home/nd/.gradle/caches/transforms-2/files-2.1/43c43019bc4dbb2d83a00cc06941420a/AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.1] /home/nd/.gradle/caches/transforms-2/files-2.1/43c43019bc4dbb2d83a00cc06941420a/AndroidManifest.xml:20:5-44
 MERGED from [androidx.transition:transition:1.1.0] /home/nd/.gradle/caches/transforms-2/files-2.1/d2d4f9b6cdf2cba022b6b9394f3b0f85/AndroidManifest.xml:20:5-44
 MERGED from [androidx.transition:transition:1.1.0] /home/nd/.gradle/caches/transforms-2/files-2.1/d2d4f9b6cdf2cba022b6b9394f3b0f85/AndroidManifest.xml:20:5-44
 MERGED from [androidx.fragment:fragment:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/4246724776110c9c750264a98efdaa8e/AndroidManifest.xml:20:5-44
@@ -207,16 +219,16 @@ MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/nd/.g
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/f7184c775528a741fb972d763555f9eb/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/453ac2f0569a5971dfd7bfeeed3b7be5/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/453ac2f0569a5971dfd7bfeeed3b7be5/AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.0.1] /home/nd/.gradle/caches/transforms-2/files-2.1/4865bb7b024b968d364677e9e837f037/AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.0.1] /home/nd/.gradle/caches/transforms-2/files-2.1/4865bb7b024b968d364677e9e837f037/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.2] /home/nd/.gradle/caches/transforms-2/files-2.1/9c9b195d1025a2bf47505cdf9daaca57/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.0.2] /home/nd/.gradle/caches/transforms-2/files-2.1/9c9b195d1025a2bf47505cdf9daaca57/AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/9d3083eab21e75d1004bf9d1d7bc9320/AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/9d3083eab21e75d1004bf9d1d7bc9320/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/7e076922096bfa0ae976e251a007ff51/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/7e076922096bfa0ae976e251a007ff51/AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/67ee89f5b58e3c5a646da20ff1ea735e/AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/67ee89f5b58e3c5a646da20ff1ea735e/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/9a02bc4ffa55097d21405be7c3d09827/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/9a02bc4ffa55097d21405be7c3d09827/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/67ee89f5b58e3c5a646da20ff1ea735e/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/67ee89f5b58e3c5a646da20ff1ea735e/AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/ac45c9de316430cd149c0edee3eda274/AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/ac45c9de316430cd149c0edee3eda274/AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /home/nd/.gradle/caches/transforms-2/files-2.1/f3a19d2676d3cd8c0b8fb1e6facce932/AndroidManifest.xml:20:5-44
@@ -245,3 +257,9 @@ uses-permission#android.permission.SYSTEM_ALERT_WINDOW
 ADDED from /home/nd/Desktop/soundMe/soundMe/android/app/src/debug/AndroidManifest.xml:5:5-77
 	android:name
 		ADDED from /home/nd/Desktop/soundMe/soundMe/android/app/src/debug/AndroidManifest.xml:5:22-75
+service#com.tanguyantoine.react.MusicControlNotification$NotificationService
+ADDED from [:react-native-music-control] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-music-control/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:12:9-14:43
+	android:stopWithTask
+		ADDED from [:react-native-music-control] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-music-control/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-40
+	android:name
+		ADDED from [:react-native-music-control] /home/nd/Desktop/soundMe/soundMe/node_modules/react-native-music-control/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:13:13-96

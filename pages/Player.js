@@ -17,6 +17,8 @@ import MeIcon from "../icons/MeIcon";
 import mePlay from "../icons/icon-pack/mePlay";
 import SoundPlayer from 'react-native-sound-player';
 import { returnStatement } from "@babel/types";
+import MusicControl from 'react-native-music-control';
+
 
 export default class Player extends Component {
   constructor(props) {
@@ -79,6 +81,21 @@ export default class Player extends Component {
     _onFinishedPlayingSubscription = SoundPlayer.addEventListener('FinishedPlaying', ({ success }) => {
       console.log('finished playing', success)
       this.onFinishPlay()
+    })
+
+
+    MusicControl.setNowPlaying({
+      title: 'Billie Jean',
+      artwork: 'https://i.imgur.com/e1cpwdo.png', // URL or RN's image require()
+      artist: 'Michael Jackson',
+      album: 'Thriller',
+      genre: 'Post-disco, Rhythm and Blues, Funk, Dance-pop',
+      duration: 294, // (Seconds)
+      description: '', // Android Only
+      color: 0xFFFFFF, // Notification Color - Android Only
+      date: '1983-01-02T00:00:00Z', // Release Date (RFC 3339) - Android Only
+      rating: 84, // Android Only (Boolean or Number depending on the type)
+      notificationIcon: 'my_custom_icon' // Android Only (String), Android Drawable resource name for a custom notification icon
     })
   }
 

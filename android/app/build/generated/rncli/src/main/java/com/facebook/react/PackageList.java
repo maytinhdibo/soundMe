@@ -16,6 +16,8 @@ import com.soundmenative.R;
 
 // react-native-android-dialog-picker
 import com.androiddialogpicker.RNAndroidDialogPickerPackage;
+// react-native-music-control
+import com.tanguyantoine.react.MusicControl;
 // react-native-picker-module
 import com.taluttasgiran.pickermodule.ReactNativePickerModulePackage;
 // react-native-sound-player
@@ -74,6 +76,7 @@ public class PackageList {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
       new RNAndroidDialogPickerPackage(),
+      new MusicControl(),
       new ReactNativePickerModulePackage(),
       new RNSoundPlayerPackage(),
       new RNGestureHandlerPackage(),
