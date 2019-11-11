@@ -17,6 +17,8 @@ import com.soundmenative.R;
 import com.androiddialogpicker.RNAndroidDialogPickerPackage;
 // react-native-cardview
 import com.kishanjvaghela.cardview.RNCardViewPackage;
+// react-native-music-control
+import com.tanguyantoine.react.MusicControl;
 // react-native-picker-module
 import com.taluttasgiran.pickermodule.ReactNativePickerModulePackage;
 // react-native-sound-player
@@ -64,6 +66,7 @@ public class PackageList {
       new MainReactPackage(),
       new RNAndroidDialogPickerPackage(),
       new RNCardViewPackage(),
+      new MusicControl(),
       new ReactNativePickerModulePackage(),
       new RNSoundPlayerPackage(),
       new SvgPackage(),
