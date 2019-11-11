@@ -18,13 +18,16 @@ import mePlay from "../icons/icon-pack/mePlay";
 import SoundPlayer from 'react-native-sound-player';
 import { returnStatement } from "@babel/types";
 import MusicControl from 'react-native-music-control';
-
-
+//npm install react-native-music-control --save
+//react-native link
+/**
+ * Add following to your project AndroidManifest.xml
+ * <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+ **/ 
 export default class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      
       playerState: 0,
       playing: true,
       loading: true,
@@ -32,14 +35,18 @@ export default class Player extends Component {
       startValue: 0,
       presentPosition: 0,
       searchValue: "",
-      repeat: true
+      repeat: false,
+      title : "Ru em trên từng ngón hồng",
+      artist : "Hồng Nhung",
+      songImage : require("../assets/hongnhung.jpg"),
+      albumName : "Album Hồng Nhung"
     };
   }
 
-  async getInfo() { 
+  async getInfo() {
     try {
-      const info = await SoundPlayer.getInfo() 
-      this.setState({ duration: info.duration})
+      const info = await SoundPlayer.getInfo()
+      this.setState({ duration: info.duration })
       // console.log('getInfo: ', info) // {duration: 12.416, currentTime: 7.691}
     } catch (e) {
       console.log('There is no song playing', e)
@@ -75,7 +82,7 @@ export default class Player extends Component {
     setInterval(() => {
       this.getCurrentTime()
 
-    },1000);
+    }, 1000);
 
     //onFinishPlay
     _onFinishedPlayingSubscription = SoundPlayer.addEventListener('FinishedPlaying', ({ success }) => {
@@ -84,19 +91,67 @@ export default class Player extends Component {
     })
 
 
+    MusicControl.enableBackgroundMode(true);
+
+    MusicControl.on('play', ()=> {
+      this.onPlay();
+    })
+
+    // on iOS this event will also be triggered by audio router change events
+    // happening when headphones are unplugged or a bluetooth audio peripheral disconnects from the device
+    MusicControl.on('pause', ()=> {
+      this.onPause();
+    })
+
+    MusicControl.on('stop', ()=> {
+      this.onFinishPlay();
+    })
+
+    MusicControl.on('nextTrack', ()=> {
+      this.onNextTrack();
+    })
+
+    MusicControl.on('previousTrack', ()=> {
+      this.onPreviousTrack();
+    })
+
+    // Basic Controls
+    MusicControl.enableControl('play', true)
+    MusicControl.enableControl('pause', true)
+    MusicControl.enableControl('stop', false)
+    MusicControl.enableControl('nextTrack', true)
+    MusicControl.enableControl('previousTrack', true)
+    // Changing track position on lockscreen
+    MusicControl.enableControl('changePlaybackPosition', true)
+
+    // Seeking
+    MusicControl.enableControl('seekForward', false) // iOS only
+    MusicControl.enableControl('seekBackward', false) // iOS only
+    MusicControl.enableControl('seek', true) // Android only
+    MusicControl.enableControl('skipForward', false)
+    MusicControl.enableControl('skipBackward', false)
+
+    // Default - Allow user to close notification on swipe when audio is paused
+    MusicControl.enableControl('closeNotification', true, { when: 'paused' })
+
+
     MusicControl.setNowPlaying({
-      title: 'Billie Jean',
-      artwork: 'https://i.imgur.com/e1cpwdo.png', // URL or RN's image require()
-      artist: 'Michael Jackson',
-      album: 'Thriller',
+      title: this.state.title,
+      artwork: this.state.songImage, // URL or RN's image require()
+      artist: this.state.artist,
+      album: this.state.albumName,
       genre: 'Post-disco, Rhythm and Blues, Funk, Dance-pop',
-      duration: 294, // (Seconds)
-      description: '', // Android Only
+      duration: this.state.duration, // (Seconds)
+      description: 'Một vài mô tả về bài hát', // Android Only
       color: 0xFFFFFF, // Notification Color - Android Only
       date: '1983-01-02T00:00:00Z', // Release Date (RFC 3339) - Android Only
       rating: 84, // Android Only (Boolean or Number depending on the type)
       notificationIcon: 'my_custom_icon' // Android Only (String), Android Drawable resource name for a custom notification icon
     })
+    
+    MusicControl.updatePlayback({
+      state: MusicControl.STATE_PLAYING, 
+      })
   }
 
 
@@ -113,6 +168,11 @@ export default class Player extends Component {
   }
 
   onPlay = () => {
+    //Playing  on notif
+    MusicControl.updatePlayback({
+      state: MusicControl.STATE_PLAYING,
+      })
+
     let playing = !this.state.playing;
     this.setState({ playing: playing });
     // console.log("play pressed")
@@ -121,6 +181,11 @@ export default class Player extends Component {
   }
 
   onPause = () => {
+    //Pause on notif
+    MusicControl.updatePlayback({
+      state: MusicControl.STATE_PAUSED,
+      })
+
     let playing = !this.state.playing;
     this.setState({ playing: playing });
     // this.getInfo();
@@ -128,24 +193,37 @@ export default class Player extends Component {
     // TrackPlayer.pause();
   }
 
+  onNextTrack = () =>{
+   console.log("playing Next Track");
+  }
 
-  onFinishPlay = () =>{
-    if(this.state.repeat){
+  onPreviousTrack = () =>{
+    console.log("playing Previous Track")
+  }
+  onFinishPlay = () => {
+    if (this.state.repeat) {
       console.log("rePLay")
       //replay
       this.replay();
-    } else{
+
+      MusicControl.updatePlayback({
+        state: MusicControl.STATE_PLAYING, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
+        })
+    } else {
       //stop 
       console.log("Stop")
       SoundPlayer.seek(0)
       SoundPlayer.pause()
+      MusicControl.updatePlayback({
+        state: MusicControl.STATE_STOPPED, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
+        })
       this.setState({
-        playing:false
+        playing: false
       })
     }
   }
 
-  replay = () =>{
+  replay = () => {
     this.setState({ presentPosition: 0 });
     SoundPlayer.seek(0)
     SoundPlayer.play()
@@ -177,14 +255,14 @@ export default class Player extends Component {
     this.setState({ presentPosition: position });
     SoundPlayer.seek(parseInt(position));
     SoundPlayer.play()
-    this.setState({playing:true})
+    this.setState({ playing: true })
   };
 
   render() {
     return (
       <ImageBackground
         blurRadius={42}
-        source={require("../assets/hongnhung.jpg")}
+        source={this.state.songImage}
         style={{ flex: 1 }}
       >
         <View
@@ -224,18 +302,18 @@ export default class Player extends Component {
           </View>
           <View style={{ flex: 1, alignItems: "center", paddingTop: "10%" }}>
             <Image
-              source={require("../assets/hongnhung.jpg")}
+              source={this.state.songImage}
               style={playerStyle.coverImage}
             />
             <Text
               style={[playerStyle.songName, textStyle.regular]}
             >
-              Ru Em Từng Ngón Xuân Nồng
+              {this.state.title}
             </Text>
             <Text
               style={[playerStyle.artistName, textStyle.bold]}
             >
-              Hồng Nhung
+              {this.state.artist}
             </Text>
           </View>
           <View ref="process">
@@ -259,10 +337,10 @@ export default class Player extends Component {
               }}
             >
               <Text style={[{ color: "#fff" }, textStyle.regular]}
-                  >{this.secondToMinuteString(this.state.duration)}
+              >{this.secondToMinuteString(this.state.duration)}
               </Text>
               <Text style={[{ color: "#fff" }, textStyle.regular]}
-                  >{this.secondToMinuteString(this.state.presentPosition)}
+              >{this.secondToMinuteString(this.state.presentPosition)}
               </Text>
             </View>
           </View>
