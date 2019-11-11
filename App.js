@@ -17,6 +17,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Profile from "./pages/Profile";
+import Playlist from "./pages/Playlist";
 import Player from "./pages/Player";
 
 import PlayerBar from "./components/player/PlayerBar";
@@ -26,18 +27,6 @@ import MeIcon from "./icons/MeIcon";
 
 console.ignoredYellowBox = ["Accessing"];
 
-function Playlist() {
-  return (
-    <View style={styles.container}>
-      <View>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-      <Text>Profile!</Text>
-      <MeIcon icon={meLeaf} size={40} color="#282" />
-    </View>
-  );
-}
-
 const HomeNavigator = createStackNavigator({
   Home: {
     screen: Home,
@@ -46,7 +35,7 @@ const HomeNavigator = createStackNavigator({
     }
   },
   Playlist: {
-    screen: Search,
+    screen: Playlist,
     navigationOptions: {
       header: null
     }

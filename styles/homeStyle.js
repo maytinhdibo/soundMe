@@ -3,14 +3,14 @@ import { StyleSheet } from "react-native";
 export const homeStyle = StyleSheet.create({
   slideShow: {
     height: 230,
-    overflow: "visible"
+    overflow: "visible",
     // backgroundColor:"#443"
   },
   sectionTitle: {
     fontSize: 20,
     color: "#345",
     padding: 6,
-    paddingLeft: 12
+    paddingLeft: 12,
   },
   listItem: {
     backgroundColor: "red",
@@ -23,7 +23,7 @@ export const homeStyle = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.3,
-    shadowRadius: 2
+    shadowRadius: 2,
   },
   playlistItem: {
     flex: 1,
@@ -32,7 +32,17 @@ export const homeStyle = StyleSheet.create({
     paddingHorizontal: 6,
     width: 162,
     alignContent: "center",
-    textAlign: "center"
+    textAlign: "center",
+    // overflow: "hidden",
+  },
+  artistItem: {
+    flex: 1,
+    // backgroundColor: '#fff',
+    padding: 12,
+    paddingHorizontal: 12,
+    width: 150,
+    alignContent: "center",
+    textAlign: "center",
     // overflow: "hidden",
   },
   songItem: {
@@ -46,18 +56,18 @@ export const homeStyle = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 0
+      height: 0,
     },
     shadowOpacity: 0.05,
-    shadowRadius: 3
+    shadowRadius: 3,
   },
   headerBadge: {
-    backgroundColor: "#ccc",
+    color: "#444",
     paddingHorizontal: 12,
     paddingVertical: 6,
-    paddingBottom:8,
+    paddingBottom: 8,
     borderRadius: 20,
-    marginHorizontal: 10,
-    marginEnd: 5
-  }
+    marginHorizontal: 5,
+    marginEnd: 2,
+  },
 });
