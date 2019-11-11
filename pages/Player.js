@@ -91,26 +91,50 @@ export default class Player extends Component {
     })
 
 
+    MusicControl.enableBackgroundMode(true);
+
+    MusicControl.on('play', ()=> {
+      this.onPlay();
+    })
+
+    // on iOS this event will also be triggered by audio router change events
+    // happening when headphones are unplugged or a bluetooth audio peripheral disconnects from the device
+    MusicControl.on('pause', ()=> {
+      this.onPause();
+    })
+
+    MusicControl.on('stop', ()=> {
+      this.onFinishPlay();
+    })
+
+    MusicControl.on('nextTrack', ()=> {
+      this.onNextTrack();
+    })
+
+    MusicControl.on('previousTrack', ()=> {
+      this.onPreviousTrack();
+    })
 
     // Basic Controls
     MusicControl.enableControl('play', true)
     MusicControl.enableControl('pause', true)
     MusicControl.enableControl('stop', false)
     MusicControl.enableControl('nextTrack', true)
-    MusicControl.enableControl('previousTrack', false)
-
+    MusicControl.enableControl('previousTrack', true)
     // Changing track position on lockscreen
     MusicControl.enableControl('changePlaybackPosition', true)
 
     // Seeking
     MusicControl.enableControl('seekForward', false) // iOS only
     MusicControl.enableControl('seekBackward', false) // iOS only
-    MusicControl.enableControl('seek', false) // Android only
+    MusicControl.enableControl('seek', true) // Android only
     MusicControl.enableControl('skipForward', false)
     MusicControl.enableControl('skipBackward', false)
 
     // Default - Allow user to close notification on swipe when audio is paused
     MusicControl.enableControl('closeNotification', true, { when: 'paused' })
+
+
     MusicControl.setNowPlaying({
       title: this.state.title,
       artwork: this.state.songImage, // URL or RN's image require()
@@ -124,6 +148,9 @@ export default class Player extends Component {
       rating: 84, // Android Only (Boolean or Number depending on the type)
       notificationIcon: 'my_custom_icon' // Android Only (String), Android Drawable resource name for a custom notification icon
     })
+    MusicControl.updatePlayback({
+      state: MusicControl.STATE_PLAYING, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
+      })
   }
 
 
@@ -140,6 +167,9 @@ export default class Player extends Component {
   }
 
   onPlay = () => {
+    MusicControl.updatePlayback({
+      state: MusicControl.STATE_PLAYING, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
+      })
     let playing = !this.state.playing;
     this.setState({ playing: playing });
     // console.log("play pressed")
@@ -148,6 +178,9 @@ export default class Player extends Component {
   }
 
   onPause = () => {
+    MusicControl.updatePlayback({
+      state: MusicControl.STATE_PAUSED, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
+      })
     let playing = !this.state.playing;
     this.setState({ playing: playing });
     // this.getInfo();
@@ -155,17 +188,30 @@ export default class Player extends Component {
     // TrackPlayer.pause();
   }
 
+  onNextTrack = () =>{
+   console.log("playing Next Track");
+  }
 
+  onPreviousTrack = () =>{
+    console.log("playing Previous Track")
+  }
   onFinishPlay = () => {
     if (this.state.repeat) {
       console.log("rePLay")
       //replay
       this.replay();
+
+      MusicControl.updatePlayback({
+        state: MusicControl.STATE_PLAYING, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
+        })
     } else {
       //stop 
       console.log("Stop")
       SoundPlayer.seek(0)
       SoundPlayer.pause()
+      MusicControl.updatePlayback({
+        state: MusicControl.STATE_STOPPED, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
+        })
       this.setState({
         playing: false
       })
