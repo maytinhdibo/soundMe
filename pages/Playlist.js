@@ -16,6 +16,7 @@ import Header from "../components/common/Header";
 
 import MeIcon from "../icons/MeIcon";
 import meArrowRight from "../icons/icon-pack/meArrowRight";
+import meArrowLeft from "../icons/icon-pack/meArrowLeft";
 
 export default class Playlist extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ export default class Playlist extends Component {
         <Header
           leftComponent={
             <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
-              <MeIcon size={20} color="#fff" icon={meArrowRight} />
+              <MeIcon size={20} color="#fff" icon={meArrowLeft} />
             </TouchableOpacity>
           }
           color="#ffefef"

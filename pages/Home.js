@@ -18,8 +18,6 @@ import SliderItem from "../components/common/SliderItem";
 
 import { CollapsibleHeaderScrollView } from "react-native-collapsible-header-views";
 
-import meArrowRight from "../icons/icon-pack/meArrowRight";
-import MeIcon from "../icons/MeIcon";
 
 import SectionTitle from "../components/home/SectionTitle";
 import HomeHeader from "../components/home/HomeHeader";

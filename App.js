@@ -62,15 +62,6 @@ const AppNavigator = createMaterialTopTabNavigator(
         )
       }
     },
-    PagePage: {
-      screen: Home,
-      navigationOptions: {
-        tabBarLabel: "Home Page",
-        tabBarIcon: ({ tintColor }) => (
-          <MeIcon icon={meLeaf} size={20} color={tintColor} />
-        )
-      }
-    },
     SearchPage: {
       screen: Search,
       navigationOptions: {

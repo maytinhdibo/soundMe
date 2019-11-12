@@ -44,8 +44,8 @@ export default class HomeHeader extends Component {
               Trang chủ
             </Text>
           </View>
-          <View style={{ width: 50, height: 50, backgroundColor: "#456" }}>
-            <MeIcon icon={meSearch} size={40} color="#282" />
+          <View style={{ width: 50, height: 50, justifyContent:"center", alignItems:"center"}}>
+            <MeIcon icon={meSearch} size={25} color="#333" />
           </View>
         </View>
 
