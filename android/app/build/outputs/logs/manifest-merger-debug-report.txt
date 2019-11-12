@@ -79,6 +79,10 @@ uses-permission#android.permission.INTERNET
 ADDED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:4:5-67
 	android:name
 		ADDED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:4:22-64
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:5:5-77
+	android:name
+		ADDED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:5:22-74
 application
 ADDED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:6:5-24:19
 MERGED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:6:5-24:19
