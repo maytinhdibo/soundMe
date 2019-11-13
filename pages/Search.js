@@ -15,24 +15,28 @@ import SongItem from "../components/home/SongItem";
 import MeIcon from "../icons/MeIcon";
 import meArrowRight from "../icons/icon-pack/meArrowRight";
 
-class RecommentTag extends Component {
+class RecommendTag extends Component {
   render() {
     return (
-      <Text
-        style={[
-          {
-            borderRadius: 18,
-            backgroundColor: "rgba(156,156,156,0.5)",
-            padding: 9,
-            paddingHorizontal: 15,
-            marginBottom: 6,
-            marginEnd: 6,
-          },
-          textStyle.bold,
-        ]}
+      <TouchableOpacity
+        onPress={() => this.props.onRecommend(this.props.content)}
       >
-        {this.props.content}
-      </Text>
+        <Text
+          style={[
+            {
+              borderRadius: 18,
+              backgroundColor: "rgba(156,156,156,0.5)",
+              padding: 9,
+              paddingHorizontal: 15,
+              marginBottom: 6,
+              marginEnd: 6,
+            },
+            textStyle.bold,
+          ]}
+        >
+          {this.props.content}
+        </Text>
+      </TouchableOpacity>
     );
   }
 }
@@ -152,6 +156,9 @@ export default class Search extends Component {
       searchValue: "",
     };
   }
+  recommend = value => {
+    this.setState({ searchValue: value });
+  };
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -187,16 +194,19 @@ export default class Search extends Component {
         >
           <TextInput
             placeholder="Khám phá bài hát mà bạn ưa thích..."
-            style={{
-              flex: 1,
-              height: 50,
-              borderWidth: 0,
-              fontSize: 16,
-              padding: 12,
-              paddingHorizontal: 15,
-            }}
+            style={[
+              {
+                flex: 1,
+                height: 50,
+                borderWidth: 0,
+                fontSize: 16,
+                padding: 12,
+                paddingHorizontal: 15,
+              },
+              textStyle.medium,
+            ]}
             onChangeText={text => this.setState({ searchValue: text })}
-            value={this.searchValue}
+            value={this.state.searchValue}
           />
           {this.state.searchValue.length > 0 ? (
             <TouchableOpacity
@@ -211,13 +221,13 @@ export default class Search extends Component {
                 style={{
                   height: 25,
                   width: 25,
-                  borderRadius:12.5,
-                  justifyContent:"center",
+                  borderRadius: 12.5,
+                  justifyContent: "center",
                   alignItems: "center",
                   backgroundColor: "rgba(11,11,11,0.3)",
                 }}
               >
-              <MeIcon size={12.5} color="#fff" icon={meArrowRight} />
+                <MeIcon size={12.5} color="#fff" icon={meArrowRight} />
               </View>
             </TouchableOpacity>
           ) : null}
@@ -231,11 +241,14 @@ export default class Search extends Component {
               paddingHorizontal: 16,
             }}
           >
-            <RecommentTag content="EDM" />
-            <RecommentTag content="Hồng Nhung" />
-            <RecommentTag content="Bích Phương" />
-            <RecommentTag content="Nghe nói anh sắp kết hôn rồi" />
-            <RecommentTag content="Lối cũ ta về" />
+            <RecommendTag onRecommend={this.recommend} content="EDM" />
+            <RecommendTag onRecommend={this.recommend} content="Hồng Nhung" />
+            <RecommendTag onRecommend={this.recommend} content="Bích Phương" />
+            <RecommendTag
+              onRecommend={this.recommend}
+              content="Nghe nói anh sắp kết hôn rồi"
+            />
+            <RecommendTag onRecommend={this.recommend} content="Lối cũ ta về" />
           </View>
         ) : (
           <View
@@ -258,16 +271,25 @@ export default class Search extends Component {
               name={"Giấc mộng trong mơ"}
               actorName={"Hồng Nhung"}
             />
-            <SongResultItem
+             <SongResultItem
               imgUrl={require("../assets/nuocmat.jpg")}
               name={"Con đi đâu để thấy hoa bay"}
               actorName={"Nhiều ca sĩ"}
             />
             <SongResultItem
               imgUrl={require("../assets/nuocmat.jpg")}
+              name={"Mùa thu lá xanh"}
+              actorName={"Thùy Trinh"}
+            />
+            <SongResultItem
+              imgUrl={{
+                uri:
+                  "https://avatar-nct.nixcdn.com/singer/avatar/2017/09/15/b/8/c/8/1505490332212.jpg",
+              }}
               name={"Đi đu đưa đi"}
               actorName={"Tuấn Hưng"}
             />
+
             <Text style={[textStyle.bold, { fontSize: 18, marginBottom: 9 }]}>
               Album
             </Text>
