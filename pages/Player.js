@@ -9,21 +9,23 @@ import {
   Slider,
   ImageBackground,
   Image,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import { playerStyle } from "../styles/playerStyle";
 import { textStyle } from "../styles/textStyle";
 import MeIcon from "../icons/MeIcon";
 import mePlay from "../icons/icon-pack/mePlay";
-import SoundPlayer from 'react-native-sound-player';
-import { returnStatement } from "@babel/types";
-import MusicControl from 'react-native-music-control';
+import SoundPlayer from "react-native-sound-player";
+import { returnStatement, thisExpression } from "@babel/types";
+import MusicControl from "react-native-music-control";
+import CardView from "react-native-cardview";
 //npm install react-native-music-control --save
 //react-native link
 /**
  * Add following to your project AndroidManifest.xml
  * <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
- **/ 
+ **/
+
 export default class Player extends Component {
   constructor(props) {
     super(props);
@@ -36,31 +38,30 @@ export default class Player extends Component {
       presentPosition: 0,
       searchValue: "",
       repeat: false,
-      title : "Ru em trên từng ngón hồng",
-      artist : "Hồng Nhung",
-      songImage : require("../assets/hongnhung.jpg"),
-      albumName : "Album Hồng Nhung"
+      title: "Ru em trên từng ngón hồng",
+      artist: "Hồng Nhung",
+      songImage: require("../assets/hongnhung.jpg"),
+      albumName: "Album Hồng Nhung",
     };
   }
 
   async getInfo() {
     try {
-      const info = await SoundPlayer.getInfo()
-      this.setState({ duration: info.duration })
+      const info = await SoundPlayer.getInfo();
+      this.setState({ duration: info.duration });
       // console.log('getInfo: ', info) // {duration: 12.416, currentTime: 7.691}
     } catch (e) {
-      console.log('There is no song playing', e)
+      console.log("There is no song playing", e);
     }
   }
 
   async getCurrentTime() {
     try {
-      const info2 = await SoundPlayer.getInfo()
-      this.setState({ presentPosition: info2.currentTime })
+      const info2 = await SoundPlayer.getInfo();
+      this.setState({ presentPosition: info2.currentTime });
       // console.log("currrentTime:" + info2.currentTime)
     } catch (e) {
-      console.log('Can not get current time', e)
-
+      console.log("Can not get current time", e);
     }
   }
 
@@ -74,96 +75,95 @@ export default class Player extends Component {
     const willFocusSubscription = this.props.navigation.addListener(
       "willFocus",
       payload => {
-        StatusBar.setBarStyle("light-content");
+        // StatusBar.setBarStyle("light-content");
       }
     );
     this.loadAndPlayMusic();
 
     setInterval(() => {
-      this.getCurrentTime()
-
+      this.getCurrentTime();
     }, 1000);
 
     //onFinishPlay
-    _onFinishedPlayingSubscription = SoundPlayer.addEventListener('FinishedPlaying', ({ success }) => {
-      console.log('finished playing', success)
-      this.onFinishPlay()
-    })
-
+    _onFinishedPlayingSubscription = SoundPlayer.addEventListener(
+      "FinishedPlaying",
+      ({ success }) => {
+        console.log("finished playing", success);
+        this.onFinishPlay();
+      }
+    );
 
     MusicControl.enableBackgroundMode(true);
 
-    MusicControl.on('play', ()=> {
+    MusicControl.on("play", () => {
       this.onPlay();
-    })
+    });
 
     // on iOS this event will also be triggered by audio router change events
     // happening when headphones are unplugged or a bluetooth audio peripheral disconnects from the device
-    MusicControl.on('pause', ()=> {
+    MusicControl.on("pause", () => {
       this.onPause();
-    })
+    });
 
-    MusicControl.on('stop', ()=> {
+    MusicControl.on("stop", () => {
       this.onFinishPlay();
-    })
+    });
 
-    MusicControl.on('nextTrack', ()=> {
+    MusicControl.on("nextTrack", () => {
       this.onNextTrack();
-    })
+    });
 
-    MusicControl.on('previousTrack', ()=> {
+    MusicControl.on("previousTrack", () => {
       this.onPreviousTrack();
-    })
+    });
 
     // Basic Controls
-    MusicControl.enableControl('play', true)
-    MusicControl.enableControl('pause', true)
-    MusicControl.enableControl('stop', false)
-    MusicControl.enableControl('nextTrack', true)
-    MusicControl.enableControl('previousTrack', true)
+    MusicControl.enableControl("play", true);
+    MusicControl.enableControl("pause", true);
+    MusicControl.enableControl("stop", false);
+    MusicControl.enableControl("nextTrack", true);
+    MusicControl.enableControl("previousTrack", true);
     // Changing track position on lockscreen
-    MusicControl.enableControl('changePlaybackPosition', true)
+    MusicControl.enableControl("changePlaybackPosition", true);
 
     // Seeking
-    MusicControl.enableControl('seekForward', false) // iOS only
-    MusicControl.enableControl('seekBackward', false) // iOS only
-    MusicControl.enableControl('seek', true) // Android only
-    MusicControl.enableControl('skipForward', false)
-    MusicControl.enableControl('skipBackward', false)
+    MusicControl.enableControl("seekForward", false); // iOS only
+    MusicControl.enableControl("seekBackward", false); // iOS only
+    MusicControl.enableControl("seek", true); // Android only
+    MusicControl.enableControl("skipForward", false);
+    MusicControl.enableControl("skipBackward", false);
 
     // Default - Allow user to close notification on swipe when audio is paused
-    MusicControl.enableControl('closeNotification', true, { when: 'paused' })
-
+    MusicControl.enableControl("closeNotification", true, { when: "paused" });
 
     MusicControl.setNowPlaying({
       title: this.state.title,
       artwork: this.state.songImage, // URL or RN's image require()
       artist: this.state.artist,
       album: this.state.albumName,
-      genre: 'Post-disco, Rhythm and Blues, Funk, Dance-pop',
+      genre: "Post-disco, Rhythm and Blues, Funk, Dance-pop",
       duration: this.state.duration, // (Seconds)
-      description: 'Một vài mô tả về bài hát', // Android Only
-      color: 0xFFFFFF, // Notification Color - Android Only
-      date: '1983-01-02T00:00:00Z', // Release Date (RFC 3339) - Android Only
+      description: "Một vài mô tả về bài hát", // Android Only
+      color: 0xffffff, // Notification Color - Android Only
+      date: "1983-01-02T00:00:00Z", // Release Date (RFC 3339) - Android Only
       rating: 84, // Android Only (Boolean or Number depending on the type)
-      notificationIcon: 'my_custom_icon' // Android Only (String), Android Drawable resource name for a custom notification icon
-    })
-    
-    MusicControl.updatePlayback({
-      state: MusicControl.STATE_PLAYING, 
-      })
-  }
+      notificationIcon: "my_custom_icon", // Android Only (String), Android Drawable resource name for a custom notification icon
+    });
 
+    MusicControl.updatePlayback({
+      state: MusicControl.STATE_PLAYING,
+    });
+  }
 
   loadAndPlayMusic() {
     try {
       // play the file mp3 located at /android/app/src/main/res/raw/
-      SoundPlayer.playSoundFile('a', 'mp3')
+      SoundPlayer.playSoundFile("a", "mp3");
       // play from mp3. IT'S WORKING
       // SoundPlayer.playUrl('https://data25.chiasenhac.com/downloads/2039/6/2038231-e4db0911/128/Het%20Thuong%20Can%20Nho%20-%20Duc%20Phuc.mp3')
-      this.getInfo()
+      this.getInfo();
     } catch (e) {
-      console.log('Task failed successfully', e)
+      console.log("Task failed successfully", e);
     }
   }
 
@@ -171,235 +171,292 @@ export default class Player extends Component {
     //Playing  on notif
     MusicControl.updatePlayback({
       state: MusicControl.STATE_PLAYING,
-      })
+    });
 
     let playing = !this.state.playing;
     this.setState({ playing: playing });
     // console.log("play pressed")
     // console.log(this.state.playing);
-    SoundPlayer.play()
-  }
+    SoundPlayer.play();
+  };
 
   onPause = () => {
     //Pause on notif
     MusicControl.updatePlayback({
       state: MusicControl.STATE_PAUSED,
-      })
+    });
 
     let playing = !this.state.playing;
     this.setState({ playing: playing });
     // this.getInfo();
     SoundPlayer.pause();
     // TrackPlayer.pause();
-  }
+  };
 
-  onNextTrack = () =>{
-   console.log("playing Next Track");
-  }
+  onNextTrack = () => {
+    console.log("playing Next Track");
+  };
 
-  onPreviousTrack = () =>{
-    console.log("playing Previous Track")
-  }
+  onPreviousTrack = () => {
+    console.log("playing Previous Track");
+  };
   onFinishPlay = () => {
     if (this.state.repeat) {
-      console.log("rePLay")
+      console.log("rePLay");
       //replay
       this.replay();
 
       MusicControl.updatePlayback({
         state: MusicControl.STATE_PLAYING, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
-        })
+      });
     } else {
-      //stop 
-      console.log("Stop")
-      SoundPlayer.seek(0)
-      SoundPlayer.pause()
+      //stop
+      console.log("Stop");
+      SoundPlayer.seek(0);
+      SoundPlayer.pause();
       MusicControl.updatePlayback({
         state: MusicControl.STATE_STOPPED, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
-        })
+      });
       this.setState({
-        playing: false
-      })
+        playing: false,
+      });
     }
-  }
+  };
 
   replay = () => {
     this.setState({ presentPosition: 0 });
-    SoundPlayer.seek(0)
-    SoundPlayer.play()
-  }
-
-  renderPlayerPlayPause = (playing, style) => {
-    return (this.state.playing === true)
-      ? (<Button transparent style={playerStyle.coverImage} onPress={this.onPause}
-        title="paus">
-        <MeIcon icon={mePlay} style={style} />
-      </Button>)
-      : (<Button transparent style={playerStyle.coverImage} onPress={this.onPlay}
-        title="play">
-        <MeIcon icon={mePlay} style={[style, { left: 4 }]} />
-      </Button>);
+    SoundPlayer.seek(0);
+    SoundPlayer.play();
   };
 
-  secondToMinuteString = (second) => {
+  renderPlayerPlayPause = () => {
+    return this.state.playing === true ? <Text>Play</Text> : <Text>Pause</Text>;
+  };
+
+  secondToMinuteString = second => {
     if (second > 0) {
       let i = parseInt(second);
-      return Math.floor(i / 60) + ':' + ('0' + Math.floor(i % 60)).slice(-2);
+      return Math.floor(i / 60) + ":" + ("0" + Math.floor(i % 60)).slice(-2);
     }
     return "--:--";
   };
 
-
-  onSliderComplete = (position) => {
-    console.log(position)
+  onSliderComplete = position => {
+    console.log(position);
     this.setState({ presentPosition: position });
     SoundPlayer.seek(parseInt(position));
-    SoundPlayer.play()
-    this.setState({ playing: true })
+    SoundPlayer.play();
+    this.setState({ playing: true });
+  };
+
+  onPlayBtn = () => {
+    if (this.state.playing) {
+      this.onPlay();
+    } else {
+      this.onPause();
+    }
   };
 
   render() {
     return (
-      <ImageBackground
-        blurRadius={42}
-        source={this.state.songImage}
-        style={{ flex: 1 }}
-      >
-        <View
-          ref="overlay"
-          style={playerStyle.overlay}
-        >
-          <View
-            style={playerStyle.header}
-          >
+      <View style={{ flex: 1, backgroundColor: "#fff" }}>
+        <View ref="overlay" style={playerStyle.overlay}>
+          <View style={playerStyle.header}>
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                backgroundColor: "#938",
-                width: 50
+                // backgroundColor: "#938",
+                justifyContent: "center",
+                alignItems: "center",
+                width: 50,
               }}
-            ></TouchableOpacity>
+            >
+              <MeIcon size={25} color="#345" icon={mePlay} />
+            </TouchableOpacity>
 
             <View
               style={{
                 flex: 1,
-                alignSelf: "center"
+                alignSelf: "center",
               }}
             >
-              <Text
-                style={[playerStyle.nowPlaying, textStyle.bold]}
-              >
-                Now Playing
+              <Text style={[playerStyle.nowPlaying, textStyle.bold]}>
+                Đang phát
               </Text>
             </View>
 
-            <View
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
               style={{
-                backgroundColor: "#938",
-                width: 50
+                // backgroundColor: "#938",
+                justifyContent: "center",
+                alignItems: "center",
+                width: 50,
               }}
-            ></View>
+            >
+              <MeIcon size={25} color="#345" icon={mePlay} />
+            </TouchableOpacity>
           </View>
           <View style={{ flex: 1, alignItems: "center", paddingTop: "10%" }}>
-            <Image
-              source={this.state.songImage}
-              style={playerStyle.coverImage}
-            />
-            <Text
-              style={[playerStyle.songName, textStyle.regular]}
-            >
+            <Text style={[playerStyle.songName, textStyle.bold]}>
               {this.state.title}
             </Text>
-            <Text
-              style={[playerStyle.artistName, textStyle.bold]}
-            >
+            <Text style={[playerStyle.artistName, textStyle.regular]}>
               {this.state.artist}
             </Text>
+
+            <CardView
+              cardElevation={16}
+              cornerRadius={42}
+              style={playerStyle.coverImage}
+            >
+              <Image
+                source={this.state.songImage}
+                style={{ width: "100%", height: "100%", resizeMode: "cover" }}
+              />
+            </CardView>
           </View>
           <View ref="process">
             <Slider
               minimumValue={0}
               maximumValue={this.state.duration}
-              minimumTrackTintColor="#fff"
+              minimumTrackTintColor="#fe6f61"
               // maximumTrackTintColor="#1e88e5"
-              thumbTintColor="#fff"
+              thumbTintColor="#fe6f61"
               value={this.state.presentPosition}
               style={{ width: "100%" }}
-
               onSlidingComplete={position => this.onSliderComplete(position)}
             ></Slider>
+
             <View
               style={{
                 justifyContent: "space-between",
                 flexDirection: "row-reverse",
                 padding: 14,
-                paddingTop: 0
+                paddingTop: 0,
               }}
             >
-              <Text style={[{ color: "#fff" }, textStyle.regular]}
-              >{this.secondToMinuteString(this.state.duration)}
+              <Text style={[{ color: "#444" }, textStyle.bold]}>
+                {this.secondToMinuteString(this.state.duration)}
               </Text>
-              <Text style={[{ color: "#fff" }, textStyle.regular]}
-              >{this.secondToMinuteString(this.state.presentPosition)}
+              <Text style={[{ color: "#444" }, textStyle.bold]}>
+                {this.secondToMinuteString(this.state.presentPosition)}
               </Text>
             </View>
           </View>
+
           <View
-            name="button"
             style={{
-              height: 90,
-              marginBottom: 20,
+              justifyContent: "space-between",
+              flexDirection: "row-reverse",
+              padding: 14,
+              paddingTop: 0,
+              paddingBottom: 45,
+            }}
+          >
+            <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+
+            <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+          </View>
+
+          <CardView
+            cardElevation={10}
+            cornerRadius={37.5}
+            style={{
+              backgroundColor: "rgba(254, 111, 97, 0.23)",
+              width: 75,
+              height: 75,
+              padding: 3,
+              marginTop: -15,
+              left: Math.round(Dimensions.get("window").width) * 0.5 - 37.5,
+              bottom: 75,
+              position: "absolute",
+            }}
+          >
+            <TouchableOpacity
+              style={{
+                borderRadius: 37.5,
+                backgroundColor: "#fe6f61",
+                flex: 1,
+                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onPress={this.onPlayBtn}
+            >
+              {this.renderPlayerPlayPause(this.state.playing)}
+            </TouchableOpacity>
+          </CardView>
+
+          <CardView
+            name="button"
+            cardElevation={9}
+            cornerRadius={42}
+            style={{
+              height: 190,
+              paddingTop: 30,
+              marginBottom: -65,
               flexDirection: "row",
-              backgroundColor: "#556",
-              justifyContent: "space-evenly"
+              backgroundColor: "#fff",
+              justifyContent: "space-evenly",
+              alignItems: "flex-start",
             }}
           >
             <View
               style={{
-                backgroundColor: "#2980cc",
+                justifyContent: "center",
+                alignItems: "center",
                 width: 50,
                 height: 50,
                 margin: 9,
-                alignSelf: "center"
               }}
-            ></View>
-            <View
-              style={{
-                backgroundColor: "#2980cc",
-                width: 50,
-                height: 50,
-                margin: 9,
-                borderRadius: 100,
-                alignSelf: "center"
-              }}
-            ></View>
-            <View style={playerStyle.nowPlaying}>
-              <TouchableOpacity>
-                {this.renderPlayerPlayPause(this.state.playing, playerStyle.coverImage)}
-              </TouchableOpacity>
+            >
+              <MeIcon size={25} color="#fe6f61" icon={mePlay} />
             </View>
             <View
               style={{
-                backgroundColor: "#2980cc",
+                justifyContent: "center",
+                alignItems: "center",
                 width: 50,
                 height: 50,
                 margin: 9,
-                borderRadius: 100,
-                alignSelf: "center"
               }}
-            ></View>
+            >
+              <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+            </View>
             <View
               style={{
-                backgroundColor: "#2980cc",
+                // backgroundColor: "#2980cc",
+                width: 50,
+                height: 50,
+              }}
+            ></View>
+
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
                 width: 50,
                 height: 50,
                 margin: 9,
-                alignSelf: "center"
               }}
-            ></View>
-          </View>
+            >
+              <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+            </View>
+            <View
+              style={{
+                justifyContent: "center",
+                alignItems: "center",
+                width: 50,
+                height: 50,
+                margin: 9,
+              }}
+            >
+              <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+            </View>
+          </CardView>
         </View>
-      </ImageBackground>
+      </View>
     );
   }
 }

@@ -46,7 +46,7 @@ export const homeStyle = StyleSheet.create({
     // overflow: "hidden",
   },
   songItem: {
-    flex: 1,
+    // flex: 1,
     flexDirection: "row",
     // backgroundColor: '#fff',
     margin: 12,

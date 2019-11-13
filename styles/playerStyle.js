@@ -11,38 +11,30 @@ export const playerStyle = StyleSheet.create({
   },
   overlay: {
     flex: 1,
-    backgroundColor: "rgba(0, 0, 0, 0.3)"
+    // backgroundColor: "rgba(0, 0, 0, 0.3)"
   },
   nowPlaying: {
     alignSelf: "center",
-    color: "#fff",
+    color: "#444",
     fontSize: 18,
-    textShadowColor: "rgba(0, 0, 0, 0.5)",
-    textShadowOffset: { width: -1, height: 1 },
-    textShadowRadius: 10
   },
   coverImage: {
     alignSelf: "center",
-    height: Math.round(Dimensions.get("window").width) * 0.7,
-    width: "70%",
-    resizeMode: "cover",
-    borderRadius: 27
+    height: Math.round(Dimensions.get("window").width) * 0.65,
+    width: "65%",
+    // resizeMode: "cover",
+    // borderRadius: 27
   },
   songName: {
-    color: "#fff",
+    color: "#444",
     fontSize: 20,
-    padding: 12,
-    paddingBottom: 3,
-    textShadowColor: "rgba(0, 0, 0, 0.5)",
-    textShadowOffset: { width: -1, height: 1 },
-    textShadowRadius: 10
+    padding: 6,
+    
   },
   artistName: {
-    color: "#fff",
+    color: "#444",
     fontSize: 16, 
-    textShadowColor: "rgba(0, 0, 0, 0.5)",
-    textShadowOffset: { width: -1, height: 1 },
-    textShadowRadius: 10
+    paddingBottom: 19,
   }
   
 });

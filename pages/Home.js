@@ -35,6 +35,7 @@ export default class Home extends Component {
   };
   render() {
     return (
+      <View style={{flex:1, paddingBottom:70}}>
       <CollapsibleHeaderScrollView
         onScroll={this.handleScroll}
         CollapsibleHeaderComponent={<HomeHeader scrollY={this.state.scrollY} />}
@@ -201,6 +202,7 @@ export default class Home extends Component {
           onPress={() => this.props.navigation.navigate("Playlist")}
         />
       </CollapsibleHeaderScrollView>
+      </View>
     );
   }
 }
