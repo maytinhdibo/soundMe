@@ -19,13 +19,13 @@ export default class HomeHeader extends Component {
   render() {
     return (
       <View key="header">
-        <View
+        {/* <View
           style={{
             flexDirection: "column",
-            height: getStatusBarHeight(),
+            
             // backgroundColor: "#433"
           }}
-        ></View>
+        ></View> */}
         <View
           style={{
             flexDirection: "row",
@@ -49,54 +49,7 @@ export default class HomeHeader extends Component {
           </View>
         </View>
 
-        <View style={{ flexDirection: "row" }}>
-          <Text
-            style={[
-              homeStyle.headerBadge,
-              textStyle.bold,
-              this.checkPos(0, 20)
-                ? {
-                    backgroundColor: "#dd4814",
-                    color: "#fff",
-                    marginLeft: 10,
-                  }
-                : null,
-            ]}
-          >
-            Playlist nghe gần đây
-          </Text>
-          <Text
-            style={[
-              homeStyle.headerBadge,
-              textStyle.bold,
-              this.checkPos(20, 100)
-                ? {
-                    backgroundColor: "#dd4814",
-                    color: "#fff",
-                    marginLeft: 10,
-                  }
-                : null,
-            ]}
-          >
-            Bài hát đề xuất
-          </Text>
-
-          <Text
-            style={[
-              homeStyle.headerBadge,
-              textStyle.bold,
-              this.checkPos(100, 200)
-                ? {
-                    backgroundColor: "#dd4814",
-                    color: "#fff",
-                    marginLeft: 10,
-                  }
-                : null,
-            ]}
-          >
-            Top 100
-          </Text>
-        </View>
+    
       </View>
     );
   }

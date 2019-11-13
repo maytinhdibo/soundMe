@@ -35,11 +35,13 @@ export default class Home extends Component {
   };
   render() {
     return (
-      <View style={{flex:1, paddingBottom:70}}>
+      <View style={{flex:1,paddingBottom:70}}>
+        <View style={{background:"#fff",height:getStatusBarHeight()}}/>
       <CollapsibleHeaderScrollView
+      style={{flex:1}}
         onScroll={this.handleScroll}
         CollapsibleHeaderComponent={<HomeHeader scrollY={this.state.scrollY} />}
-        headerHeight={115}
+        headerHeight={40}
         statusBarHeight={0}
       >
         <View style={homeStyle.slideShow}>

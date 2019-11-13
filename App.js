@@ -7,11 +7,11 @@ import {
   ScrollView,
   StatusBar,
   Image,
-  Button
+  Button,
 } from "react-native";
 import { createAppContainer, SafeAreaView } from "react-navigation";
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
-import { changeNavigationBarColor } from "react-native-navigation-bar-color";
+import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createStackNavigator } from "react-navigation-stack";
 
 import Home from "./pages/Home";
@@ -22,6 +22,8 @@ import Player from "./pages/Player";
 
 import PlayerBar from "./components/player/PlayerBar";
 
+import { textStyle } from "./styles/textStyle";
+
 import meLeaf from "./icons/icon-pack/meLeaf";
 import MeIcon from "./icons/MeIcon";
 
@@ -31,55 +33,84 @@ const HomeNavigator = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      header: null
-    }
+      header: null,
+    },
   },
   Playlist: {
     screen: Playlist,
     navigationOptions: {
-      header: null
-    }
-  }
+      header: null,
+    },
+  },
 });
 
 const ProfileNavigator = createStackNavigator({
   Profile: {
     screen: Profile,
     navigationOptions: {
-      title: "Cá nhân"
-    }
-  }
+      title: "Cá nhân",
+    },
+  },
 });
 
-const AppNavigator = createMaterialTopTabNavigator(
+const AppNavigator = createBottomTabNavigator(
   {
     HomePage: {
       screen: HomeNavigator,
       navigationOptions: {
-        tabBarLabel: "Home Page",
+        tabBarLabel: "Khám phá",
         tabBarIcon: ({ tintColor }) => (
-          <MeIcon icon={meLeaf} size={20} color={tintColor} />
-        )
-      }
+          <View style={{ alignItems: "center" }}>
+            <MeIcon icon={meLeaf} size={20} color={tintColor} />
+            <Text style={[textStyle.bold, { fontSize: 10, color: tintColor }]}>
+              Khám phá
+            </Text>
+          </View>
+        ),
+      },
     },
     SearchPage: {
       screen: Search,
       navigationOptions: {
-        tabBarLabel: "Search Page",
+        tabBarLabel: "Tìm kiếm",
         tabBarIcon: ({ tintColor }) => (
-          <MeIcon icon={meLeaf} size={20} color={tintColor} />
-        )
-      }
+          <View style={{ alignItems: "center" }}>
+            <MeIcon icon={meLeaf} size={20} color={tintColor} />
+            <Text style={[textStyle.bold, { fontSize: 10, color: tintColor }]}>
+              Tìm kiếm
+            </Text>
+          </View>
+        ),
+      },
+    },
+    LibraryPage: {
+      screen: Search,
+      navigationOptions: {
+        tabBarLabel: "Thư viện",
+        tabBarIcon: ({ tintColor }) => (
+          <View style={{ alignItems: "center" }}>
+            <MeIcon icon={meLeaf} size={20} color={tintColor} />
+            <Text style={[textStyle.bold, { fontSize: 10, color: tintColor }]}>
+              Thư viện
+            </Text>
+          </View>
+        ),
+      },
     },
     ProfilePage: {
       screen: ProfileNavigator,
       navigationOptions: {
-        tabBarLabel: "Profile Page",
+        tabBarLabel: "Cá nhân",
         tabBarIcon: ({ tintColor }) => (
-          <MeIcon icon={meLeaf} size={20} color={tintColor} />
-        )
-      }
-    }
+          <View style={{ alignItems: "center" }}>
+            <MeIcon icon={meLeaf} size={20} color={tintColor} />
+            <Text style={[textStyle.bold, { fontSize: 10, color: tintColor }]}>
+              Cá nhân
+            </Text>
+          </View>
+        ),
+      },
+    },
   },
   {
     tabBarPosition: "bottom",
@@ -90,38 +121,41 @@ const AppNavigator = createMaterialTopTabNavigator(
       inactiveTintColor: "#606770",
       showIcon: true,
       showLabel: false,
+      upperCaseLabel: false,
       indicatorStyle: {
         backgroundColor: "#4267b2",
-        top: 0
+        top: 0,
       },
       labelStyle: {
         fontSize: 12,
-        color: "#345"
+        color: "#345",
       },
       tabStyle: {
         // width: 100,
       },
       style: {
+        height: 55,
         shadowColor: "#000",
         shadowOffset: {
           width: 0,
-          height: 2
+          height: 2,
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 50,
-        backgroundColor: "#fff"
-      }
-    }
+        backgroundColor: "#fff",
+      },
+    },
   }
 );
 
-
-class MainApp extends Component{
-  render(){
+class MainApp extends Component {
+  render() {
     return (
       <View style={{ flex: 1 }}>
-        <PlayerBar openPlayer={() => this.props.navigation.navigate('Player')}  />  
+        <PlayerBar
+          openPlayer={() => this.props.navigation.navigate("Player")}
+        />
         <AppContainer />
         <StatusBar
           translucent
@@ -136,15 +170,15 @@ class MainApp extends Component{
 const RootStack = createStackNavigator(
   {
     Main: {
-      screen: MainApp
+      screen: MainApp,
     },
     Player: {
-      screen: Player
-    }
+      screen: Player,
+    },
   },
   {
     mode: "modal",
-    headerMode: "none"
+    headerMode: "none",
   }
 );
 const AppContainer = createAppContainer(AppNavigator);
@@ -154,7 +188,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playerVisible: false
+      playerVisible: false,
     };
   }
 
@@ -172,6 +206,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
