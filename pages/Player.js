@@ -296,6 +296,8 @@ export default class Player extends Component {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      <StatusBar barStyle="dark-content" translucent={true}/>
+
         <View ref="overlay" style={playerStyle.overlay}>
           <View style={playerStyle.header}>
             <TouchableOpacity
