@@ -3,7 +3,7 @@ import {
   Text,
   View,
   Button,
-  ScrollView,
+  Share,
   TouchableOpacity,
   StatusBar,
   Slider,
@@ -13,8 +13,11 @@ import {
 } from "react-native";
 import { playerStyle } from "../styles/playerStyle";
 import { textStyle } from "../styles/textStyle";
+
 import MeIcon from "../icons/MeIcon";
 import mePlay from "../icons/icon-pack/mePlay";
+import meLeaf from "../icons/icon-pack/meLeaf";
+
 import SoundPlayer from "react-native-sound-player";
 import { returnStatement, thisExpression } from "@babel/types";
 import MusicControl from "react-native-music-control";
@@ -257,6 +260,27 @@ export default class Player extends Component {
     }
   };
 
+  onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          "Lắng nghe bài hát Ru em từng ngón xuân nồng - Hồng Nhung tại soundMe. https://youtu.be/kkz6U59y8Hg",
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
@@ -286,7 +310,7 @@ export default class Player extends Component {
             </View>
 
             <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
+              onPress={() => this.onShare()}
               style={{
                 // backgroundColor: "#938",
                 justifyContent: "center",
@@ -294,7 +318,7 @@ export default class Player extends Component {
                 width: 50,
               }}
             >
-              <MeIcon size={25} color="#345" icon={mePlay} />
+              <MeIcon size={25} color="#345" icon={meLeaf} />
             </TouchableOpacity>
           </View>
           <View style={{ flex: 1, alignItems: "center", paddingTop: "10%" }}>
