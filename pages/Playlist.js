@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import {
   Text,
   View,
-  ScrollView,
+  Share,
   TouchableOpacity,
   StatusBar,
   Image,
 } from "react-native";
 import { homeStyle } from "../styles/homeStyle";
 import { textStyle } from "../styles/textStyle";
-import { CollapsibleHeaderScrollView } from "react-native-collapsible-header-views";
 import CardView from "react-native-cardview";
 import SongItem from "../components/playlist/SongItem";
 import Header from "../components/common/Header";
@@ -17,6 +16,7 @@ import Header from "../components/common/Header";
 import MeIcon from "../icons/MeIcon";
 import meArrowRight from "../icons/icon-pack/meArrowRight";
 import meArrowLeft from "../icons/icon-pack/meArrowLeft";
+import mePlay from "../icons/icon-pack/mePlay";
 
 export default class Playlist extends Component {
   constructor(props) {
@@ -25,6 +25,41 @@ export default class Playlist extends Component {
       searchValue: "",
     };
   }
+  async componentDidMount() {
+    const willBlurSubscription = this.props.navigation.addListener(
+      "willBlur",
+      payload => {
+        //change return with theme (assign for duchm)
+        StatusBar.setBarStyle("dark-content");
+      }
+    );
+    const willFocusSubscription = this.props.navigation.addListener(
+      "willFocus",
+      payload => {
+        StatusBar.setBarStyle("light-content");
+      }
+    );
+  }
+  onShare = async () => {
+    try {
+      const result = await Share.share({
+        message:
+          "Lắng nghe Hoàng - Hoàng Thùy Linh tại soundMe. https://youtu.be/kkz6U59y8Hg",
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   render() {
     return (
       <View
@@ -32,9 +67,34 @@ export default class Playlist extends Component {
       >
         <Header
           leftComponent={
-            <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
+            <TouchableOpacity
+              style={{ width: 50, alignItems: "center" }}
+              onPress={() => this.props.navigation.goBack()}
+            >
               <MeIcon size={20} color="#fff" icon={meArrowLeft} />
             </TouchableOpacity>
+          }
+          rightComponent={
+            <View style={{ flexDirection: "row" }}>
+              <TouchableOpacity style={{ width: 50, alignItems: "center" }}>
+                <MeIcon size={20} color="#fff" icon={mePlay} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{ width: 50, alignItems: "center" }}
+                onPress={() => this.onShare()}
+              >
+                <MeIcon size={20} color="#fff" icon={meArrowLeft} />
+              </TouchableOpacity>
+            </View>
+          }
+          titleComponent={
+            <View style={{ paddingLeft: 50 }}>
+              <Text
+                style={[{ fontSize: 18, color: "#ffefef" }, textStyle.bold]}
+              >
+                Danh sách phát
+              </Text>
+            </View>
           }
           color="#ffefef"
           style={{ backgroundColor: "#453" }}
@@ -84,8 +144,8 @@ export default class Playlist extends Component {
                 height: 65,
                 backgroundColor: "#fe6f61",
                 bottom: -32.5,
-                alignItems:"center",
-                justifyContent: "center"
+                alignItems: "center",
+                justifyContent: "center",
               }}
               cardElevation={16}
               cornerRadius={32.5}

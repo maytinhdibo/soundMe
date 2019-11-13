@@ -17,10 +17,11 @@ export default class Header extends Component {
         }}
       >
         <View
-          style={{ width: 50, alignItems: "center", justifyContent: "center" }}
+          style={{alignItems: "center", justifyContent: "center" }}
         >
           {this.props.leftComponent}
         </View>
+
         <View
           style={{
             flex: 1,
@@ -28,7 +29,7 @@ export default class Header extends Component {
             alignItems: "center",
           }}
         >
-          <Text
+          {/* <Text
             style={[
               {
                 fontSize: 18,
@@ -36,13 +37,16 @@ export default class Header extends Component {
               },
               textStyle.bold,
             ]}
-          >
-            Danh sách phát
-          </Text>
+          > */}
+            {this.props.titleComponent}
+          {/* </Text> */}
         </View>
         <View
-          style={{ width: 50, alignItems: "center", justifyContent: "center" }}
-        ></View>
+          style={{alignItems: "center", justifyContent: "center" }}
+        >
+          {this.props.rightComponent}
+        </View>
+
       </View>
     );
   }
