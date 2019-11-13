@@ -120,6 +120,16 @@ export default class Player extends Component {
       this.onPreviousTrack();
     });
 
+    this.configControlNotif();
+    this.showControlNotif();
+
+    MusicControl.updatePlayback({
+      state: MusicControl.STATE_PLAYING,
+    });
+  }
+
+
+  configControlNotif = () => {
     // Basic Controls
     MusicControl.enableControl("play", true);
     MusicControl.enableControl("pause", true);
@@ -140,6 +150,9 @@ export default class Player extends Component {
     MusicControl.enableControl("closeNotification", true, { when: 'paused' });
     // MusicControl.enableControl('closeNotification', true, {when: 'always'})
 
+  }
+
+  showControlNotif = () => {
     MusicControl.setNowPlaying({
       title: this.state.title,
       artwork: this.state.songImage, // URL or RN's image require()
@@ -153,11 +166,9 @@ export default class Player extends Component {
       rating: 84, // Android Only (Boolean or Number depending on the type)
       notificationIcon: "grade", // Android Only (String), Android Drawable resource name for a custom notification icon
     });
-
-    MusicControl.updatePlayback({
-      state: MusicControl.STATE_PLAYING,
-    });
   }
+
+
 
   loadAndPlayMusic() {
     try {
@@ -168,7 +179,7 @@ export default class Player extends Component {
       this.getInfo();
     } catch (e) {
       console.log("Task failed successfully", e);
-    } 
+    }
   }
 
   onPlay = () => {
@@ -176,7 +187,7 @@ export default class Player extends Component {
     MusicControl.updatePlayback({
       state: MusicControl.STATE_PLAYING,
     });
-
+    this.showControlNotif();
     this.setState({ playing: true });
     // console.log("play pressed")
     // console.log(this.state.playing);
@@ -192,7 +203,7 @@ export default class Player extends Component {
     this.setState({ playing: false });
     // this.getInfo();
     SoundPlayer.pause();
-    
+
     // TrackPlayer.pause();
   };
 
@@ -233,7 +244,7 @@ export default class Player extends Component {
   };
 
   renderPlayerPlayPause = () => {
-    return this.state.playing === true ? <Text>pause</Text> : <MeIcon size={20} color="#fff" icon={mePlay}/>;
+    return this.state.playing === true ? <Text>pause</Text> : <MeIcon size={20} color="#fff" icon={mePlay} />;
   };
 
   secondToMinuteString = second => {
