@@ -43,7 +43,7 @@ const TAB_PROPS = {
   activeTextStyle: { color: "white" },
 };
 
-export class NewHome extends Component {
+export default class NewHome extends Component {
   scroll = new Animated.Value(0);
   headerY;
 
