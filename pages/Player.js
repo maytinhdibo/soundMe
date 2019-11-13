@@ -138,6 +138,7 @@ export default class Player extends Component {
 
     // Default - Allow user to close notification on swipe when audio is paused
     MusicControl.enableControl("closeNotification", true, { when: "paused" });
+    // MusicControl.enableControl('closeNotification', true, {when: 'always'})
 
     MusicControl.setNowPlaying({
       title: this.state.title,
@@ -150,7 +151,7 @@ export default class Player extends Component {
       color: 0xffffff, // Notification Color - Android Only
       date: "1983-01-02T00:00:00Z", // Release Date (RFC 3339) - Android Only
       rating: 84, // Android Only (Boolean or Number depending on the type)
-      notificationIcon: "my_custom_icon", // Android Only (String), Android Drawable resource name for a custom notification icon
+      notificationIcon: "grade", // Android Only (String), Android Drawable resource name for a custom notification icon
     });
 
     MusicControl.updatePlayback({
@@ -167,7 +168,7 @@ export default class Player extends Component {
       this.getInfo();
     } catch (e) {
       console.log("Task failed successfully", e);
-    }
+    } 
   }
 
   onPlay = () => {
@@ -176,8 +177,7 @@ export default class Player extends Component {
       state: MusicControl.STATE_PLAYING,
     });
 
-    let playing = !this.state.playing;
-    this.setState({ playing: playing });
+    this.setState({ playing: true });
     // console.log("play pressed")
     // console.log(this.state.playing);
     SoundPlayer.play();
@@ -189,10 +189,10 @@ export default class Player extends Component {
       state: MusicControl.STATE_PAUSED,
     });
 
-    let playing = !this.state.playing;
-    this.setState({ playing: playing });
+    this.setState({ playing: false });
     // this.getInfo();
     SoundPlayer.pause();
+    
     // TrackPlayer.pause();
   };
 
@@ -233,7 +233,7 @@ export default class Player extends Component {
   };
 
   renderPlayerPlayPause = () => {
-    return this.state.playing === true ? <Text>Play</Text> : <Text>Pause</Text>;
+    return this.state.playing === true ? <Text>pause</Text> : <MeIcon size={20} color="#fff" icon={mePlay}/>;
   };
 
   secondToMinuteString = second => {
@@ -253,6 +253,7 @@ export default class Player extends Component {
   };
 
   onPlayBtn = () => {
+    this.state.playing = !this.state.playing
     if (this.state.playing) {
       this.onPlay();
     } else {
@@ -395,6 +396,7 @@ export default class Player extends Component {
               left: Math.round(Dimensions.get("window").width) * 0.5 - 37.5,
               bottom: 75,
               position: "absolute",
+              zIndex: 1,
             }}
           >
             <TouchableOpacity
