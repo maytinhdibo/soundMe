@@ -28,6 +28,7 @@ import meLeaf from "./icons/icon-pack/meLeaf";
 import MeIcon from "./icons/MeIcon";
 import NewHome from "./pages/NewHome";
 
+import { AppContextProvider } from "./AppContextProvider";
 console.ignoredYellowBox = ["Accessing"];
 
 const HomeNavigator = createStackNavigator({
@@ -195,9 +196,11 @@ export default class App extends Component {
 
   render() {
     return (
-      <SafeAreaView forceInset={{ top: "never" }} style={{ flex: 1 }}>
-        <RootContainer />
-      </SafeAreaView>
+      <AppContextProvider>
+        <SafeAreaView forceInset={{ top: "never" }} style={{ flex: 1 }}>
+          <RootContainer />
+        </SafeAreaView>
+      </AppContextProvider> 
     );
   }
 }

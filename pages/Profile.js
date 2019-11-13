@@ -15,6 +15,9 @@ import AndroidDialogPicker from 'react-native-android-dialog-picker';
 import RNAndroidDialogPicker from 'react-native-android-dialog-picker';
 import { textStyle } from "../styles/textStyle";
 const theme = ['Sáng', 'Tối', 'Tự động'];
+
+import {AppConsumer} from "../AppContextProvider";
+
 export default class Profile extends Component {
   constructor(props) {
     super(props);
@@ -23,60 +26,68 @@ export default class Profile extends Component {
       theme: 0,
     };
   }
-  showPicker = () => {
-    if (Platform.OS === 'android') {
-      // only for android
-      AndroidDialogPicker.show(
-        {
-          title: 'Choose your theme...', // title of the dialog
-          items: theme, // items/options to choose from
-          cancelText: 'Cancel', // cancel text (optional - cancel button won't be render if this is not passed)
-        },
-        // only called when pressed on one of the items
-        // won't be called if user pressed on cancel or dismissed the dialog
-        buttonIndex => {
-          this.setState({theme: buttonIndex});
-        },
-      );
-    } else {
-      // use ActionSheetIOS for iOS
-      ActionSheetIOS.showActionSheetWithOptions(
-        {
-          title: 'Test',
-          options: ['item1', 'item2', 'Cancel'],
-          cancelButtonIndex: 2,
-        },
-        buttonIndex => {
-          console.log(buttonIndex);
-        },
-      );
-    }
-  };
 
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: '#fbfbfb',
-        }}>
-        <TouchableOpacity onPress={this.showPicker} style={listStyle.item}>
-          <View>
-            <Text style={[listStyle.label,textStyle.regular]}>Giao diện</Text>
-          </View>
-          <View style={listStyle.action}>
-            <Text style={textStyle.regular}>{theme[this.state.theme]}</Text>
-          </View>
-        </TouchableOpacity>
+      <AppConsumer>
+      { appConsumer => (
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: appConsumer.theme.backgroundColorPrimary,
+          }}>
+          <TouchableOpacity onPress={
+            ()=>{
+              if (Platform.OS === 'android') {
+                AndroidDialogPicker.show(
+                  {
+                    title: 'Choose your theme...',
+                    items: theme,
+                    cancelText: 'Cancel',
+                  },
+                  buttonIndex => {
+                    this.setState({theme: buttonIndex});
+                    appConsumer.setTheme(buttonIndex);
+                    console.log(appConsumer.theme);
+                  },
+                );
+              } else {
+                ActionSheetIOS.showActionSheetWithOptions(
+                  {
+                    title: 'Test',
+                    options: ['item1', 'item2', 'Cancel'],
+                    cancelButtonIndex: 2,
+                  },
+                  buttonIndex => {
+                    console.log(buttonIndex);
+                  },
+                );
+              }
+            }
+          } style={[listStyle.item,{backgroundColor : appConsumer.theme.backgroundColorSecondary}]}>
+            <View>
+              <Text style={[listStyle.label,textStyle.regular, { color : appConsumer.theme.colorPrimary }]}>Giao diện</Text>
+            </View>
+            <View style={listStyle.action}>
+              <Text style={[textStyle.regular,{ color : appConsumer.theme.colorPrimary }]}>{theme[this.state.theme]}</Text>
+            </View>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={listStyle.item}>
-          <Text  style={[listStyle.label,textStyle.regular]}>Cá nhân</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={[listStyle.item,{backgroundColor : appConsumer.theme.backgroundColorSecondary}]}>
+            <Text  style={[
+              listStyle.label,
+              textStyle.regular, 
+              { color : appConsumer.theme.colorPrimary }
+              ]}>Cá nhân
+            </Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity style={listStyle.item}>
-          <Text  style={[listStyle.label,textStyle.regular]}>Cá nhân</Text>
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity style={[listStyle.item,{backgroundColor : appConsumer.theme.backgroundColorSecondary}]}>
+            <Text  style={[listStyle.label,textStyle.regular, { color : appConsumer.theme.colorPrimary }]}>Cá nhân</Text>
+          </TouchableOpacity>
+        </View>
+        )}
+      </AppConsumer>
     );
   }
 }
@@ -85,7 +96,6 @@ const listStyle = StyleSheet.create({
   item: {
     padding: 12,
     marginBottom: 2,
-    backgroundColor: '#fff',
     flexDirection: 'row',
   },
   label: {
