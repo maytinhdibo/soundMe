@@ -137,7 +137,7 @@ export default class Player extends Component {
     MusicControl.enableControl("skipBackward", false);
 
     // Default - Allow user to close notification on swipe when audio is paused
-    MusicControl.enableControl("closeNotification", true, { when: "paused" });
+    MusicControl.enableControl("closeNotification", true, { when: 'paused' });
     // MusicControl.enableControl('closeNotification', true, {when: 'always'})
 
     MusicControl.setNowPlaying({
