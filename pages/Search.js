@@ -10,7 +10,7 @@ import {
 import { searchStyle } from "../styles/searchStyle";
 import { getStatusBarHeight } from "react-native-status-bar-height";
 import { textStyle } from "../styles/textStyle";
-import { CollapsibleHeaderScrollView } from "react-native-collapsible-header-views";
+
 import SongItem from "../components/home/SongItem";
 import MeIcon from "../icons/MeIcon";
 import meArrowRight from "../icons/icon-pack/meArrowRight";

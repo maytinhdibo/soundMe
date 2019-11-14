@@ -15,8 +15,6 @@ import SliderDot from "../components/common/SliderDot";
 import SongItem from "../components/home/SongItem";
 import SliderItem from "../components/common/SliderItem";
 
-import { CollapsibleHeaderScrollView } from "react-native-collapsible-header-views";
-
 import SectionTitle from "../components/home/SectionTitle";
 import HomeHeader from "../components/home/HomeHeader";
 import ArtistItem from "../components/home/ArtistItem";
