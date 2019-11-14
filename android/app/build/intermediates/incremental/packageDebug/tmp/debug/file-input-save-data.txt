@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Nov 13 23:59:08 ICT 2019
+#Thu Nov 14 16:46:09 ICT 2019
 64.base=/Users/maytinhdibo/Project/UI/soundMe/android/app/build/intermediates/transforms/mergeJniLibs/debug/0
 64.baseType=DIRECTORY
 33.base=/Users/maytinhdibo/Project/UI/soundMe/android/app/build/intermediates/transforms/mergeJniLibs/debug/0

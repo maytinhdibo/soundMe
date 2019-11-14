@@ -220,7 +220,7 @@ export default class Playlist extends Component {
                 style={{
                   paddingHorizontal:12,
                   minHeight:
-                    Dimensions.get("window").height - 50 - 115 - getStatusBarHeight(),
+                  Dimensions.get("window").height - 50 - 115 - getStatusBarHeight(),
                   backgroundColor: appConsumer.theme.backgroundColorPrimary,
                 }}
               >

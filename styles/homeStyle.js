@@ -66,6 +66,7 @@ export const homeStyle = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     paddingBottom: 8,
+    marginBottom:6,
     borderRadius: 20,
     marginHorizontal: 5,
     marginEnd: 2,

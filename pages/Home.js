@@ -17,11 +17,9 @@ import SliderItem from "../components/common/SliderItem";
 
 import { CollapsibleHeaderScrollView } from "react-native-collapsible-header-views";
 
-
 import SectionTitle from "../components/home/SectionTitle";
 import HomeHeader from "../components/home/HomeHeader";
 import ArtistItem from "../components/home/ArtistItem";
-
 
 import { homeStyle } from "../styles/homeStyle";
 import { textStyle } from "../styles/textStyle";
@@ -36,12 +34,6 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 const NAVBAR_HEIGHT = 56;
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const COLOR = "rgb(45,181,102)";
-const TAB_PROPS = {
-  tabStyle: { width: SCREEN_WIDTH / 2, backgroundColor: COLOR },
-  activeTabStyle: { width: SCREEN_WIDTH / 2, backgroundColor: COLOR },
-  textStyle: { color: "white" },
-  activeTextStyle: { color: "white" },
-};
 
 export default class NewHome extends Component {
   scroll = new Animated.Value(0);
@@ -53,7 +45,18 @@ export default class NewHome extends Component {
       Animated.diffClamp(this.scroll, 0, NAVBAR_HEIGHT),
       -1
     );
+    this.state = {
+      scrollY: 0,
+    };
   }
+
+  handleScroll = event => {
+    this.setState({ scrollY: event.nativeEvent.contentOffset.y });
+  };
+
+  checkPos = (min, max) => {
+    return min <= this.state.scrollY && max >= this.state.scrollY;
+  };
 
   render() {
     return (
@@ -66,6 +69,7 @@ export default class NewHome extends Component {
           }}
         ></View>
         <View style={{ flex: 1 }}>
+          {/* <Text>{this.state.scrollY}</Text> */}
           <Animated.View
             style={{
               width: "100%",
@@ -116,21 +120,33 @@ export default class NewHome extends Component {
               </View>
             </View>
 
-            <View style={{ flexDirection: "row" }}>
-              <Text style={[homeStyle.headerBadge, textStyle.bold]}>
+            <View style={{ flexDirection: "row",borderBottomWidth:1 , borderBottomColor:"#eee" }}>
+              <Text
+                style={[
+                  homeStyle.headerBadge,
+                  textStyle.bold,
+                  this.checkPos(0, 230)
+                    ? {
+                        backgroundColor: "#dd4814",
+                        color: "#fff",
+                        marginLeft: 10,
+                      }
+                    : null,
+                ]}
+              >
                 Playlist nghe gần đây
               </Text>
               <Text
                 style={[
                   homeStyle.headerBadge,
                   textStyle.bold,
-                  // this.checkPos(20, 100)
-                  //   ? {
-                  //       backgroundColor: "#dd4814",
-                  //       color: "#fff",
-                  //       marginLeft: 10,
-                  //     }
-                  //   : null,
+                  this.checkPos(230, 270)
+                    ? {
+                        backgroundColor: "#dd4814",
+                        color: "#fff",
+                        marginLeft: 10,
+                      }
+                    : null,
                 ]}
               >
                 Bài hát đề xuất
@@ -151,7 +167,13 @@ export default class NewHome extends Component {
             onScroll={Animated.event(
               [{ nativeEvent: { contentOffset: { y: this.scroll } } }],
               { useNativeDriver: true }
+              // {
+              //   listener: event => {
+              //     this.handleScroll(event);
+              //   },
             )}
+            onScrollEndDrag={this.handleScroll}
+            onMomentumScrollEnd={this.handleScroll}
             overScrollMode="never"
           >
             <Animated.View
