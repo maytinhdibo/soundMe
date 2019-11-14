@@ -26,7 +26,6 @@ import { textStyle } from "./styles/textStyle";
 
 import meLeaf from "./icons/icon-pack/meLeaf";
 import MeIcon from "./icons/MeIcon";
-import NewHome from "./pages/NewHome";
 
 import { AppContextProvider } from "./AppContextProvider";
 console.ignoredYellowBox = ["Accessing"];
@@ -86,7 +85,7 @@ const AppNavigator = createBottomTabNavigator(
       },
     },
     LibraryPage: {
-      screen: NewHome,
+      screen: Search,
       navigationOptions: {
         tabBarLabel: "Thư viện",
         tabBarIcon: ({ tintColor }) => (
