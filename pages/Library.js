@@ -5,7 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
-  TextInput,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { searchStyle } from "../styles/searchStyle";
 import { createAppContainer } from "react-navigation";
@@ -14,67 +14,83 @@ import { textStyle } from "../styles/textStyle";
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 
 const FirstRoute = () => (
-  <View style={[{ backgroundColor: '#ff4081' }]} />
+  <View style={[{ backgroundColor: "#ff4081" }]}>
+    <Text>ahihi</Text>
+  </View>
 );
 
 const SecondRoute = () => (
-  <View style={[{ backgroundColor: '#673ab7' }]} />
+  <View style={[{ backgroundColor: "#fff081" }]}>
+    <Text>ahoho</Text>
+  </View>
 );
+
+class Tabs extends Component {
+  navigationHandler = routeName => {
+    this.props.navigation.navigate(routeName);
+  };
+
+  render() {
+    const { navigation } = this.props;
+    const routes = navigation.state.routes;
+
+    return (
+      <View style={{ flexDirection: "row", padding: 12 }}>
+        {routes.map((route, index) => {
+          console.log(routes);
+          return (
+            <TouchableWithoutFeedback
+              onPress={() => this.navigationHandler(route)}
+            >
+              <View
+                style={{
+                  padding: 6,
+                  paddingHorizontal: 12,
+                  marginEnd: 6,
+                  backgroundColor:
+                    navigation.state.index === index ? "#f21" : "transparent",
+                  color: "#fff",
+                  borderRadius: 20,
+                }}
+                key={route.key}
+                focused={navigation.state.index === index}
+                index={index}
+              >
+                <Text
+                  style={[
+                    {
+                      fontSize: 14,
+                      color: navigation.state.index === index ? "#fff" : "#000",
+                    },
+                    textStyle.bold,
+                  ]}
+                >
+                  {route.routeName}
+                </Text>
+              </View>
+            </TouchableWithoutFeedback>
+          );
+        })}
+      </View>
+    );
+  }
+}
 
 const TabNavigator = createMaterialTopTabNavigator(
   {
-    HomePage: {
+    "Bài hát yêu thích": {
       screen: FirstRoute,
-      navigationOptions: {
-        tabBarLabel: "Khám phá",
-      },
     },
-    SearchPage: {
+    "Ca sĩ": {
       screen: SecondRoute,
-      navigationOptions: {
-        tabBarLabel: "Tìm kiếm",
-      },
     },
-   
+    "Album": {
+      screen: FirstRoute,
+    },
   },
   {
     tabBarPosition: "top",
-    swipeEnable: true,
-    tabBarOptions: {
-      activeTintColor: "#4267b2",
-      inactiveTintColor: "#606770",
-      showIcon: false,
-      showLabel: true,
-      upperCaseLabel: false,
-      indicatorStyle: {
-        backgroundColor: "#4267b2",
-        bottom: 0,
-        width:20,
-      },
-      labelStyle: {
-        width:100,
-        backgroundColor:"#321",
-        alignContent:"flex-start",
-        fontSize: 17,
-        color: "#345",
-      },
-      tabStyle: {
-        width: 100,
-        height:10
-      },
-      style: {
-        height: 55,
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 50,
-        backgroundColor: "#fff",
-      },
-    },
+    tabBarComponent: props => <Tabs {...props} />,
   }
 );
 
@@ -113,7 +129,7 @@ export default class Library extends Component {
             </Text>
           </View>
         </View>
-        <TabContainer/>
+        <TabContainer />
       </View>
     );
   }

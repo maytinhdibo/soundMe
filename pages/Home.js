@@ -118,7 +118,9 @@ export default class NewHome extends Component {
               </View>
             </View>
 
-            <View
+            <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
               style={{
                 flexDirection: "row",
                 borderBottomWidth: this.state.scrollY > 40 ? 1 : 0,
@@ -129,7 +131,7 @@ export default class NewHome extends Component {
                 style={[
                   homeStyle.headerBadge,
                   textStyle.bold,
-                  this.checkPos(0, 230)
+                  this.checkPos(0, 300)
                     ? {
                         backgroundColor: "#dd4814",
                         color: "#fff",
@@ -144,7 +146,7 @@ export default class NewHome extends Component {
                 style={[
                   homeStyle.headerBadge,
                   textStyle.bold,
-                  this.checkPos(230, 270)
+                  this.checkPos(300, 480)
                     ? {
                         backgroundColor: "#dd4814",
                         color: "#fff",
@@ -156,10 +158,22 @@ export default class NewHome extends Component {
                 Bài hát đề xuất
               </Text>
 
-              <Text style={[homeStyle.headerBadge, textStyle.bold]}>
-                Top 100
+              <Text
+                style={[
+                  homeStyle.headerBadge,
+                  textStyle.bold,
+                  this.checkPos(480, 9999)
+                    ? {
+                        backgroundColor: "#dd4814",
+                        color: "#fff",
+                        marginLeft: 10,
+                      }
+                    : null
+                ]}
+              >
+                Nghệ sĩ yêu thích
               </Text>
-            </View>
+            </ScrollView>
           </Animated.View>
 
           <Animated.ScrollView
