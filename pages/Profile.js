@@ -9,13 +9,13 @@ import {
   TouchableOpacity,
   Button,
   Picker,
+  AsyncStorage,
 } from 'react-native';
 import {homeStyle} from '../styles/homeStyle';
 import AndroidDialogPicker from 'react-native-android-dialog-picker';
 import RNAndroidDialogPicker from 'react-native-android-dialog-picker';
 import { textStyle } from "../styles/textStyle";
 const theme = ['Sáng', 'Tối', 'Tự động'];
-
 import {AppConsumer} from "../AppContextProvider";
 
 export default class Profile extends Component {
@@ -24,9 +24,16 @@ export default class Profile extends Component {
     this.state = {
       language: '',
       theme: 0,
-    };
+    };  
+  }
+  componentDidMount= async ()=>{
+    const currentTheme = await AsyncStorage.getItem("theme");
+    if (currentTheme!=null){
+      this.setState({theme:currentTheme});
+    }
   }
 
+  
   render() {
     return (
       <AppConsumer>
@@ -45,10 +52,11 @@ export default class Profile extends Component {
                     items: theme,
                     cancelText: 'Cancel',
                   },
-                  buttonIndex => {
+                  async buttonIndex => {
                     this.setState({theme: buttonIndex});
                     appConsumer.setTheme(buttonIndex);
-                    console.log(appConsumer.theme);
+                    await AsyncStorage.setItem("theme", buttonIndex.toString());
+                    //console.log(await AsyncStorage.getItem("theme"));
                   },
                 );
               } else {

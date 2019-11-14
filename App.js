@@ -8,7 +8,9 @@ import {
   StatusBar,
   Image,
   Button,
+  Dimensions
 } from "react-native";
+
 import { createAppContainer, SafeAreaView } from "react-navigation";
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 import { createBottomTabNavigator } from "react-navigation-tabs";
@@ -27,9 +29,9 @@ import { textStyle } from "./styles/textStyle";
 import meLeaf from "./icons/icon-pack/meLeaf";
 import MeIcon from "./icons/MeIcon";
 
-import { AppContextProvider } from "./AppContextProvider";
+import { AppContextProvider, AppConsumer, AppContext } from "./AppContextProvider";
 console.ignoredYellowBox = ["Accessing"];
-
+const screenWidth = Math.round(Dimensions.get('window').width);
 const HomeNavigator = createStackNavigator({
   Home: {
     screen: Home,
@@ -53,7 +55,6 @@ const ProfileNavigator = createStackNavigator({
     },
   },
 });
-
 const AppNavigator = createBottomTabNavigator(
   {
     HomePage: {
@@ -61,12 +62,16 @@ const AppNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: "Khám phá",
         tabBarIcon: ({ tintColor }) => (
-          <View style={{ alignItems: "center" }}>
-            <MeIcon icon={meLeaf} size={20} color={tintColor} />
-            <Text style={[textStyle.bold, { fontSize: 10, color: tintColor }]}>
-              Khám phá
-            </Text>
-          </View>
+          <AppConsumer>
+          { appConsumer => (
+            <View style={{height:55, width:screenWidth/4,justifyContent:"center", alignItems: "center", backgroundColor: appConsumer.theme.backgroundColorSecondary }}>
+              <MeIcon icon={meLeaf} size={20} color={appConsumer.theme.colorPrimary} />
+              <Text style={[textStyle.bold, { fontSize: 10, color:appConsumer.theme.colorPrimary }]}>
+                Khám phá
+              </Text>
+            </View>
+            )}
+          </AppConsumer>
         ),
       },
     },
@@ -75,12 +80,16 @@ const AppNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: "Tìm kiếm",
         tabBarIcon: ({ tintColor }) => (
-          <View style={{ alignItems: "center" }}>
-            <MeIcon icon={meLeaf} size={20} color={tintColor} />
-            <Text style={[textStyle.bold, { fontSize: 10, color: tintColor }]}>
-              Tìm kiếm
-            </Text>
-          </View>
+          <AppConsumer>
+          { appConsumer => (
+            <View style={{height:55, width:screenWidth/4,justifyContent:"center", alignItems: "center", backgroundColor: appConsumer.theme.backgroundColorSecondary }}>
+              <MeIcon icon={meLeaf} size={20} color={appConsumer.theme.colorPrimary} />
+              <Text style={[textStyle.bold, { fontSize: 10, color:appConsumer.theme.colorPrimary }]}>
+                Tìm kiếm
+              </Text>
+            </View>
+            )}
+          </AppConsumer>
         ),
       },
     },
@@ -89,12 +98,16 @@ const AppNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: "Thư viện",
         tabBarIcon: ({ tintColor }) => (
-          <View style={{ alignItems: "center" }}>
-            <MeIcon icon={meLeaf} size={20} color={tintColor} />
-            <Text style={[textStyle.bold, { fontSize: 10, color: tintColor }]}>
-              Thư viện
-            </Text>
-          </View>
+          <AppConsumer>
+          { appConsumer => (
+            <View style={{height:55, width:screenWidth/4,justifyContent:"center", alignItems: "center", backgroundColor: appConsumer.theme.backgroundColorSecondary }}>
+              <MeIcon icon={meLeaf} size={20} color={appConsumer.theme.colorPrimary} />
+              <Text style={[textStyle.bold, { fontSize: 10, color:appConsumer.theme.colorPrimary }]}>
+                Thư viện
+              </Text>
+            </View>
+            )}
+          </AppConsumer>
         ),
       },
     },
@@ -103,12 +116,16 @@ const AppNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: "Cá nhân",
         tabBarIcon: ({ tintColor }) => (
-          <View style={{ alignItems: "center" }}>
-            <MeIcon icon={meLeaf} size={20} color={tintColor} />
-            <Text style={[textStyle.bold, { fontSize: 10, color: tintColor }]}>
-              Cá nhân
-            </Text>
-          </View>
+          <AppConsumer>
+          { appConsumer => (
+            <View style={{height:55, width:screenWidth/4,justifyContent:"center", alignItems: "center", backgroundColor: appConsumer.theme.backgroundColorSecondary }}>
+              <MeIcon icon={meLeaf} size={20} color={appConsumer.theme.colorPrimary} />
+              <Text style={[textStyle.bold, { fontSize: 10, color:appConsumer.theme.colorPrimary }]}>
+                Cá nhân
+              </Text>
+            </View>
+            )}
+          </AppConsumer>
         ),
       },
     },
@@ -144,7 +161,7 @@ const AppNavigator = createBottomTabNavigator(
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 50,
-        backgroundColor: "#fff",
+        backgroundColor:'#fff',
       },
     },
   }
