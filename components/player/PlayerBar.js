@@ -39,13 +39,9 @@ export default class SongItem extends Component {
           style={{
             position: "absolute",
             bottom: 55,
-            left: 5,
-            right: 5,
             zIndex: 10,
             backgroundColor: appConsumer.theme.backgroundColorSecondary,
-            borderWidth: 1,
-            borderColor: appConsumer.theme.backgroundColorSecondary,
-            borderRadius: 2,
+            // borderColor: appConsumer.theme.backgroundColorSecondary,
             padding: 5,
             flexDirection: "row"
           }}

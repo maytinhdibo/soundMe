@@ -6,6 +6,7 @@ import {
   Animated,
   ScrollView,
   TouchableOpacity,
+  StyleSheet,
   StatusBar,
   Image,
   Dimensions,
@@ -25,7 +26,7 @@ import mePlay from "../icons/icon-pack/mePlay";
 
 import { AppConsumer } from "../AppContextProvider";
 
-const HEADER_EXPANDED_HEIGHT = 300;
+const HEADER_EXPANDED_HEIGHT = 340;
 const HEADER_COLLAPSED_HEIGHT = 0;
 
 export default class Playlist extends Component {
@@ -97,7 +98,7 @@ export default class Playlist extends Component {
           <View
             style={{
               flex: 1,
-              position: "relative",
+              marginBottom: 55,
               backgroundColor: appConsumer.theme.backgroundColorPlaylist,
             }}
           >
@@ -107,41 +108,26 @@ export default class Playlist extends Component {
                   style={{ width: 50, alignItems: "center" }}
                   onPress={() => this.props.navigation.goBack()}
                 >
-                  <MeIcon
-                    size={20}
-                    color={appConsumer.theme.colorPrimary}
-                    icon={meArrowLeft}
-                  />
+                  <MeIcon size={20} color={"#fff"} icon={meArrowLeft} />
                 </TouchableOpacity>
               }
               rightComponent={
                 <View style={{ flexDirection: "row" }}>
                   <TouchableOpacity style={{ width: 50, alignItems: "center" }}>
-                    <MeIcon
-                      size={20}
-                      color={appConsumer.theme.colorPrimary}
-                      icon={mePlay}
-                    />
+                    <MeIcon size={20} color={"#fff"} icon={mePlay} />
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={{ width: 50, alignItems: "center" }}
                     onPress={() => this.onShare()}
                   >
-                    <MeIcon
-                      size={20}
-                      color={appConsumer.theme.colorPrimary}
-                      icon={meArrowLeft}
-                    />
+                    <MeIcon size={20} color={"#fff"} icon={meArrowLeft} />
                   </TouchableOpacity>
                 </View>
               }
               titleComponent={
                 <View style={{ paddingLeft: 50 }}>
                   <Text
-                    style={[
-                      { fontSize: 18, color: appConsumer.theme.colorPrimary },
-                      textStyle.bold,
-                    ]}
+                    style={[{ fontSize: 18, color: "#fff" }, textStyle.bold]}
                   >
                     Danh sách phát
                   </Text>
@@ -150,17 +136,11 @@ export default class Playlist extends Component {
               color={appConsumer.theme.colorPrimary}
               style={{ backgroundColor: "#453" }}
             />
-            {/* <Animated.View
+
+            <Animated.View
               style={[
-                {
-                  // position: "absolute",
-                  paddingTop: 9,
-                  alignSelf: "center",
-                  zIndex: 10,
-                  backgroundColor: "#221",
-                  overflow:"hidden"
-                },
-                { height: headerHeight },
+                styles.header,
+                { height: headerHeight, opacity: heroTitleOpacity },
               ]}
             >
               <View style={{ alignItems: "center" }}>
@@ -177,9 +157,8 @@ export default class Playlist extends Component {
                     marginTop: 12,
                     height: 220,
                     width: 220,
-                    zIndex: -1,
                   }}
-                  cardElevation={10}
+                  cardElevation={2}
                   cornerRadius={32}
                 >
                   <Image
@@ -203,32 +182,29 @@ export default class Playlist extends Component {
                     bottom: -32.5,
                     alignItems: "center",
                     justifyContent: "center",
+                    elevation:100,
                   }}
-                  cardElevation={16}
+                  cardElevation={3}
                   cornerRadius={32.5}
                 >
                   <MeIcon size={20} color="#fff" icon={meArrowRight} />
                 </CardView>
               </View>
-
-            </Animated.View> */}
-
-            <Animated.View
-              style={[
-                {
-                  backgroundColor: "lightblue",
-                  position: "absolute",
-                  width: Dimensions.get("window").width,
-                  top: 50 + getStatusBarHeight(),
-                  left: 0,
-                  zIndex: 9999,
-                },
-                { height: headerHeight },
-              ]}
-            >
-              <Text>Header</Text>
+              <View
+                style={{
+                  position:"absolute",
+                  bottom:-200,
+                  width:"100%",
+                  backgroundColor: appConsumer.theme.backgroundColorPrimary,
+                  height: 300,
+                  borderTopLeftRadius: 36,
+                  borderTopRightRadius: 36,
+                }}
+              ></View>
             </Animated.View>
+
             <ScrollView
+              contentContainerStyle={styles.scrollContainer}
               onScroll={Animated.event([
                 {
                   nativeEvent: {
@@ -238,94 +214,47 @@ export default class Playlist extends Component {
                   },
                 },
               ])}
-              scrollEventThrottle={0}
-              style={{
-                flex: 1,
-                // padding: 9,
-                paddingTop: HEADER_EXPANDED_HEIGHT,
-                height: Dimensions.get("window").width,
-                // borderRadius:12,
-                // elevation: 100,
-                // borderTopLeftRadius: 36,
-                // borderTopRightRadius: 36,
-                backgroundColor: appConsumer.theme.backgroundColorPrimary,
-              }}
+              scrollEventThrottle={16}
             >
-              <SongItem
-                idx={1}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={2}
-                name="Duyên Dương"
-                actorName="Hoàng Thùy Linh"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
+              <View
+                style={{
+                  paddingHorizontal:12,
+                  minHeight:
+                    Dimensions.get("window").height - 50 - 115 - getStatusBarHeight(),
+                  backgroundColor: appConsumer.theme.backgroundColorPrimary,
+                }}
+              >
+                <SongItem
+                  idx={1}
+                  name="Duyên Âm"
+                  actorName="Hoàng Thùy Linh ft Binz"
+                />
+                <SongItem
+                  idx={2}
+                  name="Duyên Dương"
+                  actorName="Hoàng Thùy Linh"
+                />
+                <SongItem
+                  idx={3}
+                  name="Duyên Âm"
+                  actorName="Hoàng Thùy Linh ft Binz"
+                />
+                <SongItem
+                  idx={3}
+                  name="Duyên Âm"
+                  actorName="Hoàng Thùy Linh ft Binz"
+                />
+                <SongItem
+                  idx={3}
+                  name="Duyên Âm"
+                  actorName="Hoàng Thùy Linh ft Binz"
+                />
+                <SongItem
+                  idx={3}
+                  name="Duyên Âm"
+                  actorName="Hoàng Thùy Linh ft Binz"
+                />
+              </View>
             </ScrollView>
           </View>
         )}
@@ -333,3 +262,25 @@ export default class Playlist extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {},
+  scrollContainer: {
+    paddingTop: HEADER_EXPANDED_HEIGHT,
+    elevation: -1,
+    zIndex: -3,
+  },
+  header: {
+    position: "absolute",
+    width: "100%",
+    top: 50 + getStatusBarHeight(),
+    left: 0,
+    zIndex: 0,
+  },
+  title: {
+    marginVertical: 16,
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 24,
+  },
+});
