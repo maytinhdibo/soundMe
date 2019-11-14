@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import {Dark,Light} from './styles/theme-context';
-
+import { AsyncStorage } from "react-native";
 const Context = React.createContext();
 
 export class AppContextProvider extends Component {
     state = {
-        theme: Light,
+        theme: Light,           
         setTheme: (theme) => {
-            if ((theme)===0){
+            if ((theme)==0){
                 this.setState({theme:Light});
             }
-            else if ((theme)===1){
+            else if ((theme)==1){
                 this.setState({theme:Dark});
-            }
+            }         
         },
         toggleTheme: ()=>{
             if ((this.state.theme)==Dark){
@@ -23,7 +23,9 @@ export class AppContextProvider extends Component {
             }
         }
     }
-    
+    componentDidMount = async () => {
+        this.state.setTheme( await AsyncStorage.getItem('theme'));
+    };
     render() {
         const { theme } = this.state
         return (
