@@ -120,6 +120,10 @@ export default class Player extends Component {
       this.onPreviousTrack();
     });
 
+    MusicControl.on("skipForward", () => {
+      this.onCloseNotification();
+    });
+
     this.configControlNotif();
     this.showControlNotif();
 
@@ -143,11 +147,11 @@ export default class Player extends Component {
     MusicControl.enableControl("seekForward", false); // iOS only
     MusicControl.enableControl("seekBackward", false); // iOS only
     MusicControl.enableControl("seek", true); // Android only
-    MusicControl.enableControl("skipForward", false);
+    MusicControl.enableControl("skipForward", true);
     MusicControl.enableControl("skipBackward", false);
 
     // Default - Allow user to close notification on swipe when audio is paused
-    MusicControl.enableControl("closeNotification", true, { when: 'paused' });
+    MusicControl.enableControl("closeNotification", true, { when:"always" });
     // MusicControl.enableControl('closeNotification', true, {when: 'always'})
 
   }
@@ -168,6 +172,10 @@ export default class Player extends Component {
     });
   }
 
+  onCloseNotification = () => {
+    this.onPause();
+    MusicControl.stopControl();
+  }
 
 
   loadAndPlayMusic() {
@@ -181,6 +189,7 @@ export default class Player extends Component {
       console.log("Task failed successfully", e);
     }
   }
+
 
   onPlay = () => {
     //Playing  on notif
@@ -296,6 +305,8 @@ export default class Player extends Component {
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      <StatusBar barStyle="dark-content" translucent={true}/>
+
         <View ref="overlay" style={playerStyle.overlay}>
           <View style={playerStyle.header}>
             <TouchableOpacity
