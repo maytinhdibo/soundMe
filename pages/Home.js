@@ -120,7 +120,13 @@ export default class NewHome extends Component {
               </View>
             </View>
 
-            <View style={{ flexDirection: "row",borderBottomWidth:1 , borderBottomColor:"#eee" }}>
+            <View
+              style={{
+                flexDirection: "row",
+                borderBottomWidth: this.state.scrollY > 40 ? 1 : 0,
+                borderBottomColor: "#eee",
+              }}
+            >
               <Text
                 style={[
                   homeStyle.headerBadge,
