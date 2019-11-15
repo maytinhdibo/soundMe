@@ -13,6 +13,7 @@
     "react-native": "0.61.4",
     "react-native-android-dialog-picker": "^0.0.2",
     "react-native-cardview": "^2.0.5",
+    "react-native-hide-with-keyboard": "^1.2.1",
     "react-native-music-control": "https://github.com/ngocdangrby/react-native-music-control.git",
     "react-native-picker-module": "^1.2.3",
     "react-native-sound-player": "^0.10.1",

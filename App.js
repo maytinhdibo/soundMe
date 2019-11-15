@@ -17,6 +17,8 @@ import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createStackNavigator } from "react-navigation-stack";
 
+import HideWithKeyboard from 'react-native-hide-with-keyboard';
+
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Profile from "./pages/Profile";
@@ -98,6 +100,8 @@ class Nav extends Component {
     const icons = [meLeaf, meLeaf, mePlay, meLeaf];
     return (
       <View>
+                <HideWithKeyboard>
+
         <PlayerBar
           openPlayer={() => this.props.navigation.navigate("Player")}
         />
@@ -141,6 +145,8 @@ class Nav extends Component {
             );
           })}
         </View>
+        </HideWithKeyboard>
+
       </View>
     );
   }
