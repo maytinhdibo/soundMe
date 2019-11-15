@@ -98,7 +98,6 @@ export default class Playlist extends Component {
           <View
             style={{
               flex: 1,
-              marginBottom: 55,
               backgroundColor: appConsumer.theme.backgroundColorPlaylist,
             }}
           >
@@ -220,7 +219,7 @@ export default class Playlist extends Component {
                 style={{
                   paddingHorizontal:12,
                   minHeight:
-                  Dimensions.get("window").height - 50 - 115 - getStatusBarHeight(),
+                  Dimensions.get("window").height -165 - getStatusBarHeight(),
                   backgroundColor: appConsumer.theme.backgroundColorPrimary,
                 }}
               >

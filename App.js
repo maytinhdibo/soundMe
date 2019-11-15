@@ -8,7 +8,8 @@ import {
   StatusBar,
   Image,
   Button,
-  Dimensions
+  Dimensions,
+  TouchableWithoutFeedback,
 } from "react-native";
 
 import { createAppContainer, SafeAreaView } from "react-navigation";
@@ -31,10 +32,14 @@ import MeIcon from "./icons/MeIcon";
 
 import Library from "./pages/Library";
 
-import { AppContextProvider, AppConsumer, AppContext } from "./AppContextProvider";
+import {
+  AppContextProvider,
+  AppConsumer,
+  AppContext,
+} from "./AppContextProvider";
 
 console.ignoredYellowBox = ["Accessing"];
-const screenWidth = Math.round(Dimensions.get('window').width);
+const screenWidth = Math.round(Dimensions.get("window").width);
 const HomeNavigator = createStackNavigator({
   Home: {
     screen: Home,
@@ -60,129 +65,97 @@ const ProfileNavigator = createStackNavigator({
 });
 const AppNavigator = createBottomTabNavigator(
   {
-    HomePage: {
+    "Khám phá": {
       screen: HomeNavigator,
-      navigationOptions: {
-        tabBarLabel: "Khám phá",
-        tabBarIcon: ({ tintColor }) => (
-          <AppConsumer>
-          { appConsumer => (
-            <View style={{height:55, width:screenWidth/4,justifyContent:"center", alignItems: "center", backgroundColor: appConsumer.theme.backgroundColorSecondary }}>
-              <MeIcon icon={meLeaf} size={20} color={appConsumer.theme.colorPrimary} />
-              <Text style={[textStyle.bold, { fontSize: 10, color:appConsumer.theme.colorPrimary }]}>
-                Khám phá
-              </Text>
-            </View>
-            )}
-          </AppConsumer>
-        ),
-      },
     },
-    SearchPage: {
+    "Tìm kiếm": {
       screen: Search,
-      navigationOptions: {
-        tabBarLabel: "Tìm kiếm",
-        tabBarIcon: ({ tintColor }) => (
-          <AppConsumer>
-          { appConsumer => (
-            <View style={{height:55, width:screenWidth/4,justifyContent:"center", alignItems: "center", backgroundColor: appConsumer.theme.backgroundColorSecondary }}>
-              <MeIcon icon={meLeaf} size={20} color={appConsumer.theme.colorPrimary} />
-              <Text style={[textStyle.bold, { fontSize: 10, color:appConsumer.theme.colorPrimary }]}>
-                Tìm kiếm
-              </Text>
-            </View>
-            )}
-          </AppConsumer>
-        ),
-      },
     },
-    LibraryPage: {
+    "Thư viện": {
       screen: Library,
-      navigationOptions: {
-        tabBarLabel: "Thư viện",
-        tabBarIcon: ({ tintColor }) => (
-          <AppConsumer>
-          { appConsumer => (
-            <View style={{height:55, width:screenWidth/4,justifyContent:"center", alignItems: "center", backgroundColor: appConsumer.theme.backgroundColorSecondary }}>
-              <MeIcon icon={meLeaf} size={20} color={appConsumer.theme.colorPrimary} />
-              <Text style={[textStyle.bold, { fontSize: 10, color:appConsumer.theme.colorPrimary }]}>
-                Thư viện
-              </Text>
-            </View>
-            )}
-          </AppConsumer>
-        ),
-      },
     },
-    ProfilePage: {
+    "Cá nhân": {
       screen: ProfileNavigator,
-      navigationOptions: {
-        tabBarLabel: "Cá nhân",
-        tabBarIcon: ({ tintColor }) => (
-          <AppConsumer>
-          { appConsumer => (
-            <View style={{height:55, width:screenWidth/4,justifyContent:"center", alignItems: "center", backgroundColor: appConsumer.theme.backgroundColorSecondary }}>
-              <MeIcon icon={meLeaf} size={20} color={appConsumer.theme.colorPrimary} />
-              <Text style={[textStyle.bold, { fontSize: 10, color:appConsumer.theme.colorPrimary }]}>
-                Cá nhân
-              </Text>
-            </View>
-            )}
-          </AppConsumer>
-        ),
-      },
     },
   },
   {
     tabBarPosition: "bottom",
+    tabBarComponent: props => <Nav {...props} />,
     swipeEnable: true,
-    initialRouteName: "HomePage",
-    tabBarOptions: {
-      activeTintColor: "#4267b2",
-      inactiveTintColor: "#606770",
-      showIcon: true,
-      showLabel: false,
-      upperCaseLabel: false,
-      indicatorStyle: {
-        backgroundColor: "#4267b2",
-        top: 0,
-      },
-      labelStyle: {
-        fontSize: 12,
-        color: "#345",
-      },
-      tabStyle: {
-        // width: 100,
-      },
-      style: {
-        height: 55,
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 50,
-        backgroundColor:'#fff',
-      },
-    },
   }
 );
+
+class Nav extends Component {
+  navigationHandler = routeName => {
+    this.props.navigation.navigate(routeName);
+  };
+
+  render() {
+    const { navigation } = this.props;
+    const routes = navigation.state.routes;
+
+    return (
+      <View>
+        <PlayerBar
+          openPlayer={() => this.props.navigation.navigate("Player")}
+        />
+        {/* duchm change to context open player */}
+        <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
+          {routes.map((route, index) => {
+            console.log(routes);
+            return (
+              <TouchableWithoutFeedback
+                onPress={() => this.navigationHandler(route)}
+              >
+                <View
+                  style={{
+                    padding: 12,
+                    paddingHorizontal: 12,
+                    backgroundColor:
+                      navigation.state.index === index
+                        ? "#343"
+                        : "transparent",
+                    color: "#fff",
+                    borderRadius: 20,
+                    alignItems: "center",
+                  }}
+                  key={route.key}
+                  focused={navigation.state.index === index}
+                  index={index}
+                >
+                  <MeIcon size={20} color={"#fe6f61"} icon={meLeaf} />
+                  <Text
+                    style={[
+                      {
+                        fontSize: 11,
+                        color:
+                          navigation.state.index === index ? "#fff" : "#777",
+                      },
+                      textStyle.bold,
+                    ]}
+                  >
+                    {route.routeName}
+                  </Text>
+                </View>
+              </TouchableWithoutFeedback>
+            );
+          })}
+        </View>
+      </View>
+    );
+  }
+}
 
 class MainApp extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <PlayerBar
-          openPlayer={() => this.props.navigation.navigate("Player")}
-        />
-        <AppContainer />
         <StatusBar
           translucent
           backgroundColor="transparent"
           barStyle="dark-content"
         />
+        <AppContainer />
       </View>
     );
   }
@@ -219,7 +192,7 @@ export default class App extends Component {
         <SafeAreaView forceInset={{ top: "never" }} style={{ flex: 1 }}>
           <RootContainer />
         </SafeAreaView>
-      </AppContextProvider> 
+      </AppContextProvider>
     );
   }
 }
