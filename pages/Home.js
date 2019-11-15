@@ -58,6 +58,16 @@ export default class NewHome extends Component {
     this.listView.getNode().scrollTo({ y, animated: true });
   };
 
+  componentDidUpdate(){
+    try{
+      if(this.state.scrollY>480){
+        this.badgeView.getNode().scrollToEnd();
+      }else{
+        this.badgeView.getNode().scrollTo({ x:0, animated: true });
+      }
+    }catch{}
+  }
+
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -120,9 +130,10 @@ export default class NewHome extends Component {
               </View>
             </View>
 
-            <ScrollView
+            <Animated.ScrollView
               horizontal
               showsHorizontalScrollIndicator={false}
+              ref={ref => (this.badgeView = ref)}
               style={{
                 flexDirection: "row",
                 borderBottomWidth: this.state.scrollY > 40 ? 1 : 0,
@@ -138,7 +149,7 @@ export default class NewHome extends Component {
                 scrollY={this.state.scrollY}
               />
               <SectionBadge
-              scrollTo={this.scrollTo}
+                scrollTo={this.scrollTo}
                 title={"Bài hát đề xuất"}
                 target={400}
                 min={300}
@@ -146,14 +157,14 @@ export default class NewHome extends Component {
                 scrollY={this.state.scrollY}
               />
               <SectionBadge
-              scrollTo={this.scrollTo}
+                scrollTo={this.scrollTo}
                 title={"Nghệ sĩ yêu thích"}
                 target={998}
                 min={480}
                 max={999}
                 scrollY={this.state.scrollY}
               />
-            </ScrollView>
+            </Animated.ScrollView>
           </Animated.View>
 
           <Animated.ScrollView

@@ -2,14 +2,12 @@ import React, { Component } from "react";
 import {
   Text,
   View,
-  Share,
   Animated,
   ScrollView,
   TouchableOpacity,
   StyleSheet,
   StatusBar,
-  Image,
-  Dimensions,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { homeStyle } from "../styles/homeStyle";
 import { textStyle } from "../styles/textStyle";
@@ -17,14 +15,11 @@ import CardView from "react-native-cardview";
 import SongItem from "../components/playlist/SongItem";
 import Header from "../components/common/Header";
 
-import { getStatusBarHeight } from "react-native-status-bar-height";
+import Modal from "react-native-translucent-modal";
 
 import MeIcon from "../icons/MeIcon";
-import meArrowRight from "../icons/icon-pack/meArrowRight";
+import meTrash from "../icons/icon-pack/meTrash";
 import meArrowLeft from "../icons/icon-pack/meArrowLeft";
-import meShare from "../icons/icon-pack/meShare";
-import mePlay from "../icons/icon-pack/mePlay";
-import meHeart from "../icons/icon-pack/meHeart";
 
 import { AppConsumer } from "../AppContextProvider";
 
@@ -32,10 +27,7 @@ export default class PersonalPlaylist extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchValue: "",
-    };
-    this.state = {
-      scrollY: new Animated.Value(0),
+      removeModal: false,
     };
   }
   async componentDidMount() {
@@ -74,7 +66,7 @@ export default class PersonalPlaylist extends Component {
                 </TouchableOpacity>
               }
               titleComponent={
-                <View style={{ paddingRight: 50 }}>
+                <View>
                   <Text
                     style={[{ fontSize: 18, color: "#fff" }, textStyle.bold]}
                   >
@@ -82,12 +74,116 @@ export default class PersonalPlaylist extends Component {
                   </Text>
                 </View>
               }
+              rightComponent={
+                <TouchableOpacity
+                  style={{ width: 50, alignItems: "center" }}
+                  onPress={() => this.setState({removeModal:true})}
+                >
+                  <MeIcon size={20} color={"#fff"} icon={meTrash} />
+                </TouchableOpacity>
+              }
               color={appConsumer.theme.colorPrimary}
               style={{ backgroundColor: "#453" }}
             />
+
+            <Modal
+              animationType="fade"
+              backdropColor="transparent"
+              transparent={true}
+              visible={this.state.removeModal}
+              onRequestClose={() => {
+                this.setState({ removeModal: false });
+              }}
+            >
+              <TouchableWithoutFeedback
+                onPress={() => this.setState({ removeModal: false })}
+              >
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "rgba(0,0,0,0.3)",
+                  }}
+                >
+                  <View>
+                    <TouchableWithoutFeedback>
+                      <CardView
+                        cardElevation={40}
+                        cornerRadius={9}
+                        style={{
+                          width: 300,
+                          padding: 12,
+                          paddingVertical: 19,
+                          maxWidth: "90%",
+                          backgroundColor:
+                            appConsumer.theme.backgroundColorPrimary,
+                        }}
+                      >
+                        <Text
+                          style={[
+                            {
+                              fontSize: 18,
+                              marginBottom: 9,
+                              color: appConsumer.theme.colorPrimary,
+                            },
+                            textStyle.bold,
+                          ]}
+                        >
+                          Tạo mới
+                        </Text>
+                        <Text
+                          style={[
+                            { color: appConsumer.theme.colorPrimary },
+                            textStyle.regular,
+                          ]}
+                        >
+                          Bạn có chắc chắn xóa danh sách phát này không?
+                        </Text>
+                        <View
+                          style={{
+                            flexDirection: "row",
+                            marginTop: 9,
+                            justifyContent: "flex-end",
+                          }}
+                        >
+                          <TouchableOpacity
+                            style={{ padding: 6, paddingHorizontal: 9 }}
+                          >
+                            <Text
+                              style={[
+                                { color: appConsumer.theme.colorPrimary },
+                                textStyle.bold,
+                              ]}
+                            >
+                              Xác nhận
+                            </Text>
+                          </TouchableOpacity>
+                          <TouchableOpacity
+                            style={{ padding: 6, paddingHorizontal: 9 }}
+                            onPress={() => this.setState({ removeModal: false })}
+                          >
+                            <Text
+                              style={[
+                                { color: appConsumer.theme.colorPrimary },
+                                textStyle.bold,
+                              ]}
+                            >
+                              Hủy
+                            </Text>
+                          </TouchableOpacity>
+                        </View>
+                      </CardView>
+                    </TouchableWithoutFeedback>
+                  </View>
+                </View>
+              </TouchableWithoutFeedback>
+            </Modal>
+
             <ScrollView
               style={{
                 flex: 1,
+                padding: 9,
                 backgroundColor: appConsumer.theme.backgroundColorPrimary,
               }}
             >
