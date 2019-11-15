@@ -41,6 +41,7 @@ import {
   AppConsumer,
   AppContext,
 } from "./AppContextProvider";
+import PersonalPlaylist from "./pages/PersonalPlaylist";
 
 console.ignoredYellowBox = ["Accessing"];
 const screenWidth = Math.round(Dimensions.get("window").width);
@@ -53,6 +54,27 @@ const HomeNavigator = createStackNavigator({
   },
   Playlist: {
     screen: Playlist,
+    navigationOptions: {
+      header: null,
+    },
+  },
+});
+
+const LibraryNavigator = createStackNavigator({
+  Library: {
+    screen: Library,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  Playlist: {
+    screen: Playlist,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  PersonalPlaylist: {
+    screen: PersonalPlaylist,
     navigationOptions: {
       header: null,
     },
@@ -76,7 +98,7 @@ const AppNavigator = createBottomTabNavigator(
       screen: Search,
     },
     "Thư viện": {
-      screen: Library,
+      screen: LibraryNavigator,
     },
     "Cá nhân": {
       screen: ProfileNavigator,

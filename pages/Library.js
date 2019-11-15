@@ -396,6 +396,7 @@ export default class Library extends Component {
           </View>
         </View>
         <TabContainer />
+        <Button title={"Take"} onPress={()=>this.props.navigation.navigate("PersonalPlaylist")}/>
       </View>
     );
   }
