@@ -28,6 +28,8 @@ import PlayerBar from "./components/player/PlayerBar";
 import { textStyle } from "./styles/textStyle";
 
 import meLeaf from "./icons/icon-pack/meLeaf";
+import mePlay from "./icons/icon-pack/mePlay";
+
 import MeIcon from "./icons/MeIcon";
 
 import Library from "./pages/Library";
@@ -93,7 +95,7 @@ class Nav extends Component {
   render() {
     const { navigation } = this.props;
     const routes = navigation.state.routes;
-
+    const icons = [meLeaf, meLeaf, mePlay, meLeaf];
     return (
       <View>
         <PlayerBar
@@ -112,9 +114,7 @@ class Nav extends Component {
                     padding: 12,
                     paddingHorizontal: 12,
                     backgroundColor:
-                      navigation.state.index === index
-                        ? "#343"
-                        : "transparent",
+                      navigation.state.index === index ? "#343" : "transparent",
                     color: "#fff",
                     borderRadius: 20,
                     alignItems: "center",
@@ -123,7 +123,7 @@ class Nav extends Component {
                   focused={navigation.state.index === index}
                   index={index}
                 >
-                  <MeIcon size={20} color={"#fe6f61"} icon={meLeaf} />
+                  <MeIcon size={20} color={"#fe6f61"} icon={icons[index]} />
                   <Text
                     style={[
                       {
