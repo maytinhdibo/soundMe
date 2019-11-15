@@ -22,7 +22,9 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 import MeIcon from "../icons/MeIcon";
 import meArrowRight from "../icons/icon-pack/meArrowRight";
 import meArrowLeft from "../icons/icon-pack/meArrowLeft";
+import meShare from "../icons/icon-pack/meShare";
 import mePlay from "../icons/icon-pack/mePlay";
+import meHeart from "../icons/icon-pack/meHeart";
 
 import { AppConsumer } from "../AppContextProvider";
 
@@ -113,13 +115,13 @@ export default class Playlist extends Component {
               rightComponent={
                 <View style={{ flexDirection: "row" }}>
                   <TouchableOpacity style={{ width: 50, alignItems: "center" }}>
-                    <MeIcon size={20} color={"#fff"} icon={mePlay} />
+                    <MeIcon size={20} color={"#fff"} icon={meHeart} />
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={{ width: 50, alignItems: "center" }}
                     onPress={() => this.onShare()}
                   >
-                    <MeIcon size={20} color={"#fff"} icon={meArrowLeft} />
+                    <MeIcon size={20} color={"#fff"} icon={meShare} />
                   </TouchableOpacity>
                 </View>
               }
@@ -181,19 +183,19 @@ export default class Playlist extends Component {
                     bottom: -32.5,
                     alignItems: "center",
                     justifyContent: "center",
-                    elevation:100,
+                    elevation: 100,
                   }}
                   cardElevation={3}
                   cornerRadius={32.5}
                 >
-                  <MeIcon size={20} color="#fff" icon={meArrowRight} />
+                  <MeIcon size={20} color="#fff" icon={mePlay} />
                 </CardView>
               </View>
               <View
                 style={{
-                  position:"absolute",
-                  bottom:-200,
-                  width:"100%",
+                  position: "absolute",
+                  bottom: -200,
+                  width: "100%",
                   backgroundColor: appConsumer.theme.backgroundColorPrimary,
                   height: 300,
                   borderTopLeftRadius: 36,
@@ -217,9 +219,11 @@ export default class Playlist extends Component {
             >
               <View
                 style={{
-                  paddingHorizontal:12,
+                  paddingHorizontal: 12,
                   minHeight:
-                  Dimensions.get("window").height -165 - getStatusBarHeight(),
+                    Dimensions.get("window").height -
+                    160 -
+                    getStatusBarHeight(),
                   backgroundColor: appConsumer.theme.backgroundColorPrimary,
                 }}
               >

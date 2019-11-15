@@ -74,7 +74,7 @@ export default class SongItem extends Component {
             >
               <MeIcon
                 icon={mePlay}
-                size={32}
+                size={22}
                 color={appConsumer.theme.buttonColor}
               />
             </View>

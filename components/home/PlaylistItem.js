@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableWithoutFeedback } from "react-native";
 import { homeStyle } from "../../styles/homeStyle";
 import * as Animatable from "react-native-animatable";
 import { textStyle } from "../../styles/textStyle";
@@ -11,6 +11,7 @@ export default class PlaylistItem extends Component {
   }
   render() {
     return (
+      <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Playlist")}>
       <Animatable.View
         animation="bounceInRight"
         easing="ease-out"
@@ -58,6 +59,7 @@ export default class PlaylistItem extends Component {
           </Text>
         </View>
       </Animatable.View>
+      </TouchableWithoutFeedback>
     );
   }
 }

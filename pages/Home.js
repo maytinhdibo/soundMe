@@ -26,6 +26,7 @@ import MeIcon from "../icons/MeIcon";
 import meSearch from "../icons/icon-pack/meSearch";
 
 import { getStatusBarHeight } from "react-native-status-bar-height";
+import SectionBadge from "../components/home/SectionBadge";
 
 // import {Body, Header, List, ListItem as Item, ScrollableTab, Tab, Tabs, Title} from "native-base";
 
@@ -52,8 +53,9 @@ export default class NewHome extends Component {
     this.setState({ scrollY: event.nativeEvent.contentOffset.y });
   };
 
-  checkPos = (min, max) => {
-    return min <= this.state.scrollY && max >= this.state.scrollY;
+  scrollTo = y => {
+    this.setState({ scrollY: y });
+    this.listView.getNode().scrollTo({ y, animated: true });
   };
 
   render() {
@@ -119,64 +121,40 @@ export default class NewHome extends Component {
             </View>
 
             <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
+              horizontal
+              showsHorizontalScrollIndicator={false}
               style={{
                 flexDirection: "row",
                 borderBottomWidth: this.state.scrollY > 40 ? 1 : 0,
                 borderBottomColor: "#eee",
               }}
             >
-              <Text
-                style={[
-                  homeStyle.headerBadge,
-                  textStyle.bold,
-                  this.checkPos(0, 300)
-                    ? {
-                        backgroundColor: "#dd4814",
-                        color: "#fff",
-                        marginLeft: 10,
-                      }
-                    : null,
-                ]}
-              >
-                Playlist nghe gần đây
-              </Text>
-              <Text
-                style={[
-                  homeStyle.headerBadge,
-                  textStyle.bold,
-                  this.checkPos(300, 480)
-                    ? {
-                        backgroundColor: "#dd4814",
-                        color: "#fff",
-                        marginLeft: 10,
-                      }
-                    : null,
-                ]}
-              >
-                Bài hát đề xuất
-              </Text>
-
-              <Text
-                style={[
-                  homeStyle.headerBadge,
-                  textStyle.bold,
-                  this.checkPos(480, 9999)
-                    ? {
-                        backgroundColor: "#dd4814",
-                        color: "#fff",
-                        marginLeft: 10,
-                      }
-                    : null
-                ]}
-              >
-                Nghệ sĩ yêu thích
-              </Text>
+              <SectionBadge
+                scrollTo={this.scrollTo}
+                title={"Playlist gần đây"}
+                min={0}
+                max={300}
+                scrollY={this.state.scrollY}
+              />
+              <SectionBadge
+              scrollTo={this.scrollTo}
+                title={"Bài hát đề xuất"}
+                min={300}
+                max={480}
+                scrollY={this.state.scrollY}
+              />
+              <SectionBadge
+              scrollTo={this.scrollTo}
+                title={"Nghệ sĩ yêu thích"}
+                min={480}
+                max={999}
+                scrollY={this.state.scrollY}
+              />
             </ScrollView>
           </Animated.View>
 
           <Animated.ScrollView
+            ref={ref => (this.listView = ref)}
             scrollEventThrottle={1}
             bounces={false}
             showsVerticalScrollIndicator={false}
@@ -276,11 +254,13 @@ export default class NewHome extends Component {
                     showsHorizontalScrollIndicator={false}
                   >
                     <PlaylistItem
+                      navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
                       name={"Nửa hồn thương đau"}
                       actorName={"Thu Phương"}
                     />
                     <PlaylistItem
+                      navigation={this.props.navigation}
                       imgUrl={{
                         uri:
                           "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg",
@@ -289,11 +269,13 @@ export default class NewHome extends Component {
                       actorName={"Hồng Nhung"}
                     />
                     <PlaylistItem
+                      navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
                       name={"Con đi đâu để thấy hoa bay"}
                       actorName={"Nhiều ca sĩ"}
                     />
                     <PlaylistItem
+                      navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
                       name={"Đi đu đưa đi"}
                       actorName={"Tuấn Hưng"}
