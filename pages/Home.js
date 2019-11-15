@@ -132,6 +132,7 @@ export default class NewHome extends Component {
               <SectionBadge
                 scrollTo={this.scrollTo}
                 title={"Playlist gần đây"}
+                target={0}
                 min={0}
                 max={300}
                 scrollY={this.state.scrollY}
@@ -139,6 +140,7 @@ export default class NewHome extends Component {
               <SectionBadge
               scrollTo={this.scrollTo}
                 title={"Bài hát đề xuất"}
+                target={400}
                 min={300}
                 max={480}
                 scrollY={this.state.scrollY}
@@ -146,6 +148,7 @@ export default class NewHome extends Component {
               <SectionBadge
               scrollTo={this.scrollTo}
                 title={"Nghệ sĩ yêu thích"}
+                target={998}
                 min={480}
                 max={999}
                 scrollY={this.state.scrollY}

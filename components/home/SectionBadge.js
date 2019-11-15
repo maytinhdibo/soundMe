@@ -14,7 +14,7 @@ export default class SectionBadge extends Component {
   render() {
     return (
       <TouchableOpacity
-                onPress={()=>this.props.scrollTo(this.props.min)}
+                onPress={()=>this.props.scrollTo(this.props.target)}
               >
                 <Text
                   style={[
