@@ -5,6 +5,7 @@ INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/Android
 INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:1:1-26:12
 INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:1:1-26:12
 MERGED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml:1:1-26:12
+MERGED from [:react-native-translucent-modal] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-translucent-modal/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-reanimated] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-gesture-handler] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-cardview] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-cardview/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
@@ -151,6 +152,8 @@ uses-sdk
 INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml
 INJECTED from /Users/maytinhdibo/Project/UI/soundMe/android/app/src/main/AndroidManifest.xml
+MERGED from [:react-native-translucent-modal] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-translucent-modal/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-translucent-modal] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-translucent-modal/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-reanimated] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-reanimated] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-reanimated/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-gesture-handler] /Users/maytinhdibo/Project/UI/soundMe/node_modules/react-native-gesture-handler/android/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41

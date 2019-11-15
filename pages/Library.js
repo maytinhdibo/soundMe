@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import {
   Text,
   View,
-  ScrollView,
+  TextInput,
+  Button,
+  TouchableHighlight,
   TouchableOpacity,
   Image,
   TouchableWithoutFeedback,
@@ -13,6 +15,8 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 import { textStyle } from "../styles/textStyle";
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 import CardView from "react-native-cardview";
+
+import Modal from "react-native-translucent-modal";
 
 class PlayListLibItem extends Component {
   render() {
@@ -128,34 +132,131 @@ class ArtistLibItem extends Component {
   }
 }
 
-const SongRoute = () => (
-  <View style={{ padding: 7, paddingHorizontal: 16 }}>
-    <View
-      style={{ flexDirection: "row", alignItems: "center", marginBottom: 9 }}
-    >
-      <CardView
-        cardElevation={2}
-        cornerRadius={9}
-        style={{
-          backgroundColor: "#eee",
-          height: 60,
-          width: 60,
-          justifyContent: "center",
-          alignItems: "center",
-          marginRight: 14,
-        }}
-      >
-        <Text style={[{ fontSize: 32, color: "#aaa" }]}>+</Text>
-      </CardView>
-      <Text style={[{ fontSize: 15 }, textStyle.bold]}>
-        Tạo danh sách phát mới
-      </Text>
-    </View>
-    <PlayListLibItem count={10} name={"Nhạc buồn"} />
-    <PlayListLibItem count={5} name={"Vinahouse quẩy tung chảo"} />
-    <PlayListLibItem count={2} name={"Oppa Idol"} />
-  </View>
-);
+class SongRoute extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addModal: false,
+    };
+  }
+  render() {
+    return (
+      <View style={{ padding: 7, paddingHorizontal: 16 }}>
+        <Modal
+          animationType="fade"
+          backdropColor="transparent"
+          transparent={true}
+          visible={this.state.addModal}
+          onRequestClose={() => {
+            this.setState({ addModal: false });
+          }}
+        >
+          <TouchableWithoutFeedback
+            onPress={() => this.setState({ addModal: false })}
+          >
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: "rgba(0,0,0,0.3)",
+              }}
+            >
+              <View>
+                <TouchableWithoutFeedback>
+                  <CardView
+                    cardElevation={40}
+                    cornerRadius={9}
+                    style={{
+                      width: 300,
+                      padding: 12,
+                      paddingVertical: 19,
+                      maxWidth: "90%",
+                      backgroundColor: "#fff",
+                    }}
+                  >
+                    <Text
+                      style={[
+                        { fontSize: 18, marginBottom: 9 },
+                        textStyle.bold,
+                      ]}
+                    >
+                      Tạo mới
+                    </Text>
+                    <TextInput
+                      style={[
+                        {
+                          borderRadius: 6,
+                          padding: 6,
+                          paddingTop: 9,
+                          backgroundColor: "rgba(111,111,111,0.1)",
+                        },
+                        textStyle.regular,
+                      ]}
+                      placeholder={"Tên danh sách mới..."}
+                    />
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        marginTop: 9,
+                        justifyContent: "flex-end",
+                      }}
+                    >
+                      <TouchableOpacity
+                        style={{ padding: 6, paddingHorizontal: 9 }}
+                      >
+                        <Text style={[textStyle.bold]}>Tạo mới</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={{ padding: 6, paddingHorizontal: 9 }}
+                        onPress={() => this.setState({ addModal: false })}
+                      >
+                        <Text style={[textStyle.bold]}>Hủy</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </CardView>
+                </TouchableWithoutFeedback>
+              </View>
+            </View>
+          </TouchableWithoutFeedback>
+        </Modal>
+
+        <TouchableWithoutFeedback
+          onPress={() => this.setState({ addModal: true })}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginBottom: 9,
+            }}
+          >
+            <CardView
+              cardElevation={2}
+              cornerRadius={9}
+              style={{
+                backgroundColor: "#eee",
+                height: 60,
+                width: 60,
+                justifyContent: "center",
+                alignItems: "center",
+                marginRight: 14,
+              }}
+            >
+              <Text style={[{ fontSize: 32, color: "#aaa" }]}>+</Text>
+            </CardView>
+            <Text style={[{ fontSize: 15 }, textStyle.bold]}>
+              Tạo danh sách phát mới
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
+        <PlayListLibItem count={10} name={"Nhạc buồn"} />
+        <PlayListLibItem count={5} name={"Vinahouse quẩy tung chảo"} />
+        <PlayListLibItem count={2} name={"Oppa Idol"} />
+      </View>
+    );
+  }
+}
 
 const ArtistRoute = () => (
   <View style={{ padding: 7, paddingHorizontal: 16 }}>

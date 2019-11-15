@@ -17,6 +17,7 @@
     "react-native-picker-module": "^1.2.3",
     "react-native-sound-player": "^0.10.1",
     "react-native-svg": "^9.13.3",
+    "react-native-translucent-modal": "^1.1.0",
     "typescript": "^3.7.2"
   },
   "devDependencies": {
