@@ -339,7 +339,11 @@ export default class NewHome extends Component {
                   />
                 </View>
 
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate("TopArtist")}
+                >
                 <SectionTitle title={"Nghệ sĩ yêu thích"} />
+                </TouchableOpacity>
                 <View>
                   <ScrollView
                     style={{ shadowOffset: { width: 10, height: 10 } }}

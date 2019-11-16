@@ -28,7 +28,7 @@ import Player from "./pages/Player";
 //trending
 import TopPlaylist from "./pages/trending/TopPlaylist";
 import TopSong from "./pages/trending/TopSong";
-
+import TopArtist from "./pages/trending/TopArtist";
 
 import PlayerBar from "./components/player/PlayerBar";
 
@@ -71,6 +71,12 @@ const HomeNavigator = createStackNavigator({
   },
   TopSong: {
     screen: TopSong,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  TopArtist: {
+    screen: TopArtist,
     navigationOptions: {
       header: null,
     },

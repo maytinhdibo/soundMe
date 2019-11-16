@@ -253,31 +253,37 @@ export default class TopSong extends Component {
               >
                 <SongItem
                   idx={1}
+                  time={345}
                   name="Cắt tiền duyên"
                   actorName="NSƯT Thanh Lam"
                 />
                 <SongItem
                   idx={2}
+                  time={234}
                   name="Duyên Dương"
                   actorName="Hoàng Thùy Linh"
                 />
                 <SongItem
                   idx={3}
+                  time={263}
                   name="Duyên Âm"
                   actorName="Hoàng Thùy Linh ft Binz"
                 />
                 <SongItem
                   idx={4}
+                  time={142}
                   name="Duyên Âm"
                   actorName="Hoàng Thùy Linh ft Binz"
                 />
                 <SongItem
                   idx={5}
+                  time={473}
                   name="Duyên Âm"
                   actorName="Hoàng Thùy Linh ft Binz"
                 />
                 <SongItem
                   idx={6}
+                  time={137}
                   name="Duyên Âm"
                   actorName="Hoàng Thùy Linh ft Binz"
                 />

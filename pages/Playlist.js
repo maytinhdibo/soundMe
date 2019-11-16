@@ -229,31 +229,37 @@ export default class Playlist extends Component {
               >
                 <SongItem
                   idx={1}
+                  time={124}
                   name="Duyên Âm"
                   actorName="Hoàng Thùy Linh ft Binz"
                 />
                 <SongItem
                   idx={2}
+                  time={215}
                   name="Duyên Dương"
                   actorName="Hoàng Thùy Linh"
                 />
                 <SongItem
                   idx={3}
+                  time={213}
                   name="Duyên Âm"
                   actorName="Hoàng Thùy Linh ft Binz"
                 />
                 <SongItem
                   idx={3}
+                  time={321}
                   name="Duyên Âm"
                   actorName="Hoàng Thùy Linh ft Binz"
                 />
                 <SongItem
                   idx={3}
+                  time={323}
                   name="Duyên Âm"
                   actorName="Hoàng Thùy Linh ft Binz"
                 />
                 <SongItem
                   idx={3}
+                  time={134}
                   name="Duyên Âm"
                   actorName="Hoàng Thùy Linh ft Binz"
                 />

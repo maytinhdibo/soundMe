@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Text, View, Image } from "react-native";
 import { homeStyle } from "../../styles/homeStyle";
-import * as Animatable from "react-native-animatable";
 import { textStyle } from "../../styles/textStyle";
 import CardView from "react-native-cardview";
+
+import { AppConsumer } from "../../AppContextProvider";
 
 export default class ArtistItem extends Component {
   constructor(props) {
@@ -11,39 +12,49 @@ export default class ArtistItem extends Component {
   }
   render() {
     return (
-      <Animatable.View
-        animation="bounceInRight"
-        easing="ease-out"
-        style={homeStyle.artistItem}
-      >
-        <CardView cardElevation={4} cornerRadius={63}>
-          <Image
-            source={this.props.imgUrl}
+      <AppConsumer>
+        {appConsumer => (
+          <View
             style={{
-              height: 126,
-              width: 126,
-              borderRadius: 63,
-              resizeMode: "cover",
-              width: "100%"
+              marginVertical: 4,
+              justifyContent: "center",
+              alignItems: "center",
             }}
-          />
-        </CardView>
-        <View style={{flex:1, alignItems:"center"}}>
-          <Text
-            numberOfLines={1}
-            style={[
-              {
-                padding: 6,
-                paddingBottom: 0,
-                fontSize: 16
-              },
-              textStyle.bold
-            ]}
           >
-            {this.props.name}
-          </Text>
-        </View>
-      </Animatable.View>
+            <CardView
+              style={{ width: 110 }}
+              cardElevation={4}
+              cornerRadius={63}
+            >
+              <Image
+                source={this.props.imgUrl}
+                style={{
+                  height: 110,
+                  width: 110,
+                  borderRadius: 63,
+                  resizeMode: "cover",
+                }}
+              />
+            </CardView>
+            <View style={{ flex: 1, alignItems: "center" }}>
+              <Text
+                numberOfLines={1}
+                style={[
+                  {
+                    padding: 6,
+                    paddingBottom: 0,
+                    fontSize: 12,
+                    color: appConsumer.theme.colorPrimary,
+                  },
+                  textStyle.bold,
+                ]}
+              >
+                {this.props.name}
+              </Text>
+            </View>
+          </View>
+        )}
+      </AppConsumer>
     );
   }
 }

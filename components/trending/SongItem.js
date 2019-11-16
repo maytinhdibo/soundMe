@@ -19,6 +19,13 @@ export default class SongItem extends Component {
         return defaultValue;
     }
   }
+  secondToMinuteString = second => {
+    if (second > 0) {
+      let i = parseInt(second);
+      return Math.floor(i / 60) + ":" + ("0" + Math.floor(i % 60)).slice(-2);
+    }
+    return "00:00";
+  };
   render() {
     return (
       <AppConsumer>
@@ -80,7 +87,7 @@ export default class SongItem extends Component {
                   fontSize: 13,
                 }}
               >
-                02:01
+                {this.secondToMinuteString(this.props.time)}
               </Text>
             </View>
           </View>
