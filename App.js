@@ -109,6 +109,7 @@ const ProfileNavigator = createStackNavigator({
     screen: Profile,
     navigationOptions: {
       title: "Cá nhân",
+      header: null,
     },
   },
 });
