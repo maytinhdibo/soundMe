@@ -50,6 +50,7 @@ export const homeStyle = StyleSheet.create({
     flexDirection: "row",
     // backgroundColor: '#fff',
     margin: 12,
+    marginVertical:8,
     alignContent: "center",
     textAlign: "center",
     // overflow: "hidden",

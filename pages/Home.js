@@ -149,7 +149,7 @@ export default class NewHome extends Component {
             >
               <SectionBadge
                 scrollTo={this.scrollTo}
-                title={"Playlist gần đây"}
+                title={"Danh sách đề xuất"}
                 target={0}
                 min={0}
                 max={300}
@@ -157,7 +157,7 @@ export default class NewHome extends Component {
               />
               <SectionBadge
                 scrollTo={this.scrollTo}
-                title={"Bài hát đề xuất"}
+                title={"Top thịnh hành"}
                 target={400}
                 min={300}
                 max={480}
@@ -270,7 +270,7 @@ export default class NewHome extends Component {
                 <TouchableOpacity
                   onPress={() => this.props.navigation.navigate("TopPlaylist")}
                 >
-                  <SectionTitle title={"Playlist gần đây"} />
+                  <SectionTitle title={"Danh sách đề xuất"} />
                 </TouchableOpacity>
                 <View>
                   <ScrollView
@@ -311,7 +311,7 @@ export default class NewHome extends Component {
                 <TouchableOpacity
                   onPress={() => this.props.navigation.navigate("TopSong")}
                 >
-                  <SectionTitle title={"Bài hát đề xuất"} />
+                  <SectionTitle title={"Top thịnh hành"} />
                 </TouchableOpacity>
                 <View>
                   <SongItem
