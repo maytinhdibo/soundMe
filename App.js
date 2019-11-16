@@ -145,55 +145,70 @@ class Nav extends Component {
     const routes = navigation.state.routes;
     const icons = [meLeaf, meLeaf, mePlay, meLeaf];
     return (
+      <AppConsumer>
+        {appConsumer => (
       <View>
                 <HideWithKeyboard>
 
         <PlayerBar
           openPlayer={() => this.props.navigation.navigate("Player")}
         />
-        {/* duchm change to context open player */}
-        <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
-          {routes.map((route, index) => {
-            console.log(routes);
-            return (
-              <TouchableWithoutFeedback
-                onPress={() => this.navigationHandler(route)}
-              >
-                <View
+        
+          <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
+            {routes.map((route, index) => {
+              console.log(routes);
+              return (
+                <TouchableWithoutFeedback
+                  onPress={() => this.navigationHandler(route)}
+                >
+                  <View 
                   style={{
-                    padding: 12,
-                    paddingHorizontal: 12,
-                    backgroundColor:
-                      navigation.state.index === index ? "#343" : "transparent",
-                    color: "#fff",
-                    borderRadius: 20,
+                    padding: 0,
+                    paddingHorizontal: 5,
+                    width:screenWidth/4,
+                    height: 55,
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
                     alignItems: "center",
                   }}
-                  key={route.key}
-                  focused={navigation.state.index === index}
-                  index={index}
-                >
-                  <MeIcon size={20} color={"#fe6f61"} icon={icons[index]} />
-                  <Text
-                    style={[
-                      {
-                        fontSize: 11,
-                        color:
-                          navigation.state.index === index ? "#fff" : "#777",
-                      },
-                      textStyle.bold,
-                    ]}
                   >
-                    {route.routeName}
-                  </Text>
-                </View>
-              </TouchableWithoutFeedback>
-            );
-          })}
-        </View>
-        </HideWithKeyboard>
+                    <View
+                      style={{
+                        padding: 12,
+                        paddingHorizontal: 12,
+                        backgroundColor:
+                          navigation.state.index === index ? appConsumer.theme.hightlightColor : appConsumer.color,
+                        color: appConsumer.theme.backgroundColorPrimary,
+                        borderRadius: 20,
+                        alignItems: "center",
+                      }}
+                      key={route.key}
+                      focused={navigation.state.index === index}
+                      index={index}
+                    >
+                      <MeIcon size={20} color={appConsumer.theme.buttonColor} icon={icons[index]} />
+                      <Text
+                        style={[
+                          {
+                            fontSize: 11,
+                            color:
+                              navigation.state.index === index ? appConsumer.theme.buttonColor : '#777',
+                          },
+                          textStyle.bold,
+                        ]}
+                      >
+                        {route.routeName}
+                      </Text>
+                    </View>
+                  </View>
+                </TouchableWithoutFeedback>
+              );
+            })}
+          </View>
+          </HideWithKeyboard>
 
-      </View>
+        </View>
+        )}
+      </AppConsumer>
     );
   }
 }

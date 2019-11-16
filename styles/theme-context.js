@@ -6,6 +6,7 @@ export const Dark = {
     buttonColor: '#ff0039',
     borderColor : '#ddd',
     backgroundColorPlaylist :'#292349',
+    hightlightColor :"#f2f2f2",
 }
 export const Light = {
     colorPrimary: '#0a0a0a',
@@ -15,4 +16,5 @@ export const Light = {
     buttonColor: '#fe6f61',
     borderColor : '#ddd',
     backgroundColorPlaylist :'#fe6f61',
+    hightlightColor :"#343",
 }
