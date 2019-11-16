@@ -367,19 +367,6 @@ export default class NewHome extends Component {
                     />
                   </ScrollView>
                 </View>
-
-                <Button
-                  title="Go to Details"
-                  onPress={() => this.props.navigation.navigate("Playlist")}
-                />
-                <Button
-                  title="Go to Details"
-                  onPress={() => this.props.navigation.navigate("Playlist")}
-                />
-                <Button
-                  title="Go to Details"
-                  onPress={() => this.props.navigation.navigate("Playlist")}
-                />
               </ScrollView>
             </Animated.View>
           </Animated.ScrollView>

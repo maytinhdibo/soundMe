@@ -32,51 +32,69 @@ export default class SongItem extends Component {
               width: Math.round(Dimensions.get("window").width),
               backgroundColor: appConsumer.theme.backgroundColorSecondary,
               // borderColor: appConsumer.theme.backgroundColorSecondary,
-              padding: 5,
-              flexDirection: "row",
             }}
           >
-            <TouchableOpacity
-              onPress={this.props.openPlayer}
-              style={{
-                flex: 2,
-                justifyContent: "center",
-                paddingLeft: 5,
-              }}
-            >
-              <MarqueeText
-                style={{
-                  fontSize: 14,
-                  fontFamily: "Quicksand-Bold",
-                  color: appConsumer.theme.colorPrimary,
-                }}
-                duration={6000}
-                marqueeOnStart
-                loop
-              >
-                Tên Bài Hát Thật Hay
-              </MarqueeText>
-
-              <Text
-                style={[
-                  textStyle.regular,
-                  { color: appConsumer.theme.colorSecondary },
-                ]}
-              >
-                Ca sĩ
-              </Text>
-            </TouchableOpacity>
             <View
               style={{
-                justifyContent: "center",
-                marginRight: 5,
+                backgroundColor: "rgba(111,111,111,0.1)",
+                width: "100%",
+                height: 3,
+                opacity: 0.8,
               }}
             >
-              <MeIcon
-                icon={mePlay}
-                size={22}
-                color={appConsumer.theme.buttonColor}
-              />
+              <View
+                style={{
+                  backgroundColor: appConsumer.theme.buttonColor,
+                  width: "30%",
+                  borderBottomRightRadius: 3,
+                  borderTopRightRadius: 3,
+                  height: "100%",
+                }}
+              ></View>
+            </View>
+            <View style={{ flexDirection: "row", padding: 5 }}>
+              <TouchableOpacity
+                onPress={this.props.openPlayer}
+                style={{
+                  flex: 2,
+                  justifyContent: "center",
+                  paddingLeft: 5,
+                }}
+              >
+                <MarqueeText
+                  style={{
+                    fontSize: 14,
+                    fontFamily: "Quicksand-Bold",
+                    color: appConsumer.theme.colorPrimary,
+                  }}
+                  duration={6000}
+                  marqueeOnStart
+                  loop
+                >
+                  Tên Bài Hát Thật Hay
+                </MarqueeText>
+
+                <Text
+                  style={[
+                    textStyle.regular,
+                    { fontSize: 12, color: appConsumer.theme.colorSecondary },
+                  ]}
+                >
+                  Ca sĩ
+                </Text>
+              </TouchableOpacity>
+              <View
+                style={{
+                  justifyContent: "center",
+                  marginRight: 5,
+                }}
+              >
+                <MeIcon
+                  icon={mePlay}
+                  size={22}
+                  color={appConsumer.theme.buttonColor}
+                />
+              </View>
             </View>
           </View>
         )}
