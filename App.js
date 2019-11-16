@@ -25,6 +25,11 @@ import Profile from "./pages/Profile";
 import Playlist from "./pages/Playlist";
 import Player from "./pages/Player";
 
+//trending
+import TopPlaylist from "./pages/trending/TopPlaylist";
+import TopSong from "./pages/trending/TopSong";
+
+
 import PlayerBar from "./components/player/PlayerBar";
 
 import { textStyle } from "./styles/textStyle";
@@ -54,6 +59,18 @@ const HomeNavigator = createStackNavigator({
   },
   Playlist: {
     screen: Playlist,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  TopPlaylist: {
+    screen: TopPlaylist,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  TopSong: {
+    screen: TopSong,
     navigationOptions: {
       header: null,
     },

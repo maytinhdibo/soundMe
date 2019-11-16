@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, Image } from "react-native";
-import { homeStyle } from "../../styles/homeStyle";
 import { getStatusBarHeight } from "react-native-status-bar-height";
-import { textStyle } from "../../styles/textStyle";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 export default class Header extends Component {
   render() {

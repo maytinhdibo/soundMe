@@ -30,7 +30,7 @@ import SectionBadge from "../components/home/SectionBadge";
 
 // import {Body, Header, List, ListItem as Item, ScrollableTab, Tab, Tabs, Title} from "native-base";
 
-const NAVBAR_HEIGHT = 56;
+const NAVBAR_HEIGHT = 45;
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const COLOR = "rgb(45,181,102)";
 
@@ -58,14 +58,14 @@ export default class NewHome extends Component {
     this.listView.getNode().scrollTo({ y, animated: true });
   };
 
-  componentDidUpdate(){
-    try{
-      if(this.state.scrollY>480){
+  componentDidUpdate() {
+    try {
+      if (this.state.scrollY > 480) {
         this.badgeView.getNode().scrollToEnd();
-      }else{
-        this.badgeView.getNode().scrollTo({ x:0, animated: true });
+      } else {
+        this.badgeView.getNode().scrollTo({ x: 0, animated: true });
       }
-    }catch{}
+    } catch {}
   }
 
   render() {
@@ -101,7 +101,8 @@ export default class NewHome extends Component {
                 paddingLeft: 12,
                 paddingRight: 9,
                 marginBottom: 2,
-                height: 56,
+                height: 45,
+                // backgroundColor:"#432"
               }}
             >
               <View style={{ flex: 1 }}>
@@ -115,7 +116,7 @@ export default class NewHome extends Component {
                     textStyle.bold,
                   ]}
                 >
-                  Trang chủ
+                  Khám phá
                 </Text>
               </View>
               <View
@@ -126,7 +127,7 @@ export default class NewHome extends Component {
                   alignItems: "center",
                 }}
               >
-                <MeIcon icon={meSearch} size={25} color="#333" />
+                <MeIcon icon={meSearch} size={20} color="#333" />
               </View>
             </View>
 
@@ -260,7 +261,11 @@ export default class NewHome extends Component {
                     />
                   </Swiper>
                 </View>
-                <SectionTitle title={"Playlist gần đây"} />
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate("TopPlaylist")}
+                >
+                  <SectionTitle title={"Playlist gần đây"} />
+                </TouchableOpacity>
                 <View>
                   <ScrollView
                     style={{ shadowOffset: { width: 10, height: 10 } }}
@@ -297,8 +302,11 @@ export default class NewHome extends Component {
                   </ScrollView>
                 </View>
 
-                <SectionTitle title={"Bài hát đề xuất"} />
-
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate("TopSong")}
+                >
+                  <SectionTitle title={"Bài hát đề xuất"} />
+                </TouchableOpacity>
                 <View>
                   <SongItem
                     imgUrl={require("../assets/nuocmat.jpg")}
