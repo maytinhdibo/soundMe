@@ -102,7 +102,8 @@ export default class NewHome extends Component {
                 paddingRight: 9,
                 marginBottom: 2,
                 height: 45,
-                // backgroundColor:"#432"
+                justifyContent:"center",
+                // backgroundColor:"#f32"
               }}
             >
               <View style={{ flex: 1 }}>
@@ -112,6 +113,8 @@ export default class NewHome extends Component {
                       fontSize: 27,
                       fontWeight: "900",
                       justifyContent: "center",
+                      alignItems:"center",
+                      // backgroundColor:"#432"
                     },
                     textStyle.bold,
                   ]}
@@ -121,13 +124,16 @@ export default class NewHome extends Component {
               </View>
               <View
                 style={{
-                  width: 50,
-                  height: 50,
+                  width: 37,
+                  height: 37,
+                  borderRadius:20,
+                  backgroundColor:"rgba(111,111,111,0.3)",
                   justifyContent: "center",
-                  alignItems: "center",
+                  alignItems:"center",
+                  alignSelf: "center",
                 }}
               >
-                <MeIcon icon={meSearch} size={20} color="#333" />
+                <MeIcon icon={meSearch} size={22} color="#333" />
               </View>
             </View>
 
