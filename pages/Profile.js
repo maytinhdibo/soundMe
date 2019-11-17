@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {withNavigation } from "react-navigation";
 import {
   Text,
   View,
@@ -23,7 +24,7 @@ import meCheck from "../icons/icon-pack/meCheck";
 import CheckBox from "../components/common/CheckBox";
 import CardView from "react-native-cardview";
 
-export default class Profile extends Component {
+class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -89,7 +90,6 @@ export default class Profile extends Component {
                         "theme",
                         buttonIndex.toString()
                       );
-                      //console.log(await AsyncStorage.getItem("theme"));
                     }
                   );
                 } else {
@@ -134,6 +134,7 @@ export default class Profile extends Component {
             </TouchableOpacity>
 
             <TouchableOpacity
+              onPress={()=>this.props.navigation.navigate('Login')}
               style={[
                 listStyle.item,
                 { backgroundColor: appConsumer.theme.backgroundColorSecondary },
@@ -146,7 +147,7 @@ export default class Profile extends Component {
                   { color: appConsumer.theme.colorPrimary },
                 ]}
               >
-                Cá nhân
+                Đăng nhập
               </Text>
             </TouchableOpacity>
 
@@ -265,3 +266,4 @@ const listStyle = StyleSheet.create({
     flexDirection: "row-reverse",
   },
 });
+export default withNavigation(Profile);
