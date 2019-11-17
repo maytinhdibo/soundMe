@@ -40,7 +40,7 @@ export default class Search extends Component {
             paddingTop: getStatusBarHeight(),
           }}
         >
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, display:this.state.searchValue.length==0?"flex":"none" }}>
             <Text
               style={[
                 { fontSize: 27, fontWeight: "900", justifyContent: "center" },
@@ -55,9 +55,9 @@ export default class Search extends Component {
         <View
           style={{
             flexDirection: "row",
-            margin: 16,
+            margin: this.state.searchValue.length==0?16:0,
             marginTop: 10,
-            borderRadius: 15,
+            borderRadius: this.state.searchValue.length==0?15:0,
             backgroundColor: "rgba(200,200,200,0.3)",
           }}
         >

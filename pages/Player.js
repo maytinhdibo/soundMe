@@ -22,6 +22,7 @@ import SoundPlayer from "react-native-sound-player";
 import { returnStatement, thisExpression } from "@babel/types";
 import MusicControl from "react-native-music-control";
 import CardView from "react-native-cardview";
+import meShare from "../icons/icon-pack/meShare";
 //npm install react-native-music-control --save
 //react-native link
 /**
@@ -341,7 +342,7 @@ export default class Player extends Component {
                 width: 50,
               }}
             >
-              <MeIcon size={25} color="#345" icon={meLeaf} />
+              <MeIcon size={25} color="#345" icon={meShare} />
             </TouchableOpacity>
           </View>
           <View style={{ flex: 1, alignItems: "center", paddingTop: "10%" }}>

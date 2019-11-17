@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\GitHub\\soundMe\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v25\\values-v25.xml",
+            "outputFile": "/Users/maytinhdibo/Project/UI/soundMe/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v25/values-v25.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Hoang Manh Duc\\.gradle\\caches\\transforms-2\\files-2.1\\1a59af87fbb4604e159d49b24b425947\\res\\values-v25\\values-v25.xml",
+                    "source": "/Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/2bd5ff5ec9c60750c2b80b454bc76a62/res/values-v25/values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",
