@@ -12,7 +12,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
-import { createAppContainer, SafeAreaView } from "react-navigation";
+import { createAppContainer, SafeAreaView} from "react-navigation";
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createStackNavigator } from "react-navigation-stack";
@@ -24,7 +24,7 @@ import Search from "./pages/Search";
 import Profile from "./pages/Profile";
 import Playlist from "./pages/Playlist";
 import Player from "./pages/Player";
-
+import Login from "./pages/Login";
 //trending
 import TopPlaylist from "./pages/trending/TopPlaylist";
 import TopSong from "./pages/trending/TopSong";
@@ -112,6 +112,8 @@ const ProfileNavigator = createStackNavigator({
       header: null,
     },
   },
+
+  
 });
 const AppNavigator = createBottomTabNavigator(
   {
@@ -134,7 +136,6 @@ const AppNavigator = createBottomTabNavigator(
     swipeEnable: true,
   }
 );
-
 class Nav extends Component {
   navigationHandler = routeName => {
     this.props.navigation.navigate(routeName);
@@ -148,15 +149,11 @@ class Nav extends Component {
       <AppConsumer>
         {appConsumer => (
       <View>
-                <HideWithKeyboard>
-
-        <PlayerBar
-          openPlayer={() => this.props.navigation.navigate("Player")}
-        />
-        
+        <HideWithKeyboard>
+        <PlayerBar/>        
           <View style={{ flexDirection: "row", justifyContent: "space-evenly" }}>
             {routes.map((route, index) => {
-              console.log(routes);
+//              console.log(routes);
               return (
                 <TouchableWithoutFeedback
                   onPress={() => this.navigationHandler(route)}
@@ -212,7 +209,6 @@ class Nav extends Component {
     );
   }
 }
-
 class MainApp extends Component {
   render() {
     return (
@@ -242,9 +238,18 @@ const RootStack = createStackNavigator(
     headerMode: "none",
   }
 );
-const AppContainer = createAppContainer(AppNavigator);
+const AppTopLevelNavigator = createStackNavigator(
+{
+  AppNavigator:AppNavigator,
+  Player:Player,
+  Login:Login,
+},
+{
+  headerMode: "none",
+}
+);
+const AppContainer = createAppContainer(AppTopLevelNavigator);
 const RootContainer = createAppContainer(RootStack);
-
 export default class App extends Component {
   constructor(props) {
     super(props);

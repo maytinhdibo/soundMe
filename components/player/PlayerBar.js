@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {withNavigation } from "react-navigation";
 import {
   Text,
   View,
@@ -16,7 +17,7 @@ import MeIcon from "../../icons/MeIcon";
 import MarqueeText from "react-native-marquee";
 import { textStyle } from "../../styles/textStyle";
 import { AppConsumer } from "../../AppContextProvider";
-export default class SongItem extends Component {
+class SongItem extends Component {
   constructor(props) {
     super(props);
   }
@@ -54,7 +55,7 @@ export default class SongItem extends Component {
             </View>
             <View style={{ flexDirection: "row", padding: 5 }}>
               <TouchableOpacity
-                onPress={this.props.openPlayer}
+                onPress= {()=>this.props.navigation.navigate("Player")}
                 style={{
                   flex: 2,
                   justifyContent: "center",
@@ -102,3 +103,4 @@ export default class SongItem extends Component {
     );
   }
 }
+export default withNavigation(SongItem);
