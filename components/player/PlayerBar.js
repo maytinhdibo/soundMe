@@ -46,7 +46,7 @@ class SongItem extends Component {
               <View
                 style={{
                   backgroundColor: appConsumer.theme.buttonColor,
-                  width: "30%",
+                  width: appConsumer.presentPosition/appConsumer.duration*10,
                   borderBottomRightRadius: 3,
                   borderTopRightRadius: 3,
                   height: "100%",
@@ -72,7 +72,7 @@ class SongItem extends Component {
                   marqueeOnStart
                   loop
                 >
-                  Tên Bài Hát Thật Hay
+                  {appConsumer.title}
                 </MarqueeText>
 
                 <Text
@@ -81,7 +81,7 @@ class SongItem extends Component {
                     { fontSize: 12, color: appConsumer.theme.colorSecondary },
                   ]}
                 >
-                  Ca sĩ
+                  {appConsumer.artist["name"]}
                 </Text>
               </TouchableOpacity>
               <View
@@ -104,3 +104,4 @@ class SongItem extends Component {
   }
 }
 export default withNavigation(SongItem);
+// PlayerBar.contextType = AppConsumer
