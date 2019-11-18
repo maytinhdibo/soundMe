@@ -14,6 +14,7 @@ import { textStyle } from "../styles/textStyle";
 import SongItem from "../components/home/SongItem";
 import MeIcon from "../icons/MeIcon";
 import meArrowRight from "../icons/icon-pack/meArrowRight";
+import meSearch from "../icons/icon-pack/meSearch";
 
 import AlbumResultItem from "../components/search/AlbumResultItem";
 import RecommendTag from "../components/search/RecommendTag";
@@ -30,17 +31,21 @@ export default class Search extends Component {
   };
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1,  paddingTop: getStatusBarHeight() }}>
         <View
           style={{
             flexDirection: "row",
             paddingLeft: 12,
             paddingRight: 9,
             marginBottom: 2,
-            paddingTop: getStatusBarHeight(),
+            display: this.state.searchValue.length == 0 ? "flex" : "none",
           }}
         >
-          <View style={{ flex: 1, display:this.state.searchValue.length==0?"flex":"none" }}>
+          <View
+            style={{
+              flex: 1,
+            }}
+          >
             <Text
               style={[
                 { fontSize: 27, fontWeight: "900", justifyContent: "center" },
@@ -55,12 +60,23 @@ export default class Search extends Component {
         <View
           style={{
             flexDirection: "row",
-            margin: this.state.searchValue.length==0?16:0,
-            marginTop: 10,
-            borderRadius: this.state.searchValue.length==0?15:0,
+            margin: this.state.searchValue.length == 0 ? 16 : 0,
+            marginTop: this.state.searchValue.length == 0 ? 10 : 0,
+            borderRadius: this.state.searchValue.length == 0 ? 15 : 0,
             backgroundColor: "rgba(200,200,200,0.3)",
           }}
         >
+          <View
+            style={{
+              width: 30,
+              paddingLeft: 12,
+              alignItems: "flex-start",
+              justifyContent: "center",
+            }}
+          >
+            <MeIcon size={20} color="#555" icon={meSearch} />
+          </View>
+
           <TextInput
             placeholder="Khám phá bài hát mà bạn ưa thích..."
             style={[
@@ -140,7 +156,7 @@ export default class Search extends Component {
               name={"Giấc mộng trong mơ"}
               actorName={"Hồng Nhung"}
             />
-             <SongResultItem
+            <SongResultItem
               imgUrl={require("../assets/nuocmat.jpg")}
               name={"Con đi đâu để thấy hoa bay"}
               actorName={"Nhiều ca sĩ"}

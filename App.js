@@ -172,8 +172,6 @@ class Nav extends Component {
                       style={{
                         padding: 12,
                         paddingHorizontal: 12,
-                        backgroundColor:
-                          navigation.state.index === index ? appConsumer.theme.hightlightColor : appConsumer.color,
                         color: appConsumer.theme.backgroundColorPrimary,
                         borderRadius: 20,
                         alignItems: "center",
@@ -182,13 +180,13 @@ class Nav extends Component {
                       focused={navigation.state.index === index}
                       index={index}
                     >
-                      <MeIcon size={20} color={appConsumer.theme.buttonColor} icon={icons[index]} />
+                      <MeIcon size={20} color={ navigation.state.index === index ? appConsumer.theme.buttonColor : 'rgba(156,156,156,0.7)'} icon={icons[index]} />
                       <Text
                         style={[
                           {
                             fontSize: 11,
                             color:
-                              navigation.state.index === index ? appConsumer.theme.buttonColor : '#777',
+                              navigation.state.index === index ? appConsumer.theme.buttonColor : 'rgba(156,156,156,0.7)',
                           },
                           textStyle.bold,
                         ]}
