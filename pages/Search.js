@@ -25,13 +25,33 @@ export default class Search extends Component {
     this.state = {
       searchValue: "",
     };
+    this.inputText = React.createRef();
   }
   recommend = value => {
     this.setState({ searchValue: value });
   };
+
+  componentDidMount() {
+    this.focusListener = this.props.navigation.addListener("didFocus", () =>
+      setTimeout(() => {
+        this.inputText.focus();
+      }, 1)
+    );
+  }
+
+  componentWillUnmount() {
+    this.focusListener.remove();
+  }
+
   render() {
     return (
-      <View style={{ flex: 1,  paddingTop: getStatusBarHeight() }}>
+      <View
+        style={{
+          flex: 1,
+          paddingTop:
+            this.state.searchValue.length == 0 ? getStatusBarHeight():0,
+        }}
+      >
         <View
           style={{
             flexDirection: "row",
@@ -62,23 +82,25 @@ export default class Search extends Component {
             flexDirection: "row",
             margin: this.state.searchValue.length == 0 ? 16 : 0,
             marginTop: this.state.searchValue.length == 0 ? 10 : 0,
+            paddingTop:
+              this.state.searchValue.length == 0 ? 0 : getStatusBarHeight(),
             borderRadius: this.state.searchValue.length == 0 ? 15 : 0,
             backgroundColor: "rgba(200,200,200,0.3)",
           }}
         >
           <View
             style={{
-              width: 30,
-              paddingLeft: 12,
-              alignItems: "flex-start",
+              width: 40,
+              alignItems: "flex-end",
               justifyContent: "center",
+              display: this.state.searchValue.length == 0 ? "none" : "flex",
             }}
           >
             <MeIcon size={20} color="#555" icon={meSearch} />
           </View>
-
           <TextInput
             placeholder="Khám phá bài hát mà bạn ưa thích..."
+            ref={ref => (this.inputText = ref)}
             style={[
               {
                 flex: 1,

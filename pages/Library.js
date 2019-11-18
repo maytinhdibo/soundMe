@@ -250,9 +250,21 @@ class SongRoute extends Component {
             </Text>
           </View>
         </TouchableWithoutFeedback>
-        <PlayListLibItem count={10} name={"Nhạc buồn"} />
-        <PlayListLibItem count={5} name={"Vinahouse quẩy tung chảo"} />
-        <PlayListLibItem count={2} name={"Oppa Idol"} />
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("PersonalPlaylist")}
+        >
+          <PlayListLibItem count={10} name={"Nhạc buồn"} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("PersonalPlaylist")}
+        >
+          <PlayListLibItem count={5} name={"Vinahouse quẩy tung chảo"} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("PersonalPlaylist")}
+        >
+          <PlayListLibItem count={2} name={"Oppa Idol"} />
+        </TouchableOpacity>
       </View>
     );
   }
@@ -396,7 +408,10 @@ export default class Library extends Component {
           </View>
         </View>
         <TabContainer />
-        <Button title={"Take"} onPress={()=>this.props.navigation.navigate("PersonalPlaylist")}/>
+        <Button
+          title={"Take"}
+          onPress={() => this.props.navigation.navigate("PersonalPlaylist")}
+        />
       </View>
     );
   }
