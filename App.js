@@ -254,6 +254,8 @@ export default class App extends Component {
     this.state = {
       playerVisible: false,
     };
+    // StatusBar.setBackgroundColor("rgba(0,0,0,0)");
+    // StatusBar.setBarStyle("light-content");
   }
 
   render() {

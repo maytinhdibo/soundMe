@@ -7,6 +7,7 @@ import {
   Text,
   View,
   ScrollView,
+  StatusBar
 } from "react-native";
 
 import Swiper from "react-native-web-swiper";
@@ -47,6 +48,11 @@ export default class NewHome extends Component {
     this.state = {
       scrollY: 0,
     };
+    //set style when open noti
+    StatusBar.setTranslucent(true);
+    StatusBar.setBackgroundColor("transparent");
+    //dark or light font
+    StatusBar.setBarStyle("dark-content");
   }
 
   handleScroll = event => {
