@@ -14,7 +14,7 @@ import {
 import { playerStyle } from "../styles/playerStyle";
 import { textStyle } from "../styles/textStyle";
 
-import Swiper from "react-native-web-swiper";
+import Swiper from "react-native-swiper";
 
 import MeIcon from "../icons/MeIcon";
 import mePlay from "../icons/icon-pack/mePlay";
