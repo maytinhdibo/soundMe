@@ -99,6 +99,11 @@ export default class MusicMain extends Component {
                   style={{ width: "100%", height: "100%", resizeMode: "cover" }}
                 />
               </CardView>
+              <View style={{flexDirection:"row", padding:12}}>
+              <View style={{width:7, height:7, backgroundColor:"#eee",borderRadius:5}}></View>
+              <View style={{width:15, height:7, marginHorizontal:3, backgroundColor:"#f43",borderRadius:5}}></View>
+              <View style={{width:7, height:7, backgroundColor:"#eee",borderRadius:5}}></View>
+              </View>
             </View>
             {/* <View ref="process"> */}
             <View>
@@ -136,7 +141,7 @@ export default class MusicMain extends Component {
                 flexDirection: "row-reverse",
                 padding: 14,
                 paddingTop: 0,
-                paddingBottom: 45,
+                paddingBottom: 25,
               }}
             >
               <MeIcon size={25} color="#fe6f61" icon={mePlay} />
