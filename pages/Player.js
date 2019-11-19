@@ -34,6 +34,7 @@ export default class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      curLine:"..."
     };
   }
 
@@ -61,7 +62,7 @@ export default class Player extends Component {
     console.log("START CONTEXT");
     console.log(this.context);
     console.log("END CONTEXT");
-    
+
     const willBlurSubscription = this.props.navigation.addListener(
       "willBlur",
       payload => {
@@ -245,10 +246,9 @@ export default class Player extends Component {
     return this.context.playing === true ? (
       <Text>pause</Text>
     ) : (
-        <MeIcon size={20} color="#fff" icon={mePlay} />
-      );
+      <MeIcon size={20} color="#fff" icon={mePlay} />
+    );
   };
-
 
   onPlayBtn = () => {
     this.context.playing = !this.context.playing;
@@ -279,21 +279,19 @@ export default class Player extends Component {
       alert(error.message);
     }
   };
-
+  curLine = value => {
+    this.setState({ curLine: value });
+  };
   render() {
     return (
       <AppConsumer>
         {appConsumer => (
           <View style={{ flex: 1, backgroundColor: "#fff" }}>
-            <View  style={playerStyle.overlay}>
-              <Swiper
-                index={1}
-                loop={false}
-                showsPagination={false}
-              >
+            <View style={playerStyle.overlay}>
+              <Swiper index={1} loop={false} showsPagination={false}>
                 <MusicInfo />
-                <MusicMain/>
-                <MusicLyric />
+                <MusicMain curLine={this.state.curLine}/>
+                <MusicLyric curLine={this.curLine} />
               </Swiper>
 
               <CardView
@@ -401,4 +399,4 @@ export default class Player extends Component {
   }
 }
 
-Player.contextType = AppConsumer
+Player.contextType = AppConsumer;

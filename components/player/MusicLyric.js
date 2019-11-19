@@ -21,6 +21,14 @@ import { textStyle } from "../../styles/textStyle";
 import CardView from "react-native-cardview";
 
 class Line extends Component {
+  checkPos() {
+    const props = this.props;
+    var result = props.curTime >= props.start && props.curTime < props.stop;
+    if (result) {
+      props.curLine(props.content);
+    }
+    return result;
+  }
   render() {
     const props = this.props;
     return (
@@ -42,9 +50,7 @@ class Line extends Component {
             style={[
               textStyle.medium,
               styles.line,
-              props.curTime >= props.start && props.curTime < props.stop
-                ? { color: "#000" }
-                : null,
+              this.checkPos() ? { color: "#000" } : null,
             ]}
           >
             {props.content}
@@ -80,6 +86,7 @@ export default class MusicLyric extends Component {
       curTime: 0,
       lyricSelected: [],
       lyricData: data,
+      curLine: "",
     };
   }
   componentDidMount() {
@@ -88,6 +95,12 @@ export default class MusicLyric extends Component {
       this.setState({ curTime: time++ });
     }, 1000);
   }
+  curLine = value => {
+    if (value != this.state.curLine) {
+      this.props.curLine(value);
+      this.setState({ curLine: value });
+    }
+  };
   selectLine = value => {
     var lines = this.state.lyricSelected;
     if (lines.indexOf(value) == -1) {
@@ -168,6 +181,7 @@ export default class MusicLyric extends Component {
                 <Line
                   key={index}
                   idx={index}
+                  curLine={this.curLine}
                   lyricSelected={this.state.lyricSelected}
                   selectLine={this.selectLine}
                   curTime={this.state.curTime}

@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
   Text,
   View,
-  ScrollView,
-  Image
+  Button,
+  Image,
 } from "react-native";
 
 import MeIcon from "../../icons/MeIcon";
@@ -17,13 +17,19 @@ import meShare from "../../icons/icon-pack/meShare";
 import { playerStyle } from "../../styles/playerStyle";
 import { textStyle } from "../../styles/textStyle";
 import { AppConsumer } from "../../AppContextProvider";
-import MusicControl from "react-native-music-control";
 import SoundPlayer from "react-native-sound-player";
+
+import Fade from "react-native-fade";
 
 import CardView from "react-native-cardview";
 
-
 export default class MusicMain extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      isGeeseSeason:false
+    }
+  }
   secondToMinuteString = second => {
     if (second > 0) {
       let i = parseInt(second);
@@ -32,7 +38,7 @@ export default class MusicMain extends Component {
     return "00:00";
   };
 
-  onSliderComplete = (position) => {
+  onSliderComplete = position => {
     this.context.updateState({ presentPosition: position });
     SoundPlayer.seek(parseInt(position));
     SoundPlayer.play();
@@ -65,7 +71,7 @@ export default class MusicMain extends Component {
               >
                 <Text style={[playerStyle.nowPlaying, textStyle.bold]}>
                   Đang phát
-            </Text>
+                </Text>
               </View>
 
               <TouchableOpacity
@@ -81,7 +87,7 @@ export default class MusicMain extends Component {
               </TouchableOpacity>
             </View>
 
-            <View style={{ flex: 1, alignItems: "center", paddingTop: "10%" }}>
+            <View style={{ flex: 1, alignItems: "center" }}>
               <Text style={[playerStyle.songName, textStyle.bold]}>
                 {appConsumer.title}
               </Text>
@@ -99,10 +105,50 @@ export default class MusicMain extends Component {
                   style={{ width: "100%", height: "100%", resizeMode: "cover" }}
                 />
               </CardView>
-              <View style={{flexDirection:"row", padding:12}}>
-              <View style={{width:7, height:7, backgroundColor:"#eee",borderRadius:5}}></View>
-              <View style={{width:15, height:7, marginHorizontal:3, backgroundColor:"#f43",borderRadius:5}}></View>
-              <View style={{width:7, height:7, backgroundColor:"#eee",borderRadius:5}}></View>
+              <Button title="Click" onPress={()=>{
+               this.setState({ isGeeseSeason: !this.state.isGeeseSeason })
+              }}/> 
+
+              <Fade visible={this.state.isGeeseSeason} direction="up">
+                <Text
+                  style={[
+                    {
+                      paddingVertical: 16,
+                      fontSize: 16,
+                    },
+                    textStyle.medium,
+                  ]}
+                >
+                  {this.props.curLine}
+                </Text>
+              </Fade>
+
+              <View style={{ flexDirection: "row", padding: 12 }}>
+                <View
+                  style={{
+                    width: 7,
+                    height: 7,
+                    backgroundColor: "#eee",
+                    borderRadius: 5,
+                  }}
+                ></View>
+                <View
+                  style={{
+                    width: 15,
+                    height: 7,
+                    marginHorizontal: 3,
+                    backgroundColor: "#f43",
+                    borderRadius: 5,
+                  }}
+                ></View>
+                <View
+                  style={{
+                    width: 7,
+                    height: 7,
+                    backgroundColor: "#eee",
+                    borderRadius: 5,
+                  }}
+                ></View>
               </View>
             </View>
             {/* <View ref="process"> */}
@@ -154,4 +200,4 @@ export default class MusicMain extends Component {
     );
   }
 }
-MusicMain.contextType = AppConsumer
+MusicMain.contextType = AppConsumer;
