@@ -287,11 +287,9 @@ export default class Player extends Component {
           <View style={{ flex: 1, backgroundColor: "#fff" }}>
             <View  style={playerStyle.overlay}>
               <Swiper
-                from={1}
-                controlsProps={{
-                  nextTitle: "",
-                  prevTitle: "",
-                }}
+                index={1}
+                loop={false}
+                showsPagination={false}
               >
                 <MusicInfo />
                 <MusicMain/>
