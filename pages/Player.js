@@ -18,6 +18,7 @@ import Swiper from "react-native-swiper";
 
 import MeIcon from "../icons/MeIcon";
 import mePlay from "../icons/icon-pack/mePlay";
+import mePause from "../icons/icon-pack/mePause";
 import meLeaf from "../icons/icon-pack/meLeaf";
 import meShare from "../icons/icon-pack/meShare";
 
@@ -244,7 +245,7 @@ export default class Player extends Component {
 
   renderPlayerPlayPause = () => {
     return this.context.playing === true ? (
-      <Text>pause</Text>
+      <MeIcon size={20} color="#fff" icon={mePause} />
     ) : (
       <MeIcon size={20} color="#fff" icon={mePlay} />
     );
@@ -287,7 +288,7 @@ export default class Player extends Component {
       <AppConsumer>
         {appConsumer => (
           <ImageBackground blurRadius={34} source={appConsumer.songImage} style={{width: '100%', height: '100%'}}>
-          <View style={{ flex: 1, backgroundColor: "rgba(255,255,255,0.6)" }}>
+          <View style={{ flex: 1, backgroundColor: "rgba(255,255,255,0.9)" }}>
             <View style={playerStyle.overlay}>
               <Swiper index={1} loop={false} showsPagination={false}>
                 <MusicInfo />

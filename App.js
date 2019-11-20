@@ -36,6 +36,9 @@ import { textStyle } from "./styles/textStyle";
 
 import meLeaf from "./icons/icon-pack/meLeaf";
 import mePlay from "./icons/icon-pack/mePlay";
+import meSearch from "./icons/icon-pack/meSearch";
+import mePlaylist from "./icons/icon-pack/mePlaylist";
+import mePerson from "./icons/icon-pack/mePerson";
 
 import MeIcon from "./icons/MeIcon";
 
@@ -144,7 +147,7 @@ class Nav extends Component {
   render() {
     const { navigation } = this.props;
     const routes = navigation.state.routes;
-    const icons = [meLeaf, meLeaf, mePlay, meLeaf];
+    const icons = [meLeaf, meSearch, mePlaylist, mePerson];
     return (
       <AppConsumer>
         {appConsumer => (
@@ -188,7 +191,7 @@ class Nav extends Component {
                             color:
                               navigation.state.index === index ? appConsumer.theme.buttonColor : 'rgba(156,156,156,0.7)',
                           },
-                          textStyle.bold,
+                          textStyle.medium,
                         ]}
                       >
                         {route.routeName}
