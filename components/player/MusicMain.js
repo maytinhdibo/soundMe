@@ -74,7 +74,7 @@ export default class MusicMain extends Component {
               </View>
 
               <TouchableOpacity
-                onPress={() => this.onShare()}
+                onPress={this.props.onShare}
                 style={{
                   // backgroundColor: "#938",
                   justifyContent: "center",

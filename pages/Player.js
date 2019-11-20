@@ -286,16 +286,17 @@ export default class Player extends Component {
     return (
       <AppConsumer>
         {appConsumer => (
-          <View style={{ flex: 1, backgroundColor: "#fff" }}>
+          <ImageBackground blurRadius={34} source={appConsumer.songImage} style={{width: '100%', height: '100%'}}>
+          <View style={{ flex: 1, backgroundColor: "rgba(255,255,255,0.6)" }}>
             <View style={playerStyle.overlay}>
               <Swiper index={1} loop={false} showsPagination={false}>
                 <MusicInfo />
-                <MusicMain curLine={this.state.curLine}/>
+                <MusicMain onShare={this.onShare} navigation={this.props.navigation} curLine={this.state.curLine}/>
                 <MusicLyric curLine={this.curLine} />
               </Swiper>
 
               <CardView
-                cardElevation={10}
+                cardElevation={0}
                 cornerRadius={37.5}
                 style={{
                   backgroundColor: "rgba(254, 111, 97, 0.23)",
@@ -306,7 +307,8 @@ export default class Player extends Component {
                   left: Math.round(Dimensions.get("window").width) * 0.5 - 37.5,
                   bottom: 75,
                   position: "absolute",
-                  zIndex: 1,
+                  zIndex: 1000,
+                  elevation:100,
                 }}
               >
                 <TouchableOpacity
@@ -326,14 +328,14 @@ export default class Player extends Component {
 
               <CardView
                 name="button"
-                cardElevation={9}
+                cardElevation={0}
                 cornerRadius={42}
                 style={{
                   height: 190,
                   paddingTop: 30,
-                  marginBottom: -65,
+                  marginBottom: -75,
                   flexDirection: "row",
-                  backgroundColor: "#fff",
+                  backgroundColor: "rgba(255,255,255,0.3)",
                   justifyContent: "space-evenly",
                   alignItems: "flex-start",
                 }}
@@ -393,6 +395,7 @@ export default class Player extends Component {
               </CardView>
             </View>
           </View>
+          </ImageBackground>
         )}
       </AppConsumer>
     );
