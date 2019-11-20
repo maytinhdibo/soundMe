@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     padding: 0,
     color: '#000',
-    elevation: 1,
+    elevation: 2,
   },
   icon: {
     height: 30,

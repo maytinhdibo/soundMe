@@ -17,6 +17,7 @@ import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 import CardView from "react-native-cardview";
 
 import Modal from "react-native-translucent-modal";
+import Swiper from "react-native-swiper";
 
 class PlayListLibItem extends Component {
   render() {
@@ -250,21 +251,30 @@ class SongRoute extends Component {
             </Text>
           </View>
         </TouchableWithoutFeedback>
-        <TouchableOpacity
+
+        <TouchableWithoutFeedback
+          style={{ height: 100, width: 100, backgroundColor: "#421" }}
           onPress={() => this.props.navigation.navigate("PersonalPlaylist")}
         >
-          <PlayListLibItem count={10} name={"Nhạc buồn"} />
-        </TouchableOpacity>
-        <TouchableOpacity
+          <View>
+            <PlayListLibItem count={10} name={"Nhạc buồn"} />
+          </View>
+        </TouchableWithoutFeedback>
+
+        <TouchableWithoutFeedback
           onPress={() => this.props.navigation.navigate("PersonalPlaylist")}
         >
-          <PlayListLibItem count={5} name={"Vinahouse quẩy tung chảo"} />
-        </TouchableOpacity>
-        <TouchableOpacity
+          <View>
+            <PlayListLibItem count={5} name={"Vinahouse quẩy tung chảo"} />
+          </View>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback
           onPress={() => this.props.navigation.navigate("PersonalPlaylist")}
         >
-          <PlayListLibItem count={2} name={"Oppa Idol"} />
-        </TouchableOpacity>
+          <View>
+            <PlayListLibItem count={2} name={"Oppa Idol"} />
+          </View>
+        </TouchableWithoutFeedback>
       </View>
     );
   }
@@ -302,21 +312,17 @@ const AlbumRoute = () => (
 );
 
 class Tabs extends Component {
-  navigationHandler = routeName => {
-    this.props.navigation.navigate(routeName);
-  };
-
   render() {
-    const { navigation } = this.props;
-    const routes = navigation.state.routes;
-
+    const routes = ["Bài hát", "Nghệ sĩ", "Album"];
     return (
       <View style={{ flexDirection: "row", padding: 12 }}>
         {routes.map((route, index) => {
-          console.log(routes);
           return (
             <TouchableWithoutFeedback
-              onPress={() => this.navigationHandler(route)}
+              onPress={() => {
+                const delta = index - this.props.index;
+                if (delta != 0) this.props.swipeTo(delta);
+              }}
             >
               <View
                 style={{
@@ -324,26 +330,21 @@ class Tabs extends Component {
                   paddingHorizontal: 12,
                   marginEnd: 6,
                   backgroundColor:
-                    navigation.state.index === index
-                      ? "#fe6f61"
-                      : "transparent",
+                    this.props.index == index ? "#fe6f61" : "transparent",
                   color: "#fff",
                   borderRadius: 20,
                 }}
-                key={route.key}
-                focused={navigation.state.index === index}
-                index={index}
               >
                 <Text
                   style={[
                     {
                       fontSize: 14,
-                      color: navigation.state.index === index ? "#fff" : "#777",
+                      color: this.props.index == index ? "#fff" : "#777",
                     },
                     textStyle.bold,
                   ]}
                 >
-                  {route.routeName}
+                  {route}
                 </Text>
               </View>
             </TouchableWithoutFeedback>
@@ -354,35 +355,16 @@ class Tabs extends Component {
   }
 }
 
-const TabNavigator = createMaterialTopTabNavigator(
-  {
-    "Bài hát yêu thích": {
-      screen: SongRoute,
-    },
-    "Ca sĩ": {
-      screen: ArtistRoute,
-    },
-    Album: {
-      screen: AlbumRoute,
-    },
-  },
-  {
-    tabBarPosition: "top",
-    tabBarComponent: props => <Tabs {...props} />,
-  }
-);
-
-const TabContainer = createAppContainer(TabNavigator);
-
 export default class Library extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchValue: "",
+      page: 0,
     };
   }
-  recommend = value => {
-    this.setState({ searchValue: value });
+  swipeTo = (value, page) => {
+    this.swiper.scrollBy(value);
+    this.setState({ page });
   };
   render() {
     return (
@@ -407,7 +389,20 @@ export default class Library extends Component {
             </Text>
           </View>
         </View>
-        <TabContainer />
+        {/* <TabContainer /> */}
+        <Tabs swipeTo={this.swipeTo} index={this.state.page} />
+        <Swiper
+          ref={ref => (this.swiper = ref)}
+          index={0}
+          onIndexChanged={index => {
+            this.setState({ page: index });
+          }}
+          showsPagination={false}
+        >
+          <SongRoute navigation={this.props.navigation} />
+          <ArtistRoute />
+          <AlbumRoute />
+        </Swiper>
         <Button
           title={"Take"}
           onPress={() => this.props.navigation.navigate("PersonalPlaylist")}
