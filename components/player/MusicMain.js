@@ -19,17 +19,16 @@ import { textStyle } from "../../styles/textStyle";
 import { AppConsumer } from "../../AppContextProvider";
 import SoundPlayer from "react-native-sound-player";
 
-import Fade from "react-native-fade";
-
 import CardView from "react-native-cardview";
 
 export default class MusicMain extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      isGeeseSeason:false
-    }
+    this.state = {
+      isGeeseSeason: true,
+    };
   }
+
   secondToMinuteString = second => {
     if (second > 0) {
       let i = parseInt(second);
@@ -105,11 +104,16 @@ export default class MusicMain extends Component {
                   style={{ width: "100%", height: "100%", resizeMode: "cover" }}
                 />
               </CardView>
-              <Button title="Click" onPress={()=>{
-               this.setState({ isGeeseSeason: !this.state.isGeeseSeason })
-              }}/> 
-
-              <Fade visible={this.state.isGeeseSeason} direction="up">
+              <View
+                style={{
+                  display:
+                    (Dimensions.get("window").height /
+                    Dimensions.get("window").width)>1.8?"flex":"none",
+                  height: 40,
+                  marginTop: 9,
+                  marginBottom: 24,
+                }}
+              >
                 <Text
                   style={[
                     {
@@ -121,7 +125,7 @@ export default class MusicMain extends Component {
                 >
                   {this.props.curLine}
                 </Text>
-              </Fade>
+              </View>
 
               <View style={{ flexDirection: "row", padding: 12 }}>
                 <View

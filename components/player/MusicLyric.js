@@ -64,16 +64,16 @@ class Line extends Component {
 const data = [
   {
     start: 0,
-    stop: 10,
+    stop: 3,
     content: "Ru mãi ngàn năm",
   },
   {
-    start: 10,
-    stop: 18,
+    start: 3,
+    stop: 6,
     content: "Dòng tóc em buồn",
   },
   {
-    start: 18,
+    start: 6,
     stop: 24,
     content: "Bàn tay em cả ngàn ngón",
   },

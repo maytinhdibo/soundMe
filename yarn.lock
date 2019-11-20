@@ -5476,11 +5476,6 @@ react-native-cardview@^2.0.5:
   dependencies:
     prop-types "^15.6.0"
 
-react-native-fade@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-fade/-/react-native-fade-1.0.3.tgz#e27cd5a75c0d09a9ee82d854fb3851006c228d23"
-  integrity sha512-MVqjYVxzuUBDjkgMygZKJIkrsM3WI1SqwFc+7nTR72bUcn6HpqCDHH5ZfUT2H5dqKDtndvNkRtNER9PZr9yGTA==
-
 react-native-gesture-handler@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.5.0.tgz#df7dc5285c152e0656db70f55200fa632c4f45af"
