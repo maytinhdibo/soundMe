@@ -128,6 +128,9 @@ class ArtistLibItem extends Component {
           <Text style={[{ fontSize: 15 }, textStyle.bold]}>
             {this.props.name}
           </Text>
+          <Text style={[{ fontSize: 13, color:"#999" }, textStyle.regular]}>
+            {this.props.follower} người thích
+          </Text>
         </View>
       </View>
     );
@@ -283,9 +286,9 @@ class SongRoute extends Component {
 
 const ArtistRoute = () => (
   <View style={{ padding: 7, paddingHorizontal: 16 }}>
-    <ArtistLibItem name={"Thu Phương"} />
-    <ArtistLibItem name={"Bích Phương"} />
-    <ArtistLibItem name={"Trúc Nhân"} />
+    <ArtistLibItem name={"Thu Phương"} follower={1340} />
+    <ArtistLibItem name={"Bích Phương"} follower={540} />
+    <ArtistLibItem name={"Trúc Nhân"} follower={2340} />
   </View>
 );
 
@@ -380,14 +383,7 @@ export default class Library extends Component {
           }}
         >
           <View style={{ flex: 1 }}>
-            <Text
-              style={[
-                commonStyle.header,
-                textStyle.bold,
-              ]}
-            >
-              Thư viện
-            </Text>
+            <Text style={[commonStyle.header, textStyle.bold]}>Thư viện</Text>
           </View>
         </View>
         {/* <TabContainer /> */}

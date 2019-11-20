@@ -51,7 +51,7 @@ export default class Search extends Component {
         style={{
           flex: 1,
           paddingTop:
-            this.state.searchValue.length == 0 ? getStatusBarHeight():0,
+            this.state.searchValue.length == 0 ? getStatusBarHeight() : 0,
         }}
       >
         <View
@@ -67,14 +67,7 @@ export default class Search extends Component {
               flex: 1,
             }}
           >
-            <Text
-              style={[
-                commonStyle.header,
-                textStyle.bold,
-              ]}
-            >
-              Tìm kiếm
-            </Text>
+            <Text style={[commonStyle.header, textStyle.bold]}>Tìm kiếm</Text>
           </View>
         </View>
 
@@ -100,6 +93,7 @@ export default class Search extends Component {
             <MeIcon size={20} color="#555" icon={meSearch} />
           </View>
           <TextInput
+            autoCapitalize={false}
             placeholder="Khám phá bài hát mà bạn ưa thích..."
             ref={ref => (this.inputText = ref)}
             style={[
@@ -201,7 +195,11 @@ export default class Search extends Component {
             <Text style={[textStyle.bold, { fontSize: 18, marginBottom: 9 }]}>
               Album
             </Text>
-            <ScrollView style={{paddingBottom:6}} showsHorizontalScrollIndicator={false} horizontal={true}>
+            <ScrollView
+              style={{ paddingBottom: 6 }}
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+            >
               <AlbumResultItem
                 imgUrl={require("../assets/nuocmat.jpg")}
                 name={"Đi đu đưa đi"}
@@ -221,13 +219,27 @@ export default class Search extends Component {
                 actorName={"Nhiều ca sĩ"}
               />
             </ScrollView>
-            <Text style={[textStyle.bold, { fontSize: 18, marginTop:9, marginBottom: 9 }]}>
+            <Text
+              style={[
+                textStyle.bold,
+                { fontSize: 18, marginTop: 9, marginBottom: 9 },
+              ]}
+            >
               Nghệ sĩ
             </Text>
             <ScrollView horizontal={true}>
-            <ArtistResultItem name="Hoạ My"  imgUrl={require("../assets/hongnhung.jpg")}/>
-            <ArtistResultItem name="Erik"  imgUrl={require("../assets/thanhlam.jpg")}/>
-            <ArtistResultItem name="Ngọc Khuê"  imgUrl={require("../assets/thuphuong.jpg")}/>
+              <ArtistResultItem
+                name="Hoạ My"
+                imgUrl={require("../assets/hongnhung.jpg")}
+              />
+              <ArtistResultItem
+                name="Erik"
+                imgUrl={require("../assets/thanhlam.jpg")}
+              />
+              <ArtistResultItem
+                name="Ngọc Khuê"
+                imgUrl={require("../assets/thuphuong.jpg")}
+              />
             </ScrollView>
           </ScrollView>
         )}

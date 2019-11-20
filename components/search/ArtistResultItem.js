@@ -6,7 +6,7 @@ import CardView from "react-native-cardview";
 export default class ArtistResultItem extends Component {
   render() {
     return (
-      <View style={{ marginEnd: 9 }}>
+      <View style={{ marginEnd: 12 }}>
         <CardView cardElevation={2} cornerRadius={37}>
           <Image
             source={this.props.imgUrl}
