@@ -7,7 +7,7 @@ import {
   Text,
   View,
   ScrollView,
-  StatusBar
+  StatusBar,
 } from "react-native";
 
 import Swiper from "react-native-web-swiper";
@@ -28,10 +28,11 @@ import meSearch from "../icons/icon-pack/meSearch";
 
 import { getStatusBarHeight } from "react-native-status-bar-height";
 import SectionBadge from "../components/home/SectionBadge";
+import { commonStyle } from "../styles/commonStyle";
 
 // import {Body, Header, List, ListItem as Item, ScrollableTab, Tab, Tabs, Title} from "native-base";
 
-const NAVBAR_HEIGHT = 45;
+const NAVBAR_HEIGHT = 50;
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const COLOR = "rgb(45,181,102)";
 
@@ -107,8 +108,10 @@ export default class NewHome extends Component {
                 paddingLeft: 12,
                 paddingRight: 9,
                 marginBottom: 2,
-                height: 45,
-                justifyContent:"center",
+                height: 50,
+                justifyContent: "center",
+                alignItems: "center",
+
                 // backgroundColor:"#f32"
               }}
             >
@@ -119,8 +122,7 @@ export default class NewHome extends Component {
                       fontSize: 27,
                       fontWeight: "900",
                       justifyContent: "center",
-                      alignItems:"center",
-                      // backgroundColor:"#432"
+                      alignItems: "center",
                     },
                     textStyle.bold,
                   ]}
@@ -132,10 +134,10 @@ export default class NewHome extends Component {
                 style={{
                   width: 37,
                   height: 37,
-                  borderRadius:20,
-                  backgroundColor:"rgba(111,111,111,0.3)",
+                  borderRadius: 20,
+                  backgroundColor: "rgba(111,111,111,0.3)",
                   justifyContent: "center",
-                  alignItems:"center",
+                  alignItems: "center",
                   alignSelf: "center",
                 }}
               >
@@ -348,7 +350,7 @@ export default class NewHome extends Component {
                 <TouchableOpacity
                   onPress={() => this.props.navigation.navigate("TopArtist")}
                 >
-                <SectionTitle title={"Nghệ sĩ yêu thích"} />
+                  <SectionTitle title={"Nghệ sĩ yêu thích"} />
                 </TouchableOpacity>
                 <View>
                   <ScrollView

@@ -19,6 +19,8 @@ import meSearch from "../icons/icon-pack/meSearch";
 import AlbumResultItem from "../components/search/AlbumResultItem";
 import RecommendTag from "../components/search/RecommendTag";
 import SongResultItem from "../components/search/SongResultItem";
+import ArtistResultItem from "../components/search/ArtistResultItem";
+import { commonStyle } from "../styles/commonStyle";
 export default class Search extends Component {
   constructor(props) {
     super(props);
@@ -57,7 +59,6 @@ export default class Search extends Component {
             flexDirection: "row",
             paddingLeft: 12,
             paddingRight: 9,
-            marginBottom: 2,
             display: this.state.searchValue.length == 0 ? "flex" : "none",
           }}
         >
@@ -68,7 +69,7 @@ export default class Search extends Component {
           >
             <Text
               style={[
-                { fontSize: 27, fontWeight: "900", justifyContent: "center" },
+                commonStyle.header,
                 textStyle.bold,
               ]}
             >
@@ -158,7 +159,7 @@ export default class Search extends Component {
             <RecommendTag onRecommend={this.recommend} content="Lối cũ ta về" />
           </View>
         ) : (
-          <View
+          <ScrollView
             style={{
               flex: 1,
               padding: 12,
@@ -200,7 +201,7 @@ export default class Search extends Component {
             <Text style={[textStyle.bold, { fontSize: 18, marginBottom: 9 }]}>
               Album
             </Text>
-            <ScrollView horizontal={true}>
+            <ScrollView style={{paddingBottom:6}} showsHorizontalScrollIndicator={false} horizontal={true}>
               <AlbumResultItem
                 imgUrl={require("../assets/nuocmat.jpg")}
                 name={"Đi đu đưa đi"}
@@ -220,7 +221,15 @@ export default class Search extends Component {
                 actorName={"Nhiều ca sĩ"}
               />
             </ScrollView>
-          </View>
+            <Text style={[textStyle.bold, { fontSize: 18, marginTop:9, marginBottom: 9 }]}>
+              Nghệ sĩ
+            </Text>
+            <ScrollView horizontal={true}>
+            <ArtistResultItem name="Hoạ My"  imgUrl={require("../assets/hongnhung.jpg")}/>
+            <ArtistResultItem name="Erik"  imgUrl={require("../assets/thanhlam.jpg")}/>
+            <ArtistResultItem name="Ngọc Khuê"  imgUrl={require("../assets/thuphuong.jpg")}/>
+            </ScrollView>
+          </ScrollView>
         )}
       </View>
     );

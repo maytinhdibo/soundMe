@@ -18,6 +18,7 @@ import CardView from "react-native-cardview";
 
 import Modal from "react-native-translucent-modal";
 import Swiper from "react-native-swiper";
+import { commonStyle } from "../styles/commonStyle";
 
 class PlayListLibItem extends Component {
   render() {
@@ -381,7 +382,7 @@ export default class Library extends Component {
           <View style={{ flex: 1 }}>
             <Text
               style={[
-                { fontSize: 27, fontWeight: "900", justifyContent: "center" },
+                commonStyle.header,
                 textStyle.bold,
               ]}
             >
@@ -403,10 +404,6 @@ export default class Library extends Component {
           <ArtistRoute />
           <AlbumRoute />
         </Swiper>
-        <Button
-          title={"Take"}
-          onPress={() => this.props.navigation.navigate("PersonalPlaylist")}
-        />
       </View>
     );
   }

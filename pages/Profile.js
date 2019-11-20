@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {withNavigation } from "react-navigation";
+import { withNavigation } from "react-navigation";
 import {
   Text,
   View,
@@ -23,6 +23,7 @@ import MeIcon from "../icons/MeIcon";
 import meCheck from "../icons/icon-pack/meCheck";
 import CheckBox from "../components/common/CheckBox";
 import CardView from "react-native-cardview";
+import { commonStyle } from "../styles/commonStyle";
 
 class Profile extends Component {
   constructor(props) {
@@ -59,17 +60,7 @@ class Profile extends Component {
               }}
             >
               <View style={{ flex: 1 }}>
-                <Text
-                  style={[
-                    {
-                      fontSize: 27,
-                      fontWeight: "900",
-                      justifyContent: "center",
-                      color: appConsumer.theme.colorPrimary,
-                    },
-                    textStyle.bold,
-                  ]}
-                >
+                <Text style={[commonStyle.header, textStyle.bold]}>
                   Cá nhân
                 </Text>
               </View>
@@ -134,7 +125,7 @@ class Profile extends Component {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={()=>this.props.navigation.navigate('Login')}
+              onPress={() => this.props.navigation.navigate("Login")}
               style={[
                 listStyle.item,
                 { backgroundColor: appConsumer.theme.backgroundColorSecondary },
@@ -242,7 +233,6 @@ class Profile extends Component {
                   <Text style={{ marginLeft: 3 }}>Tự động</Text>
                 </View>
               </View>
-
             </View>
           </View>
         )}
