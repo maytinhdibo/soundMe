@@ -91,14 +91,14 @@ class SongItem extends Component {
       this.onPause();
     }
   };
-
   renderPlayerPlayPause = () => {
     return this.context.playing == true ? (
-      <MeIcon size={22} color="#fff" icon={mePause} />
+      <MeIcon size={20} color={this.context.theme.buttonColor} icon={mePause} />
     ) : (
-      <MeIcon size={22} color="#fff" icon={mePlay} />
+      <MeIcon size={20} color={this.context.theme.buttonColor} icon={mePlay} />
     );
   };
+ 
 
 
   render() {
