@@ -12,17 +12,94 @@ import {
 import { homeStyle } from "../../styles/homeStyle";
 
 import mePlay from "../../icons/icon-pack/mePlay";
+import mePause from "../../icons/icon-pack/mePause";
 import MeIcon from "../../icons/MeIcon";
 
+import SoundPlayer from "react-native-sound-player";
+import MusicControl from "react-native-music-control";
 import MarqueeText from "react-native-marquee";
 import { textStyle } from "../../styles/textStyle";
 import { AppConsumer } from "../../AppContextProvider";
+
+
+
 class SongItem extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.loadMusic;
+  }
+
+  loadMusic() {
+    try {
+      // play the file mp3 located at /android/app/src/main/res/raw/
+      SoundPlayer.loadSoundFile("a", "mp3");
+      // play from mp3. IT'S WORKING
+      // SoundPlayer.playUrl('https://data25.chiasenhac.com/downloads/2039/6/2038231-e4db0911/128/Het%20Thuong%20Can%20Nho%20-%20Duc%20Phuc.mp3')
+      this.getInfo();
+    } catch (e) {
+      console.log("Task failed successfully", e);
+    }
+  }
+  showControlNotif = () => {
+    MusicControl.setNowPlaying({
+      title: this.context.title,
+      artwork: this.context.songImage, // URL or RN's image require()
+      artist: this.context.artist.name,
+      album: this.context.albumName,
+      genre: "Post-disco, Rhythm and Blues, Funk, Dance-pop",
+      duration: this.context.duration, // (Seconds)
+      description: "Một vài mô tả về bài hát", // Android Only
+      color: 0xffffff, // Notification Color - Android Only
+      date: "1983-01-02T00:00:00Z", // Release Date (RFC 3339) - Android Only
+      rating: 84, // Android Only (Boolean or Number depending on the type)
+      notificationIcon: "grade", // Android Only (String), Android Drawable resource name for a custom notification icon
+    });
+  };
+
+  onPlay = () => {
+    //Playing  on notif
+    MusicControl.updatePlayback({
+      state: MusicControl.STATE_PLAYING,
+    });
+    this.showControlNotif();
+    this.context.updateState({ playing: true });
+    // console.log("play pressed")
+    // console.log(this.state.playing);
+    SoundPlayer.play();
+  };
+
+  onPause = () => {
+    //Pause on notif
+    MusicControl.updatePlayback({
+      state: MusicControl.STATE_PAUSED,
+    });
+
+    this.context.updateState({ playing: false });
+    // this.getInfo();
+    SoundPlayer.pause();
+
+    // TrackPlayer.pause();
+  };
+  onPlayBtn = () => {
+    let xplay = !this.context.playing
+    if (xplay) {
+      this.onPlay();
+    } else {
+      this.onPause();
+    }
+  };
+
+  renderPlayerPlayPause = () => {
+    return this.context.playing == true ? (
+      <MeIcon size={22} color="#fff" icon={mePause} />
+    ) : (
+      <MeIcon size={22} color="#fff" icon={mePlay} />
+    );
+  };
+
 
   render() {
     return (
@@ -55,7 +132,7 @@ class SongItem extends Component {
             </View>
             <View style={{ flexDirection: "row", padding: 5 }}>
               <TouchableOpacity
-                onPress= {()=>this.props.navigation.navigate("Player")}
+                onPress= {()=>this.props.navigation.navigate("Player",{"togglePlay":false})}
                 style={{
                   flex: 2,
                   justifyContent: "center",
@@ -90,11 +167,16 @@ class SongItem extends Component {
                   marginRight: 5,
                 }}
               >
-                <MeIcon
-                  icon={mePlay}
-                  size={22}
-                  color={appConsumer.theme.buttonColor}
-                />
+                <TouchableOpacity
+                onPress= {this.onPlayBtn}
+                style={{
+                  flex: 2,
+                  justifyContent: "center",
+                  paddingLeft: 5,
+                }}
+              >
+                {this.renderPlayerPlayPause(this.context.playing)}
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -104,4 +186,4 @@ class SongItem extends Component {
   }
 }
 export default withNavigation(SongItem);
-// PlayerBar.contextType = AppConsumer
+SongItem.contextType = AppConsumer

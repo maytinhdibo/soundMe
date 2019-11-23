@@ -35,7 +35,8 @@ export default class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      curLine:"..."
+      curLine:"...",
+      something: false
     };
   }
 
@@ -58,11 +59,17 @@ export default class Player extends Component {
       console.log("Can not get current time", e);
     }
   }
+  // async componentDidUpdate(prevProps){
+  //   if( this.props.playing !== prevProps.playing){
+  //     console.log("change play")
+  //   }
+  // }
 
   async componentDidMount() {
-    console.log("START CONTEXT");
-    console.log(this.context);
-    console.log("END CONTEXT");
+
+    console.log("START PROPS");
+    console.log(this.props);
+    console.log("ExND PROPS");
 
     const willBlurSubscription = this.props.navigation.addListener(
       "willBlur",
@@ -76,7 +83,13 @@ export default class Player extends Component {
         // StatusBar.setBarStyle("light-content");
       }
     );
-    this.loadAndPlayMusic();
+    if(!this.context.loadedMusic){
+      this.loadMusic();
+    }
+    if(this.props.navigation.state.params.togglePlay){
+      this.onPlayBtn()
+    }
+   
 
     setInterval(() => {
       this.getCurrentTime();
@@ -90,6 +103,9 @@ export default class Player extends Component {
         this.onFinishPlay();
       }
     );
+    _onFinishedLoadingSubscription = SoundPlayer.addEventListener('FinishedLoading', ({ success }) => {
+      this.context.updateState({"loadedMusic":success})
+    })
 
     MusicControl.enableBackgroundMode(true);
 
@@ -170,10 +186,10 @@ export default class Player extends Component {
     MusicControl.stopControl();
   };
 
-  loadAndPlayMusic() {
+  loadMusic() {
     try {
       // play the file mp3 located at /android/app/src/main/res/raw/
-      SoundPlayer.playSoundFile("a", "mp3");
+      SoundPlayer.loadSoundFile("a", "mp3");
       // play from mp3. IT'S WORKING
       // SoundPlayer.playUrl('https://data25.chiasenhac.com/downloads/2039/6/2038231-e4db0911/128/Het%20Thuong%20Can%20Nho%20-%20Duc%20Phuc.mp3')
       this.getInfo();
@@ -189,8 +205,9 @@ export default class Player extends Component {
     });
     this.showControlNotif();
     this.context.updateState({ playing: true });
-    // console.log("play pressed")
-    // console.log(this.state.playing);
+    this.setState({
+      something:false
+    })
     SoundPlayer.play();
   };
 
@@ -201,6 +218,9 @@ export default class Player extends Component {
     });
 
     this.context.updateState({ playing: false });
+    this.setState({
+      something:true
+    })
     // this.getInfo();
     SoundPlayer.pause();
 
@@ -244,7 +264,7 @@ export default class Player extends Component {
   };
 
   renderPlayerPlayPause = () => {
-    return this.context.playing === true ? (
+    return this.context.playing == true ? (
       <MeIcon size={20} color="#fff" icon={mePause} />
     ) : (
       <MeIcon size={20} color="#fff" icon={mePlay} />
@@ -323,7 +343,7 @@ export default class Player extends Component {
                   }}
                   onPress={this.onPlayBtn}
                 >
-                  {this.renderPlayerPlayPause(appConsumer.playing)}
+                  {this.renderPlayerPlayPause(this.context.playing)}
                 </TouchableOpacity>
               </CardView>
 
