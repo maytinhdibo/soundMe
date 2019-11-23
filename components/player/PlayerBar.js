@@ -12,6 +12,7 @@ import {
 import { homeStyle } from "../../styles/homeStyle";
 
 import mePlay from "../../icons/icon-pack/mePlay";
+import mePause from "../../icons/icon-pack/mePause";
 import MeIcon from "../../icons/MeIcon";
 
 import SoundPlayer from "react-native-sound-player";
@@ -27,8 +28,21 @@ class SongItem extends Component {
     super(props);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.loadMusic;
+  }
 
+  loadMusic() {
+    try {
+      // play the file mp3 located at /android/app/src/main/res/raw/
+      SoundPlayer.loadSoundFile("a", "mp3");
+      // play from mp3. IT'S WORKING
+      // SoundPlayer.playUrl('https://data25.chiasenhac.com/downloads/2039/6/2038231-e4db0911/128/Het%20Thuong%20Can%20Nho%20-%20Duc%20Phuc.mp3')
+      this.getInfo();
+    } catch (e) {
+      console.log("Task failed successfully", e);
+    }
+  }
   showControlNotif = () => {
     MusicControl.setNowPlaying({
       title: this.context.title,
@@ -76,6 +90,14 @@ class SongItem extends Component {
     } else {
       this.onPause();
     }
+  };
+
+  renderPlayerPlayPause = () => {
+    return this.context.playing == true ? (
+      <MeIcon size={22} color="#fff" icon={mePause} />
+    ) : (
+      <MeIcon size={22} color="#fff" icon={mePlay} />
+    );
   };
 
 
@@ -153,11 +175,7 @@ class SongItem extends Component {
                   paddingLeft: 5,
                 }}
               >
-                <MeIcon
-                  icon={mePlay}
-                  size={22}
-                  color={appConsumer.theme.buttonColor}
-                />
+                {this.renderPlayerPlayPause(this.context.playing)}
                 </TouchableOpacity>
               </View>
             </View>

@@ -35,7 +35,8 @@ export default class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      curLine:"..."
+      curLine:"...",
+      something: false
     };
   }
 
@@ -204,8 +205,9 @@ export default class Player extends Component {
     });
     this.showControlNotif();
     this.context.updateState({ playing: true });
-    // console.log("play pressed")
-    // console.log(this.state.playing);
+    this.setState({
+      something:false
+    })
     SoundPlayer.play();
   };
 
@@ -216,6 +218,9 @@ export default class Player extends Component {
     });
 
     this.context.updateState({ playing: false });
+    this.setState({
+      something:true
+    })
     // this.getInfo();
     SoundPlayer.pause();
 
@@ -259,7 +264,7 @@ export default class Player extends Component {
   };
 
   renderPlayerPlayPause = () => {
-    return this.context.playing === true ? (
+    return this.context.playing == true ? (
       <MeIcon size={20} color="#fff" icon={mePause} />
     ) : (
       <MeIcon size={20} color="#fff" icon={mePlay} />
@@ -338,7 +343,7 @@ export default class Player extends Component {
                   }}
                   onPress={this.onPlayBtn}
                 >
-                  {this.renderPlayerPlayPause(appConsumer.playing)}
+                  {this.renderPlayerPlayPause(this.context.playing)}
                 </TouchableOpacity>
               </CardView>
 
