@@ -22,8 +22,9 @@ export class AppContextProvider extends Component {
                 this.setState({theme:Dark});
             }
         },
+        loadedMusic: false,
         playerState: 0,
-        playing: true,
+        playing: false,
         loading: true,
         duration: 0,
         startValue: 0,

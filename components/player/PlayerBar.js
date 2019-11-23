@@ -14,15 +14,70 @@ import { homeStyle } from "../../styles/homeStyle";
 import mePlay from "../../icons/icon-pack/mePlay";
 import MeIcon from "../../icons/MeIcon";
 
+import SoundPlayer from "react-native-sound-player";
+import MusicControl from "react-native-music-control";
 import MarqueeText from "react-native-marquee";
 import { textStyle } from "../../styles/textStyle";
 import { AppConsumer } from "../../AppContextProvider";
+
+
+
 class SongItem extends Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {}
+
+  showControlNotif = () => {
+    MusicControl.setNowPlaying({
+      title: this.context.title,
+      artwork: this.context.songImage, // URL or RN's image require()
+      artist: this.context.artist.name,
+      album: this.context.albumName,
+      genre: "Post-disco, Rhythm and Blues, Funk, Dance-pop",
+      duration: this.context.duration, // (Seconds)
+      description: "Một vài mô tả về bài hát", // Android Only
+      color: 0xffffff, // Notification Color - Android Only
+      date: "1983-01-02T00:00:00Z", // Release Date (RFC 3339) - Android Only
+      rating: 84, // Android Only (Boolean or Number depending on the type)
+      notificationIcon: "grade", // Android Only (String), Android Drawable resource name for a custom notification icon
+    });
+  };
+
+  onPlay = () => {
+    //Playing  on notif
+    MusicControl.updatePlayback({
+      state: MusicControl.STATE_PLAYING,
+    });
+    this.showControlNotif();
+    this.context.updateState({ playing: true });
+    // console.log("play pressed")
+    // console.log(this.state.playing);
+    SoundPlayer.play();
+  };
+
+  onPause = () => {
+    //Pause on notif
+    MusicControl.updatePlayback({
+      state: MusicControl.STATE_PAUSED,
+    });
+
+    this.context.updateState({ playing: false });
+    // this.getInfo();
+    SoundPlayer.pause();
+
+    // TrackPlayer.pause();
+  };
+  onPlayBtn = () => {
+    let xplay = !this.context.playing
+    if (xplay) {
+      this.onPlay();
+    } else {
+      this.onPause();
+    }
+  };
+
 
   render() {
     return (
@@ -55,7 +110,7 @@ class SongItem extends Component {
             </View>
             <View style={{ flexDirection: "row", padding: 5 }}>
               <TouchableOpacity
-                onPress= {()=>this.props.navigation.navigate("Player")}
+                onPress= {()=>this.props.navigation.navigate("Player",{"togglePlay":false})}
                 style={{
                   flex: 2,
                   justifyContent: "center",
@@ -90,11 +145,20 @@ class SongItem extends Component {
                   marginRight: 5,
                 }}
               >
+                <TouchableOpacity
+                onPress= {this.onPlayBtn}
+                style={{
+                  flex: 2,
+                  justifyContent: "center",
+                  paddingLeft: 5,
+                }}
+              >
                 <MeIcon
                   icon={mePlay}
                   size={22}
                   color={appConsumer.theme.buttonColor}
                 />
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -104,4 +168,4 @@ class SongItem extends Component {
   }
 }
 export default withNavigation(SongItem);
-// PlayerBar.contextType = AppConsumer
+SongItem.contextType = AppConsumer
