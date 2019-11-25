@@ -14,7 +14,7 @@ export default function SectionTitle(props) {
         const layout = event.nativeEvent.layout;
         layout.y
       }}
-      style={{ flex: 1, flexDirection: "row" }}
+      style={{ width:"100%", flexDirection: "row" }}
     >
       <Text style={[homeStyle.sectionTitle, textStyle.bold]}>
         {props.title}

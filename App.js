@@ -50,6 +50,7 @@ import {
   AppContext,
 } from "./AppContextProvider";
 import PersonalPlaylist from "./pages/PersonalPlaylist";
+import Singer from "./pages/Singer";
 
 console.ignoredYellowBox = ["Accessing"];
 const screenWidth = Math.round(Dimensions.get("window").width);
@@ -62,6 +63,12 @@ const HomeNavigator = createStackNavigator({
   },
   Playlist: {
     screen: Playlist,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  Singer: {
+    screen: Singer,
     navigationOptions: {
       header: null,
     },

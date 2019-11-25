@@ -320,6 +320,7 @@ export default class NewHome extends Component {
                   onPress={() => this.props.navigation.navigate("TopSong")}
                 >
                   <SectionTitle title={"Top thịnh hành"} />
+
                 </TouchableOpacity>
                 <View>
                   <SongItem
@@ -359,6 +360,7 @@ export default class NewHome extends Component {
                     showsHorizontalScrollIndicator={false}
                   >
                     <ArtistItem
+                      navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
                       name={"Thu Phương"}
                     />

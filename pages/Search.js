@@ -93,7 +93,7 @@ export default class Search extends Component {
             <MeIcon size={20} color="#555" icon={meSearch} />
           </View>
           <TextInput
-            autoCapitalize={false}
+            autoCapitalize="none"
             placeholder="Khám phá bài hát mà bạn ưa thích..."
             ref={ref => (this.inputText = ref)}
             style={[
