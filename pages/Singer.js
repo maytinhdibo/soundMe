@@ -10,8 +10,8 @@ import {
   StatusBar,
   Image,
   Dimensions,
+  TouchableWithoutFeedback,
 } from "react-native";
-import { homeStyle } from "../styles/homeStyle";
 import { textStyle } from "../styles/textStyle";
 import CardView from "react-native-cardview";
 import SongItem from "../components/playlist/SongItem";
@@ -28,8 +28,9 @@ import meHeart from "../icons/icon-pack/meHeart";
 
 import { AppConsumer } from "../AppContextProvider";
 import SectionTitle from "../components/home/SectionTitle";
+import PlaylistItem from "../components/singer/PlaylistItem";
 
-const HEADER_EXPANDED_HEIGHT = 320;
+const HEADER_EXPANDED_HEIGHT = 300;
 const HEADER_COLLAPSED_HEIGHT = 0;
 
 export default class Singer extends Component {
@@ -127,13 +128,13 @@ export default class Singer extends Component {
                 </View>
               }
               titleComponent={
-                <View style={{ paddingLeft: 50 }}>
+                <Animated.View style={{ paddingLeft: 50,  opacity: headerTitleOpacity  }}>
                   <Text
                     style={[{ fontSize: 18, color: "#fff" }, textStyle.bold]}
                   >
-                    Nghệ sĩ
+                   Hoàng Thùy Linh
                   </Text>
-                </View>
+                </Animated.View>
               }
               color={appConsumer.theme.colorPrimary}
               style={{ backgroundColor: "#453" }}
@@ -177,9 +178,9 @@ export default class Singer extends Component {
                   style={{
                     position: "absolute",
                     width: 125,
-                    height: 42.5,
+                    height: 40,
                     backgroundColor: appConsumer.theme.buttonColor,
-                    bottom: -20,
+                    bottom: -18,
                     alignItems: "center",
                     justifyContent: "center",
                     elevation: 100,
@@ -189,7 +190,7 @@ export default class Singer extends Component {
                 >
                   <Text
                     style={[
-                      { color: "#fff", textTransform: "uppercase" },
+                      { color: "#fff", fontSize: 13,textTransform: "uppercase" },
                       textStyle.bold,
                     ]}
                   >
@@ -233,7 +234,41 @@ export default class Singer extends Component {
                   backgroundColor: appConsumer.theme.backgroundColorPrimary,
                 }}
               >
-                <View style={{ marginLeft: -5 }}>
+
+
+<TouchableOpacity onPress={()=>{alert("ahihi")}}>
+                <View
+                  style={{
+                    width: 125,
+                    height: 40,
+                    backgroundColor: "rgba(1,1,1,0.2)",
+                    marginTop: -50,
+                    alignItems: "center",
+                    justifyContent:"center",
+                    alignSelf: "center",
+                  }}
+                  cardElevation={3}
+                  cornerRadius={32.5}
+               />
+               </TouchableOpacity>
+
+               <TouchableOpacity onPress={()=>{alert("ahihi")}}>
+                <View
+                  style={{
+                    width: 125,
+                    height: 40,
+                    backgroundColor: "rgba(1,1,1,0.2)",
+                    // marginTop: -50,
+                    alignItems: "center",
+                    justifyContent:"center",
+                    alignSelf: "center",
+                  }}
+                  cardElevation={3}
+                  cornerRadius={32.5}
+               />
+               </TouchableOpacity>
+
+                <View style={{ marginTop:16, marginLeft: -5 }}>
                   <SectionTitle title={"Bài hát"} />
                 </View>
                 <SongItem
@@ -276,6 +311,36 @@ export default class Singer extends Component {
                 <View style={{ marginLeft: -5 }}>
                   <SectionTitle title={"Album"} />
                 </View>
+
+                <ScrollView
+                    style={{ shadowOffset: { width: 10, height: 10 } }}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                  >
+                    <PlaylistItem
+                      navigation={this.props.navigation}
+                      imgUrl={require("../assets/nuocmat.jpg")}
+                      name={"Nhân Duyên"}
+                    />
+                    <PlaylistItem
+                      navigation={this.props.navigation}
+                      imgUrl={{
+                        uri:
+                          "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg",
+                      }}
+                      name={"Tìm Lại Giấc Mơ"}
+                    />
+                    <PlaylistItem
+                      navigation={this.props.navigation}
+                      imgUrl={{
+                        uri:
+                          "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg",
+                      }}
+                      name={"Đánh Rơi Bên Hồ"}
+                    />
+                    
+                    </ScrollView>
+
               </View>
             </ScrollView>
           </View>

@@ -126,13 +126,15 @@ export default class Playlist extends Component {
                 </View>
               }
               titleComponent={
-                <View style={{ paddingLeft: 50 }}>
+                <Animated.View
+                  style={{ paddingLeft: 50, opacity: headerTitleOpacity }}
+                >
                   <Text
                     style={[{ fontSize: 18, color: "#fff" }, textStyle.bold]}
                   >
-                    Danh sách phát
+                    Hoàng
                   </Text>
-                </View>
+                </Animated.View>
               }
               color={appConsumer.theme.colorPrimary}
               style={{ backgroundColor: "#453" }}
