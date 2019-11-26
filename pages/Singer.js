@@ -30,7 +30,7 @@ import { AppConsumer } from "../AppContextProvider";
 import SectionTitle from "../components/home/SectionTitle";
 import PlaylistItem from "../components/singer/PlaylistItem";
 
-const HEADER_EXPANDED_HEIGHT = 300;
+const HEADER_EXPANDED_HEIGHT = 250;
 const HEADER_COLLAPSED_HEIGHT = 0;
 
 export default class Singer extends Component {
@@ -128,11 +128,13 @@ export default class Singer extends Component {
                 </View>
               }
               titleComponent={
-                <Animated.View style={{ paddingLeft: 50,  opacity: headerTitleOpacity  }}>
+                <Animated.View
+                  style={{ paddingLeft: 50, opacity: headerTitleOpacity }}
+                >
                   <Text
                     style={[{ fontSize: 18, color: "#fff" }, textStyle.bold]}
                   >
-                   Hoàng Thùy Linh
+                    Hoàng Thùy Linh
                   </Text>
                 </Animated.View>
               }
@@ -174,6 +176,7 @@ export default class Singer extends Component {
                     }}
                   />
                 </CardView>
+
                 <CardView
                   style={{
                     position: "absolute",
@@ -188,20 +191,26 @@ export default class Singer extends Component {
                   cardElevation={3}
                   cornerRadius={32.5}
                 >
-                  <Text
-                    style={[
-                      { color: "#fff", fontSize: 13,textTransform: "uppercase" },
-                      textStyle.bold,
-                    ]}
-                  >
-                    Theo dõi
-                  </Text>
+                  <TouchableOpacity>
+                    <Text
+                      style={[
+                        {
+                          color: "#fff",
+                          fontSize: 13,
+                          textTransform: "uppercase",
+                        },
+                        textStyle.bold,
+                      ]}
+                    >
+                      Theo dõi
+                    </Text>
+                  </TouchableOpacity>
                 </CardView>
               </View>
               <View
                 style={{
                   position: "absolute",
-                  bottom: -200,
+                  bottom: -265,
                   width: "100%",
                   backgroundColor: appConsumer.theme.backgroundColorPrimary,
                   height: 300,
@@ -226,93 +235,83 @@ export default class Singer extends Component {
             >
               <View
                 style={{
-                  paddingHorizontal: 12,
                   minHeight:
                     Dimensions.get("window").height -
                     160 -
                     getStatusBarHeight(),
-                  backgroundColor: appConsumer.theme.backgroundColorPrimary,
                 }}
               >
+                <TouchableOpacity
+                  onPress={() => {
+                    alert("ahihi");
+                  }}
+                >
+                  <View
+                    style={{
+                      width: 125,
+                      height: 40,
+                      // backgroundColor: "rgba(1,1,1,0.2)",
+                      marginBottom: 10,
+                      alignItems: "center",
+                      justifyContent: "center",
+                      alignSelf: "center",
+                    }}
+                    cardElevation={3}
+                    cornerRadius={32.5}
+                  />
+                </TouchableOpacity>
 
-
-<TouchableOpacity onPress={()=>{alert("ahihi")}}>
                 <View
                   style={{
-                    width: 125,
-                    height: 40,
-                    backgroundColor: "rgba(1,1,1,0.2)",
-                    marginTop: -50,
-                    alignItems: "center",
-                    justifyContent:"center",
-                    alignSelf: "center",
+                    paddingHorizontal: 12,
+                    backgroundColor: appConsumer.theme.backgroundColorPrimary,
                   }}
-                  cardElevation={3}
-                  cornerRadius={32.5}
-               />
-               </TouchableOpacity>
+                >
+                  <View style={{ marginTop: 16, marginLeft: -5 }}>
+                    <SectionTitle title={"Bài hát"} />
+                  </View>
+                  <SongItem
+                    idx={1}
+                    time={124}
+                    name="Duyên Âm"
+                    actorName="Hoàng Thùy Linh ft Binz"
+                  />
+                  <SongItem
+                    idx={2}
+                    time={215}
+                    name="Duyên Dương"
+                    actorName="Hoàng Thùy Linh"
+                  />
+                  <SongItem
+                    idx={3}
+                    time={213}
+                    name="Duyên Âm"
+                    actorName="Hoàng Thùy Linh ft Binz"
+                  />
+                  <SongItem
+                    idx={3}
+                    time={321}
+                    name="Duyên Âm"
+                    actorName="Hoàng Thùy Linh ft Binz"
+                  />
+                  <SongItem
+                    idx={3}
+                    time={323}
+                    name="Duyên Âm"
+                    actorName="Hoàng Thùy Linh ft Binz"
+                  />
+                  <SongItem
+                    idx={3}
+                    time={134}
+                    name="Duyên Âm"
+                    actorName="Hoàng Thùy Linh ft Binz"
+                  />
 
-               <TouchableOpacity onPress={()=>{alert("ahihi")}}>
-                <View
-                  style={{
-                    width: 125,
-                    height: 40,
-                    backgroundColor: "rgba(1,1,1,0.2)",
-                    // marginTop: -50,
-                    alignItems: "center",
-                    justifyContent:"center",
-                    alignSelf: "center",
-                  }}
-                  cardElevation={3}
-                  cornerRadius={32.5}
-               />
-               </TouchableOpacity>
+                  <View style={{ marginLeft: -5 }}>
+                    <SectionTitle title={"Album"} />
+                  </View>
 
-                <View style={{ marginTop:16, marginLeft: -5 }}>
-                  <SectionTitle title={"Bài hát"} />
-                </View>
-                <SongItem
-                  idx={1}
-                  time={124}
-                  name="Duyên Âm"
-                  actorName="Hoàng Thùy Linh ft Binz"
-                />
-                <SongItem
-                  idx={2}
-                  time={215}
-                  name="Duyên Dương"
-                  actorName="Hoàng Thùy Linh"
-                />
-                <SongItem
-                  idx={3}
-                  time={213}
-                  name="Duyên Âm"
-                  actorName="Hoàng Thùy Linh ft Binz"
-                />
-                <SongItem
-                  idx={3}
-                  time={321}
-                  name="Duyên Âm"
-                  actorName="Hoàng Thùy Linh ft Binz"
-                />
-                <SongItem
-                  idx={3}
-                  time={323}
-                  name="Duyên Âm"
-                  actorName="Hoàng Thùy Linh ft Binz"
-                />
-                <SongItem
-                  idx={3}
-                  time={134}
-                  name="Duyên Âm"
-                  actorName="Hoàng Thùy Linh ft Binz"
-                />
-
-                <View style={{ marginLeft: -5 }}>
-                  <SectionTitle title={"Album"} />
-                </View>
-
-                <ScrollView
+                  <ScrollView
                     style={{ shadowOffset: { width: 10, height: 10 } }}
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
@@ -338,9 +337,8 @@ export default class Singer extends Component {
                       }}
                       name={"Đánh Rơi Bên Hồ"}
                     />
-                    
-                    </ScrollView>
-
+                  </ScrollView>
+                </View>
               </View>
             </ScrollView>
           </View>

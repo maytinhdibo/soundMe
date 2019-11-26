@@ -28,7 +28,7 @@ import meHeart from "../icons/icon-pack/meHeart";
 
 import { AppConsumer } from "../AppContextProvider";
 
-const HEADER_EXPANDED_HEIGHT = 340;
+const HEADER_EXPANDED_HEIGHT = 270;
 const HEADER_COLLAPSED_HEIGHT = 0;
 
 export default class Playlist extends Component {
@@ -196,7 +196,7 @@ export default class Playlist extends Component {
               <View
                 style={{
                   position: "absolute",
-                  bottom: -200,
+                  bottom: -250,
                   width: "100%",
                   backgroundColor: appConsumer.theme.backgroundColorPrimary,
                   height: 300,
@@ -221,50 +221,76 @@ export default class Playlist extends Component {
             >
               <View
                 style={{
-                  paddingHorizontal: 12,
                   minHeight:
                     Dimensions.get("window").height -
-                    160 -
+                    85 -
                     getStatusBarHeight(),
-                  backgroundColor: appConsumer.theme.backgroundColorPrimary,
                 }}
               >
-                <SongItem
-                  idx={1}
-                  time={124}
-                  name="Duyên Âm"
-                  actorName="Hoàng Thùy Linh ft Binz"
-                />
-                <SongItem
-                  idx={2}
-                  time={215}
-                  name="Duyên Dương"
-                  actorName="Hoàng Thùy Linh"
-                />
-                <SongItem
-                  idx={3}
-                  time={213}
-                  name="Duyên Âm"
-                  actorName="Hoàng Thùy Linh ft Binz"
-                />
-                <SongItem
-                  idx={3}
-                  time={321}
-                  name="Duyên Âm"
-                  actorName="Hoàng Thùy Linh ft Binz"
-                />
-                <SongItem
-                  idx={3}
-                  time={323}
-                  name="Duyên Âm"
-                  actorName="Hoàng Thùy Linh ft Binz"
-                />
-                <SongItem
-                  idx={3}
-                  time={134}
-                  name="Duyên Âm"
-                  actorName="Hoàng Thùy Linh ft Binz"
-                />
+                         <TouchableOpacity
+                  onPress={() => {
+                    alert("ahihi");
+                  }}
+                >
+                  <View
+                    style={{
+                      width: 65,
+                      height: 65,
+                      // backgroundColor: "rgba(1,1,1,0.2)",
+                      marginBottom: 10,
+                      alignItems: "center",
+                      justifyContent: "center",
+                      alignSelf: "center",
+                    }}
+                    cardElevation={3}
+                    cornerRadius={32.5}
+                  />
+                </TouchableOpacity>
+
+                <View
+                  style={{
+                    paddingHorizontal: 12,
+                    flex: 1,
+                    backgroundColor: appConsumer.theme.backgroundColorPrimary,
+                  }}
+                >
+                  <SongItem
+                    idx={1}
+                    time={124}
+                    name="Duyên Âm"
+                    actorName="Hoàng Thùy Linh ft Binz"
+                  />
+                  <SongItem
+                    idx={2}
+                    time={215}
+                    name="Duyên Dương"
+                    actorName="Hoàng Thùy Linh"
+                  />
+                  <SongItem
+                    idx={3}
+                    time={213}
+                    name="Duyên Âm"
+                    actorName="Hoàng Thùy Linh ft Binz"
+                  />
+                  <SongItem
+                    idx={3}
+                    time={321}
+                    name="Duyên Âm"
+                    actorName="Hoàng Thùy Linh ft Binz"
+                  />
+                  <SongItem
+                    idx={3}
+                    time={323}
+                    name="Duyên Âm"
+                    actorName="Hoàng Thùy Linh ft Binz"
+                  />
+                  <SongItem
+                    idx={3}
+                    time={134}
+                    name="Duyên Âm"
+                    actorName="Hoàng Thùy Linh ft Binz"
+                  />
+                </View>
               </View>
             </ScrollView>
           </View>
