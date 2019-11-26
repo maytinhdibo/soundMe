@@ -59,4 +59,3 @@ export class AppContextProvider extends Component {
 }
 
 export const AppConsumer = Context.Consumer;
-export const AppContext = Context;
