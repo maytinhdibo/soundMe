@@ -24,6 +24,8 @@ import meCheck from "../icons/icon-pack/meCheck";
 import CheckBox from "../components/common/CheckBox";
 import CardView from "react-native-cardview";
 import { commonStyle } from "../styles/commonStyle";
+import meLeaf from "../icons/icon-pack/meLeaf";
+import meHeart from "../icons/icon-pack/meHeart";
 
 class Profile extends Component {
   constructor(props) {
@@ -65,6 +67,39 @@ class Profile extends Component {
                 </Text>
               </View>
             </View>
+            <CardView
+              style={{
+                height: 75,
+                backgroundColor: "#eee",
+                margin: 15,
+                alignItems: "center",
+                padding: 9,
+                flexDirection: "row",
+              }}
+              cornerRadius={12}
+              cardElevation={2}
+            >
+              <Image
+                source={{
+                  uri:
+                    "https://i.scdn.co/image/7be436d24a08969d8724edc8c0e290a4b5624fff",
+                }}
+                style={{
+                  height: 60,
+                  width: 60,
+                  resizeMode: "cover",
+                  borderRadius: 9,
+                }}
+              />
+              <View style={{ padding: 9, flex:1 }}>
+                <Text style={[textStyle.bold, { fontSize: 15 }]}>
+                  Cường Trần
+                </Text>
+                <Text>iammaytinhdibo@gmail.com</Text>
+              </View>
+              <MeIcon size={23} icon={meHeart} />
+            </CardView>
+
             <TouchableOpacity
               onPress={() => {
                 if (Platform.OS === "android") {
