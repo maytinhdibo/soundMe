@@ -14,14 +14,6 @@ export class AppContextProvider extends Component {
                 this.setState({theme:Dark});
             }         
         },
-        toggleTheme: ()=>{
-            if ((this.state.theme)==Dark){
-                this.setState({theme:Light});
-            }
-            else{
-                this.setState({theme:Dark});
-            }
-        },
         loadedMusic: false,
         playerState: 0,
         playing: false,
@@ -57,5 +49,5 @@ export class AppContextProvider extends Component {
         )
     }
 }
-
+export const ThemeContext= Context;
 export const AppConsumer = Context.Consumer;
