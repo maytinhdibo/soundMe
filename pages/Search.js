@@ -72,15 +72,22 @@ export default class Search extends Component {
         </View>
 
         <View
-          style={{
-            flexDirection: "row",
-            margin: this.state.searchValue.length == 0 ? 16 : 0,
-            marginTop: this.state.searchValue.length == 0 ? 10 : 0,
-            paddingTop:
-              this.state.searchValue.length == 0 ? 0 : getStatusBarHeight(),
-            borderRadius: this.state.searchValue.length == 0 ? 15 : 0,
+          style={[{
+            flexDirection: "row",     
             backgroundColor: "rgba(200,200,200,0.3)",
-          }}
+          },this.state.searchValue.length == 0?{
+            marginTop :  10,
+            paddingTop:0,
+            margin: 16,
+            borderRadius: 15
+          }:{
+            margin: 0,
+            marginTop:  0,
+            paddingTop: getStatusBarHeight(),
+            borderRadius: 0,
+            borderBottomWidth:1,
+            borderBottomColor:"#ddd"
+          }]}
         >
           <View
             style={{

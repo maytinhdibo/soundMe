@@ -162,16 +162,16 @@ export default class MusicLyric extends Component {
 
         <ScrollView>
           <View
-            style={{ flexDirection: "column", alignItems: "center", flex: 1 }}
+            style={{ flexDirection: "column", alignItems: "center", flex: 1, padding: 9}}
           >
             <View style={{ marginBottom: 9, alignItems: "center" }}>
-              <Text style={[{ fontSize: 16, color: "#aaa" }, textStyle.bold]}>
+              <Text style={[{ fontSize: 16, color: "#999" }, textStyle.bold]}>
                 Chia tay hoàng hôn
               </Text>
-              <Text style={[{ fontSize: 16, color: "#aaa" }, textStyle.medium]}>
+              <Text style={[{ fontSize: 16, color: "#999" }, textStyle.medium]}>
                 Ca sĩ: Thanh Lam
               </Text>
-              <Text style={[{ fontSize: 16, color: "#aaa" }, textStyle.medium]}>
+              <Text style={[{ fontSize: 16, color: "#999" }, textStyle.medium]}>
                 Sáng tác: NS Thuận Yến
               </Text>
             </View>
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     padding: 9,
   },
   line: {
-    fontSize: 16,
+    fontSize: 17,
     opacity: 0.8,
     color: "#888",
   },

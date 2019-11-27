@@ -132,10 +132,10 @@ export default class MusicMain extends Component {
                   style={{
                     width: 7,
                     height: 7,
-                    backgroundColor: "#eee",
+                    backgroundColor: "#ccc",
                     borderRadius: 5,
                   }}
-                ></View>
+                />
                 <View
                   style={{
                     width: 15,
@@ -144,15 +144,15 @@ export default class MusicMain extends Component {
                     backgroundColor: "#f43",
                     borderRadius: 5,
                   }}
-                ></View>
+                />
                 <View
                   style={{
                     width: 7,
                     height: 7,
-                    backgroundColor: "#eee",
+                    backgroundColor: "#ccc",
                     borderRadius: 5,
                   }}
-                ></View>
+               />
               </View>
             </View>
             {/* <View ref="process"> */}
