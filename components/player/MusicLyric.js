@@ -18,6 +18,8 @@ import meShare from "../../icons/icon-pack/meShare";
 import { playerStyle } from "../../styles/playerStyle";
 import { textStyle } from "../../styles/textStyle";
 
+import {AppConsumer} from "../../AppContextProvider";
+
 import CardView from "react-native-cardview";
 
 class Line extends Component {
@@ -86,14 +88,10 @@ export default class MusicLyric extends Component {
       curTime: 0,
       lyricSelected: [],
       lyricData: data,
-      curLine: "",
     };
   }
   componentDidMount() {
     var time = this.state.curTime;
-    setInterval(() => {
-      this.setState({ curTime: time++ });
-    }, 1000);
   }
   curLine = value => {
     if (value != this.state.curLine) {
@@ -184,7 +182,7 @@ export default class MusicLyric extends Component {
                   curLine={this.curLine}
                   lyricSelected={this.state.lyricSelected}
                   selectLine={this.selectLine}
-                  curTime={this.state.curTime}
+                  curTime={this.context.presentPosition}
                   start={line.start}
                   stop={line.stop}
                   content={line.content}
@@ -197,6 +195,8 @@ export default class MusicLyric extends Component {
     );
   }
 }
+
+MusicLyric.contextType=AppConsumer;
 
 const styles = StyleSheet.create({
   lineWrapper: {

@@ -3,6 +3,7 @@ import { Text, View, Image, TouchableWithoutFeedback } from "react-native";
 import { homeStyle } from "../../styles/homeStyle";
 import * as Animatable from "react-native-animatable";
 import { textStyle } from "../../styles/textStyle";
+import {ThemeContext} from "../../AppContextProvider";
 import CardView from "react-native-cardview";
 
 export default class PlaylistItem extends Component {
@@ -36,7 +37,8 @@ export default class PlaylistItem extends Component {
               {
                 padding: 6,
                 paddingBottom: 0,
-                fontSize: 12
+                fontSize: 12,
+                color:this.context.theme.colorPrimary
               },
               textStyle.bold
             ]}
@@ -50,3 +52,4 @@ export default class PlaylistItem extends Component {
     );
   }
 }
+PlaylistItem.contextType=ThemeContext;
