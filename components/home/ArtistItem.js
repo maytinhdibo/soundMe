@@ -4,7 +4,7 @@ import { homeStyle } from "../../styles/homeStyle";
 import * as Animatable from "react-native-animatable";
 import { textStyle } from "../../styles/textStyle";
 import CardView from "react-native-cardview";
-
+import { ThemeContext } from "../../AppContextProvider";
 export default class ArtistItem extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +36,8 @@ export default class ArtistItem extends Component {
               {
                 padding: 6,
                 paddingBottom: 0,
-                fontSize: 16
+                fontSize: 16,
+                color: this.context.theme.colorPrimary,
               },
               textStyle.bold
             ]}
@@ -49,3 +50,4 @@ export default class ArtistItem extends Component {
     );
   }
 }
+ArtistItem.contextType=ThemeContext;
