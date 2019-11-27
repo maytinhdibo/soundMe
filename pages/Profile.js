@@ -61,7 +61,9 @@ class Profile extends Component {
               }}
             >
               <View style={{ flex: 1 }}>
-                <Text style={[commonStyle.header, textStyle.bold,{color:appConsumer.theme.colorPrimary}]}>
+
+                <Text style={[{color:appConsumer.theme.colorPrimary},commonStyle.header, textStyle.bold]}>
+
                   Cá nhân
                 </Text>
               </View>
@@ -69,7 +71,7 @@ class Profile extends Component {
             <CardView
               style={{
                 height: 75,
-                backgroundColor: "#eee",
+                backgroundColor: appConsumer.theme.backgroundColorSecondary,
                 margin: 15,
                 alignItems: "center",
                 padding: 9,
@@ -91,10 +93,12 @@ class Profile extends Component {
                 }}
               />
               <View style={{ padding: 9, flex:1 }}>
-                <Text style={[textStyle.bold, { fontSize: 15 , color: appConsumer.theme.te}]}>
+
+                <Text style={[textStyle.bold, { fontSize: 15, color:appConsumer.theme.colorPrimary }]}>
+
                   Cường Trần
                 </Text>
-                <Text>iammaytinhdibo@gmail.com</Text>
+                <Text style={{color:appConsumer.theme.colorPrimary, opacity: 0.75}}>iammaytinhdibo@gmail.com</Text>
               </View>
               <MeIcon size={23} icon={meHeart} color={appConsumer.theme.buttonColor} />
             </CardView>
@@ -115,6 +119,11 @@ class Profile extends Component {
                         "theme",
                         buttonIndex.toString()
                       );
+                      if(buttonIndex==1){
+                        StatusBar.setBarStyle("light-content") 
+                      }else{
+                        StatusBar.setBarStyle("dark-content") 
+                      };
                     }
                   );
                 } else {
