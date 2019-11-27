@@ -29,7 +29,7 @@ class SongItem extends Component {
   }
 
   componentDidMount() {
-    this.loadMusic;
+    this.loadMusic();
   }
 
   loadMusic() {
@@ -123,7 +123,7 @@ class SongItem extends Component {
               <View
                 style={{
                   backgroundColor: appConsumer.theme.buttonColor,
-                  width: appConsumer.presentPosition/appConsumer.duration*100 + "%",
+                  width: appConsumer.presentPosition/(appConsumer.duration+1)*100 + "%",
                   borderBottomRightRadius: 3,
                   borderTopRightRadius: 3,
                   height: "100%",
