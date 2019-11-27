@@ -29,7 +29,7 @@ class SongItem extends Component {
   }
 
   componentDidMount() {
-    this.loadMusic;
+    this.loadMusic();
   }
 
   loadMusic() {
