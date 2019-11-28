@@ -21,6 +21,7 @@ import { textStyle } from "../../styles/textStyle";
 import {AppConsumer} from "../../AppContextProvider";
 
 import CardView from "react-native-cardview";
+import meCopy from "../../icons/icon-pack/meCopy";
 
 class Line extends Component {
   checkPos() {
@@ -151,7 +152,7 @@ export default class MusicLyric extends Component {
               }}
               onPress={this.copy}
             >
-              <MeIcon size={25} icon={mePlay} />
+              <MeIcon size={22} icon={meCopy} />
             </TouchableOpacity>
           ) : (
             <View style={{ width: 50 }} />
