@@ -73,7 +73,8 @@ class Profile extends Component {
       language: "",
       theme: 0,
       switchValue: true,
-      themePanel:false
+      themePanel:false,
+      login:false
     };
   }
   componentDidMount = async () => {
@@ -127,8 +128,7 @@ class Profile extends Component {
             >
               <Image
                 source={{
-                  uri:
-                    "https://i.scdn.co/image/7be436d24a08969d8724edc8c0e290a4b5624fff",
+                  uri: this.state.login?"https://i.scdn.co/image/7be436d24a08969d8724edc8c0e290a4b5624fff":"https://haulixdaily.com/wp-content/uploads/2018/08/tumblr_inline_pe4i0bR0o21s24py6_540.png",
                 }}
                 style={{
                   height: 60,
@@ -137,7 +137,7 @@ class Profile extends Component {
                   borderRadius: 9,
                 }}
               />
-              <View style={{ padding: 9, flex: 1 }}>
+              {this.state.login?<View style={{ padding: 9, flex: 1 }}>
                 <Text
                   style={[
                     textStyle.bold,
@@ -154,12 +154,20 @@ class Profile extends Component {
                 >
                   iammaytinhdibo@gmail.com
                 </Text>
-              </View>
+              </View>:<TouchableOpacity 
+              onPress={()=>this.setState({login:true})}
+              style={{ padding: 16, flex: 1 }}><Text style={[{
+                color:"#fff",
+                fontSize:16
+              }, textStyle.bold]}>Đăng nhập hoặc đăng ký</Text></TouchableOpacity>}
+              
+              {this.state.login?
+              <TouchableOpacity onPress={()=>{alert("Logout rồi nha!")}}>
               <MeIcon
                 size={23}
                 icon={meLogout}
                 color={appConsumer.theme.buttonColor}
-              />
+              /></TouchableOpacity>:null}
             </CardView>
 
             <Text
