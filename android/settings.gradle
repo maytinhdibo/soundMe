@@ -1,4 +1,10 @@
 rootProject.name = 'soundMenative'
+include ':react-native-translucent-modal'
+project(':react-native-translucent-modal').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-translucent-modal/android')
+include ':react-native-reanimated'
+project(':react-native-reanimated').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-reanimated/android')
+include ':react-native-gesture-handler'
+project(':react-native-gesture-handler').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-gesture-handler/android')
 include ':react-native-cardview'
 project(':react-native-cardview').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-cardview/android')
 include ':react-native-sound-player'

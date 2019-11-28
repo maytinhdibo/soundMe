@@ -10,190 +10,99 @@ import {
 import { searchStyle } from "../styles/searchStyle";
 import { getStatusBarHeight } from "react-native-status-bar-height";
 import { textStyle } from "../styles/textStyle";
-import { CollapsibleHeaderScrollView } from "react-native-collapsible-header-views";
+
 import SongItem from "../components/home/SongItem";
 import MeIcon from "../icons/MeIcon";
 import meArrowRight from "../icons/icon-pack/meArrowRight";
+import meSearch from "../icons/icon-pack/meSearch";
 
-class RecommendTag extends Component {
-  render() {
-    return (
-      <TouchableOpacity
-        onPress={() => this.props.onRecommend(this.props.content)}
-      >
-        <Text
-          style={[
-            {
-              borderRadius: 18,
-              backgroundColor: "rgba(156,156,156,0.5)",
-              padding: 9,
-              paddingHorizontal: 15,
-              marginBottom: 6,
-              marginEnd: 6,
-            },
-            textStyle.bold,
-          ]}
-        >
-          {this.props.content}
-        </Text>
-      </TouchableOpacity>
-    );
-  }
-}
-
-class SongResultItem extends Component {
-  render() {
-    return (
-      <View style={searchStyle.songItem}>
-        <Image
-          source={this.props.imgUrl}
-          style={{
-            height: 50,
-            width: 50,
-            borderRadius: 9,
-            resizeMode: "cover",
-          }}
-        />
-        <View
-          style={{
-            flex: 1,
-            // backgroundColor: "#32f",
-            justifyContent: "center",
-            marginStart: 5,
-          }}
-        >
-          <Text
-            numberOfLines={1}
-            style={[
-              {
-                padding: 6,
-                paddingBottom: 0,
-                fontSize: 16,
-              },
-              textStyle.bold,
-            ]}
-          >
-            {this.props.name}
-          </Text>
-          <Text
-            numberOfLines={1}
-            style={[
-              {
-                padding: 6,
-                paddingTop: 0,
-                color: "#777",
-                fontSize: 14,
-              },
-              textStyle.regular,
-            ]}
-          >
-            {this.props.actorName}
-          </Text>
-        </View>
-      </View>
-    );
-  }
-}
-
-class AlbumResultItem extends Component {
-  render() {
-    return (
-      <View style={searchStyle.albumItem}>
-        <Image
-          source={this.props.imgUrl}
-          style={{
-            height: 65,
-            width: 65,
-            borderRadius: 9,
-            resizeMode: "cover",
-          }}
-        />
-        <View
-          style={{
-            flex: 1,
-            // backgroundColor: "#32f",
-            justifyContent: "center",
-            marginStart: 5,
-          }}
-        >
-          <Text
-            numberOfLines={1}
-            style={[
-              {
-                padding: 6,
-                paddingBottom: 0,
-                fontSize: 16,
-              },
-              textStyle.bold,
-            ]}
-          >
-            {this.props.name}
-          </Text>
-          <Text
-            numberOfLines={1}
-            style={[
-              {
-                padding: 6,
-                paddingTop: 0,
-                color: "#777",
-                fontSize: 14,
-              },
-              textStyle.regular,
-            ]}
-          >
-            {this.props.actorName}
-          </Text>
-        </View>
-      </View>
-    );
-  }
-}
-
+import AlbumResultItem from "../components/search/AlbumResultItem";
+import RecommendTag from "../components/search/RecommendTag";
+import SongResultItem from "../components/search/SongResultItem";
+import ArtistResultItem from "../components/search/ArtistResultItem";
+import { commonStyle } from "../styles/commonStyle";
 export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
       searchValue: "",
     };
+    this.inputText = React.createRef();
   }
   recommend = value => {
     this.setState({ searchValue: value });
   };
+
+  componentDidMount() {
+    this.focusListener = this.props.navigation.addListener("didFocus", () =>
+      setTimeout(() => {
+        this.inputText.focus();
+      }, 1)
+    );
+  }
+
+  componentWillUnmount() {
+    this.focusListener.remove();
+  }
+
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View
+        style={{
+          flex: 1,
+          paddingTop:
+            this.state.searchValue.length == 0 ? getStatusBarHeight() : 0,
+        }}
+      >
         <View
           style={{
             flexDirection: "row",
             paddingLeft: 12,
             paddingRight: 9,
-            marginBottom: 2,
-            paddingTop: getStatusBarHeight(),
+            display: this.state.searchValue.length == 0 ? "flex" : "none",
           }}
         >
-          <View style={{ flex: 1 }}>
-            <Text
-              style={[
-                { fontSize: 27, fontWeight: "900", justifyContent: "center" },
-                textStyle.bold,
-              ]}
-            >
-              Tìm kiếm
-            </Text>
+          <View
+            style={{
+              flex: 1,
+            }}
+          >
+            <Text style={[commonStyle.header, textStyle.bold]}>Tìm kiếm</Text>
           </View>
         </View>
 
         <View
-          style={{
-            flexDirection: "row",
-            margin: 16,
-            marginTop: 10,
-            borderRadius: 15,
+          style={[{
+            flexDirection: "row",     
             backgroundColor: "rgba(200,200,200,0.3)",
-          }}
+          },this.state.searchValue.length == 0?{
+            marginTop :  10,
+            paddingTop:0,
+            margin: 16,
+            borderRadius: 15
+          }:{
+            margin: 0,
+            marginTop:  0,
+            paddingTop: getStatusBarHeight(),
+            borderRadius: 0,
+            borderBottomWidth:1,
+            borderBottomColor:"#ddd"
+          }]}
         >
+          <View
+            style={{
+              width: 40,
+              alignItems: "flex-end",
+              justifyContent: "center",
+              display: this.state.searchValue.length == 0 ? "none" : "flex",
+            }}
+          >
+            <MeIcon size={20} color="#555" icon={meSearch} />
+          </View>
           <TextInput
+            autoCapitalize="none"
             placeholder="Khám phá bài hát mà bạn ưa thích..."
+            ref={ref => (this.inputText = ref)}
             style={[
               {
                 flex: 1,
@@ -251,7 +160,7 @@ export default class Search extends Component {
             <RecommendTag onRecommend={this.recommend} content="Lối cũ ta về" />
           </View>
         ) : (
-          <View
+          <ScrollView
             style={{
               flex: 1,
               padding: 12,
@@ -271,7 +180,7 @@ export default class Search extends Component {
               name={"Giấc mộng trong mơ"}
               actorName={"Hồng Nhung"}
             />
-             <SongResultItem
+            <SongResultItem
               imgUrl={require("../assets/nuocmat.jpg")}
               name={"Con đi đâu để thấy hoa bay"}
               actorName={"Nhiều ca sĩ"}
@@ -293,7 +202,11 @@ export default class Search extends Component {
             <Text style={[textStyle.bold, { fontSize: 18, marginBottom: 9 }]}>
               Album
             </Text>
-            <ScrollView horizontal={true}>
+            <ScrollView
+              style={{ paddingBottom: 6 }}
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+            >
               <AlbumResultItem
                 imgUrl={require("../assets/nuocmat.jpg")}
                 name={"Đi đu đưa đi"}
@@ -313,7 +226,29 @@ export default class Search extends Component {
                 actorName={"Nhiều ca sĩ"}
               />
             </ScrollView>
-          </View>
+            <Text
+              style={[
+                textStyle.bold,
+                { fontSize: 18, marginTop: 9, marginBottom: 9 },
+              ]}
+            >
+              Nghệ sĩ
+            </Text>
+            <ScrollView horizontal={true}>
+              <ArtistResultItem
+                name="Hoạ My"
+                imgUrl={require("../assets/hongnhung.jpg")}
+              />
+              <ArtistResultItem
+                name="Erik"
+                imgUrl={require("../assets/thanhlam.jpg")}
+              />
+              <ArtistResultItem
+                name="Ngọc Khuê"
+                imgUrl={require("../assets/thuphuong.jpg")}
+              />
+            </ScrollView>
+          </ScrollView>
         )}
       </View>
     );

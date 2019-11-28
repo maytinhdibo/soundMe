@@ -1,11 +1,14 @@
-import React from 'react'
-import Svg, { Path } from 'react-native-svg'
+import React from "react";
+import Svg, { Path } from "react-native-svg";
 
-export default function mePlay(props){
+export default function mePlay(props) {
   return (
-  <Svg viewBox="0 0 489.8 489.8" height={props.size} width={props.size} fill={props.color}>
-    <Path d="M244.9 0C109.8 0 0 109.8 0 244.9s109.9 244.9 244.9 244.9c135.1 0 244.9-109.9 244.9-244.9C489.8 109.8 380 0 244.9 0zm0 455.5c-116.1 0-210.6-94.5-210.6-210.6S128.8 34.3 244.9 34.3s210.6 94.5 210.6 210.6S361 455.5 244.9 455.5z" />
-    <Path d="M375.9 230.5L200.1 117.7c-5.3-3.4-12-3.6-17.5-.6s-8.9 8.8-8.9 15v225.5c0 6.3 3.4 12 8.9 15 2.6 1.4 5.4 2.1 8.2 2.1 3.2 0 6.4-.9 9.3-2.7l175.8-112.7c4.9-3.2 7.9-8.6 7.9-14.4-.1-5.8-3-11.3-7.9-14.4zm-168 95.8V163.5l126.9 81.4-126.9 81.4z" />
-  </Svg>
-)
-  }
+    <Svg
+      height={props.size}
+      width={props.size}
+      fill={props.color}
+      viewBox="0 0 24 24" >
+      <Path d="M3.9 18.9V5.1c0-1.6 1.7-2.6 3-1.8l12 6.9c1.4.8 1.4 2.9 0 3.7l-12 6.9c-1.3.7-3-.3-3-1.9z" />
+    </Svg>
+  );
+}

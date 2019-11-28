@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/maytinhdibo/Project/UI/soundMe/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
+            "outputFile": "D:\\GitHub\\soundMe\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "/Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/2bd5ff5ec9c60750c2b80b454bc76a62/res/values-night-v8/values-night-v8.xml",
+                    "source": "C:\\Users\\Hoang Manh Duc\\.gradle\\caches\\transforms-2\\files-2.1\\1a59af87fbb4604e159d49b24b425947\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",

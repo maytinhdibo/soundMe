@@ -25,6 +25,8 @@ import com.taluttasgiran.pickermodule.ReactNativePickerModulePackage;
 import com.johnsonsu.rnsoundplayer.RNSoundPlayerPackage;
 // react-native-svg
 import com.horcrux.svg.SvgPackage;
+// react-native-translucent-modal
+import com.mf.translucentmodal.TranslucentModalPackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 // react-native-navigation-bar-color
@@ -70,6 +72,7 @@ public class PackageList {
       new ReactNativePickerModulePackage(),
       new RNSoundPlayerPackage(),
       new SvgPackage(),
+      new TranslucentModalPackage(),
       new RNGestureHandlerPackage(),
       new NavigationBarColorPackage(),
       new ReanimatedPackage()

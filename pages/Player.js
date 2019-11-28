@@ -14,44 +14,40 @@ import {
 import { playerStyle } from "../styles/playerStyle";
 import { textStyle } from "../styles/textStyle";
 
+import Swiper from "react-native-swiper";
+
 import MeIcon from "../icons/MeIcon";
 import mePlay from "../icons/icon-pack/mePlay";
+import mePause from "../icons/icon-pack/mePause";
 import meLeaf from "../icons/icon-pack/meLeaf";
+import meShare from "../icons/icon-pack/meShare";
 
 import SoundPlayer from "react-native-sound-player";
-import { returnStatement, thisExpression } from "@babel/types";
 import MusicControl from "react-native-music-control";
+import MusicMain from "../components/player/MusicMain";
+
 import CardView from "react-native-cardview";
-//npm install react-native-music-control --save
-//react-native link
-/**
- * Add following to your project AndroidManifest.xml
- * <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
- **/
+import MusicInfo from "../components/player/MusicInfo";
+import MusicLyric from "../components/player/MusicLyric";
+import { AppConsumer } from "../AppContextProvider";
+import meRepeat from "../icons/icon-pack/meRepeat";
+import meShuffle from "../icons/icon-pack/meShuffle";
+import meNext from "../icons/icon-pack/meNext";
+import mePrevious from "../icons/icon-pack/mePrevious";
 
 export default class Player extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playerState: 0,
-      playing: true,
-      loading: true,
-      duration: 0,
-      startValue: 0,
-      presentPosition: 0,
-      searchValue: "",
-      repeat: false,
-      title: "Ru em trên từng ngón hồng",
-      artist: "Hồng Nhung",
-      songImage: require("../assets/hongnhung.jpg"),
-      albumName: "Album Hồng Nhung",
+      curLine:"...",
+      something: false
     };
   }
 
   async getInfo() {
     try {
       const info = await SoundPlayer.getInfo();
-      this.setState({ duration: info.duration });
+      this.context.updateState({ duration: info.duration });
       // console.log('getInfo: ', info) // {duration: 12.416, currentTime: 7.691}
     } catch (e) {
       console.log("There is no song playing", e);
@@ -61,14 +57,24 @@ export default class Player extends Component {
   async getCurrentTime() {
     try {
       const info2 = await SoundPlayer.getInfo();
-      this.setState({ presentPosition: info2.currentTime });
+      this.context.updateState({ presentPosition: info2.currentTime });
       // console.log("currrentTime:" + info2.currentTime)
     } catch (e) {
       console.log("Can not get current time", e);
     }
   }
+  // async componentDidUpdate(prevProps){
+  //   if( this.props.playing !== prevProps.playing){
+  //     console.log("change play")
+  //   }
+  // }
 
   async componentDidMount() {
+
+    console.log("START PROPS");
+    console.log(this.props);
+    console.log("ExND PROPS");
+
     const willBlurSubscription = this.props.navigation.addListener(
       "willBlur",
       payload => {
@@ -81,7 +87,13 @@ export default class Player extends Component {
         // StatusBar.setBarStyle("light-content");
       }
     );
-    this.loadAndPlayMusic();
+    if(!this.context.loadedMusic){
+      this.loadMusic();
+    }
+    if(this.props.navigation.state.params.togglePlay){
+      this.onPlayBtn()
+    }
+   
 
     setInterval(() => {
       this.getCurrentTime();
@@ -95,6 +107,9 @@ export default class Player extends Component {
         this.onFinishPlay();
       }
     );
+    _onFinishedLoadingSubscription = SoundPlayer.addEventListener('FinishedLoading', ({ success }) => {
+      this.context.updateState({"loadedMusic":success})
+    })
 
     MusicControl.enableBackgroundMode(true);
 
@@ -120,6 +135,10 @@ export default class Player extends Component {
       this.onPreviousTrack();
     });
 
+    MusicControl.on("skipForward", () => {
+      this.onCloseNotification();
+    });
+
     this.configControlNotif();
     this.showControlNotif();
 
@@ -127,7 +146,6 @@ export default class Player extends Component {
       state: MusicControl.STATE_PLAYING,
     });
   }
-
 
   configControlNotif = () => {
     // Basic Controls
@@ -143,37 +161,39 @@ export default class Player extends Component {
     MusicControl.enableControl("seekForward", false); // iOS only
     MusicControl.enableControl("seekBackward", false); // iOS only
     MusicControl.enableControl("seek", true); // Android only
-    MusicControl.enableControl("skipForward", false);
+    MusicControl.enableControl("skipForward", true);
     MusicControl.enableControl("skipBackward", false);
 
     // Default - Allow user to close notification on swipe when audio is paused
-    MusicControl.enableControl("closeNotification", true, { when: 'paused' });
+    MusicControl.enableControl("closeNotification", true, { when: "always" });
     // MusicControl.enableControl('closeNotification', true, {when: 'always'})
-
-  }
+  };
 
   showControlNotif = () => {
     MusicControl.setNowPlaying({
-      title: this.state.title,
-      artwork: this.state.songImage, // URL or RN's image require()
-      artist: this.state.artist,
-      album: this.state.albumName,
+      title: this.context.title,
+      artwork: this.context.songImage, // URL or RN's image require()
+      artist: this.context.artist.name,
+      album: this.context.albumName,
       genre: "Post-disco, Rhythm and Blues, Funk, Dance-pop",
-      duration: this.state.duration, // (Seconds)
+      duration: this.context.duration, // (Seconds)
       description: "Một vài mô tả về bài hát", // Android Only
       color: 0xffffff, // Notification Color - Android Only
       date: "1983-01-02T00:00:00Z", // Release Date (RFC 3339) - Android Only
       rating: 84, // Android Only (Boolean or Number depending on the type)
       notificationIcon: "grade", // Android Only (String), Android Drawable resource name for a custom notification icon
     });
-  }
+  };
 
+  onCloseNotification = () => {
+    this.onPause();
+    MusicControl.stopControl();
+  };
 
-
-  loadAndPlayMusic() {
+  loadMusic() {
     try {
       // play the file mp3 located at /android/app/src/main/res/raw/
-      SoundPlayer.playSoundFile("a", "mp3");
+      SoundPlayer.loadSoundFile("a", "mp3");
       // play from mp3. IT'S WORKING
       // SoundPlayer.playUrl('https://data25.chiasenhac.com/downloads/2039/6/2038231-e4db0911/128/Het%20Thuong%20Can%20Nho%20-%20Duc%20Phuc.mp3')
       this.getInfo();
@@ -188,9 +208,10 @@ export default class Player extends Component {
       state: MusicControl.STATE_PLAYING,
     });
     this.showControlNotif();
-    this.setState({ playing: true });
-    // console.log("play pressed")
-    // console.log(this.state.playing);
+    this.context.updateState({ playing: true });
+    this.setState({
+      something:false
+    })
     SoundPlayer.play();
   };
 
@@ -200,7 +221,10 @@ export default class Player extends Component {
       state: MusicControl.STATE_PAUSED,
     });
 
-    this.setState({ playing: false });
+    this.context.updateState({ playing: false });
+    this.setState({
+      something:true
+    })
     // this.getInfo();
     SoundPlayer.pause();
 
@@ -215,7 +239,7 @@ export default class Player extends Component {
     console.log("playing Previous Track");
   };
   onFinishPlay = () => {
-    if (this.state.repeat) {
+    if (this.context.repeat) {
       console.log("rePLay");
       //replay
       this.replay();
@@ -231,41 +255,29 @@ export default class Player extends Component {
       MusicControl.updatePlayback({
         state: MusicControl.STATE_STOPPED, // (STATE_ERROR, STATE_STOPPED, STATE_PLAYING, STATE_PAUSED, STATE_BUFFERING)
       });
-      this.setState({
+      this.context.updateState({
         playing: false,
       });
     }
   };
 
   replay = () => {
-    this.setState({ presentPosition: 0 });
+    this.context.updateState({ presentPosition: 0 });
     SoundPlayer.seek(0);
     SoundPlayer.play();
   };
 
   renderPlayerPlayPause = () => {
-    return this.state.playing === true ? <Text>pause</Text> : <MeIcon size={20} color="#fff" icon={mePlay} />;
-  };
-
-  secondToMinuteString = second => {
-    if (second > 0) {
-      let i = parseInt(second);
-      return Math.floor(i / 60) + ":" + ("0" + Math.floor(i % 60)).slice(-2);
-    }
-    return "--:--";
-  };
-
-  onSliderComplete = position => {
-    console.log(position);
-    this.setState({ presentPosition: position });
-    SoundPlayer.seek(parseInt(position));
-    SoundPlayer.play();
-    this.setState({ playing: true });
+    return this.context.playing == true ? (
+      <MeIcon size={20} color="#fff" icon={mePause} />
+    ) : (
+      <MeIcon size={20} color="#fff" icon={mePlay} />
+    );
   };
 
   onPlayBtn = () => {
-    this.state.playing = !this.state.playing
-    if (this.state.playing) {
+    this.context.playing = !this.context.playing;
+    if (this.context.playing) {
       this.onPlay();
     } else {
       this.onPause();
@@ -292,208 +304,127 @@ export default class Player extends Component {
       alert(error.message);
     }
   };
-
+  curLine = value => {
+    this.setState({ curLine: value });
+  };
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: "#fff" }}>
-        <View ref="overlay" style={playerStyle.overlay}>
-          <View style={playerStyle.header}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{
-                // backgroundColor: "#938",
-                justifyContent: "center",
-                alignItems: "center",
-                width: 50,
-              }}
-            >
-              <MeIcon size={25} color="#345" icon={mePlay} />
-            </TouchableOpacity>
+      <AppConsumer>
+        {appConsumer => (
+          <ImageBackground blurRadius={34} source={appConsumer.songImage} style={{width: '100%', height: '100%'}}>
+          <View style={{ flex: 1, backgroundColor: "rgba(255,255,255,0.9)" }}>
+            <View style={playerStyle.overlay}>
+              <Swiper index={1} loop={false} showsPagination={false}>
+                <MusicInfo />
+                <MusicMain onShare={this.onShare} navigation={this.props.navigation} curLine={this.state.curLine}/>
+                <MusicLyric curLine={this.curLine} />
+              </Swiper>
 
-            <View
-              style={{
-                flex: 1,
-                alignSelf: "center",
-              }}
-            >
-              <Text style={[playerStyle.nowPlaying, textStyle.bold]}>
-                Đang phát
-              </Text>
+              <CardView
+                cardElevation={0}
+                cornerRadius={37.5}
+                style={{
+                  backgroundColor: "rgba(254, 111, 97, 0.23)",
+                  width: 75,
+                  height: 75,
+                  padding: 5,
+                  marginTop: -15,
+                  left: Math.round(Dimensions.get("window").width) * 0.5 - 37.5,
+                  bottom: 75,
+                  position: "absolute",
+                  zIndex: 1000,
+                  elevation:100,
+                }}
+              >
+                <TouchableOpacity
+                  style={{
+                    borderRadius: 37.5,
+                    backgroundColor: "#fe6f61",
+                    flex: 1,
+                    width: "100%",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  onPress={this.onPlayBtn}
+                >
+                  {this.renderPlayerPlayPause(this.context.playing)}
+                </TouchableOpacity>
+              </CardView>
+
+              <CardView
+                name="button"
+                cardElevation={0}
+                cornerRadius={42}
+                style={{
+                  height: 190,
+                  paddingTop: 30,
+                  marginBottom: -75,
+                  flexDirection: "row",
+                  backgroundColor: "rgba(255,255,255,0.3)",
+                  justifyContent: "space-evenly",
+                  alignItems: "flex-start",
+                }}
+              >
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: 50,
+                    height: 50,
+                    margin: 9,
+                  }}
+                >
+                  <MeIcon size={25} color="#fe6f61" icon={meShuffle} />
+                </View>
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: 50,
+                    height: 50,
+                    margin: 9,
+                  }}
+                >
+                  <MeIcon size={20} color="#fe6f61" icon={mePrevious} />
+                </View>
+                <View
+                  style={{
+                    // backgroundColor: "#2980cc",
+                    width: 50,
+                    height: 50,
+                  }}
+                ></View>
+
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: 50,
+                    height: 50,
+                    margin: 9,
+                  }}
+                >
+                  <MeIcon size={20} color="#fe6f61" icon={meNext} />
+                </View>
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: 50,
+                    height: 50,
+                    margin: 9,
+                  }}
+                >
+                  <MeIcon size={25} color="#fe6f61" icon={meRepeat} />
+                </View>
+              </CardView>
             </View>
-
-            <TouchableOpacity
-              onPress={() => this.onShare()}
-              style={{
-                // backgroundColor: "#938",
-                justifyContent: "center",
-                alignItems: "center",
-                width: 50,
-              }}
-            >
-              <MeIcon size={25} color="#345" icon={meLeaf} />
-            </TouchableOpacity>
           </View>
-          <View style={{ flex: 1, alignItems: "center", paddingTop: "10%" }}>
-            <Text style={[playerStyle.songName, textStyle.bold]}>
-              {this.state.title}
-            </Text>
-            <Text style={[playerStyle.artistName, textStyle.regular]}>
-              {this.state.artist}
-            </Text>
-
-            <CardView
-              cardElevation={16}
-              cornerRadius={42}
-              style={playerStyle.coverImage}
-            >
-              <Image
-                source={this.state.songImage}
-                style={{ width: "100%", height: "100%", resizeMode: "cover" }}
-              />
-            </CardView>
-          </View>
-          <View ref="process">
-            <Slider
-              minimumValue={0}
-              maximumValue={this.state.duration}
-              minimumTrackTintColor="#fe6f61"
-              // maximumTrackTintColor="#1e88e5"
-              thumbTintColor="#fe6f61"
-              value={this.state.presentPosition}
-              style={{ width: "100%" }}
-              onSlidingComplete={position => this.onSliderComplete(position)}
-            ></Slider>
-
-            <View
-              style={{
-                justifyContent: "space-between",
-                flexDirection: "row-reverse",
-                padding: 14,
-                paddingTop: 0,
-              }}
-            >
-              <Text style={[{ color: "#444" }, textStyle.bold]}>
-                {this.secondToMinuteString(this.state.duration)}
-              </Text>
-              <Text style={[{ color: "#444" }, textStyle.bold]}>
-                {this.secondToMinuteString(this.state.presentPosition)}
-              </Text>
-            </View>
-          </View>
-
-          <View
-            style={{
-              justifyContent: "space-between",
-              flexDirection: "row-reverse",
-              padding: 14,
-              paddingTop: 0,
-              paddingBottom: 45,
-            }}
-          >
-            <MeIcon size={25} color="#fe6f61" icon={mePlay} />
-
-            <MeIcon size={25} color="#fe6f61" icon={mePlay} />
-          </View>
-
-          <CardView
-            cardElevation={10}
-            cornerRadius={37.5}
-            style={{
-              backgroundColor: "rgba(254, 111, 97, 0.23)",
-              width: 75,
-              height: 75,
-              padding: 3,
-              marginTop: -15,
-              left: Math.round(Dimensions.get("window").width) * 0.5 - 37.5,
-              bottom: 75,
-              position: "absolute",
-              zIndex: 1,
-            }}
-          >
-            <TouchableOpacity
-              style={{
-                borderRadius: 37.5,
-                backgroundColor: "#fe6f61",
-                flex: 1,
-                width: "100%",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-              onPress={this.onPlayBtn}
-            >
-              {this.renderPlayerPlayPause(this.state.playing)}
-            </TouchableOpacity>
-          </CardView>
-
-          <CardView
-            name="button"
-            cardElevation={9}
-            cornerRadius={42}
-            style={{
-              height: 190,
-              paddingTop: 30,
-              marginBottom: -65,
-              flexDirection: "row",
-              backgroundColor: "#fff",
-              justifyContent: "space-evenly",
-              alignItems: "flex-start",
-            }}
-          >
-            <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                width: 50,
-                height: 50,
-                margin: 9,
-              }}
-            >
-              <MeIcon size={25} color="#fe6f61" icon={mePlay} />
-            </View>
-            <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                width: 50,
-                height: 50,
-                margin: 9,
-              }}
-            >
-              <MeIcon size={25} color="#fe6f61" icon={mePlay} />
-            </View>
-            <View
-              style={{
-                // backgroundColor: "#2980cc",
-                width: 50,
-                height: 50,
-              }}
-            ></View>
-
-            <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                width: 50,
-                height: 50,
-                margin: 9,
-              }}
-            >
-              <MeIcon size={25} color="#fe6f61" icon={mePlay} />
-            </View>
-            <View
-              style={{
-                justifyContent: "center",
-                alignItems: "center",
-                width: 50,
-                height: 50,
-                margin: 9,
-              }}
-            >
-              <MeIcon size={25} color="#fe6f61" icon={mePlay} />
-            </View>
-          </CardView>
-        </View>
-      </View>
+          </ImageBackground>
+        )}
+      </AppConsumer>
     );
   }
 }
+
+Player.contextType = AppConsumer;

@@ -36,6 +36,10 @@ target 'soundMenative' do
 
   pod 'RNSoundPlayer', :path => '../node_modules/react-native-sound-player'
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
   target 'soundMenativeTests' do
     inherit! :search_paths
     # Pods for testing
