@@ -22,6 +22,7 @@ import SoundPlayer from "react-native-sound-player";
 import CardView from "react-native-cardview";
 import meArrowDown from "../../icons/icon-pack/meArrowDown";
 import meHeart from "../../icons/icon-pack/meHeart";
+import meAddPlaylist from "../../icons/icon-pack/meAddPlaylist";
 
 export default class MusicMain extends Component {
   constructor(props) {
@@ -196,7 +197,7 @@ export default class MusicMain extends Component {
                 paddingBottom: 25,
               }}
             >
-              <MeIcon size={25} color="#fe6f61" icon={meHeart} />
+              <MeIcon size={25} color="#fe6f61" icon={meAddPlaylist} />
 
               <MeIcon size={25} color="#fe6f61" icon={meHeart} />
             </View>

@@ -27,6 +27,7 @@ import CardView from "react-native-cardview";
 import { commonStyle } from "../styles/commonStyle";
 import meLeaf from "../icons/icon-pack/meLeaf";
 import meHeart from "../icons/icon-pack/meHeart";
+import meLogout from "../icons/icon-pack/meLogout";
 
 class Profile extends Component {
   constructor(props) {
@@ -102,7 +103,7 @@ class Profile extends Component {
                 </Text>
                 <Text style={{color:appConsumer.theme.colorPrimary, opacity: 0.75}}>iammaytinhdibo@gmail.com</Text>
               </View>
-              <MeIcon size={23} icon={meHeart} color={appConsumer.theme.buttonColor} />
+              <MeIcon size={23} icon={meLogout} color={appConsumer.theme.buttonColor} />
             </CardView>
 
             <Text style={[{marginLeft:15, fontSize: 20, paddingVertical:9, color:appConsumer.theme.colorPrimary}, textStyle.bold]}>Hệ thống</Text>
