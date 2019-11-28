@@ -1,15 +1,15 @@
-import React from 'react'
-import Svg, { Path } from 'react-native-svg'
+import React from "react";
+import Svg, { Path } from "react-native-svg";
 
-export default function meSearch(props){
+export default function meSearch(props) {
   return (
-  
-  <Svg height={props.size} width={props.size} >
-    <Path
+    <Svg
+      viewBox="0 0 50 50"
+      height={props.size}
+      width={props.size}
       fill={props.color}
-      d="M15.707 14.293l-4.822-4.822a6.019 6.019 0 10-1.414 1.414l4.822 4.822a1 1 0 001.414-1.414zM6 10a4 4 0 114-4 4 4 0 01-4 4z"
-    />
-  </Svg>
-
-)
-  }
+    >
+      <Path d="M21 3C11.602 3 4 10.602 4 20s7.602 17 17 17c3.355 0 6.46-.984 9.094-2.656l12.281 12.281 4.25-4.25L34.5 30.281C36.68 27.421 38 23.88 38 20c0-9.398-7.602-17-17-17zm0 4c7.2 0 13 5.8 13 13s-5.8 13-13 13S8 27.2 8 20 13.8 7 21 7z" />
+    </Svg>
+  );
+}

@@ -51,6 +51,7 @@ import {
 } from "./AppContextProvider";
 import PersonalPlaylist from "./pages/PersonalPlaylist";
 import Singer from "./pages/Singer";
+import meSetting from "./icons/icon-pack/meSetting";
 
 console.ignoredYellowBox = ["Accessing"];
 const screenWidth = Math.round(Dimensions.get("window").width);
@@ -136,7 +137,7 @@ const AppNavigator = createBottomTabNavigator(
     "Thư viện": {
       screen: LibraryNavigator,
     },
-    "Cá nhân": {
+    "Cài đặt": {
       screen: ProfileNavigator,
     },
   },
@@ -154,7 +155,7 @@ class Nav extends Component {
   render() {
     const { navigation } = this.props;
     const routes = navigation.state.routes;
-    const icons = [meLeaf, meSearch, mePlaylist, mePerson];
+    const icons = [meLeaf, meSearch, mePlaylist, meSetting];
     return (
       <AppConsumer>
         {appConsumer => (

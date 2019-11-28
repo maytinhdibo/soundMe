@@ -9,6 +9,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Button,
+  Switch,
   Image,
   AsyncStorage,
 } from "react-native";
@@ -33,6 +34,7 @@ class Profile extends Component {
     this.state = {
       language: "",
       theme: 0,
+      switchValue: true
     };
   }
   componentDidMount = async () => {
@@ -45,7 +47,7 @@ class Profile extends Component {
     return (
       <AppConsumer>
         {appConsumer => (
-          <View
+          <ScrollView
             style={{
               flex: 1,
               backgroundColor: appConsumer.theme.backgroundColorPrimary,
@@ -64,7 +66,7 @@ class Profile extends Component {
 
                 <Text style={[{color:appConsumer.theme.colorPrimary},commonStyle.header, textStyle.bold]}>
 
-                  Cá nhân
+                 Cài đặt
                 </Text>
               </View>
             </View>
@@ -103,6 +105,10 @@ class Profile extends Component {
               <MeIcon size={23} icon={meHeart} color={appConsumer.theme.buttonColor} />
             </CardView>
 
+            <Text style={[{marginLeft:15, fontSize: 20, paddingVertical:9, color:appConsumer.theme.colorPrimary}, textStyle.bold]}>Hệ thống</Text>
+
+
+            <View style={{marginHorizontal:15, borderRadius:12, overflow:"hidden"}}>
             <TouchableOpacity
               onPress={() => {
                 if (Platform.OS === "android") {
@@ -148,7 +154,7 @@ class Profile extends Component {
                 <Text
                   style={[
                     listStyle.label,
-                    textStyle.regular,
+                    textStyle.medium,
                     { color: appConsumer.theme.colorPrimary },
                   ]}
                 >
@@ -177,13 +183,36 @@ class Profile extends Component {
               <Text
                 style={[
                   listStyle.label,
-                  textStyle.regular,
+                  textStyle.medium,
                   { color: appConsumer.theme.colorPrimary },
                 ]}
               >
-                Đăng nhập
+                Đăng nhập 
               </Text>
             </TouchableOpacity>
+
+            <View
+              style={[
+                listStyle.item,
+                { backgroundColor: appConsumer.theme.backgroundColorSecondary },
+              ]}
+            >
+              <Text
+                style={[
+                  listStyle.label,
+                  textStyle.medium,
+                  { color: appConsumer.theme.colorPrimary },
+                ]}
+              >
+                Thông báo đẩy
+              </Text>
+              <Switch 
+              trackColor={{false: 'rgba(0,0,0,0.1)', true: 'rgba(200,41,45,0.2)'}}
+              thumbColor={appConsumer.theme.buttonColor}
+              style={{
+                marginRight:-6
+              }} value={this.state.switchValue} onValueChange={(value)=>{this.setState({switchValue:value})}}></Switch>
+            </View>
 
             <TouchableOpacity
               style={[
@@ -194,90 +223,105 @@ class Profile extends Component {
               <Text
                 style={[
                   listStyle.label,
-                  textStyle.regular,
+                  textStyle.medium,
                   { color: appConsumer.theme.colorPrimary },
                 ]}
               >
-                Cá nhân
+                 Xóa lịch sử tìm kiếm
               </Text>
             </TouchableOpacity>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <CardView cardElevation={2} cornerRadius={5}>
-                  <Image
-                    style={{ resizeMode: "cover", width: 72, height: 156 }}
-                    source={require("../assets/screen/light.jpg")}
-                  />
-                </CardView>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    paddingVertical: 6,
-                  }}
-                >
-                  <CheckBox isTrue={true} value={0} />
-                  <Text style={{ marginLeft: 3 }}>Sáng</Text>
-                </View>
-              </View>
-
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <CardView cardElevation={2} cornerRadius={5}>
-                  <Image
-                    style={{ resizeMode: "cover", width: 72, height: 156 }}
-                    source={require("../assets/screen/dark.jpg")}
-                  />
-                </CardView>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    paddingVertical: 6,
-                  }}
-                >
-                  <CheckBox isTrue={false} value={0} />
-                  <Text style={{ marginLeft: 3 }}>Tối</Text>
-                </View>
-              </View>
-
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <CardView cardElevation={2} cornerRadius={5}>
-                  <Image
-                    style={{ resizeMode: "cover", width: 72, height: 156 }}
-                    source={require("../assets/screen/light.jpg")}
-                  />
-                </CardView>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    paddingVertical: 6,
-                  }}
-                >
-                  <CheckBox value={0} />
-                  <Text style={{ marginLeft: 3 }}>Tự động</Text>
-                </View>
-              </View>
+          
             </View>
-          </View>
+          
+
+          <Text style={[{marginLeft:15, fontSize: 20, paddingVertical:9, color:appConsumer.theme.colorPrimary}, textStyle.bold]}>Thông tin</Text>
+
+            <View style={{marginHorizontal:15, borderRadius:12, overflow:"hidden"}}>
+
+
+<TouchableOpacity
+  style={[
+    listStyle.item,
+    { backgroundColor: appConsumer.theme.backgroundColorSecondary },
+  ]}
+>
+  <Text
+    style={[
+      listStyle.label,
+      textStyle.medium,
+      { color: appConsumer.theme.colorPrimary },
+    ]}
+  >
+    Điều khoản sử dụng
+  </Text>
+</TouchableOpacity>
+
+<TouchableOpacity
+  style={[
+    listStyle.item,
+    { backgroundColor: appConsumer.theme.backgroundColorSecondary },
+  ]}
+>
+  <Text
+    style={[
+      listStyle.label,
+      textStyle.medium,
+      { color: appConsumer.theme.colorPrimary },
+    ]}
+  >
+    Đội ngũ phát triển
+  </Text>
+</TouchableOpacity>
+
+<TouchableOpacity
+  style={[
+    listStyle.item,
+    { backgroundColor: appConsumer.theme.backgroundColorSecondary },
+  ]}
+>
+  <Text
+    style={[
+      listStyle.label,
+      textStyle.medium,
+      { color: appConsumer.theme.colorPrimary },
+    ]}
+  >
+    Góp ý, báo lỗi
+  </Text>
+</TouchableOpacity>
+
+<TouchableOpacity
+  style={[
+    listStyle.item,
+    { backgroundColor: appConsumer.theme.backgroundColorSecondary },
+  ]}
+>
+  <Text
+    style={[
+      listStyle.label,
+      textStyle.medium,
+      { color: appConsumer.theme.colorPrimary },
+    ]}
+  >
+    Phiên bản
+  </Text>
+
+  <View style={listStyle.action}>
+                <Text
+                  style={[
+                    textStyle.regular,
+                    { color: appConsumer.theme.colorPrimary },
+                  ]}
+                >
+1.0.1
+                </Text>
+              </View>
+</TouchableOpacity>
+
+</View>
+
+     
+          </ScrollView>
         )}
       </AppConsumer>
     );
@@ -287,7 +331,7 @@ class Profile extends Component {
 const listStyle = StyleSheet.create({
   item: {
     padding: 12,
-    marginBottom: 2,
+    marginBottom: 0.5,
     flexDirection: "row",
   },
   label: {
