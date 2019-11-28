@@ -3,7 +3,7 @@ import { Text, View, Image } from "react-native";
 import { homeStyle } from "../../styles/homeStyle";
 import * as Animatable from "react-native-animatable";
 import { textStyle } from "../../styles/textStyle";
-
+import { ThemeContext } from "../../AppContextProvider";
 export default class SongItem extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +38,8 @@ export default class SongItem extends Component {
               {
                 padding: 6,
                 paddingBottom: 0,
-                fontSize: 16
+                fontSize: 16,
+                color: this.context.theme.colorPrimary,
               },
               textStyle.bold
             ]}
@@ -51,7 +52,7 @@ export default class SongItem extends Component {
               {
                 padding: 6,
                 paddingTop: 0,
-                color: "#777",
+                color: this.context.theme.colorSecondary,
                 fontSize: 14
               },
               textStyle.regular
@@ -64,3 +65,4 @@ export default class SongItem extends Component {
     );
   }
 }
+SongItem.contextType=ThemeContext;

@@ -9,6 +9,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Button,
+  Switch,
   Image,
   AsyncStorage,
 } from "react-native";
@@ -18,12 +19,52 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 import AndroidDialogPicker from "react-native-android-dialog-picker";
 import { textStyle } from "../styles/textStyle";
 const theme = ["Sáng", "Tối", "Tự động"];
-import { AppConsumer } from "../AppContextProvider";
+import { AppConsumer, ThemeContext } from "../AppContextProvider";
 import MeIcon from "../icons/MeIcon";
 import meCheck from "../icons/icon-pack/meCheck";
 import CheckBox from "../components/common/CheckBox";
 import CardView from "react-native-cardview";
 import { commonStyle } from "../styles/commonStyle";
+import meLeaf from "../icons/icon-pack/meLeaf";
+import meHeart from "../icons/icon-pack/meHeart";
+import meLogout from "../icons/icon-pack/meLogout";
+import meMoon from "../icons/icon-pack/meMoon";
+import meSun from "../icons/icon-pack/meSun";
+import meSunMoon from "../icons/icon-pack/meSunMoon";
+import { TouchableNativeFeedback } from "react-native-gesture-handler";
+
+const ThemeIcons = [meMoon, meSun, meSunMoon];
+class ThemeChooseItem extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    const { title, value } = this.props;
+    return (
+      <AppConsumer>
+        {appConsumer => (
+      <TouchableOpacity onPress={()=>{this.props.closePanel()}}>
+      <View style={{ marginHorizontal: 16, alignItems: "center" }}>
+        <View
+          style={{
+            padding: 12,
+            borderRadius: 28,
+            backgroundColor: "rgba(111,111,111,0.3)",
+            marginBottom: 2
+          }}
+        >
+          <MeIcon size={20} color={"#fff"} icon={ThemeIcons[value]} />
+        </View>
+        <Text style={[{ color: "#fff", fontSize: 13 }, textStyle.medium]}>
+          {title}
+        </Text>
+      </View>
+      </TouchableOpacity>
+        )}
+        </AppConsumer>
+    );
+  }
+}
 
 class Profile extends Component {
   constructor(props) {
@@ -31,6 +72,8 @@ class Profile extends Component {
     this.state = {
       language: "",
       theme: 0,
+      switchValue: true,
+      themePanel:false
     };
   }
   componentDidMount = async () => {
@@ -39,12 +82,11 @@ class Profile extends Component {
       this.setState({ theme: currentTheme });
     }
   };
-
   render() {
     return (
       <AppConsumer>
         {appConsumer => (
-          <View
+          <ScrollView
             style={{
               flex: 1,
               backgroundColor: appConsumer.theme.backgroundColorPrimary,
@@ -60,181 +102,352 @@ class Profile extends Component {
               }}
             >
               <View style={{ flex: 1 }}>
-                <Text style={[commonStyle.header, textStyle.bold]}>
-                  Cá nhân
+                <Text
+                  style={[
+                    { color: appConsumer.theme.colorPrimary },
+                    commonStyle.header,
+                    textStyle.bold,
+                  ]}
+                >
+                  Cài đặt
                 </Text>
               </View>
             </View>
-            <TouchableOpacity
-              onPress={() => {
-                if (Platform.OS === "android") {
-                  AndroidDialogPicker.show(
-                    {
-                      title: "Choose your theme...",
-                      items: theme,
-                      cancelText: "Cancel",
-                    },
-                    async buttonIndex => {
-                      this.setState({ theme: buttonIndex });
-                      appConsumer.setTheme(buttonIndex);
-                      await AsyncStorage.setItem(
-                        "theme",
-                        buttonIndex.toString()
-                      );
-                    }
-                  );
-                } else {
-                  ActionSheetIOS.showActionSheetWithOptions(
-                    {
-                      title: "Test",
-                      options: ["item1", "item2", "Cancel"],
-                      cancelButtonIndex: 2,
-                    },
-                    buttonIndex => {
-                      console.log(buttonIndex);
-                    }
-                  );
-                }
+            <CardView
+              style={{
+                height: 75,
+                backgroundColor: appConsumer.theme.backgroundColorSecondary,
+                margin: 15,
+                alignItems: "center",
+                padding: 9,
+                flexDirection: "row",
               }}
+              cornerRadius={12}
+              cardElevation={2}
+            >
+              <Image
+                source={{
+                  uri:
+                    "https://i.scdn.co/image/7be436d24a08969d8724edc8c0e290a4b5624fff",
+                }}
+                style={{
+                  height: 60,
+                  width: 60,
+                  resizeMode: "cover",
+                  borderRadius: 9,
+                }}
+              />
+              <View style={{ padding: 9, flex: 1 }}>
+                <Text
+                  style={[
+                    textStyle.bold,
+                    { fontSize: 15, color: appConsumer.theme.colorPrimary },
+                  ]}
+                >
+                  Cường Trần
+                </Text>
+                <Text
+                  style={{
+                    color: appConsumer.theme.colorPrimary,
+                    opacity: 0.75,
+                  }}
+                >
+                  iammaytinhdibo@gmail.com
+                </Text>
+              </View>
+              <MeIcon
+                size={23}
+                icon={meLogout}
+                color={appConsumer.theme.buttonColor}
+              />
+            </CardView>
+
+            <Text
               style={[
-                listStyle.item,
-                { backgroundColor: appConsumer.theme.backgroundColorSecondary },
+                {
+                  marginLeft: 15,
+                  fontSize: 20,
+                  paddingVertical: 9,
+                  color: appConsumer.theme.colorPrimary,
+                },
+                textStyle.bold,
               ]}
             >
-              <View>
+              Hệ thống
+            </Text>
+
+            <View
+              style={{
+                marginHorizontal: 15,
+                borderRadius: 12,
+                overflow: "hidden",
+              }}
+            >
+              <TouchableOpacity
+                onPress={() => {
+                  this.setState({themePanel:!this.state.themePanel});
+                  // if (Platform.OS === "android") {
+                  //   AndroidDialogPicker.show(
+                  //     {
+                  //       title: "Choose your theme...",
+                  //       items: theme,
+                  //       cancelText: "Cancel",
+                  //     },
+                  //     async buttonIndex => {
+                  //       this.setState({ theme: buttonIndex });
+                  //       appConsumer.setTheme(buttonIndex);
+                  //       await AsyncStorage.setItem(
+                  //         "theme",
+                  //         buttonIndex.toString()
+                  //       );
+                  //       if (buttonIndex == 1) {
+                  //         StatusBar.setBarStyle("light-content");
+                  //       } else {
+                  //         StatusBar.setBarStyle("dark-content");
+                  //       }
+                  //     }
+                  //   );
+                  // } else {
+                  //   ActionSheetIOS.showActionSheetWithOptions(
+                  //     {
+                  //       title: "Test",
+                  //       options: ["item1", "item2", "Cancel"],
+                  //       cancelButtonIndex: 2,
+                  //     },
+                  //     buttonIndex => {
+                  //       console.log(buttonIndex);
+                  //     }
+                  //   );
+                  // }
+                }}
+                style={[
+                  listStyle.item,
+                  {
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
+                  },
+                ]}
+              >
+                <View>
+                  <Text
+                    style={[
+                      listStyle.label,
+                      textStyle.medium,
+                      { color: appConsumer.theme.colorPrimary },
+                    ]}
+                  >
+                    Giao diện
+                  </Text>
+                </View>
+                <View style={listStyle.action}>
+                  <Text
+                    style={[
+                      textStyle.regular,
+                      { color: appConsumer.theme.colorPrimary },
+                    ]}
+                  >
+                    {theme[this.state.theme]}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+
+              <View
+                style={{
+                  display:this.state.themePanel?"flex":"none",
+                  flexDirection: "row",
+                  padding: 12,
+                  marginTop:-2,
+                  justifyContent: "center",
+                  backgroundColor: appConsumer.theme.backgroundColorSecondary,
+                }}
+              >
+                <ThemeChooseItem closePanel={()=>this.setState({themePanel: false})} title={"Tối"} value={0} />
+                <ThemeChooseItem closePanel={()=>this.setState({themePanel: false})} title={"Tự động"} value={2} />
+                <ThemeChooseItem closePanel={()=>this.setState({themePanel: false})} title={"Sáng"} value={1} />
+              </View>
+
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("Login")}
+                style={[
+                  listStyle.item,
+                  {
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
+                  },
+                ]}
+              >
                 <Text
                   style={[
                     listStyle.label,
-                    textStyle.regular,
+                    textStyle.medium,
                     { color: appConsumer.theme.colorPrimary },
                   ]}
                 >
-                  Giao diện
+                  Đăng nhập
                 </Text>
-              </View>
-              <View style={listStyle.action}>
+              </TouchableOpacity>
+
+              <View
+                style={[
+                  listStyle.item,
+                  {
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
+                    alignItems: "center",
+                  },
+                ]}
+              >
                 <Text
                   style={[
-                    textStyle.regular,
+                    listStyle.label,
+                    textStyle.medium,
                     { color: appConsumer.theme.colorPrimary },
                   ]}
                 >
-                  {theme[this.state.theme]}
+                  Thông báo đẩy
                 </Text>
+                <Switch
+                  trackColor={{
+                    false: "rgba(0,0,0,0.1)",
+                    true: "rgba(200,41,45,0.2)",
+                  }}
+                  thumbColor={appConsumer.theme.buttonColor}
+                  style={{
+                    marginRight: -6,
+                  }}
+                  value={this.state.switchValue}
+                  onValueChange={value => {
+                    this.setState({ switchValue: value });
+                  }}
+                ></Switch>
               </View>
-            </TouchableOpacity>
 
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate("Login")}
-              style={[
-                listStyle.item,
-                { backgroundColor: appConsumer.theme.backgroundColorSecondary },
-              ]}
-            >
-              <Text
+              <TouchableOpacity
                 style={[
-                  listStyle.label,
-                  textStyle.regular,
-                  { color: appConsumer.theme.colorPrimary },
+                  listStyle.item,
+                  {
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
+                  },
                 ]}
               >
-                Đăng nhập
-              </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={[
-                listStyle.item,
-                { backgroundColor: appConsumer.theme.backgroundColorSecondary },
-              ]}
-            >
-              <Text
-                style={[
-                  listStyle.label,
-                  textStyle.regular,
-                  { color: appConsumer.theme.colorPrimary },
-                ]}
-              >
-                Cá nhân
-              </Text>
-            </TouchableOpacity>
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <CardView cardElevation={2} cornerRadius={5}>
-                  <Image
-                    style={{ resizeMode: "cover", width: 72, height: 156 }}
-                    source={require("../assets/screen/light.jpg")}
-                  />
-                </CardView>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    paddingVertical: 6,
-                  }}
+                <Text
+                  style={[
+                    listStyle.label,
+                    textStyle.medium,
+                    { color: appConsumer.theme.colorPrimary },
+                  ]}
                 >
-                  <CheckBox isTrue={true} value={0} />
-                  <Text style={{ marginLeft: 3 }}>Sáng</Text>
-                </View>
-              </View>
-
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <CardView cardElevation={2} cornerRadius={5}>
-                  <Image
-                    style={{ resizeMode: "cover", width: 72, height: 156 }}
-                    source={require("../assets/screen/dark.jpg")}
-                  />
-                </CardView>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    paddingVertical: 6,
-                  }}
-                >
-                  <CheckBox isTrue={false} value={0} />
-                  <Text style={{ marginLeft: 3 }}>Tối</Text>
-                </View>
-              </View>
-
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <CardView cardElevation={2} cornerRadius={5}>
-                  <Image
-                    style={{ resizeMode: "cover", width: 72, height: 156 }}
-                    source={require("../assets/screen/light.jpg")}
-                  />
-                </CardView>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    paddingVertical: 6,
-                  }}
-                >
-                  <CheckBox value={0} />
-                  <Text style={{ marginLeft: 3 }}>Tự động</Text>
-                </View>
-              </View>
+                  Xóa lịch sử tìm kiếm
+                </Text>
+              </TouchableOpacity>
             </View>
-          </View>
+
+            <Text
+              style={[
+                {
+                  marginLeft: 15,
+                  fontSize: 20,
+                  paddingVertical: 9,
+                  color: appConsumer.theme.colorPrimary,
+                },
+                textStyle.bold,
+              ]}
+            >
+              Thông tin
+            </Text>
+
+            <View
+              style={{
+                marginHorizontal: 15,
+                borderRadius: 12,
+                overflow: "hidden",
+              }}
+            >
+              <TouchableOpacity
+                style={[
+                  listStyle.item,
+                  {
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    listStyle.label,
+                    textStyle.medium,
+                    { color: appConsumer.theme.colorPrimary },
+                  ]}
+                >
+                  Điều khoản sử dụng
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[
+                  listStyle.item,
+                  {
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    listStyle.label,
+                    textStyle.medium,
+                    { color: appConsumer.theme.colorPrimary },
+                  ]}
+                >
+                  Đội ngũ phát triển
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[
+                  listStyle.item,
+                  {
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    listStyle.label,
+                    textStyle.medium,
+                    { color: appConsumer.theme.colorPrimary },
+                  ]}
+                >
+                  Góp ý, báo lỗi
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[
+                  listStyle.item,
+                  {
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
+                  },
+                ]}
+              >
+                <Text
+                  style={[
+                    listStyle.label,
+                    textStyle.medium,
+                    { color: appConsumer.theme.colorPrimary },
+                  ]}
+                >
+                  Phiên bản
+                </Text>
+
+                <View style={listStyle.action}>
+                  <Text
+                    style={[
+                      textStyle.regular,
+                      { color: appConsumer.theme.colorPrimary },
+                    ]}
+                  >
+                    1.0.1
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
         )}
       </AppConsumer>
     );
@@ -244,7 +457,7 @@ class Profile extends Component {
 const listStyle = StyleSheet.create({
   item: {
     padding: 12,
-    marginBottom: 2,
+    marginBottom: 0.5,
     flexDirection: "row",
   },
   label: {

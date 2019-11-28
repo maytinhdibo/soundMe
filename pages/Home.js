@@ -29,7 +29,7 @@ import meSearch from "../icons/icon-pack/meSearch";
 import { getStatusBarHeight } from "react-native-status-bar-height";
 import SectionBadge from "../components/home/SectionBadge";
 import { commonStyle } from "../styles/commonStyle";
-
+import {ThemeContext} from "../AppContextProvider";
 // import {Body, Header, List, ListItem as Item, ScrollableTab, Tab, Tabs, Title} from "native-base";
 
 const NAVBAR_HEIGHT = 50;
@@ -39,7 +39,6 @@ const COLOR = "rgb(45,181,102)";
 export default class NewHome extends Component {
   scroll = new Animated.Value(0);
   headerY;
-
   constructor(props) {
     super(props);
     this.headerY = Animated.multiply(
@@ -53,7 +52,6 @@ export default class NewHome extends Component {
     StatusBar.setTranslucent(true);
     StatusBar.setBackgroundColor("transparent");
     //dark or light font
-    StatusBar.setBarStyle("dark-content");
   }
 
   handleScroll = event => {
@@ -64,8 +62,8 @@ export default class NewHome extends Component {
     this.setState({ scrollY: y });
     this.listView.getNode().scrollTo({ y, animated: true });
   };
-
   componentDidUpdate() {
+    StatusBar.setBarStyle(this.context.theme.barColor);
     try {
       if (this.state.scrollY > 480) {
         this.badgeView.getNode().scrollToEnd();
@@ -73,6 +71,7 @@ export default class NewHome extends Component {
         this.badgeView.getNode().scrollTo({ x: 0, animated: true });
       }
     } catch {}
+    
   }
 
   render() {
@@ -81,7 +80,7 @@ export default class NewHome extends Component {
         <View
           style={{
             height: getStatusBarHeight(),
-            backgroundColor: "#fff",
+            backgroundColor: this.context.theme.backgroundColorPrimary,
             elevation: 0,
           }}
         ></View>
@@ -99,7 +98,7 @@ export default class NewHome extends Component {
               elevation: -1,
               flex: 1,
               zIndex: 1,
-              backgroundColor: "#fff",
+              backgroundColor:this.context.theme.backgroundColorPrimary,
             }}
           >
             <View
@@ -119,6 +118,7 @@ export default class NewHome extends Component {
                 <Text
                   style={[
                     {
+                      color: this.context.theme.colorPrimary,
                       fontSize: 27,
                       fontWeight: "900",
                       justifyContent: "center",
@@ -141,7 +141,7 @@ export default class NewHome extends Component {
                   alignSelf: "center",
                 }}
               >
-                <MeIcon icon={meSearch} size={22} color="#333" />
+                <MeIcon icon={meSearch} size={22} color={this.context.theme.colorPrimary} />
               </View>
             </View>
 
@@ -153,9 +153,11 @@ export default class NewHome extends Component {
                 flexDirection: "row",
                 borderBottomWidth: this.state.scrollY > 40 ? 1 : 0,
                 borderBottomColor: "#eee",
+                color:this.context.theme.colorPrimary,
               }}
             >
               <SectionBadge
+                style={{color:this.context.theme.colorPrimary}}
                 scrollTo={this.scrollTo}
                 title={"Danh sách đề xuất"}
                 target={0}
@@ -207,7 +209,7 @@ export default class NewHome extends Component {
                   flex: 1,
                   zIndex: 1,
                   width: "100%",
-                  // backgroundColor: "#f32",
+                  backgroundColor: this.context.theme.backgroundColorPrimary,
                   marginTop: 32,
                 },
                 // Platform.OS === "ios" ? { paddingTop: 20 } : null,
@@ -275,10 +277,10 @@ export default class NewHome extends Component {
                     />
                   </Swiper>
                 </View>
-                <TouchableOpacity
+                <TouchableOpacity 
                   onPress={() => this.props.navigation.navigate("TopPlaylist")}
                 >
-                  <SectionTitle title={"Danh sách đề xuất"} />
+                  <SectionTitle  title={"Danh sách đề xuất"} />
                 </TouchableOpacity>
                 <View>
                   <ScrollView
@@ -320,6 +322,7 @@ export default class NewHome extends Component {
                   onPress={() => this.props.navigation.navigate("TopSong")}
                 >
                   <SectionTitle title={"Top thịnh hành"} />
+
                 </TouchableOpacity>
                 <View>
                   <SongItem
@@ -359,6 +362,7 @@ export default class NewHome extends Component {
                     showsHorizontalScrollIndicator={false}
                   >
                     <ArtistItem
+                      navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
                       name={"Thu Phương"}
                     />
@@ -387,3 +391,4 @@ export default class NewHome extends Component {
     );
   }
 }
+NewHome.contextType=ThemeContext;

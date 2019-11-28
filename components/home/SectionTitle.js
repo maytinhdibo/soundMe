@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text } from "react-native";
 import { homeStyle } from "../../styles/homeStyle";
 import { textStyle } from "../../styles/textStyle";
 
 import meArrowRight from "../../icons/icon-pack/meArrowRight";
 import MeIcon from "../../icons/MeIcon";
-
+import {ThemeContext} from "../../AppContextProvider";
 export default function SectionTitle(props) {
-  
+  const context = useContext(ThemeContext);
   return (
     <View
       onLayout={event => {
         const layout = event.nativeEvent.layout;
         layout.y
       }}
-      style={{ flex: 1, flexDirection: "row" }}
+      style={{ width:"100%", flexDirection: "row" }}
     >
-      <Text style={[homeStyle.sectionTitle, textStyle.bold]}>
+      <Text style={[homeStyle.sectionTitle, textStyle.bold,{color:context.theme.colorPrimary}]}>
         {props.title}
       </Text>
       <MeIcon
@@ -25,8 +25,8 @@ export default function SectionTitle(props) {
           justifyContent: "center",
         }}
         size={14}
-        color="#345"
         icon={meArrowRight}
+        color={ context.theme.colorPrimary}
       />
     </View>
   );

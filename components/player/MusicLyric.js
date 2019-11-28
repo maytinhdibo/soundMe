@@ -18,7 +18,10 @@ import meShare from "../../icons/icon-pack/meShare";
 import { playerStyle } from "../../styles/playerStyle";
 import { textStyle } from "../../styles/textStyle";
 
+import {AppConsumer} from "../../AppContextProvider";
+
 import CardView from "react-native-cardview";
+import meCopy from "../../icons/icon-pack/meCopy";
 
 class Line extends Component {
   checkPos() {
@@ -86,14 +89,10 @@ export default class MusicLyric extends Component {
       curTime: 0,
       lyricSelected: [],
       lyricData: data,
-      curLine: "",
     };
   }
   componentDidMount() {
     var time = this.state.curTime;
-    setInterval(() => {
-      this.setState({ curTime: time++ });
-    }, 1000);
   }
   curLine = value => {
     if (value != this.state.curLine) {
@@ -153,7 +152,7 @@ export default class MusicLyric extends Component {
               }}
               onPress={this.copy}
             >
-              <MeIcon size={25} icon={mePlay} />
+              <MeIcon size={22} icon={meCopy} />
             </TouchableOpacity>
           ) : (
             <View style={{ width: 50 }} />
@@ -162,16 +161,16 @@ export default class MusicLyric extends Component {
 
         <ScrollView>
           <View
-            style={{ flexDirection: "column", alignItems: "center", flex: 1 }}
+            style={{ flexDirection: "column", alignItems: "center", flex: 1, padding: 9}}
           >
             <View style={{ marginBottom: 9, alignItems: "center" }}>
-              <Text style={[{ fontSize: 16, color: "#aaa" }, textStyle.bold]}>
+              <Text style={[{ fontSize: 16, color: "#999" }, textStyle.bold]}>
                 Chia tay hoàng hôn
               </Text>
-              <Text style={[{ fontSize: 16, color: "#aaa" }, textStyle.medium]}>
+              <Text style={[{ fontSize: 16, color: "#999" }, textStyle.medium]}>
                 Ca sĩ: Thanh Lam
               </Text>
-              <Text style={[{ fontSize: 16, color: "#aaa" }, textStyle.medium]}>
+              <Text style={[{ fontSize: 16, color: "#999" }, textStyle.medium]}>
                 Sáng tác: NS Thuận Yến
               </Text>
             </View>
@@ -184,7 +183,7 @@ export default class MusicLyric extends Component {
                   curLine={this.curLine}
                   lyricSelected={this.state.lyricSelected}
                   selectLine={this.selectLine}
-                  curTime={this.state.curTime}
+                  curTime={this.context.presentPosition}
                   start={line.start}
                   stop={line.stop}
                   content={line.content}
@@ -198,12 +197,14 @@ export default class MusicLyric extends Component {
   }
 }
 
+MusicLyric.contextType=AppConsumer;
+
 const styles = StyleSheet.create({
   lineWrapper: {
     padding: 9,
   },
   line: {
-    fontSize: 16,
+    fontSize: 17,
     opacity: 0.8,
     color: "#888",
   },

@@ -20,6 +20,9 @@ import { AppConsumer } from "../../AppContextProvider";
 import SoundPlayer from "react-native-sound-player";
 
 import CardView from "react-native-cardview";
+import meArrowDown from "../../icons/icon-pack/meArrowDown";
+import meHeart from "../../icons/icon-pack/meHeart";
+import meAddPlaylist from "../../icons/icon-pack/meAddPlaylist";
 
 export default class MusicMain extends Component {
   constructor(props) {
@@ -59,7 +62,7 @@ export default class MusicMain extends Component {
                   width: 50,
                 }}
               >
-                <MeIcon size={25} color="#345" icon={mePlay} />
+                <MeIcon size={25} color="#345" icon={meArrowDown} />
               </TouchableOpacity>
 
               <View
@@ -132,10 +135,10 @@ export default class MusicMain extends Component {
                   style={{
                     width: 7,
                     height: 7,
-                    backgroundColor: "#eee",
+                    backgroundColor: "#ccc",
                     borderRadius: 5,
                   }}
-                ></View>
+                />
                 <View
                   style={{
                     width: 15,
@@ -144,15 +147,15 @@ export default class MusicMain extends Component {
                     backgroundColor: "#f43",
                     borderRadius: 5,
                   }}
-                ></View>
+                />
                 <View
                   style={{
                     width: 7,
                     height: 7,
-                    backgroundColor: "#eee",
+                    backgroundColor: "#ccc",
                     borderRadius: 5,
                   }}
-                ></View>
+               />
               </View>
             </View>
             {/* <View ref="process"> */}
@@ -194,9 +197,9 @@ export default class MusicMain extends Component {
                 paddingBottom: 25,
               }}
             >
-              <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+              <MeIcon size={25} color="#fe6f61" icon={meAddPlaylist} />
 
-              <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+              <MeIcon size={25} color="#fe6f61" icon={meHeart} />
             </View>
           </View>
         )}

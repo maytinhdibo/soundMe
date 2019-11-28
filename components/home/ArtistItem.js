@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableWithoutFeedback } from "react-native";
 import { homeStyle } from "../../styles/homeStyle";
 import * as Animatable from "react-native-animatable";
 import { textStyle } from "../../styles/textStyle";
 import CardView from "react-native-cardview";
-
+import { ThemeContext } from "../../AppContextProvider";
 export default class ArtistItem extends Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
+      <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Singer")}>
       <Animatable.View
         animation="bounceInRight"
         easing="ease-out"
@@ -35,7 +36,8 @@ export default class ArtistItem extends Component {
               {
                 padding: 6,
                 paddingBottom: 0,
-                fontSize: 16
+                fontSize: 16,
+                color: this.context.theme.colorPrimary,
               },
               textStyle.bold
             ]}
@@ -44,6 +46,8 @@ export default class ArtistItem extends Component {
           </Text>
         </View>
       </Animatable.View>
+      </TouchableWithoutFeedback>
     );
   }
 }
+ArtistItem.contextType=ThemeContext;

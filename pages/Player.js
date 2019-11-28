@@ -30,6 +30,10 @@ import CardView from "react-native-cardview";
 import MusicInfo from "../components/player/MusicInfo";
 import MusicLyric from "../components/player/MusicLyric";
 import { AppConsumer } from "../AppContextProvider";
+import meRepeat from "../icons/icon-pack/meRepeat";
+import meShuffle from "../icons/icon-pack/meShuffle";
+import meNext from "../icons/icon-pack/meNext";
+import mePrevious from "../icons/icon-pack/mePrevious";
 
 export default class Player extends Component {
   constructor(props) {
@@ -323,7 +327,7 @@ export default class Player extends Component {
                   backgroundColor: "rgba(254, 111, 97, 0.23)",
                   width: 75,
                   height: 75,
-                  padding: 3,
+                  padding: 5,
                   marginTop: -15,
                   left: Math.round(Dimensions.get("window").width) * 0.5 - 37.5,
                   bottom: 75,
@@ -370,7 +374,7 @@ export default class Player extends Component {
                     margin: 9,
                   }}
                 >
-                  <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+                  <MeIcon size={25} color="#fe6f61" icon={meShuffle} />
                 </View>
                 <View
                   style={{
@@ -381,7 +385,7 @@ export default class Player extends Component {
                     margin: 9,
                   }}
                 >
-                  <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+                  <MeIcon size={20} color="#fe6f61" icon={mePrevious} />
                 </View>
                 <View
                   style={{
@@ -400,7 +404,7 @@ export default class Player extends Component {
                     margin: 9,
                   }}
                 >
-                  <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+                  <MeIcon size={20} color="#fe6f61" icon={meNext} />
                 </View>
                 <View
                   style={{
@@ -411,7 +415,7 @@ export default class Player extends Component {
                     margin: 9,
                   }}
                 >
-                  <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+                  <MeIcon size={25} color="#fe6f61" icon={meRepeat} />
                 </View>
               </CardView>
             </View>
