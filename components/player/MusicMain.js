@@ -20,6 +20,8 @@ import { AppConsumer } from "../../AppContextProvider";
 import SoundPlayer from "react-native-sound-player";
 
 import CardView from "react-native-cardview";
+import meArrowDown from "../../icons/icon-pack/meArrowDown";
+import meHeart from "../../icons/icon-pack/meHeart";
 
 export default class MusicMain extends Component {
   constructor(props) {
@@ -59,7 +61,7 @@ export default class MusicMain extends Component {
                   width: 50,
                 }}
               >
-                <MeIcon size={25} color="#345" icon={mePlay} />
+                <MeIcon size={25} color="#345" icon={meArrowDown} />
               </TouchableOpacity>
 
               <View
@@ -194,9 +196,9 @@ export default class MusicMain extends Component {
                 paddingBottom: 25,
               }}
             >
-              <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+              <MeIcon size={25} color="#fe6f61" icon={meHeart} />
 
-              <MeIcon size={25} color="#fe6f61" icon={mePlay} />
+              <MeIcon size={25} color="#fe6f61" icon={meHeart} />
             </View>
           </View>
         )}
