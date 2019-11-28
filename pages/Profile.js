@@ -357,6 +357,7 @@ class Profile extends Component {
               style={{
                 marginHorizontal: 15,
                 borderRadius: 12,
+                marginBottom:12,
                 overflow: "hidden",
               }}
             >
