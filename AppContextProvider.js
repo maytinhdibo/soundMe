@@ -12,7 +12,13 @@ export class AppContextProvider extends Component {
             }
             else if ((theme)==1){
                 this.setState({theme:Dark});
-            }         
+            }
+            else {   
+                let date = new Date();
+                let hrs = date.getHours();
+                const themeByHour = (hrs>=19 || hrs <=6) ? Dark : Light;
+                this.setState({themePanel: false, theme:themeByHour});  
+            }       
         },
         loadedMusic: false,
         playerState: 0,

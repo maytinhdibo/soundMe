@@ -33,13 +33,17 @@ import meSun from "../icons/icon-pack/meSun";
 import meSunMoon from "../icons/icon-pack/meSunMoon";
 import { TouchableNativeFeedback } from "react-native-gesture-handler";
 
-const ThemeIcons = [meMoon, meSun, meSunMoon];
+const ThemeIcons = [meSun, meMoon, meSunMoon];
 class ThemeChooseItem extends Component {
   constructor(props) {
     super(props);
+    
   }
+
   render() {
-    const { title, value } = this.props;
+    const { title, value, currentTheme } = this.props;
+      let highlightBG= value===currentTheme ?this.context.theme.backgroundColorPrimary: "rgba(111,111,111,0.3)" ;
+      let highlightIC= value===currentTheme ?this.context.theme.buttonColor: "#fff" ;
     return (
       <AppConsumer>
         {appConsumer => (
@@ -49,13 +53,13 @@ class ThemeChooseItem extends Component {
           style={{
             padding: 12,
             borderRadius: 28,
-            backgroundColor: "rgba(111,111,111,0.3)",
+            backgroundColor: highlightBG ,
             marginBottom: 2
           }}
         >
-          <MeIcon size={20} color={"#fff"} icon={ThemeIcons[value]} />
+          <MeIcon size={20} color={highlightIC} icon={ThemeIcons[value]} />
         </View>
-        <Text style={[{ color: "#fff", fontSize: 13 }, textStyle.medium]}>
+        <Text style={[{ color: appConsumer.theme.colorPrimary, fontSize: 13 }, textStyle.medium]}>
           {title}
         </Text>
       </View>
@@ -65,6 +69,7 @@ class ThemeChooseItem extends Component {
     );
   }
 }
+ThemeChooseItem.contextType=ThemeContext;
 
 class Profile extends Component {
   constructor(props) {
@@ -260,9 +265,46 @@ class Profile extends Component {
                   backgroundColor: appConsumer.theme.backgroundColorSecondary,
                 }}
               >
-                <ThemeChooseItem closePanel={()=>this.setState({themePanel: false})} title={"Tối"} value={0} />
-                <ThemeChooseItem closePanel={()=>this.setState({themePanel: false})} title={"Tự động"} value={2} />
-                <ThemeChooseItem closePanel={()=>this.setState({themePanel: false})} title={"Sáng"} value={1} />
+                <ThemeChooseItem 
+                closePanel={
+                  async ()=>{
+                    this.setState({themePanel: false, theme:1});
+                    appConsumer.setTheme(1);
+                    await AsyncStorage.setItem("theme","1");
+                  }
+                } 
+                title={"Tối"} 
+                value={1} 
+                currentTheme={this.state.theme}
+                />
+                <ThemeChooseItem 
+                closePanel={
+                  async ()=>{
+                    let date = new Date();
+                    let hrs = date.getHours();
+                    const theme = (hrs>=19 || hrs <=6) ? 1 : 0;
+                    this.setState({themePanel: false, theme:2});
+                    appConsumer.setTheme(theme);
+                    await AsyncStorage.setItem("theme","2");
+                  }
+                } 
+                title={"Tự động"} 
+                value={2} 
+                currentTheme={this.state.theme}
+                />
+                <ThemeChooseItem 
+                closePanel={
+                  async ()=>{
+                    this.setState({themePanel: false,theme:0});
+                    appConsumer.setTheme(0);
+                    await AsyncStorage.setItem("theme","0");
+                  }
+                } 
+                title={"Sáng"} 
+                value={0} 
+                currentTheme={this.state.theme}
+                />
+              
               </View>
 
               <TouchableOpacity
