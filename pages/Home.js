@@ -29,7 +29,7 @@ import meSearch from "../icons/icon-pack/meSearch";
 import { getStatusBarHeight } from "react-native-status-bar-height";
 import SectionBadge from "../components/home/SectionBadge";
 import { commonStyle } from "../styles/commonStyle";
-import {ThemeContext} from "../AppContextProvider";
+import {ThemeContext, AppConsumer} from "../AppContextProvider";
 // import {Body, Header, List, ListItem as Item, ScrollableTab, Tab, Tabs, Title} from "native-base";
 
 const NAVBAR_HEIGHT = 50;
@@ -152,7 +152,7 @@ export default class NewHome extends Component {
               style={{
                 flexDirection: "row",
                 borderBottomWidth: this.state.scrollY > 40 ? 1 : 0,
-                borderBottomColor: "#eee",
+                borderBottomColor: this.context.theme.backgroundColorPrimary,
                 color:this.context.theme.colorPrimary,
               }}
             >

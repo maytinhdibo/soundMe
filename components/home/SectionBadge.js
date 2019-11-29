@@ -3,7 +3,7 @@ import { Text, TouchableOpacity } from "react-native";
 import { homeStyle } from "../../styles/homeStyle";
 import * as Animatable from "react-native-animatable";
 import { textStyle } from "../../styles/textStyle";
-
+import {ThemeContext} from "../../AppContextProvider";
 export default class SectionBadge extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +22,7 @@ export default class SectionBadge extends Component {
                     textStyle.bold,
                     this.checkPos(this.props.min, this.props.max)
                       ? {
-                          backgroundColor: "#dd4814",
+                          backgroundColor: this.context.theme.buttonColor,
                           color: "#fff",
                           marginLeft: 10,
                         }
@@ -35,3 +35,4 @@ export default class SectionBadge extends Component {
     );
   }
 }
+SectionBadge.contextType= ThemeContext;
