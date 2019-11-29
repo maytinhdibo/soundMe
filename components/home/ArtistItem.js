@@ -25,7 +25,6 @@ export default class ArtistItem extends Component {
               width: 126,
               borderRadius: 63,
               resizeMode: "cover",
-              width: "100%"
             }}
           />
         </CardView>

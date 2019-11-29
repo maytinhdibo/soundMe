@@ -26,7 +26,9 @@ export default class SectionBadge extends Component {
                           color: "#fff",
                           marginLeft: 10,
                         }
-                      : null,
+                      : {
+                        color: this.context.theme.colorPrimary,
+                      },
                   ]}
                 >
                   {this.props.title}

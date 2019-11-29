@@ -29,7 +29,7 @@ import meSearch from "../icons/icon-pack/meSearch";
 import { getStatusBarHeight } from "react-native-status-bar-height";
 import SectionBadge from "../components/home/SectionBadge";
 import { commonStyle } from "../styles/commonStyle";
-import {ThemeContext, AppConsumer} from "../AppContextProvider";
+import { ThemeContext, AppConsumer } from "../AppContextProvider";
 // import {Body, Header, List, ListItem as Item, ScrollableTab, Tab, Tabs, Title} from "native-base";
 
 const NAVBAR_HEIGHT = 50;
@@ -71,7 +71,6 @@ export default class NewHome extends Component {
         this.badgeView.getNode().scrollTo({ x: 0, animated: true });
       }
     } catch {}
-    
   }
 
   render() {
@@ -98,7 +97,7 @@ export default class NewHome extends Component {
               elevation: -1,
               flex: 1,
               zIndex: 1,
-              backgroundColor:this.context.theme.backgroundColorPrimary,
+              backgroundColor: this.context.theme.backgroundColorPrimary,
             }}
           >
             <View
@@ -141,7 +140,11 @@ export default class NewHome extends Component {
                   alignSelf: "center",
                 }}
               >
-                <MeIcon icon={meSearch} size={22} color={this.context.theme.colorPrimary} />
+                <MeIcon
+                  icon={meSearch}
+                  size={22}
+                  color={this.context.theme.colorPrimary}
+                />
               </View>
             </View>
 
@@ -153,11 +156,11 @@ export default class NewHome extends Component {
                 flexDirection: "row",
                 borderBottomWidth: this.state.scrollY > 40 ? 1 : 0,
                 borderBottomColor: this.context.theme.backgroundColorPrimary,
-                color:this.context.theme.colorPrimary,
+                color: this.context.theme.colorPrimary,
               }}
             >
               <SectionBadge
-                style={{color:this.context.theme.colorPrimary}}
+                style={{ color: this.context.theme.colorPrimary }}
                 scrollTo={this.scrollTo}
                 title={"Danh sách đề xuất"}
                 target={0}
@@ -277,10 +280,10 @@ export default class NewHome extends Component {
                     />
                   </Swiper>
                 </View>
-                <TouchableOpacity 
+                <TouchableOpacity
                   onPress={() => this.props.navigation.navigate("TopPlaylist")}
                 >
-                  <SectionTitle  title={"Danh sách đề xuất"} />
+                  <SectionTitle title={"Danh sách đề xuất"} />
                 </TouchableOpacity>
                 <View>
                   <ScrollView
@@ -288,6 +291,7 @@ export default class NewHome extends Component {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                   >
+                    <View name="fake-margin" style={{ width: 7 }}/>
                     <PlaylistItem
                       navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
@@ -315,6 +319,7 @@ export default class NewHome extends Component {
                       name={"Đi đu đưa đi"}
                       actorName={"Tuấn Hưng"}
                     />
+                    <View name="fake-margin" style={{ width: 7 }}/>
                   </ScrollView>
                 </View>
 
@@ -322,7 +327,6 @@ export default class NewHome extends Component {
                   onPress={() => this.props.navigation.navigate("TopSong")}
                 >
                   <SectionTitle title={"Top thịnh hành"} />
-
                 </TouchableOpacity>
                 <View>
                   <SongItem
@@ -361,6 +365,8 @@ export default class NewHome extends Component {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                   >
+                    <View name="fake-margin" style={{ width: 7 }}/>
+
                     <ArtistItem
                       navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
@@ -381,6 +387,8 @@ export default class NewHome extends Component {
                       imgUrl={require("../assets/nuocmat.jpg")}
                       name={"Bích Phương"}
                     />
+
+                    <View name="fake-margin" style={{ width: 7 }}/>
                   </ScrollView>
                 </View>
               </ScrollView>
@@ -391,4 +399,4 @@ export default class NewHome extends Component {
     );
   }
 }
-NewHome.contextType=ThemeContext;
+NewHome.contextType = ThemeContext;
