@@ -10,7 +10,7 @@ import {
   StatusBar,
 } from "react-native";
 
-import Swiper from "react-native-web-swiper";
+import Swiper from "react-native-swiper";
 import PlaylistItem from "../components/home/PlaylistItem";
 import SliderDot from "../components/common/SliderDot";
 import SongItem from "../components/home/SongItem";
@@ -221,39 +221,31 @@ export default class NewHome extends Component {
               <ScrollView>
                 <View style={homeStyle.slideShow}>
                   <Swiper
-                    timeout={4.5}
-                    from={0}
-                    slideWrapperStyle={{ paddingBottom: 20 }}
-                    minDistanceForAction={0.1}
-                    controlsProps={{
-                      DotComponent: ({ index, isActive, onPress }) => (
-                        <SliderDot onPress={onPress} isActive={isActive} />
-                      ),
-                      prevPos: "left",
-                      nextPos: "right",
-                      nextTitle: ">",
-                      nextTitleStyle: {
-                        color: "red",
-                        fontSize: 24,
-                        fontWeight: "500",
-                      },
-                      PrevComponent: ({ onPress }) => (
-                        <TouchableOpacity
-                          style={{ flex: 1, height: "100%" }}
-                          onPress={onPress}
-                        >
-                          <View style={{ height: 150, width: 40 }}></View>
-                        </TouchableOpacity>
-                      ),
-                      NextComponent: ({ onPress }) => (
-                        <TouchableOpacity
-                          style={{ flex: 1, height: "100%" }}
-                          onPress={onPress}
-                        >
-                          <View style={{ height: 150, width: 40 }}></View>
-                        </TouchableOpacity>
-                      ),
-                    }}
+                    autoplay={true}
+                    autoplayTimeout={3}
+                    autoplayDirection={false}
+                    dot={
+                      <View
+                        style={{
+                          width: 8,
+                          marginHorizontal: 2,
+                          height: 8,
+                          backgroundColor: "rgba(111,111,111,0.5)",
+                          borderRadius: 8,
+                        }}
+                      ></View>
+                    }
+                    activeDot={
+                      <View
+                        style={{
+                          width: 18,
+                          marginHorizontal: 3,
+                          height: 8,
+                          backgroundColor: this.context.theme.buttonColor,
+                          borderRadius: 8,
+                        }}
+                      ></View>
+                    }
                   >
                     <SliderItem
                       index={1}
@@ -280,6 +272,7 @@ export default class NewHome extends Component {
                     />
                   </Swiper>
                 </View>
+
                 <TouchableOpacity
                   onPress={() => this.props.navigation.navigate("TopPlaylist")}
                 >
@@ -291,7 +284,7 @@ export default class NewHome extends Component {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                   >
-                    <View name="fake-margin" style={{ width: 7 }}/>
+                    <View name="fake-margin" style={{ width: 7 }} />
                     <PlaylistItem
                       navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
@@ -319,7 +312,7 @@ export default class NewHome extends Component {
                       name={"Đi đu đưa đi"}
                       actorName={"Tuấn Hưng"}
                     />
-                    <View name="fake-margin" style={{ width: 7 }}/>
+                    <View name="fake-margin" style={{ width: 7 }} />
                   </ScrollView>
                 </View>
 
@@ -365,7 +358,7 @@ export default class NewHome extends Component {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                   >
-                    <View name="fake-margin" style={{ width: 7 }}/>
+                    <View name="fake-margin" style={{ width: 7 }} />
 
                     <ArtistItem
                       navigation={this.props.navigation}
@@ -388,7 +381,7 @@ export default class NewHome extends Component {
                       name={"Bích Phương"}
                     />
 
-                    <View name="fake-margin" style={{ width: 7 }}/>
+                    <View name="fake-margin" style={{ width: 7 }} />
                   </ScrollView>
                 </View>
               </ScrollView>

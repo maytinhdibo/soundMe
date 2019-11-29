@@ -10,7 +10,7 @@ export default class SliderItem extends Component {
   render() {
     const { isActive } = this.props;
     return (
-      <View style={{ flex: 1, padding:12}}>
+      <View style={{ flex: 1, padding:12, paddingBottom:42}}>
         <CardView cardElevation={6} cornerRadius={16} style={{flex:1}}>
       <ImageBackground
         source={this.props.image}
