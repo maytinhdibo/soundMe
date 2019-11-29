@@ -3299,33 +3299,40 @@ public final class R {
     public static final int abc_textfield_search_default_mtrl_alpha=0x7f060051;
     public static final int abc_textfield_search_material=0x7f060052;
     public static final int abc_vector_test=0x7f060053;
-    public static final int border_bottom=0x7f060054;
-    public static final int next=0x7f060055;
-    public static final int notification_action_background=0x7f060056;
-    public static final int notification_bg=0x7f060057;
-    public static final int notification_bg_low=0x7f060058;
-    public static final int notification_bg_low_normal=0x7f060059;
-    public static final int notification_bg_low_pressed=0x7f06005a;
-    public static final int notification_bg_normal=0x7f06005b;
-    public static final int notification_bg_normal_pressed=0x7f06005c;
-    public static final int notification_icon_background=0x7f06005d;
-    public static final int notification_template_icon_bg=0x7f06005e;
-    public static final int notification_template_icon_low_bg=0x7f06005f;
-    public static final int notification_tile_bg=0x7f060060;
-    public static final int notify_panel_notification_icon_bg=0x7f060061;
-    public static final int pause=0x7f060062;
-    public static final int play=0x7f060063;
-    public static final int previous=0x7f060064;
-    public static final int redbox_top_border_background=0x7f060065;
-    public static final int skip_backward_10=0x7f060066;
-    public static final int skip_backward_30=0x7f060067;
-    public static final int skip_backward_5=0x7f060068;
-    public static final int skip_forward_10=0x7f060069;
-    public static final int skip_forward_30=0x7f06006a;
-    public static final int skip_forward_5=0x7f06006b;
-    public static final int stop=0x7f06006c;
-    public static final int tooltip_frame_dark=0x7f06006d;
-    public static final int tooltip_frame_light=0x7f06006e;
+    public static final int assets_hongnhung=0x7f060054;
+    public static final int assets_music=0x7f060055;
+    public static final int assets_nuocmat=0x7f060056;
+    public static final int assets_thanhlam=0x7f060057;
+    public static final int assets_thuphuong=0x7f060058;
+    public static final int border_bottom=0x7f060059;
+    public static final int next=0x7f06005a;
+    public static final int node_modules_reactnavigationstack_lib_module_views_assets_backicon=0x7f06005b;
+    public static final int node_modules_reactnavigationstack_lib_module_views_assets_backiconmask=0x7f06005c;
+    public static final int notification_action_background=0x7f06005d;
+    public static final int notification_bg=0x7f06005e;
+    public static final int notification_bg_low=0x7f06005f;
+    public static final int notification_bg_low_normal=0x7f060060;
+    public static final int notification_bg_low_pressed=0x7f060061;
+    public static final int notification_bg_normal=0x7f060062;
+    public static final int notification_bg_normal_pressed=0x7f060063;
+    public static final int notification_icon_background=0x7f060064;
+    public static final int notification_template_icon_bg=0x7f060065;
+    public static final int notification_template_icon_low_bg=0x7f060066;
+    public static final int notification_tile_bg=0x7f060067;
+    public static final int notify_panel_notification_icon_bg=0x7f060068;
+    public static final int pause=0x7f060069;
+    public static final int play=0x7f06006a;
+    public static final int previous=0x7f06006b;
+    public static final int redbox_top_border_background=0x7f06006c;
+    public static final int skip_backward_10=0x7f06006d;
+    public static final int skip_backward_30=0x7f06006e;
+    public static final int skip_backward_5=0x7f06006f;
+    public static final int skip_forward_10=0x7f060070;
+    public static final int skip_forward_30=0x7f060071;
+    public static final int skip_forward_5=0x7f060072;
+    public static final int stop=0x7f060073;
+    public static final int tooltip_frame_dark=0x7f060074;
+    public static final int tooltip_frame_light=0x7f060075;
   }
   public static final class id {
     public static final int ALT=0x7f070000;
@@ -3580,6 +3587,14 @@ public final class R {
   }
   public static final class raw {
     public static final int a=0x7f0b0000;
+    public static final int app=0x7f0b0001;
+    public static final int node_modules_cssselect_lib_procedure=0x7f0b0002;
+    public static final int node_modules_csstree_dist_defaultsyntax=0x7f0b0003;
+    public static final int node_modules_domserializer_foreignnames=0x7f0b0004;
+    public static final int node_modules_entities_lib_maps_decode=0x7f0b0005;
+    public static final int node_modules_entities_lib_maps_entities=0x7f0b0006;
+    public static final int node_modules_entities_lib_maps_legacy=0x7f0b0007;
+    public static final int node_modules_entities_lib_maps_xml=0x7f0b0008;
   }
   public static final class string {
     public static final int abc_action_bar_home_description=0x7f0c0000;

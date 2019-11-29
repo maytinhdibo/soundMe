@@ -1,0 +1,7 @@
+{
+  "name": "soundMenative",
+  "displayName": "soundMenative",
+  "android": {
+       "package": "com.yourcompany.yourappname",
+    }
+}
