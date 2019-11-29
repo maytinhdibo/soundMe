@@ -131,14 +131,14 @@ export default class MusicMain extends Component {
               </View>
 
               <View style={{ flexDirection: "row", padding: 12 }}>
-                <View
+                {/* <View
                   style={{
                     width: 7,
                     height: 7,
                     backgroundColor: "#ccc",
                     borderRadius: 5,
                   }}
-                />
+                /> */}
                 <View
                   style={{
                     width: 15,

@@ -314,8 +314,8 @@ export default class Player extends Component {
           <ImageBackground blurRadius={34} source={appConsumer.songImage} style={{width: '100%', height: '100%'}}>
           <View style={{ flex: 1, backgroundColor: "rgba(255,255,255,0.9)" }}>
             <View style={playerStyle.overlay}>
-              <Swiper index={1} loop={false} showsPagination={false}>
-                <MusicInfo />
+              <Swiper index={0} loop={false} showsPagination={false}>
+                {/* <MusicInfo /> */}
                 <MusicMain onShare={this.onShare} navigation={this.props.navigation} curLine={this.state.curLine}/>
                 <MusicLyric curLine={this.curLine} />
               </Swiper>

@@ -150,17 +150,17 @@ class Profile extends Component {
                   Cường Trần
                 </Text>
                 <Text
-                  style={{
+                  style={[{
                     color: appConsumer.theme.colorPrimary,
                     opacity: 0.75,
-                  }}
+                  },textStyle.regular]}
                 >
                   iammaytinhdibo@gmail.com
                 </Text>
               </View>:<TouchableOpacity 
               onPress={()=>this.setState({login:true})}
               style={{ padding: 16, flex: 1 }}><Text style={[{
-                color:"#fff",
+                color:appConsumer.theme.colorPrimary,
                 fontSize:16
               }, textStyle.bold]}>Đăng nhập hoặc đăng ký</Text></TouchableOpacity>}
               

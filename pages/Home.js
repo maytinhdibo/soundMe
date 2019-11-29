@@ -155,7 +155,7 @@ export default class NewHome extends Component {
               style={{
                 flexDirection: "row",
                 borderBottomWidth: this.state.scrollY > 40 ? 1 : 0,
-                borderBottomColor: this.context.theme.backgroundColorPrimary,
+                borderBottomColor: this.context.theme.borderColor,
                 color: this.context.theme.colorPrimary,
               }}
             >

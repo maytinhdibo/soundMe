@@ -14,7 +14,7 @@ export default class SliderItem extends Component {
         <CardView cardElevation={6} cornerRadius={16} style={{flex:1}}>
       <ImageBackground
         source={this.props.image}
-        style={{ flex: 1, flexDirection:"row", borderRadius: 16, overflow: "hidden" }}
+        style={{ flex: 1, flexDirection:"row", overflow: "hidden" }}
       >
         <Text
           style={[{

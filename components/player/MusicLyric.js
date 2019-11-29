@@ -53,7 +53,7 @@ class Line extends Component {
             style={[
               textStyle.medium,
               styles.line,
-              this.checkPos() ? { color: "#000" } : null,
+              this.checkPos() ? { color: "#d13d3d" } : null,
             ]}
           >
             {props.content}
@@ -161,7 +161,7 @@ export default class MusicLyric extends Component {
 
         <ScrollView>
           <View
-            style={{ flexDirection: "column", alignItems: "center", flex: 1, padding: 9}}
+            style={{ flexDirection: "column", alignItems: "center", flex: 1, paddingVertical: 9}}
           >
             <View style={{ marginBottom: 9, alignItems: "center" }}>
               <Text style={[{ fontSize: 16, color: "#999" }, textStyle.bold]}>

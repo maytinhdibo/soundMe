@@ -5,7 +5,7 @@ export const Dark = {
     backgroundColorPrimary: '#18142f',
     backgroundColorSecondary: '#292349',
     buttonColor:"#ee2958",
-    borderColor : '#ddd',
+    borderColor : '#372e6b',
     backgroundColorPlaylist :'#292349',
     hightlightColor :"#f2f2f2",
 }
@@ -16,7 +16,7 @@ export const Light = {
     backgroundColorPrimary: '#ffffff',
     backgroundColorSecondary: '#f1f1f1',
     buttonColor: '#fe6f61',
-    borderColor : '#ddd',
+    borderColor : '#eee',
     backgroundColorPlaylist :'#fe6f61',
     hightlightColor :"#343",
 }
