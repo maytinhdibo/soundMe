@@ -42,8 +42,6 @@ class ThemeChooseItem extends Component {
 
   render() {
     const { title, value, currentTheme } = this.props;
-      let highlightBG= value===currentTheme ?this.context.theme.backgroundColorPrimary: "rgba(111,111,111,0.3)" ;
-      let highlightIC= value===currentTheme ?this.context.theme.buttonColor: "#fff" ;
     return (
       <AppConsumer>
         {appConsumer => (
@@ -53,11 +51,11 @@ class ThemeChooseItem extends Component {
           style={{
             padding: 12,
             borderRadius: 28,
-            backgroundColor: highlightBG ,
+            backgroundColor: this.props.value == this.props.currentTheme ? appConsumer.theme.backgroundColorPrimary : "rgba(111,111,111,0.3)",
             marginBottom: 2
           }}
         >
-          <MeIcon size={20} color={highlightIC} icon={ThemeIcons[value]} />
+          <MeIcon size={20} color={this.props.value == this.props.currentTheme ? appConsumer.theme.buttonColor : "rgba(111,111,111,0.3)"} icon={ThemeIcons[value]} />
         </View>
         <Text style={[{ color: appConsumer.theme.colorPrimary, fontSize: 13 }, textStyle.medium]}>
           {title}
