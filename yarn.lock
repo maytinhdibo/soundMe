@@ -5515,10 +5515,10 @@ react-native-modal@^11.5.3:
   version "0.10.8"
   resolved "https://github.com/ngocdangrby/react-native-music-control.git#b111e2e11473d5cda19992e989a5ba7d61ee9f33"
 
-react-native-navigation-bar-color@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/react-native-navigation-bar-color/-/react-native-navigation-bar-color-0.1.0.tgz#358be3eb8630dbaf5993ec9cf07b279590984f2e"
-  integrity sha512-Hymvfg40MH4vYgXZ5QgCk9i6BqcaD9inFiBGSj3Gobk0bq7O2G/uccs0+Dmlpe12RfC+R+XX6yvW7NTwOppQrQ==
+react-native-navigation-bar-color@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-navigation-bar-color/-/react-native-navigation-bar-color-1.0.0.tgz#04ff752a58049af93ceea9ccf266b8d3fbc6514a"
+  integrity sha512-djBE0zSp+JT65VeUm4UpIpr9DA9SpE9YTLwDAcqkWfB9JI8l3djSx+SmrIYfc7dUs216Y6qo2dr0qR3+M5qbOQ==
 
 react-native-paper@^2.16.0:
   version "2.16.0"

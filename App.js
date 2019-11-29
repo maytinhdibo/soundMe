@@ -53,6 +53,8 @@ import PersonalPlaylist from "./pages/PersonalPlaylist";
 import Singer from "./pages/Singer";
 import meSetting from "./icons/icon-pack/meSetting";
 
+import changeNavigationBarColor from 'react-native-navigation-bar-color';
+
 console.ignoredYellowBox = ["Accessing"];
 const screenWidth = Math.round(Dimensions.get("window").width);
 const HomeNavigator = createStackNavigator({
@@ -267,6 +269,8 @@ export default class App extends Component {
     };
     // StatusBar.setBackgroundColor("rgba(0,0,0,0)");
     // StatusBar.setBarStyle("light-content");
+    changeNavigationBarColor("#292349");
+
   }
 
   render() {

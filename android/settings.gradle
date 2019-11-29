@@ -1,4 +1,6 @@
 rootProject.name = 'soundMenative'
+include ':react-native-navigation-bar-color'
+project(':react-native-navigation-bar-color').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-navigation-bar-color/android')
 include ':react-native-translucent-modal'
 project(':react-native-translucent-modal').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-translucent-modal/android')
 include ':react-native-reanimated'
