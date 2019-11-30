@@ -27,11 +27,12 @@ import mePlay from "../icons/icon-pack/mePlay";
 import meHeart from "../icons/icon-pack/meHeart";
 
 import { AppConsumer } from "../AppContextProvider";
-
+import { withNavigation } from "react-navigation";
+import PlayerBar from "../components/player/PlayerBar";
 const HEADER_EXPANDED_HEIGHT = 270;
 const HEADER_COLLAPSED_HEIGHT = 0;
 
-export default class Playlist extends Component {
+class Playlist extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -293,7 +294,9 @@ export default class Playlist extends Component {
                 </View>
               </View>
             </ScrollView>
+            <PlayerBar/>
           </View>
+          
         )}
       </AppConsumer>
     );
@@ -321,3 +324,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 });
+
+export default (Playlist);

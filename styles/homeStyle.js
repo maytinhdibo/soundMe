@@ -2,9 +2,9 @@ import { StyleSheet } from "react-native";
 
 export const homeStyle = StyleSheet.create({
   slideShow: {
-    height: 230,
+    height: 250,
     overflow: "visible",
-    // backgroundColor:"#443"
+    marginBottom:-16
   },
   sectionTitle: {
     fontSize: 20,

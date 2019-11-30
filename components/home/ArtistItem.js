@@ -5,7 +5,8 @@ import * as Animatable from "react-native-animatable";
 import { textStyle } from "../../styles/textStyle";
 import CardView from "react-native-cardview";
 import { ThemeContext } from "../../AppContextProvider";
-export default class ArtistItem extends Component {
+import { withNavigation } from "react-navigation";
+class ArtistItem extends Component {
   constructor(props) {
     super(props);
   }
@@ -50,3 +51,4 @@ export default class ArtistItem extends Component {
   }
 }
 ArtistItem.contextType=ThemeContext;
+export default withNavigation(ArtistItem);

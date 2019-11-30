@@ -29,6 +29,7 @@ import meHeart from "../icons/icon-pack/meHeart";
 import { AppConsumer } from "../AppContextProvider";
 import SectionTitle from "../components/home/SectionTitle";
 import PlaylistItem from "../components/singer/PlaylistItem";
+import PlayerBar from "../components/player/PlayerBar";
 
 const HEADER_EXPANDED_HEIGHT = 250;
 const HEADER_COLLAPSED_HEIGHT = 0;
@@ -341,6 +342,7 @@ export default class Singer extends Component {
                 </View>
               </View>
             </ScrollView>
+            <PlayerBar />
           </View>
         )}
       </AppConsumer>
