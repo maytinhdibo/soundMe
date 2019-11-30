@@ -224,7 +224,7 @@ class Playlist extends Component {
                 style={{
                   minHeight:
                     Dimensions.get("window").height -
-                    85 -
+                    35 -
                     getStatusBarHeight(),
                 }}
               >
