@@ -33,11 +33,12 @@ import meSun from "../icons/icon-pack/meSun";
 import meSunMoon from "../icons/icon-pack/meSunMoon";
 import { TouchableNativeFeedback } from "react-native-gesture-handler";
 
+import changeNavigationBarColor from "react-native-navigation-bar-color";
+
 const ThemeIcons = [meSun, meMoon, meSunMoon];
 class ThemeChooseItem extends Component {
   constructor(props) {
     super(props);
-    
   }
 
   render() {
@@ -45,29 +46,49 @@ class ThemeChooseItem extends Component {
     return (
       <AppConsumer>
         {appConsumer => (
-      <TouchableOpacity onPress={()=>{this.props.closePanel()}}>
-      <View style={{ marginHorizontal: 16, alignItems: "center" }}>
-        <View
-          style={{
-            padding: 12,
-            borderRadius: 28,
-            backgroundColor: this.props.value == this.props.currentTheme ? appConsumer.theme.backgroundColorPrimary : "rgba(111,111,111,0.3)",
-            marginBottom: 2
-          }}
-        >
-          <MeIcon size={20} color={this.props.value == this.props.currentTheme ? appConsumer.theme.buttonColor : "rgba(111,111,111,0.3)"} icon={ThemeIcons[value]} />
-        </View>
-        <Text style={[{ color: appConsumer.theme.colorPrimary, fontSize: 13 }, textStyle.medium]}>
-          {title}
-        </Text>
-      </View>
-      </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              this.props.closePanel();
+            }}
+          >
+            <View style={{ marginHorizontal: 16, alignItems: "center" }}>
+              <View
+                style={{
+                  padding: 12,
+                  borderRadius: 28,
+                  backgroundColor:
+                    this.props.value == this.props.currentTheme
+                      ? appConsumer.theme.backgroundColorPrimary
+                      : "rgba(111,111,111,0.3)",
+                  marginBottom: 2,
+                }}
+              >
+                <MeIcon
+                  size={20}
+                  color={
+                    this.props.value == this.props.currentTheme
+                      ? appConsumer.theme.buttonColor
+                      : "rgba(111,111,111,0.3)"
+                  }
+                  icon={ThemeIcons[value]}
+                />
+              </View>
+              <Text
+                style={[
+                  { color: appConsumer.theme.colorPrimary, fontSize: 13 },
+                  textStyle.medium,
+                ]}
+              >
+                {title}
+              </Text>
+            </View>
+          </TouchableOpacity>
         )}
-        </AppConsumer>
+      </AppConsumer>
     );
   }
 }
-ThemeChooseItem.contextType=ThemeContext;
+ThemeChooseItem.contextType = ThemeContext;
 
 class Profile extends Component {
   constructor(props) {
@@ -76,8 +97,8 @@ class Profile extends Component {
       language: "",
       theme: 0,
       switchValue: true,
-      themePanel:false,
-      login:false
+      themePanel: false,
+      login: true,
     };
   }
   componentDidMount = async () => {
@@ -131,7 +152,9 @@ class Profile extends Component {
             >
               <Image
                 source={{
-                  uri: this.state.login?"https://i.scdn.co/image/7be436d24a08969d8724edc8c0e290a4b5624fff":"https://haulixdaily.com/wp-content/uploads/2018/08/tumblr_inline_pe4i0bR0o21s24py6_540.png",
+                  uri: this.state.login
+                    ? "https://i.scdn.co/image/7be436d24a08969d8724edc8c0e290a4b5624fff"
+                    : "https://haulixdaily.com/wp-content/uploads/2018/08/tumblr_inline_pe4i0bR0o21s24py6_540.png",
                 }}
                 style={{
                   height: 60,
@@ -140,37 +163,60 @@ class Profile extends Component {
                   borderRadius: 9,
                 }}
               />
-              {this.state.login?<View style={{ padding: 9, flex: 1 }}>
-                <Text
-                  style={[
-                    textStyle.bold,
-                    { fontSize: 15, color: appConsumer.theme.colorPrimary },
-                  ]}
+              {this.state.login ? (
+                <View style={{ padding: 9, flex: 1 }}>
+                  <Text
+                    style={[
+                      textStyle.bold,
+                      { fontSize: 15, color: appConsumer.theme.colorPrimary },
+                    ]}
+                  >
+                    Cường Trần
+                  </Text>
+                  <Text
+                    style={[
+                      {
+                        color: appConsumer.theme.colorPrimary,
+                        opacity: 0.75,
+                      },
+                      textStyle.regular,
+                    ]}
+                  >
+                    iammaytinhdibo@gmail.com
+                  </Text>
+                </View>
+              ) : (
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate("Login")}
+                  style={{ padding: 16, flex: 1 }}
                 >
-                  Cường Trần
-                </Text>
-                <Text
-                  style={[{
-                    color: appConsumer.theme.colorPrimary,
-                    opacity: 0.75,
-                  },textStyle.regular]}
+                  <Text
+                    style={[
+                      {
+                        color: appConsumer.theme.colorPrimary,
+                        fontSize: 16,
+                      },
+                      textStyle.bold,
+                    ]}
+                  >
+                    Đăng nhập hoặc đăng ký
+                  </Text>
+                </TouchableOpacity>
+              )}
+
+              {this.state.login ? (
+                <TouchableOpacity
+                  onPress={() => {
+                    this.setState({ login: false });
+                  }}
                 >
-                  iammaytinhdibo@gmail.com
-                </Text>
-              </View>:<TouchableOpacity 
-              onPress={()=>this.setState({login:true})}
-              style={{ padding: 16, flex: 1 }}><Text style={[{
-                color:appConsumer.theme.colorPrimary,
-                fontSize:16
-              }, textStyle.bold]}>Đăng nhập hoặc đăng ký</Text></TouchableOpacity>}
-              
-              {this.state.login?
-              <TouchableOpacity onPress={()=>{alert("Logout rồi nha!")}}>
-              <MeIcon
-                size={23}
-                icon={meLogout}
-                color={appConsumer.theme.buttonColor}
-              /></TouchableOpacity>:null}
+                  <MeIcon
+                    size={23}
+                    icon={meLogout}
+                    color={appConsumer.theme.buttonColor}
+                  />
+                </TouchableOpacity>
+              ) : null}
             </CardView>
 
             <Text
@@ -196,7 +242,7 @@ class Profile extends Component {
             >
               <TouchableOpacity
                 onPress={() => {
-                  this.setState({themePanel:!this.state.themePanel});
+                  this.setState({ themePanel: !this.state.themePanel });
                   // if (Platform.OS === "android") {
                   //   AndroidDialogPicker.show(
                   //     {
@@ -263,57 +309,55 @@ class Profile extends Component {
 
               <View
                 style={{
-                  display:this.state.themePanel?"flex":"none",
+                  display: this.state.themePanel ? "flex" : "none",
                   flexDirection: "row",
                   padding: 12,
-                  marginTop:-2,
+                  marginTop: -2,
                   justifyContent: "center",
                   backgroundColor: appConsumer.theme.backgroundColorSecondary,
                 }}
               >
-                <ThemeChooseItem 
-                closePanel={
-                  async ()=>{
-                    this.setState({themePanel: false, theme:1});
+                <ThemeChooseItem
+                  closePanel={async () => {
+                    this.setState({ themePanel: false, theme: 1 });
                     appConsumer.setTheme(1);
-                    await AsyncStorage.setItem("theme","1");
-                  }
-                } 
-                title={"Tối"} 
-                value={1} 
-                currentTheme={this.state.theme}
+                    await AsyncStorage.setItem("theme", "1");
+                    changeNavigationBarColor("#292349");
+                  }}
+                  title={"Tối"}
+                  value={1}
+                  currentTheme={this.state.theme}
                 />
-                <ThemeChooseItem 
-                closePanel={
-                  async ()=>{
+                <ThemeChooseItem
+                  closePanel={async () => {
                     let date = new Date();
                     let hrs = date.getHours();
-                    const theme = (hrs>=19 || hrs <=6) ? 1 : 0;
-                    this.setState({themePanel: false, theme:2});
+                    const theme = hrs >= 19 || hrs <= 6 ? 1 : 0;
+                    this.setState({ themePanel: false, theme: 2 });
                     appConsumer.setTheme(theme);
-                    await AsyncStorage.setItem("theme","2");
-                  }
-                } 
-                title={"Tự động"} 
-                value={2} 
-                currentTheme={this.state.theme}
+                    await AsyncStorage.setItem("theme", "2");
+                    changeNavigationBarColor(
+                      theme == 0 ? "#f1f1f1" : "#292349"
+                    );
+                  }}
+                  title={"Tự động"}
+                  value={2}
+                  currentTheme={this.state.theme}
                 />
-                <ThemeChooseItem 
-                closePanel={
-                  async ()=>{
-                    this.setState({themePanel: false,theme:0});
+                <ThemeChooseItem
+                  closePanel={async () => {
+                    this.setState({ themePanel: false, theme: 0 });
                     appConsumer.setTheme(0);
-                    await AsyncStorage.setItem("theme","0");
-                  }
-                } 
-                title={"Sáng"} 
-                value={0} 
-                currentTheme={this.state.theme}
+                    await AsyncStorage.setItem("theme", "0");
+                    changeNavigationBarColor("#f1f1f1");
+                  }}
+                  title={"Sáng"}
+                  value={0}
+                  currentTheme={this.state.theme}
                 />
-              
               </View>
 
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("Login")}
                 style={[
                   listStyle.item,
@@ -331,7 +375,7 @@ class Profile extends Component {
                 >
                   Đăng nhập
                 </Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
 
               <View
                 style={[
@@ -405,7 +449,7 @@ class Profile extends Component {
               style={{
                 marginHorizontal: 15,
                 borderRadius: 12,
-                marginBottom:12,
+                marginBottom: 12,
                 overflow: "hidden",
               }}
             >

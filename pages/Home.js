@@ -10,6 +10,8 @@ import {
   StatusBar,
 } from "react-native";
 
+import changeNavigationBarColor from 'react-native-navigation-bar-color';
+
 import Swiper from "react-native-swiper";
 import PlaylistItem from "../components/home/PlaylistItem";
 import SliderDot from "../components/common/SliderDot";
@@ -71,6 +73,10 @@ class NewHome extends Component {
         this.badgeView.getNode().scrollTo({ x: 0, animated: true });
       }
     } catch {}
+  }
+
+  componentDidMount(){
+    changeNavigationBarColor(this.context.theme.backgroundColorSecondary);
   }
 
   render() {
