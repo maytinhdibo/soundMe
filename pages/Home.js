@@ -30,13 +30,13 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 import SectionBadge from "../components/home/SectionBadge";
 import { commonStyle } from "../styles/commonStyle";
 import { ThemeContext, AppConsumer } from "../AppContextProvider";
+import { withNavigation } from "react-navigation";
 // import {Body, Header, List, ListItem as Item, ScrollableTab, Tab, Tabs, Title} from "native-base";
 
 const NAVBAR_HEIGHT = 50;
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const COLOR = "rgb(45,181,102)";
-
-export default class NewHome extends Component {
+class NewHome extends Component {
   scroll = new Animated.Value(0);
   headerY;
   constructor(props) {
@@ -286,13 +286,11 @@ export default class NewHome extends Component {
                   >
                     <View name="fake-margin" style={{ width: 7 }} />
                     <PlaylistItem
-                      navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
                       name={"Nửa hồn thương đau"}
                       actorName={"Thu Phương"}
                     />
                     <PlaylistItem
-                      navigation={this.props.navigation}
                       imgUrl={{
                         uri:
                           "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg",
@@ -301,13 +299,11 @@ export default class NewHome extends Component {
                       actorName={"Hồng Nhung"}
                     />
                     <PlaylistItem
-                      navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
                       name={"Con đi đâu để thấy hoa bay"}
                       actorName={"Nhiều ca sĩ"}
                     />
                     <PlaylistItem
-                      navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
                       name={"Đi đu đưa đi"}
                       actorName={"Tuấn Hưng"}
@@ -361,7 +357,7 @@ export default class NewHome extends Component {
                     <View name="fake-margin" style={{ width: 7 }} />
 
                     <ArtistItem
-                      navigation={this.props.navigation}
+                      // navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
                       name={"Thu Phương"}
                     />
@@ -393,3 +389,5 @@ export default class NewHome extends Component {
   }
 }
 NewHome.contextType = ThemeContext;
+
+export default (NewHome);

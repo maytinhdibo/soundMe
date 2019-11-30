@@ -64,18 +64,18 @@ const HomeNavigator = createStackNavigator({
       header: null,
     },
   },
-  Playlist: {
-    screen: Playlist,
-    navigationOptions: {
-      header: null,
-    },
-  },
-  Singer: {
-    screen: Singer,
-    navigationOptions: {
-      header: null,
-    },
-  },
+  // Playlist: {
+  //   screen: Playlist,
+  //   navigationOptions: {
+  //     header: null,
+  //   },
+  // },
+  // Singer: {
+  //   screen: Singer,
+  //   navigationOptions: {
+  //     header: null,
+  //   },
+  // },
   TopPlaylist: {
     screen: TopPlaylist,
     navigationOptions: {
@@ -103,12 +103,12 @@ const LibraryNavigator = createStackNavigator({
       header: null,
     },
   },
-  Playlist: {
-    screen: Playlist,
-    navigationOptions: {
-      header: null,
-    },
-  },
+  // Playlist: {
+  //   screen: Playlist,
+  //   navigationOptions: {
+  //     header: null,
+  //   },
+  // },
   PersonalPlaylist: {
     screen: PersonalPlaylist,
     navigationOptions: {
@@ -254,6 +254,13 @@ const AppTopLevelNavigator = createStackNavigator(
   AppNavigator:AppNavigator,
   Player:Player,
   Login:Login,
+  Playlist: {
+    screen: Playlist,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  Singer:Singer,
 },
 {
   headerMode: "none",
