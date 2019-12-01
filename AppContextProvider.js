@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Dark, Light } from "./styles/theme-context";
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, StatusBar } from "react-native";
 const Context = React.createContext();
 import SoundPlayer from "react-native-sound-player";
 import MusicControl from "react-native-music-control";
@@ -13,13 +13,17 @@ export class AppContextProvider extends Component {
     setTheme: theme => {
       if (theme == 0) {
         this.setState({ theme: Light });
+        StatusBar.setBarStyle("dark-content");
       } else if (theme == 1) {
         this.setState({ theme: Dark });
+        StatusBar.setBarStyle("light-content");
       } else {
         let date = new Date();
         let hrs = date.getHours();
         const themeByHour = hrs >= 19 || hrs <= 6 ? Dark : Light;
+        const barColor = hrs >= 19 || hrs <= 6 ? "light-content" : "dark-content";
         this.setState({ themePanel: false, theme: themeByHour });
+        StatusBar.setBarStyle(barColor);
       }
     },
     loadedMusic: false,
