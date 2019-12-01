@@ -12,7 +12,7 @@ export default class SongItem extends Component {
       let i = parseInt(second);
       return Math.floor(i / 60) + ":" + ("0" + Math.floor(i % 60)).slice(-2);
     }
-    return "00:00";
+    return "0:00";
   };
   render() {
     return (
