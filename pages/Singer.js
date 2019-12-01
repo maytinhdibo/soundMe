@@ -238,7 +238,7 @@ export default class Singer extends Component {
                 style={{
                   minHeight:
                     Dimensions.get("window").height -
-                    160 -
+                    45-
                     getStatusBarHeight(),
                 }}
               >
@@ -266,6 +266,10 @@ export default class Singer extends Component {
                   style={{
                     paddingHorizontal: 12,
                     backgroundColor: appConsumer.theme.backgroundColorPrimary,
+                    minHeight:
+                    Dimensions.get("window").height -
+                    85-
+                    getStatusBarHeight(),
                   }}
                 >
                   <View style={{ marginTop: 16, marginLeft: -5 }}>

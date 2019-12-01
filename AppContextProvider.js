@@ -5,6 +5,8 @@ const Context = React.createContext();
 import SoundPlayer from "react-native-sound-player";
 import MusicControl from "react-native-music-control";
 
+import changeNavigationBarColor from 'react-native-navigation-bar-color';
+
 export class AppContextProvider extends Component {
   state = {
     theme: Light,
