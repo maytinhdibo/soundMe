@@ -19,7 +19,7 @@ import CardView from "react-native-cardview";
 import Modal from "react-native-translucent-modal";
 import Swiper from "react-native-swiper";
 import { commonStyle } from "../styles/commonStyle";
-
+import {ThemeContext} from "../AppContextProvider";
 class PlayListLibItem extends Component {
   render() {
     return (
@@ -47,10 +47,10 @@ class PlayListLibItem extends Component {
           />
         </CardView>
         <View style={{ flexDirection: "column" }}>
-          <Text style={[{ fontSize: 15 }, textStyle.bold]}>
+          <Text style={[{ fontSize: 15, color: this.context.theme.colorPrimary }, textStyle.bold]}>
             {this.props.name}
           </Text>
-          <Text style={[{ fontSize: 14, color: "#777" }, textStyle.regular]}>
+          <Text style={[{ fontSize: 14, color: this.context.theme.colorSecondary }, textStyle.regular]}>
             {this.props.count} bài hát
           </Text>
         </View>
@@ -58,6 +58,7 @@ class PlayListLibItem extends Component {
     );
   }
 }
+PlayListLibItem.contextType=ThemeContext;
 
 class AlbumLibItem extends Component {
   render() {
@@ -86,10 +87,10 @@ class AlbumLibItem extends Component {
           />
         </CardView>
         <View style={{ flexDirection: "column" }}>
-          <Text style={[{ fontSize: 15 }, textStyle.bold]}>
+          <Text style={[{ fontSize: 15, color: this.context.theme.colorPrimary }, textStyle.bold]}>
             {this.props.name}
           </Text>
-          <Text style={[{ fontSize: 14, color: "#777" }, textStyle.regular]}>
+          <Text style={[{ fontSize: 14, color: this.context.theme.colorSecondary }, textStyle.regular]}>
             {this.props.artist}
           </Text>
         </View>
@@ -97,6 +98,7 @@ class AlbumLibItem extends Component {
     );
   }
 }
+AlbumLibItem.contextType=ThemeContext;
 
 class ArtistLibItem extends Component {
   render() {
@@ -125,10 +127,10 @@ class ArtistLibItem extends Component {
           />
         </CardView>
         <View style={{ flexDirection: "column" }}>
-          <Text style={[{ fontSize: 15 }, textStyle.bold]}>
+          <Text style={[{ fontSize: 15, color: this.context.theme.colorPrimary }, textStyle.bold]}>
             {this.props.name}
           </Text>
-          <Text style={[{ fontSize: 13, color:"#999" }, textStyle.regular]}>
+          <Text style={[{ fontSize: 13, color: this.context.theme.colorSecondary }, textStyle.regular]}>
             {this.props.follower} người thích
           </Text>
         </View>
@@ -136,6 +138,7 @@ class ArtistLibItem extends Component {
     );
   }
 }
+ArtistLibItem.contextType=ThemeContext;
 
 class SongRoute extends Component {
   constructor(props) {
@@ -250,7 +253,7 @@ class SongRoute extends Component {
             >
               <Text style={[{ fontSize: 32, color: "#aaa" }]}>+</Text>
             </CardView>
-            <Text style={[{ fontSize: 15 }, textStyle.bold]}>
+            <Text style={[{ fontSize: 15 ,color:this.context.theme.colorPrimary}, textStyle.bold]}>
               Tạo danh sách phát mới
             </Text>
           </View>
@@ -283,6 +286,7 @@ class SongRoute extends Component {
     );
   }
 }
+SongRoute.contextType=ThemeContext;
 
 const ArtistRoute = () => (
   <View style={{ padding: 7, paddingHorizontal: 16 }}>
@@ -372,7 +376,7 @@ export default class Library extends Component {
   };
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: this.context.theme.backgroundColorPrimary, }}>
         <View
           style={{
             flexDirection: "row",
@@ -380,10 +384,11 @@ export default class Library extends Component {
             paddingRight: 9,
             marginBottom: 2,
             paddingTop: getStatusBarHeight(),
+            backgroundColor: this.context.theme.backgroundColorPrimary,
           }}
         >
           <View style={{ flex: 1 }}>
-            <Text style={[commonStyle.header, textStyle.bold]}>Thư viện</Text>
+            <Text style={[commonStyle.header, textStyle.bold, {color: this.context.theme.colorPrimary}]}>Thư viện</Text>
           </View>
         </View>
         {/* <TabContainer /> */}
@@ -404,3 +409,4 @@ export default class Library extends Component {
     );
   }
 }
+Library.contextType=ThemeContext;
