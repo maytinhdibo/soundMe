@@ -6,7 +6,7 @@ import {
   } from "react-native";
 import { textStyle } from "../../styles/textStyle";
 import { searchStyle } from "../../styles/searchStyle";
-
+import { ThemeContext } from "../../AppContextProvider";
 export default class SongResultItem extends Component {
     render() {
       return (
@@ -32,6 +32,7 @@ export default class SongResultItem extends Component {
               numberOfLines={1}
               style={[
                 {
+                  color:this.context.theme.colorPrimary,
                   padding: 6,
                   paddingBottom: 0,
                   fontSize: 16,
@@ -47,7 +48,7 @@ export default class SongResultItem extends Component {
                 {
                   padding: 6,
                   paddingTop: 0,
-                  color: "#777",
+                  color: this.context.theme.colorSecondary,
                   fontSize: 14,
                 },
                 textStyle.regular,
@@ -60,5 +61,5 @@ export default class SongResultItem extends Component {
       );
     }
   }
-  
+  SongResultItem.contextType=ThemeContext;
   
