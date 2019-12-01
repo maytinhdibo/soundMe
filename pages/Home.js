@@ -65,7 +65,6 @@ class NewHome extends Component {
     this.listView.getNode().scrollTo({ y, animated: true });
   };
   componentDidUpdate() {
-    StatusBar.setBarStyle(this.context.theme.barColor);
     try {
       if (this.state.scrollY > 480) {
         this.badgeView.getNode().scrollToEnd();
