@@ -6,11 +6,11 @@ import {
 } from "react-native";
 import { textStyle } from "../../styles/textStyle";
 import { searchStyle } from "../../styles/searchStyle";
-
+import { ThemeContext } from "../../AppContextProvider";
 export default class AlbumResultItem extends Component {
     render() {
       return (
-        <View style={searchStyle.albumItem}>
+        <View style={[searchStyle.albumItem,{backgroundColor: this.context.theme.backgroundColorSecondary,}]}>
           <Image
             source={this.props.imgUrl}
             style={{
@@ -23,7 +23,6 @@ export default class AlbumResultItem extends Component {
           <View
             style={{
               flex: 1,
-              // backgroundColor: "#32f",
               justifyContent: "center",
               marginStart: 5,
             }}
@@ -35,6 +34,7 @@ export default class AlbumResultItem extends Component {
                   padding: 6,
                   paddingBottom: 0,
                   fontSize: 16,
+                  color: this.context.theme.colorPrimary,
                 },
                 textStyle.bold,
               ]}
@@ -47,7 +47,7 @@ export default class AlbumResultItem extends Component {
                 {
                   padding: 6,
                   paddingTop: 0,
-                  color: "#777",
+                  color: this.context.theme.colorSecondary,
                   fontSize: 14,
                 },
                 textStyle.regular,
@@ -60,4 +60,4 @@ export default class AlbumResultItem extends Component {
       );
     }
   }
-  
+  AlbumResultItem.contextType=ThemeContext;
