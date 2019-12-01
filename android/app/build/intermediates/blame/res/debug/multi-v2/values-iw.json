@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/maytinhdibo/Project/UI/soundMe/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-iw/values-iw.xml",
+            "outputFile": "D:\\GitHub\\soundMe\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-iw\\values-iw.xml",
             "map": [
                 {
-                    "source": "/Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/7d415dd13964cbe7dfa32211fc53eeba/res/values-iw/values-iw.xml",
+                    "source": "C:\\Users\\Hoang Manh Duc\\.gradle\\caches\\transforms-2\\files-2.1\\8c8b3a7d6ee59688a004d4f63515c0b7\\res\\values-iw\\values-iw.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/2bd5ff5ec9c60750c2b80b454bc76a62/res/values-iw/values-iw.xml",
+                    "source": "C:\\Users\\Hoang Manh Duc\\.gradle\\caches\\transforms-2\\files-2.1\\1a59af87fbb4604e159d49b24b425947\\res\\values-iw\\values-iw.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

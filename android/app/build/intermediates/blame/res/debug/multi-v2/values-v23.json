@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/maytinhdibo/Project/UI/soundMe/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
+            "outputFile": "D:\\GitHub\\soundMe\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
             "map": [
                 {
-                    "source": "/Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/2bd5ff5ec9c60750c2b80b454bc76a62/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\Hoang Manh Duc\\.gradle\\caches\\transforms-2\\files-2.1\\1a59af87fbb4604e159d49b24b425947\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -15,7 +15,7 @@
                     }
                 },
                 {
-                    "source": "/Users/maytinhdibo/.gradle/caches/transforms-2/files-2.1/a51fe3bbeff33a79f8e89bf44ebd4789/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\Hoang Manh Duc\\.gradle\\caches\\transforms-2\\files-2.1\\e3934774cec496f578c3dbf56bc9c200\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
