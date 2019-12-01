@@ -44,30 +44,6 @@ export default class Player extends Component {
     };
   }
 
-  async getInfo() {
-    try {
-      const info = await SoundPlayer.getInfo();
-      this.context.updateState({ duration: info.duration });
-      // console.log('getInfo: ', info) // {duration: 12.416, currentTime: 7.691}
-    } catch (e) {
-      console.log("There is no song playing", e);
-    }
-  }
-
-  async getCurrentTime() {
-    try {
-      const info2 = await SoundPlayer.getInfo();
-      this.context.updateState({ presentPosition: info2.currentTime });
-      // console.log("currrentTime:" + info2.currentTime)
-    } catch (e) {
-      console.log("Can not get current time", e);
-    }
-  }
-  // async componentDidUpdate(prevProps){
-  //   if( this.props.playing !== prevProps.playing){
-  //     console.log("change play")
-  //   }
-  // }
 
   async componentDidMount() {
     console.log("START PROPS");
@@ -88,8 +64,18 @@ export default class Player extends Component {
     );
   }
 
+  onPlayBtn = () =>{
+    let x = this.state.something;
+    this.setState(
+      {something:!x}
+    )
+    this.context.onPlayBtn()
+  }
+
   renderPlayerPlayPause = () => {
-    return this.context.playing == true ? (
+    let playing = this.context.playing;
+
+    return playing == true ? (
       <MeIcon size={20} color="#fff" icon={mePause} />
     ) : (
       <MeIcon size={20} color="#fff" icon={mePlay} />
@@ -166,9 +152,9 @@ export default class Player extends Component {
                       justifyContent: "center",
                       alignItems: "center"
                     }}
-                    onPress={this.context.onPlayBtn}
+                    onPress={this.onPlayBtn}
                   >
-                    {this.renderPlayerPlayPause(this.context.playing)}
+                    {this.renderPlayerPlayPause(this.state.something)}
                   </TouchableOpacity>
                 </CardView>
 
