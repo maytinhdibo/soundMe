@@ -100,7 +100,7 @@ export default class Search extends Component {
               display: this.state.searchValue.length == 0 ? "none" : "flex",
             }}
           >
-            <MeIcon size={20} color="#555" icon={meSearch} />
+            <MeIcon size={20} color={this.context.theme.colorPrimary} icon={meSearch} />
           </View>
           <TextInput
             autoCapitalize="none"

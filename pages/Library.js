@@ -180,12 +180,12 @@ class SongRoute extends Component {
                       padding: 12,
                       paddingVertical: 19,
                       maxWidth: "90%",
-                      backgroundColor: "#fff",
+                      backgroundColor: this.context.theme.backgroundColorPrimary,
                     }}
                   >
                     <Text
                       style={[
-                        { fontSize: 18, marginBottom: 9 },
+                        { fontSize: 18, marginBottom: 9, color: this.context.theme.colorPrimary},
                         textStyle.bold,
                       ]}
                     >
@@ -196,11 +196,12 @@ class SongRoute extends Component {
                         {
                           borderRadius: 6,
                           padding: 6,
-                          paddingTop: 9,
-                          backgroundColor: "rgba(111,111,111,0.1)",
+                          backgroundColor: "rgba(111,111,111,0.2)",
+                         color: this.context.theme.colorPrimary
                         },
                         textStyle.regular,
                       ]}
+                      placeholderTextColor="#999" 
                       placeholder={"Tên danh sách mới..."}
                     />
                     <View
@@ -213,13 +214,13 @@ class SongRoute extends Component {
                       <TouchableOpacity
                         style={{ padding: 6, paddingHorizontal: 9 }}
                       >
-                        <Text style={[textStyle.bold]}>Tạo mới</Text>
+                        <Text style={[{color: this.context.theme.colorPrimary},textStyle.bold]}>Tạo mới</Text>
                       </TouchableOpacity>
                       <TouchableOpacity
                         style={{ padding: 6, paddingHorizontal: 9 }}
                         onPress={() => this.setState({ addModal: false })}
                       >
-                        <Text style={[textStyle.bold]}>Hủy</Text>
+                        <Text style={[{color: this.context.theme.colorPrimary},textStyle.bold]}>Hủy</Text>
                       </TouchableOpacity>
                     </View>
                   </CardView>
