@@ -1,4 +1,4 @@
-#Sun Dec 01 13:44:14 ICT 2019
-base.0=/Users/maytinhdibo/Project/UI/soundMe/android/app/build/intermediates/transforms/dexMerger/debug/0
-renamed.0=classes.dex
+#Mon Dec 02 09:33:12 ICT 2019
+base.0=D\:\\GitHub\\soundMe\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
+renamed.0=classes.dex
