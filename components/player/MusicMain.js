@@ -16,7 +16,7 @@ import meShare from "../../icons/icon-pack/meShare";
 
 import { playerStyle } from "../../styles/playerStyle";
 import { textStyle } from "../../styles/textStyle";
-import { AppConsumer } from "../../AppContextProvider";
+import { AppConsumer, ThemeContext } from "../../AppContextProvider";
 import SoundPlayer from "react-native-sound-player";
 
 import CardView from "react-native-cardview";
@@ -62,7 +62,7 @@ export default class MusicMain extends Component {
                   width: 50,
                 }}
               >
-                <MeIcon size={25} color="#345" icon={meArrowDown} />
+                <MeIcon size={25} color={this.context.theme.colorPrimary} icon={meArrowDown} />
               </TouchableOpacity>
 
               <View
@@ -71,7 +71,7 @@ export default class MusicMain extends Component {
                   alignSelf: "center",
                 }}
               >
-                <Text style={[playerStyle.nowPlaying, textStyle.bold]}>
+                <Text style={[playerStyle.nowPlaying, textStyle.bold, {color:this.context.theme.colorPrimary}]}>
                   Đang phát
                 </Text>
               </View>
@@ -85,15 +85,15 @@ export default class MusicMain extends Component {
                   width: 50,
                 }}
               >
-                <MeIcon size={25} color="#345" icon={meShare} />
+                <MeIcon size={25} color={this.context.theme.colorPrimary} icon={meShare} />
               </TouchableOpacity>
             </View>
 
             <View style={{ flex: 1, alignItems: "center" }}>
-              <Text style={[playerStyle.songName, textStyle.bold]}>
+              <Text style={[playerStyle.songName, textStyle.bold,{color: this.context.theme.colorPrimary}]}>
                 {appConsumer.title}
               </Text>
-              <Text style={[playerStyle.artistName, textStyle.regular]}>
+              <Text style={[playerStyle.artistName, textStyle.regular, {color: this.context.theme.colorPrimary}]}>
                 {appConsumer.artist["name"]}
               </Text>
 
@@ -122,6 +122,7 @@ export default class MusicMain extends Component {
                     {
                       paddingVertical: 16,
                       fontSize: 16,
+                      color: this.context.theme.colorPrimary,
                     },
                     textStyle.medium,
                   ]}
@@ -144,7 +145,7 @@ export default class MusicMain extends Component {
                     width: 15,
                     height: 7,
                     marginHorizontal: 3,
-                    backgroundColor: "#f43",
+                    backgroundColor: this.context.theme.buttonColor,
                     borderRadius: 5,
                   }}
                 />
@@ -163,9 +164,9 @@ export default class MusicMain extends Component {
               <Slider
                 minimumValue={0}
                 maximumValue={appConsumer.duration}
-                minimumTrackTintColor="#fe6f61"
+                minimumTrackTintColor={this.context.theme.buttonColor}
                 // maximumTrackTintColor="#1e88e5"
-                thumbTintColor="#fe6f61"
+                thumbTintColor={this.context.theme.buttonColor}
                 value={appConsumer.presentPosition}
                 style={{ width: "100%" }}
                 onSlidingComplete={position => this.onSliderComplete(position)}
@@ -179,10 +180,10 @@ export default class MusicMain extends Component {
                   paddingTop: 0,
                 }}
               >
-                <Text style={[{ color: "#444" }, textStyle.bold]}>
+                <Text style={[{ color: this.context.theme.colorSecondary }, textStyle.bold]}>
                   {this.secondToMinuteString(appConsumer.duration)}
                 </Text>
-                <Text style={[{ color: "#444" }, textStyle.bold]}>
+                <Text style={[{ color: this.context.theme.colorSecondary }, textStyle.bold]}>
                   {this.secondToMinuteString(appConsumer.presentPosition)}
                 </Text>
               </View>
@@ -197,9 +198,9 @@ export default class MusicMain extends Component {
                 paddingBottom: 25,
               }}
             >
-              <MeIcon size={25} color="#fe6f61" icon={meAddPlaylist} />
+              <MeIcon size={25} color={this.context.theme.buttonColor} icon={meAddPlaylist} />
 
-              <MeIcon size={25} color="#fe6f61" icon={meHeart} />
+              <MeIcon size={25} color={this.context.theme.buttonColor} icon={meHeart} />
             </View>
           </View>
         )}
@@ -207,4 +208,4 @@ export default class MusicMain extends Component {
     );
   }
 }
-MusicMain.contextType = AppConsumer;
+MusicMain.contextType = ThemeContext;

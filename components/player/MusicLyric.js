@@ -18,7 +18,7 @@ import meShare from "../../icons/icon-pack/meShare";
 import { playerStyle } from "../../styles/playerStyle";
 import { textStyle } from "../../styles/textStyle";
 
-import {AppConsumer} from "../../AppContextProvider";
+import {AppConsumer, ThemeContext} from "../../AppContextProvider";
 
 import CardView from "react-native-cardview";
 import meCopy from "../../icons/icon-pack/meCopy";
@@ -139,7 +139,7 @@ export default class MusicLyric extends Component {
               alignSelf: "center",
             }}
           >
-            <Text style={[playerStyle.nowPlaying, textStyle.bold]}>
+            <Text style={[playerStyle.nowPlaying, textStyle.bold, {color:this.context.theme.colorPrimary}]}>
               Lời bài hát
             </Text>
           </View>
@@ -152,7 +152,7 @@ export default class MusicLyric extends Component {
               }}
               onPress={this.copy}
             >
-              <MeIcon size={22} icon={meCopy} />
+              <MeIcon size={22} icon={meCopy} color={this.context.theme.buttonColor}/>
             </TouchableOpacity>
           ) : (
             <View style={{ width: 50 }} />
@@ -164,13 +164,13 @@ export default class MusicLyric extends Component {
             style={{ flexDirection: "column", alignItems: "center", flex: 1, paddingVertical: 9}}
           >
             <View style={{ marginBottom: 9, alignItems: "center" }}>
-              <Text style={[{ fontSize: 16, color: "#999" }, textStyle.bold]}>
+              <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.bold]}>
                 Chia tay hoàng hôn
               </Text>
-              <Text style={[{ fontSize: 16, color: "#999" }, textStyle.medium]}>
+              <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.medium]}>
                 Ca sĩ: Thanh Lam
               </Text>
-              <Text style={[{ fontSize: 16, color: "#999" }, textStyle.medium]}>
+              <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.medium]}>
                 Sáng tác: NS Thuận Yến
               </Text>
             </View>
@@ -197,7 +197,7 @@ export default class MusicLyric extends Component {
   }
 }
 
-MusicLyric.contextType=AppConsumer;
+MusicLyric.contextType=ThemeContext;
 
 const styles = StyleSheet.create({
   lineWrapper: {
