@@ -339,7 +339,7 @@ class Tabs extends Component {
                   paddingHorizontal: 12,
                   marginEnd: 6,
                   backgroundColor:
-                    this.props.index == index ? "#fe6f61" : "transparent",
+                    this.props.index == index ? this.context.theme.buttonColor : "transparent",
                   color: "#fff",
                   borderRadius: 20,
                 }}
@@ -363,6 +363,8 @@ class Tabs extends Component {
     );
   }
 }
+
+Tabs.contextType=ThemeContext;
 
 export default class Library extends Component {
   constructor(props) {

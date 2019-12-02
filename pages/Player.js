@@ -53,7 +53,7 @@ export default class Player extends Component {
     const willBlurSubscription = this.props.navigation.addListener(
       "willBlur",
       payload => {
-        StatusBar.setBarStyle("dark-content");
+        // StatusBar.setBarStyle("dark-content");
       }
     );
     const willFocusSubscription = this.props.navigation.addListener(
