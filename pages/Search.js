@@ -22,6 +22,7 @@ import SongResultItem from "../components/search/SongResultItem";
 import ArtistResultItem from "../components/search/ArtistResultItem";
 import { commonStyle } from "../styles/commonStyle";
 import {ThemeContext} from "../AppContextProvider";
+import meClose from "../icons/icon-pack/meClose";
 export default class Search extends Component {
   constructor(props) {
     super(props);
@@ -31,7 +32,7 @@ export default class Search extends Component {
     this.inputText = React.createRef();
   }
   recommend = value => {
-    this.setState({ searchValue: value });
+    this.setState({ searchValue: value.toLowerCase() });
   };
 
   componentDidMount() {
@@ -53,7 +54,7 @@ export default class Search extends Component {
           flex: 1,
           paddingTop:
             this.state.searchValue.length == 0 ? getStatusBarHeight() : 0,
-            backgroundColor:this.context.theme.backgroundColorPrimary
+            backgroundColor:this.context.theme.backgroundColorPrimary,
         }}
       >
         <View
@@ -141,7 +142,7 @@ export default class Search extends Component {
                   backgroundColor: "rgba(11,11,11,0.3)",
                 }}
               >
-                <MeIcon size={12.5} color="#fff" icon={meArrowRight} />
+                <MeIcon size={8} color="#fff" icon={meClose} />
               </View>
             </TouchableOpacity>
           ) : null}

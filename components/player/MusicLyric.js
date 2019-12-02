@@ -39,7 +39,7 @@ class Line extends Component {
         style={[
           { width: "100%", alignItems: "center" },
           this.props.lyricSelected.indexOf(props.idx) != -1
-            ? { backgroundColor: "rgba(111,111,111,0.1)" }
+            ? { backgroundColor: "rgba(111,111,111,0.2)" }
             : null,
         ]}
       >
@@ -53,9 +53,10 @@ class Line extends Component {
             style={[
               textStyle.medium,
               styles.line,
-              this.checkPos() ? { color: "#d13d3d" } : null,
+               { color: this.checkPos() ?this.context.theme.buttonColor:this.context.theme.colorPrimary },
             ]}
           >
+            
             {props.content}
           </Text>
         </TouchableOpacity>
@@ -63,6 +64,9 @@ class Line extends Component {
     );
   }
 }
+
+Line.contextType=ThemeContext;
+
 
 const data = [
   {

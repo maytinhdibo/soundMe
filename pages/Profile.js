@@ -112,6 +112,7 @@ class Profile extends Component {
       <AppConsumer>
         {appConsumer => (
           <ScrollView
+            showsVerticalScrollIndicator={false}
             style={{
               flex: 1,
               backgroundColor: appConsumer.theme.backgroundColorPrimary,
