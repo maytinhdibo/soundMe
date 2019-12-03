@@ -165,7 +165,7 @@ export default class MusicMain extends Component {
                 minimumValue={0}
                 maximumValue={appConsumer.duration}
                 minimumTrackTintColor={this.context.theme.buttonColor}
-                // maximumTrackTintColor="#1e88e5"
+                maximumTrackTintColor={this.context.theme.colorPrimary}
                 thumbTintColor={this.context.theme.buttonColor}
                 value={appConsumer.presentPosition}
                 style={{ width: "100%" }}
@@ -180,10 +180,10 @@ export default class MusicMain extends Component {
                   paddingTop: 0,
                 }}
               >
-                <Text style={[{ color: this.context.theme.colorSecondary }, textStyle.bold]}>
+                <Text style={[{ color: this.context.theme.colorPrimary }, textStyle.bold]}>
                   {this.secondToMinuteString(appConsumer.duration)}
                 </Text>
-                <Text style={[{ color: this.context.theme.colorSecondary }, textStyle.bold]}>
+                <Text style={[{ color: this.context.theme.colorPrimary }, textStyle.bold]}>
                   {this.secondToMinuteString(appConsumer.presentPosition)}
                 </Text>
               </View>

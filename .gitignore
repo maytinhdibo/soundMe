@@ -91,4 +91,6 @@ RNTester/Pods/*
 /ReactCommon/fabric/components/rncore/
 /schema-rncore.json
 
-/android/build/intermediates/blame/res/debug/*
+# /android/build/intermediates/blame/res/debug/*
+
+android/build/**

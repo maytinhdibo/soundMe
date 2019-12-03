@@ -53,7 +53,7 @@ export default class Player extends Component {
     const willBlurSubscription = this.props.navigation.addListener(
       "willBlur",
       payload => {
-        StatusBar.setBarStyle("dark-content");
+        // StatusBar.setBarStyle("dark-content");
       }
     );
     const willFocusSubscription = this.props.navigation.addListener(
@@ -114,7 +114,7 @@ export default class Player extends Component {
             source={appConsumer.songImage}
             style={{ width: "100%", height: "100%" }}
           >
-            <View style={{ flex: 1, backgroundColor: this.context.theme.backgroundColorPrimary }}>
+            <View style={{ flex: 1, backgroundColor: this.context.theme.backgroundColorPlayer }}>
               <View style={playerStyle.overlay}>
                 <Swiper index={0} loop={false} showsPagination={false}>
                   {/* <MusicInfo /> */}
