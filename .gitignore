@@ -28,7 +28,6 @@ project.xcworkspace
 /RNTester/android/app/gradlew
 /RNTester/android/app/gradlew.bat
 /ReactAndroid/build/
-/android/*
 
 # Buck
 .buckd
@@ -93,4 +92,3 @@ RNTester/Pods/*
 
 # /android/build/intermediates/blame/res/debug/*
 
-android/build/**
