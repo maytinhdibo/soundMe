@@ -362,7 +362,6 @@ class NewHome extends Component {
                     <View name="fake-margin" style={{ width: 7 }} />
 
                     <ArtistItem
-                      // navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
                       name={"Thu Phương"}
                     />
