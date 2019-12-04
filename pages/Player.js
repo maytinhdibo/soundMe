@@ -46,9 +46,9 @@ export default class Player extends Component {
 
 
   async componentDidMount() {
-    console.log("START PROPS");
-    console.log(this.props);
-    console.log("ExND PROPS");
+    // console.log("START PROPS");
+    // console.log(this.props);
+    // console.log("ExND PROPS");
 
     this.props.navigation.addListener(
       "willBlur",

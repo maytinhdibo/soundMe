@@ -26,7 +26,7 @@ import meCopy from "../../icons/icon-pack/meCopy";
 class Line extends Component {
   checkPos() {
     const props = this.props;
-    var result = props.curTime >= props.start && props.curTime < props.stop;
+    var result = this.context.presentPosition >= props.start && this.context.presentPosition < props.stop;
     if (result) {
       props.curLine(props.content);
     }
@@ -117,41 +117,132 @@ const data = [
   {
     start: 0,
     stop: 3,
-    content: "có chú bướm vàng",
+    content: "Ngày lấy chồng",
   },
   {
     start: 3,
     stop: 6,
-    content: "bay theo em",
+    content: "em đi qua con đê",
   },
   {
     start: 6,
     stop: 24,
-    content: "",
+    content: "con đê mòn lối cỏ về",
   },
   {
     start: 0,
     stop: 3,
-    content: "Bướm vàng",
+    content: "Ngày lấy chồng",
   },
   {
     start: 3,
     stop: 6,
-    content: "đã đậu trái mù u rồi",
+    content: "em đi qua con đê",
   },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  }
 ];
 
 export default class MusicLyric extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      curTime: 0,
       lyricSelected: [],
       lyricData: data,
     };
-  }
-  componentDidMount() {
-    var time = this.state.curTime;
   }
   curLine = value => {
     if (value != this.state.curLine) {
@@ -242,7 +333,6 @@ export default class MusicLyric extends Component {
                   curLine={this.curLine}
                   lyricSelected={this.state.lyricSelected}
                   selectLine={this.selectLine}
-                  curTime={this.context.presentPosition}
                   start={line.start}
                   stop={line.stop}
                   content={line.content}
