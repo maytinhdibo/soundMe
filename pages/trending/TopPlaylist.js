@@ -15,7 +15,7 @@ import Header from "../../components/common/Header";
 import MeIcon from "../../icons/MeIcon";
 import meArrowLeft from "../../icons/icon-pack/meArrowLeft";
 
-import { AppConsumer } from "../../AppContextProvider";
+import { AppConsumer, ThemeContext } from "../../AppContextProvider";
 import PlaylistItem from "../../components/trending/PlaylistItem";
 
 import { FlatGrid } from "react-native-super-grid";
@@ -28,11 +28,11 @@ export default class TopPlaylist extends Component {
     };
   }
   async componentDidMount() {
-    const willBlurSubscription = this.props.navigation.addListener(
+    this.props.navigation.addListener(
       "willBlur",
       payload => {
         //change return with theme (assign for duchm)
-        StatusBar.setBarStyle("dark-content");
+        StatusBar.setBarStyle(this.context.theme.barColor);
       }
     );
     const willFocusSubscription = this.props.navigation.addListener(
@@ -150,3 +150,4 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
 });
+TopPlaylist.contextType=ThemeContext;

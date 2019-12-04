@@ -15,7 +15,7 @@ import Header from "../../components/common/Header";
 import MeIcon from "../../icons/MeIcon";
 import meArrowLeft from "../../icons/icon-pack/meArrowLeft";
 
-import { AppConsumer } from "../../AppContextProvider";
+import { AppConsumer,ThemeContext } from "../../AppContextProvider";
 
 import { FlatGrid } from "react-native-super-grid";
 import ArtistItem from "../../components/trending/ArtistItem";
@@ -27,17 +27,18 @@ export default class TopArtist extends Component {
       removeModal: false,
     };
   }
-  async componentDidMount() {
-    const willBlurSubscription = this.props.navigation.addListener(
+  componentDidMount() {
+    this.props.navigation.addListener(
       "willBlur",
       payload => {
         //change return with theme (assign for duchm)
-        StatusBar.setBarStyle("dark-content");
+        StatusBar.setBarStyle(this.context.theme.barColor);
       }
     );
-    const willFocusSubscription = this.props.navigation.addListener(
+    this.props.navigation.addListener(
       "willFocus",
       payload => {
+        //change return with theme (assign for duchm)
         StatusBar.setBarStyle("light-content");
       }
     );
@@ -149,3 +150,4 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
 });
+TopArtist.contextType=ThemeContext;

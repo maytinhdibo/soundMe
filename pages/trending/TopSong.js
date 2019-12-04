@@ -27,7 +27,7 @@ import meShare from "../../icons/icon-pack/meShare";
 import mePlay from "../../icons/icon-pack/mePlay";
 import meHeart from "../../icons/icon-pack/meHeart";
 
-import { AppConsumer } from "../../AppContextProvider";
+import { AppConsumer, ThemeContext } from "../../AppContextProvider";
 
 const HEADER_EXPANDED_HEIGHT = 250;
 const HEADER_COLLAPSED_HEIGHT = 0;
@@ -43,11 +43,11 @@ export default class TopSong extends Component {
     };
   }
   async componentDidMount() {
-    const willBlurSubscription = this.props.navigation.addListener(
+    this.props.navigation.addListener(
       "willBlur",
       payload => {
         //change return with theme (assign for duchm)
-        StatusBar.setBarStyle("dark-content");
+        StatusBar.setBarStyle(this.context.theme.barColor);
       }
     );
     const willFocusSubscription = this.props.navigation.addListener(
@@ -317,3 +317,4 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 });
+TopSong.contextType=ThemeContext;
