@@ -50,13 +50,14 @@ export default class Player extends Component {
     console.log(this.props);
     console.log("ExND PROPS");
 
-    const willBlurSubscription = this.props.navigation.addListener(
+    this.props.navigation.addListener(
       "willBlur",
       payload => {
-        // StatusBar.setBarStyle("dark-content");
+        //change return with theme (assign for duchm)
+        StatusBar.setBarStyle(this.context.theme.barColor);
       }
     );
-    const willFocusSubscription = this.props.navigation.addListener(
+    this.props.navigation.addListener(
       "willFocus",
       payload => {
         // StatusBar.setBarStyle("light-content");
