@@ -56,7 +56,8 @@ export default class Player extends Component {
         //change return with theme (assign for duchm)
         StatusBar.setBarStyle(this.context.theme.barColor);
       }
-    );his.props.navigation.addListener(
+    );
+    this.props.navigation.addListener(
       "willFocus",
       payload => {
         // StatusBar.setBarStyle("light-content");
