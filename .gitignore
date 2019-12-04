@@ -28,7 +28,6 @@ project.xcworkspace
 /RNTester/android/app/gradlew
 /RNTester/android/app/gradlew.bat
 /ReactAndroid/build/
-/android/*
 
 # Buck
 .buckd
@@ -90,3 +89,6 @@ RNTester/Pods/*
 # react-native-codegen
 /ReactCommon/fabric/components/rncore/
 /schema-rncore.json
+
+# /android/build/intermediates/blame/res/debug/*
+

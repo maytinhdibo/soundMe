@@ -8,6 +8,7 @@ export const Dark = {
     borderColor : '#372e6b',
     backgroundColorPlaylist :'#292349',
     hightlightColor :"#f2f2f2",
+    backgroundColorPlayer:'rgba(24, 20, 47,0.85)'
 }
 export const Light = {
     barColor: "dark-content",
@@ -19,4 +20,5 @@ export const Light = {
     borderColor : '#eee',
     backgroundColorPlaylist :'#fe6f61',
     hightlightColor :"#343",
+    backgroundColorPlayer:'rgba(255,255,255,0.87)'
 }
