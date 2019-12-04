@@ -70,19 +70,74 @@ Line.contextType=ThemeContext;
 
 const data = [
   {
-    start: 0,
-    stop: 3,
-    content: "Ru mãi ngàn năm",
+    start: 44,
+    stop: 45.71,
+    content: "Lời ru buồn",
+  },
+  {
+    start: 45.71,
+    stop: 48.46,
+    content: "nghe mênh mang",
+  },
+  {
+    start: 48.46,
+    stop: 52.01,
+    content: "mênh mang",
+  },
+  {
+    start: 52.01,
+    stop: 55.20,
+    content: "sau lũy tre làng",
   },
   {
     start: 3,
     stop: 6,
-    content: "Dòng tóc em buồn",
+    content: "khiến lòng tôi xôn xao",
   },
   {
     start: 6,
     stop: 24,
-    content: "Bàn tay em cả ngàn ngón",
+    content: "",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "có chú bướm vàng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "bay theo em",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Bướm vàng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "đã đậu trái mù u rồi",
   },
 ];
 

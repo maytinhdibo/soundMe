@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "lrc-parser": "^1.0.1",
     "react": "16.9.0",
     "react-native": "0.61.4",
     "react-native-android-dialog-picker": "^0.0.2",
