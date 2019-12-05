@@ -10,7 +10,7 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-
+import lyric from "../../assets/data/lyric"
 import MeIcon from "../../icons/MeIcon";
 import mePlay from "../../icons/icon-pack/mePlay";
 import meShare from "../../icons/icon-pack/meShare";
@@ -26,9 +26,9 @@ import meCopy from "../../icons/icon-pack/meCopy";
 class Line extends Component {
   checkPos() {
     const props = this.props;
-    var result = this.context.presentPosition >= props.start && this.context.presentPosition < props.stop;
+    var result = this.context.presentPosition >= props.start && this.context.presentPosition < props.end;
     if (result) {
-      props.curLine(props.content);
+      props.curLine(props.text);
     }
     return result;
   }
@@ -57,7 +57,7 @@ class Line extends Component {
             ]}
           >
             
-            {props.content}
+            {props.text}
           </Text>
         </TouchableOpacity>
       </View>
@@ -67,183 +67,15 @@ class Line extends Component {
 
 Line.contextType=ThemeContext;
 
-
-const data = [
-  {
-    start: 44,
-    stop: 45.71,
-    content: "Lời ru buồn",
-  },
-  {
-    start: 45.71,
-    stop: 48.46,
-    content: "nghe mênh mang",
-  },
-  {
-    start: 48.46,
-    stop: 52.01,
-    content: "mênh mang",
-  },
-  {
-    start: 52.01,
-    stop: 55.20,
-    content: "sau lũy tre làng",
-  },
-  {
-    start: 3,
-    stop: 6,
-    content: "khiến lòng tôi xôn xao",
-  },
-  {
-    start: 6,
-    stop: 24,
-    content: "",
-  },
-  {
-    start: 0,
-    stop: 3,
-    content: "Ngày lấy chồng",
-  },
-  {
-    start: 3,
-    stop: 6,
-    content: "em đi qua con đê",
-  },
-  {
-    start: 6,
-    stop: 24,
-    content: "con đê mòn lối cỏ về",
-  },
-  {
-    start: 0,
-    stop: 3,
-    content: "Ngày lấy chồng",
-  },
-  {
-    start: 3,
-    stop: 6,
-    content: "em đi qua con đê",
-  },
-  {
-    start: 6,
-    stop: 24,
-    content: "con đê mòn lối cỏ về",
-  },
-  {
-    start: 0,
-    stop: 3,
-    content: "Ngày lấy chồng",
-  },
-  {
-    start: 3,
-    stop: 6,
-    content: "em đi qua con đê",
-  },
-  {
-    start: 6,
-    stop: 24,
-    content: "con đê mòn lối cỏ về",
-  },
-  {
-    start: 0,
-    stop: 3,
-    content: "Ngày lấy chồng",
-  },
-  {
-    start: 3,
-    stop: 6,
-    content: "em đi qua con đê",
-  },
-  {
-    start: 6,
-    stop: 24,
-    content: "con đê mòn lối cỏ về",
-  },
-  {
-    start: 0,
-    stop: 3,
-    content: "Ngày lấy chồng",
-  },
-  {
-    start: 3,
-    stop: 6,
-    content: "em đi qua con đê",
-  },
-  {
-    start: 6,
-    stop: 24,
-    content: "con đê mòn lối cỏ về",
-  },
-  {
-    start: 0,
-    stop: 3,
-    content: "Ngày lấy chồng",
-  },
-  {
-    start: 3,
-    stop: 6,
-    content: "em đi qua con đê",
-  },
-  {
-    start: 6,
-    stop: 24,
-    content: "con đê mòn lối cỏ về",
-  },
-  {
-    start: 0,
-    stop: 3,
-    content: "Ngày lấy chồng",
-  },
-  {
-    start: 3,
-    stop: 6,
-    content: "em đi qua con đê",
-  },
-  {
-    start: 6,
-    stop: 24,
-    content: "con đê mòn lối cỏ về",
-  },
-  {
-    start: 0,
-    stop: 3,
-    content: "Ngày lấy chồng",
-  },
-  {
-    start: 3,
-    stop: 6,
-    content: "em đi qua con đê",
-  },
-  {
-    start: 6,
-    stop: 24,
-    content: "con đê mòn lối cỏ về",
-  },
-  {
-    start: 0,
-    stop: 3,
-    content: "Ngày lấy chồng",
-  },
-  {
-    start: 3,
-    stop: 6,
-    content: "em đi qua con đê",
-  },
-  {
-    start: 6,
-    stop: 24,
-    content: "con đê mòn lối cỏ về",
-  }
-];
-
 export default class MusicLyric extends Component {
   constructor(props) {
     super(props);
     this.state = {
       lyricSelected: [],
-      lyricData: data,
+      lyricData: lyric.scripts,
     };
   }
+
   curLine = value => {
     if (value != this.state.curLine) {
       this.props.curLine(value);
@@ -265,10 +97,10 @@ export default class MusicLyric extends Component {
     console.log(lines);
   };
   copy = () => {
-    const content = this.state.lyricSelected.map(key => {
-      return this.state.lyricData[key].content;
+    const text = this.state.lyricSelected.map(key => {
+      return this.state.lyricData[key].text;
     });
-    Clipboard.setString(content.join("\n"));
+    Clipboard.setString(text.join("\n"));
     ToastAndroid.showWithGravity(
       "Đã sao chép lời bài hát",
       ToastAndroid.SHORT,
@@ -334,8 +166,8 @@ export default class MusicLyric extends Component {
                   lyricSelected={this.state.lyricSelected}
                   selectLine={this.selectLine}
                   start={line.start}
-                  stop={line.stop}
-                  content={line.content}
+                  end={line.end}
+                  text={line.text}
                 />
               );
             })}
