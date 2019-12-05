@@ -3,13 +3,23 @@ import {
     Text,
     View,
     Image,
+    TouchableWithoutFeedback
   } from "react-native";
 import { textStyle } from "../../styles/textStyle";
 import { searchStyle } from "../../styles/searchStyle";
+import { AppConsumer } from "../../AppContextProvider";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default class SongResultItem extends Component {
+
+  onSongPressed = () => {
+    console.log("Song in playlist pressed");
+    this.context.loadMusic();
+    this.context.play();
+  };
     render() {
       return (
+        <TouchableWithoutFeedback onPress={this.onSongPressed}>
         <View style={searchStyle.songItem}>
           <Image
             source={this.props.imgUrl}
@@ -57,8 +67,10 @@ export default class SongResultItem extends Component {
             </Text>
           </View>
         </View>
+        </TouchableWithoutFeedback>
       );
     }
   }
   
+  SongResultItem.contextType = AppConsumer;
   
