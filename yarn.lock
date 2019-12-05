@@ -4224,6 +4224,11 @@ loose-envify@^1.0.0, loose-envify@^1.1.0, loose-envify@^1.3.1, loose-envify@^1.4
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
+lrc-parser@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/lrc-parser/-/lrc-parser-1.0.1.tgz#3354a67ec47de0ea9b30e69778c372158e00d331"
+  integrity sha1-M1SmfsR94OqbMOaXeMNyFY4A0zE=
+
 lru-cache@^4.0.1:
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"

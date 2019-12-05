@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { textStyle } from "../../styles/textStyle";
+import {ThemeContext} from "../../AppContextProvider";
 export default class RecommendTag extends Component {
     render() {
       return (
@@ -19,6 +20,7 @@ export default class RecommendTag extends Component {
                 paddingHorizontal: 15,
                 marginBottom: 6,
                 marginEnd: 6,
+                color: this.context.theme.colorPrimary,
               },
               textStyle.bold,
             ]}
@@ -29,3 +31,4 @@ export default class RecommendTag extends Component {
       );
     }
   }
+  RecommendTag.contextType=ThemeContext;

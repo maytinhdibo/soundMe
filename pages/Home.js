@@ -10,6 +10,8 @@ import {
   StatusBar,
 } from "react-native";
 
+import changeNavigationBarColor from 'react-native-navigation-bar-color';
+
 import Swiper from "react-native-swiper";
 import PlaylistItem from "../components/home/PlaylistItem";
 import SliderDot from "../components/common/SliderDot";
@@ -63,7 +65,6 @@ class NewHome extends Component {
     this.listView.getNode().scrollTo({ y, animated: true });
   };
   componentDidUpdate() {
-    StatusBar.setBarStyle(this.context.theme.barColor);
     try {
       if (this.state.scrollY > 480) {
         this.badgeView.getNode().scrollToEnd();
@@ -71,6 +72,10 @@ class NewHome extends Component {
         this.badgeView.getNode().scrollTo({ x: 0, animated: true });
       }
     } catch {}
+  }
+
+  componentDidMount(){
+    changeNavigationBarColor(this.context.theme.backgroundColorSecondary);
   }
 
   render() {
@@ -357,7 +362,6 @@ class NewHome extends Component {
                     <View name="fake-margin" style={{ width: 7 }} />
 
                     <ArtistItem
-                      // navigation={this.props.navigation}
                       imgUrl={require("../assets/nuocmat.jpg")}
                       name={"Thu Phương"}
                     />

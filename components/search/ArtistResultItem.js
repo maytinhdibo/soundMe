@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Text, View, Image } from "react-native";
 import { textStyle } from "../../styles/textStyle";
 import CardView from "react-native-cardview";
+import {ThemeContext} from "../../AppContextProvider";
 
 export default class ArtistResultItem extends Component {
   render() {
@@ -26,6 +27,7 @@ export default class ArtistResultItem extends Component {
                 padding: 6,
                 paddingBottom: 0,
                 fontSize: 12,
+                color: this.context.theme.colorPrimary
               },
               textStyle.bold,
             ]}
@@ -37,3 +39,4 @@ export default class ArtistResultItem extends Component {
     );
   }
 }
+ArtistResultItem.contextType=ThemeContext;

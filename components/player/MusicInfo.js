@@ -45,9 +45,9 @@ export default class MusicInfo extends Component {
           </View>
 
         </View>
-<Text>Bài hát: Chia Tay Hoàng Hôn</Text>
+{/* <Text>Bài hát: Chia Tay Hoàng Hôn</Text>
 <Text>Ca sĩ: NSƯT Thanh Lam</Text>
-<Text>Nhạc sĩ: Thuận Yến</Text>
+<Text>Nhạc sĩ: Thuận Yến</Text> */}
       </View>
     );
   }

@@ -29,7 +29,7 @@ import MusicMain from "../components/player/MusicMain";
 import CardView from "react-native-cardview";
 import MusicInfo from "../components/player/MusicInfo";
 import MusicLyric from "../components/player/MusicLyric";
-import { AppConsumer } from "../AppContextProvider";
+import { AppConsumer,ThemeContext } from "../AppContextProvider";
 import meRepeat from "../icons/icon-pack/meRepeat";
 import meShuffle from "../icons/icon-pack/meShuffle";
 import meNext from "../icons/icon-pack/meNext";
@@ -46,17 +46,18 @@ export default class Player extends Component {
 
 
   async componentDidMount() {
-    console.log("START PROPS");
-    console.log(this.props);
-    console.log("ExND PROPS");
+    // console.log("START PROPS");
+    // console.log(this.props);
+    // console.log("ExND PROPS");
 
-    const willBlurSubscription = this.props.navigation.addListener(
+    this.props.navigation.addListener(
       "willBlur",
       payload => {
-        StatusBar.setBarStyle("dark-content");
+        //change return with theme (assign for duchm)
+        StatusBar.setBarStyle(this.context.theme.barColor);
       }
     );
-    const willFocusSubscription = this.props.navigation.addListener(
+    this.props.navigation.addListener(
       "willFocus",
       payload => {
         // StatusBar.setBarStyle("light-content");
@@ -114,7 +115,7 @@ export default class Player extends Component {
             source={appConsumer.songImage}
             style={{ width: "100%", height: "100%" }}
           >
-            <View style={{ flex: 1, backgroundColor: "rgba(255,255,255,0.9)" }}>
+            <View style={{ flex: 1, backgroundColor: this.context.theme.backgroundColorPlayer }}>
               <View style={playerStyle.overlay}>
                 <Swiper index={0} loop={false} showsPagination={false}>
                   {/* <MusicInfo /> */}
@@ -146,7 +147,7 @@ export default class Player extends Component {
                   <TouchableOpacity
                     style={{
                       borderRadius: 37.5,
-                      backgroundColor: "#fe6f61",
+                      backgroundColor: this.context.theme.buttonColor,
                       flex: 1,
                       width: "100%",
                       justifyContent: "center",
@@ -167,7 +168,7 @@ export default class Player extends Component {
                     paddingTop: 30,
                     marginBottom: -75,
                     flexDirection: "row",
-                    backgroundColor: "rgba(255,255,255,0.3)",
+                    backgroundColor: this.context.theme.backgroundColorSecondary,
                     justifyContent: "space-evenly",
                     alignItems: "flex-start"
                   }}
@@ -181,7 +182,7 @@ export default class Player extends Component {
                       margin: 9
                     }}
                   >
-                    <MeIcon size={25} color="#fe6f61" icon={meShuffle} />
+                    <MeIcon size={25} color={this.context.theme.buttonColor} icon={meShuffle} />
                   </View>
                   <View
                     style={{
@@ -192,7 +193,7 @@ export default class Player extends Component {
                       margin: 9
                     }}
                   >
-                    <MeIcon size={20} color="#fe6f61" icon={mePrevious} />
+                    <MeIcon size={20} color={this.context.theme.buttonColor} icon={mePrevious} />
                   </View>
                   <View
                     style={{
@@ -211,7 +212,7 @@ export default class Player extends Component {
                       margin: 9
                     }}
                   >
-                    <MeIcon size={20} color="#fe6f61" icon={meNext} />
+                    <MeIcon size={20} color={this.context.theme.buttonColor} icon={meNext} />
                   </View>
                   <View
                     style={{
@@ -222,7 +223,7 @@ export default class Player extends Component {
                       margin: 9
                     }}
                   >
-                    <MeIcon size={25} color="#fe6f61" icon={meRepeat} />
+                    <MeIcon size={25} color={this.context.theme.buttonColor} icon={meRepeat} />
                   </View>
                 </CardView>
               </View>
@@ -234,4 +235,4 @@ export default class Player extends Component {
   }
 }
 
-Player.contextType = AppConsumer;
+Player.contextType = ThemeContext;

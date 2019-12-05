@@ -18,7 +18,7 @@ import meShare from "../../icons/icon-pack/meShare";
 import { playerStyle } from "../../styles/playerStyle";
 import { textStyle } from "../../styles/textStyle";
 
-import {AppConsumer} from "../../AppContextProvider";
+import {AppConsumer, ThemeContext} from "../../AppContextProvider";
 
 import CardView from "react-native-cardview";
 import meCopy from "../../icons/icon-pack/meCopy";
@@ -26,7 +26,7 @@ import meCopy from "../../icons/icon-pack/meCopy";
 class Line extends Component {
   checkPos() {
     const props = this.props;
-    var result = props.curTime >= props.start && props.curTime < props.stop;
+    var result = this.context.presentPosition >= props.start && this.context.presentPosition < props.stop;
     if (result) {
       props.curLine(props.content);
     }
@@ -39,7 +39,7 @@ class Line extends Component {
         style={[
           { width: "100%", alignItems: "center" },
           this.props.lyricSelected.indexOf(props.idx) != -1
-            ? { backgroundColor: "rgba(111,111,111,0.1)" }
+            ? { backgroundColor: "rgba(111,111,111,0.2)" }
             : null,
         ]}
       >
@@ -53,9 +53,10 @@ class Line extends Component {
             style={[
               textStyle.medium,
               styles.line,
-              this.checkPos() ? { color: "#d13d3d" } : null,
+               { color: this.checkPos() ?this.context.theme.buttonColor:this.context.theme.colorPrimary },
             ]}
           >
+            
             {props.content}
           </Text>
         </TouchableOpacity>
@@ -64,35 +65,184 @@ class Line extends Component {
   }
 }
 
+Line.contextType=ThemeContext;
+
+
 const data = [
   {
-    start: 0,
-    stop: 3,
-    content: "Ru mãi ngàn năm",
+    start: 44,
+    stop: 45.71,
+    content: "Lời ru buồn",
+  },
+  {
+    start: 45.71,
+    stop: 48.46,
+    content: "nghe mênh mang",
+  },
+  {
+    start: 48.46,
+    stop: 52.01,
+    content: "mênh mang",
+  },
+  {
+    start: 52.01,
+    stop: 55.20,
+    content: "sau lũy tre làng",
   },
   {
     start: 3,
     stop: 6,
-    content: "Dòng tóc em buồn",
+    content: "khiến lòng tôi xôn xao",
   },
   {
     start: 6,
     stop: 24,
-    content: "Bàn tay em cả ngàn ngón",
+    content: "",
   },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  },
+  {
+    start: 0,
+    stop: 3,
+    content: "Ngày lấy chồng",
+  },
+  {
+    start: 3,
+    stop: 6,
+    content: "em đi qua con đê",
+  },
+  {
+    start: 6,
+    stop: 24,
+    content: "con đê mòn lối cỏ về",
+  }
 ];
 
 export default class MusicLyric extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      curTime: 0,
       lyricSelected: [],
       lyricData: data,
     };
-  }
-  componentDidMount() {
-    var time = this.state.curTime;
   }
   curLine = value => {
     if (value != this.state.curLine) {
@@ -139,7 +289,7 @@ export default class MusicLyric extends Component {
               alignSelf: "center",
             }}
           >
-            <Text style={[playerStyle.nowPlaying, textStyle.bold]}>
+            <Text style={[playerStyle.nowPlaying, textStyle.bold, {color:this.context.theme.colorPrimary}]}>
               Lời bài hát
             </Text>
           </View>
@@ -152,7 +302,7 @@ export default class MusicLyric extends Component {
               }}
               onPress={this.copy}
             >
-              <MeIcon size={22} icon={meCopy} />
+              <MeIcon size={22} icon={meCopy} color={this.context.theme.buttonColor}/>
             </TouchableOpacity>
           ) : (
             <View style={{ width: 50 }} />
@@ -164,13 +314,13 @@ export default class MusicLyric extends Component {
             style={{ flexDirection: "column", alignItems: "center", flex: 1, paddingVertical: 9}}
           >
             <View style={{ marginBottom: 9, alignItems: "center" }}>
-              <Text style={[{ fontSize: 16, color: "#999" }, textStyle.bold]}>
+              <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.bold]}>
                 Chia tay hoàng hôn
               </Text>
-              <Text style={[{ fontSize: 16, color: "#999" }, textStyle.medium]}>
+              <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.medium]}>
                 Ca sĩ: Thanh Lam
               </Text>
-              <Text style={[{ fontSize: 16, color: "#999" }, textStyle.medium]}>
+              <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.medium]}>
                 Sáng tác: NS Thuận Yến
               </Text>
             </View>
@@ -183,7 +333,6 @@ export default class MusicLyric extends Component {
                   curLine={this.curLine}
                   lyricSelected={this.state.lyricSelected}
                   selectLine={this.selectLine}
-                  curTime={this.context.presentPosition}
                   start={line.start}
                   stop={line.stop}
                   content={line.content}
@@ -197,7 +346,7 @@ export default class MusicLyric extends Component {
   }
 }
 
-MusicLyric.contextType=AppConsumer;
+MusicLyric.contextType=ThemeContext;
 
 const styles = StyleSheet.create({
   lineWrapper: {

@@ -21,6 +21,8 @@ import RecommendTag from "../components/search/RecommendTag";
 import SongResultItem from "../components/search/SongResultItem";
 import ArtistResultItem from "../components/search/ArtistResultItem";
 import { commonStyle } from "../styles/commonStyle";
+import {ThemeContext} from "../AppContextProvider";
+import meClose from "../icons/icon-pack/meClose";
 export default class Search extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +32,7 @@ export default class Search extends Component {
     this.inputText = React.createRef();
   }
   recommend = value => {
-    this.setState({ searchValue: value });
+    this.setState({ searchValue: value.toLowerCase() });
   };
 
   componentDidMount() {
@@ -52,6 +54,7 @@ export default class Search extends Component {
           flex: 1,
           paddingTop:
             this.state.searchValue.length == 0 ? getStatusBarHeight() : 0,
+            backgroundColor:this.context.theme.backgroundColorPrimary,
         }}
       >
         <View
@@ -60,6 +63,7 @@ export default class Search extends Component {
             paddingLeft: 12,
             paddingRight: 9,
             display: this.state.searchValue.length == 0 ? "flex" : "none",
+            backgroundColor:this.context.theme.backgroundColorPrimary
           }}
         >
           <View
@@ -67,7 +71,7 @@ export default class Search extends Component {
               flex: 1,
             }}
           >
-            <Text style={[commonStyle.header, textStyle.bold]}>Tìm kiếm</Text>
+            <Text style={[commonStyle.header, textStyle.bold,{color:this.context.theme.colorPrimary}]}>Tìm kiếm</Text>
           </View>
         </View>
 
@@ -86,7 +90,7 @@ export default class Search extends Component {
             paddingTop: getStatusBarHeight(),
             borderRadius: 0,
             borderBottomWidth:1,
-            borderBottomColor:"#ddd"
+            borderBottomColor:this.context.theme.backgroundColorPrimary,
           }]}
         >
           <View
@@ -97,14 +101,16 @@ export default class Search extends Component {
               display: this.state.searchValue.length == 0 ? "none" : "flex",
             }}
           >
-            <MeIcon size={20} color="#555" icon={meSearch} />
+            <MeIcon size={20} color={this.context.theme.colorPrimary} icon={meSearch} />
           </View>
           <TextInput
             autoCapitalize="none"
             placeholder="Khám phá bài hát mà bạn ưa thích..."
+            placeholderTextColor={this.context.theme.colorSecondary}
             ref={ref => (this.inputText = ref)}
             style={[
               {
+                color: this.context.theme.colorPrimary,
                 flex: 1,
                 height: 50,
                 borderWidth: 0,
@@ -136,7 +142,7 @@ export default class Search extends Component {
                   backgroundColor: "rgba(11,11,11,0.3)",
                 }}
               >
-                <MeIcon size={12.5} color="#fff" icon={meArrowRight} />
+                <MeIcon size={8} color="#fff" icon={meClose} />
               </View>
             </TouchableOpacity>
           ) : null}
@@ -169,7 +175,7 @@ export default class Search extends Component {
               flexDirection: "column",
             }}
           >
-            <Text style={[textStyle.bold, { fontSize: 18, marginBottom: 9 }]}>
+            <Text style={[textStyle.bold, { fontSize: 18, marginBottom: 9, color: this.context.theme.colorPrimary }]}>
               Bài hát
             </Text>
             <SongResultItem
@@ -199,7 +205,7 @@ export default class Search extends Component {
               actorName={"Tuấn Hưng"}
             />
 
-            <Text style={[textStyle.bold, { fontSize: 18, marginBottom: 9 }]}>
+            <Text style={[textStyle.bold, { fontSize: 18, marginBottom: 9 ,color: this.context.theme.colorPrimary}]}>
               Album
             </Text>
             <ScrollView
@@ -229,7 +235,7 @@ export default class Search extends Component {
             <Text
               style={[
                 textStyle.bold,
-                { fontSize: 18, marginTop: 9, marginBottom: 9 },
+                { fontSize: 18, marginTop: 9, marginBottom: 9, color: this.context.theme.colorPrimary },
               ]}
             >
               Nghệ sĩ
@@ -254,3 +260,4 @@ export default class Search extends Component {
     );
   }
 }
+Search.contextType=ThemeContext;

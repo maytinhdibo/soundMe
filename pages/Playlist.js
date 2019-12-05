@@ -26,8 +26,7 @@ import meShare from "../icons/icon-pack/meShare";
 import mePlay from "../icons/icon-pack/mePlay";
 import meHeart from "../icons/icon-pack/meHeart";
 
-import { AppConsumer } from "../AppContextProvider";
-import { withNavigation } from "react-navigation";
+import { AppConsumer, ThemeContext } from "../AppContextProvider";
 import PlayerBar from "../components/player/PlayerBar";
 const HEADER_EXPANDED_HEIGHT = 270;
 const HEADER_COLLAPSED_HEIGHT = 0;
@@ -42,15 +41,15 @@ class Playlist extends Component {
       scrollY: new Animated.Value(0),
     };
   }
-  async componentDidMount() {
-    const willBlurSubscription = this.props.navigation.addListener(
+  componentDidMount() {
+    this.props.navigation.addListener(
       "willBlur",
       payload => {
         //change return with theme (assign for duchm)
-        StatusBar.setBarStyle("dark-content");
+        StatusBar.setBarStyle(this.context.theme.barColor);
       }
     );
-    const willFocusSubscription = this.props.navigation.addListener(
+    this.props.navigation.addListener(
       "willFocus",
       payload => {
         StatusBar.setBarStyle("light-content");
@@ -224,7 +223,7 @@ class Playlist extends Component {
                 style={{
                   minHeight:
                     Dimensions.get("window").height -
-                    85 -
+                    35 -
                     getStatusBarHeight(),
                 }}
               >
@@ -296,7 +295,6 @@ class Playlist extends Component {
             </ScrollView>
             <PlayerBar/>
           </View>
-          
         )}
       </AppConsumer>
     );
@@ -324,5 +322,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 });
-
+Playlist.contextType=ThemeContext;
 export default (Playlist);
