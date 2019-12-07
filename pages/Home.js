@@ -65,6 +65,9 @@ class NewHome extends Component {
     this.listView.getNode().scrollTo({ y, animated: true });
   };
   componentDidUpdate() {
+
+    changeNavigationBarColor(this.context.theme.backgroundColorSecondary);
+
     try {
       if (this.state.scrollY > 480) {
         this.badgeView.getNode().scrollToEnd();
@@ -72,10 +75,6 @@ class NewHome extends Component {
         this.badgeView.getNode().scrollTo({ x: 0, animated: true });
       }
     } catch {}
-  }
-
-  componentDidMount(){
-    changeNavigationBarColor(this.context.theme.backgroundColorSecondary);
   }
 
   render() {
