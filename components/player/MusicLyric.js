@@ -73,6 +73,8 @@ export default class MusicLyric extends Component {
     this.state = {
       lyricSelected: [],
       lyricData: lyric.scripts,
+      ar: lyric.ar,
+      ti: lyric.ti
     };
   }
 
@@ -147,14 +149,14 @@ export default class MusicLyric extends Component {
           >
             <View style={{ marginBottom: 9, alignItems: "center" }}>
               <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.bold]}>
-                Chia tay hoàng hôn
+                {this.state.ti}
               </Text>
               <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.medium]}>
-                Ca sĩ: Thanh Lam
+                Ca sĩ: {this.state.ar}
               </Text>
-              <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.medium]}>
+              {/* <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.medium]}>
                 Sáng tác: NS Thuận Yến
-              </Text>
+              </Text> */}
             </View>
 
             {this.state.lyricData.map((line, index) => {
