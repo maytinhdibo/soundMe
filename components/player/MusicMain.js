@@ -97,16 +97,15 @@ export default class MusicMain extends Component {
                 {appConsumer.artist["name"]}
               </Text>
 
-              <CardView
-                cardElevation={16}
-                cornerRadius={42}
-                style={playerStyle.coverImage}
+              <View
+                style={[playerStyle.coverImage,{borderRadius:32, overflow:"hidden"}]}
               >
                 <Image
                   source={appConsumer.songImage}
                   style={{ width: "100%", height: "100%", resizeMode: "cover" }}
                 />
-              </CardView>
+              </View>
+
               <View
                 style={{
                   display:

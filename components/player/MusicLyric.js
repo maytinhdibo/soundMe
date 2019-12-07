@@ -143,7 +143,7 @@ export default class MusicLyric extends Component {
 
         <ScrollView>
           <View
-            style={{ flexDirection: "column", alignItems: "center", flex: 1, paddingVertical: 9}}
+            style={{ flexDirection: "column", alignItems: "center", flex: 1, paddingVertical: 9, paddingBottom:40}}
           >
             <View style={{ marginBottom: 9, alignItems: "center" }}>
               <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.bold]}>

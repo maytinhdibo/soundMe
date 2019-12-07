@@ -7,7 +7,7 @@ export default  {
     { start: 0, text: 'Bài hát: Sao Em Nỡ Vội Lấy Chồng', end: 5 },
     { start: 5, text: 'Ca sĩ: Quang Linh', end: 10 },
     { start: 44.09, text: 'Lời ru buồn', end: 45.71 },
-    { start: 45.71, text: 'nghe mênh mang', end: 47.02 },
+    { start: 45.71, text: 'Bỗng thấy mình chẳng nhớ nổi một con đường', end: 47.02 },
     { start: 47.02, text: 'mênh mang', end: 48.46 },
     { start: 48.46, text: 'sau lũy tre làng', end: 52.01 },
     { start: 52.01, text: 'khiến lòng tôi xôn xao', end: 55.2 },
