@@ -32,7 +32,6 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 import SectionBadge from "../components/home/SectionBadge";
 import { commonStyle } from "../styles/commonStyle";
 import { ThemeContext, AppConsumer } from "../AppContextProvider";
-import { withNavigation } from "react-navigation";
 // import {Body, Header, List, ListItem as Item, ScrollableTab, Tab, Tabs, Title} from "native-base";
 
 const NAVBAR_HEIGHT = 50;
@@ -144,11 +143,13 @@ class NewHome extends Component {
                   alignSelf: "center",
                 }}
               >
+                <TouchableOpacity onPress={()=>this.props.navigation.navigate('Tìm kiếm')}>
                 <MeIcon
                   icon={meSearch}
                   size={22}
                   color={this.context.theme.colorPrimary}
                 />
+                </TouchableOpacity>
               </View>
             </View>
 
