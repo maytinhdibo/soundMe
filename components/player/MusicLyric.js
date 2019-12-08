@@ -10,7 +10,7 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import lyric from "../../assets/data/lyric"
+import lyric from "../../assets/data/lyric";
 import MeIcon from "../../icons/MeIcon";
 import mePlay from "../../icons/icon-pack/mePlay";
 import meShare from "../../icons/icon-pack/meShare";
@@ -18,7 +18,7 @@ import meShare from "../../icons/icon-pack/meShare";
 import { playerStyle } from "../../styles/playerStyle";
 import { textStyle } from "../../styles/textStyle";
 
-import {AppConsumer, ThemeContext} from "../../AppContextProvider";
+import { AppConsumer, ThemeContext } from "../../AppContextProvider";
 
 import CardView from "react-native-cardview";
 import meCopy from "../../icons/icon-pack/meCopy";
@@ -26,7 +26,9 @@ import meCopy from "../../icons/icon-pack/meCopy";
 class Line extends Component {
   checkPos() {
     const props = this.props;
-    var result = this.context.presentPosition >= props.start && this.context.presentPosition < props.end;
+    var result =
+      this.context.presentPosition >= props.start &&
+      this.context.presentPosition < props.end;
     if (result) {
       props.curLine(props.text);
     }
@@ -37,7 +39,7 @@ class Line extends Component {
     return (
       <View
         style={[
-          { width: "100%", alignItems: "center" },
+          { width: "100%", paddingVertical: 3, alignItems: "center" },
           this.props.lyricSelected.indexOf(props.idx) != -1
             ? { backgroundColor: "rgba(111,111,111,0.2)" }
             : null,
@@ -53,10 +55,13 @@ class Line extends Component {
             style={[
               textStyle.medium,
               styles.line,
-               { color: this.checkPos() ?this.context.theme.buttonColor:this.context.theme.colorPrimary },
+              {
+                color: this.checkPos()
+                  ? this.context.theme.buttonColor
+                  : this.context.theme.colorPrimary,
+              },
             ]}
           >
-            
             {props.text}
           </Text>
         </TouchableOpacity>
@@ -65,7 +70,7 @@ class Line extends Component {
   }
 }
 
-Line.contextType=ThemeContext;
+Line.contextType = ThemeContext;
 
 export default class MusicLyric extends Component {
   constructor(props) {
@@ -74,7 +79,8 @@ export default class MusicLyric extends Component {
       lyricSelected: [],
       lyricData: lyric.scripts,
       ar: lyric.ar,
-      ti: lyric.ti
+      co: lyric.co,
+      ti: lyric.ti,
     };
   }
 
@@ -123,7 +129,13 @@ export default class MusicLyric extends Component {
               alignSelf: "center",
             }}
           >
-            <Text style={[playerStyle.nowPlaying, textStyle.bold, {color:this.context.theme.colorPrimary}]}>
+            <Text
+              style={[
+                playerStyle.nowPlaying,
+                textStyle.bold,
+                { color: this.context.theme.colorPrimary },
+              ]}
+            >
               Lời bài hát
             </Text>
           </View>
@@ -136,7 +148,11 @@ export default class MusicLyric extends Component {
               }}
               onPress={this.copy}
             >
-              <MeIcon size={22} icon={meCopy} color={this.context.theme.buttonColor}/>
+              <MeIcon
+                size={22}
+                icon={meCopy}
+                color={this.context.theme.buttonColor}
+              />
             </TouchableOpacity>
           ) : (
             <View style={{ width: 50 }} />
@@ -145,14 +161,42 @@ export default class MusicLyric extends Component {
 
         <ScrollView>
           <View
-            style={{ flexDirection: "column", alignItems: "center", flex: 1, paddingVertical: 9, paddingBottom:40}}
+            style={{
+              flexDirection: "column",
+              alignItems: "center",
+              flex: 1,
+              paddingVertical: 9,
+              paddingBottom: 40,
+            }}
           >
             <View style={{ marginBottom: 9, alignItems: "center" }}>
-              <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.bold]}>
+              <Text
+                style={[
+                  { fontSize: 16, color: this.context.theme.colorPrimary },
+                  textStyle.bold,
+                ]}
+              >
                 {this.state.ti}
               </Text>
-              <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.medium]}>
+              <Text
+                style={[
+                  {
+                    fontSize: 16,
+                    paddingVertical: 4,
+                    color: this.context.theme.colorPrimary,
+                  },
+                  textStyle.medium,
+                ]}
+              >
                 Ca sĩ: {this.state.ar}
+              </Text>
+              <Text
+                style={[
+                  { fontSize: 16, color: this.context.theme.colorPrimary },
+                  textStyle.medium,
+                ]}
+              >
+                Sáng tác: {this.state.co}
               </Text>
               {/* <Text style={[{ fontSize: 16, color: this.context.theme.colorPrimary }, textStyle.medium]}>
                 Sáng tác: NS Thuận Yến
@@ -180,7 +224,7 @@ export default class MusicLyric extends Component {
   }
 }
 
-MusicLyric.contextType=ThemeContext;
+MusicLyric.contextType = ThemeContext;
 
 const styles = StyleSheet.create({
   lineWrapper: {

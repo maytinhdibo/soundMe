@@ -1,12 +1,13 @@
 export default {
   ar: 'Hương Tràm',
   ti: 'Em Gái Mưa',
+  co: 'Mr. Siro',
   al: 'Em Gái Mưa (Single)',
   by: 'ZingMp3 Lyric',
   length: '05:23',
   scripts: [
-    { start: 0, text: 'Bài hát: Em Gái Mưa', end: 2 },
-    { start: 2, text: 'Ca sĩ: Hương Tràm', end: 4 },
+    { start: 0, text: 'Nhạc dạo', end: 2 },
+    { start: 2, text: '...', end: 30 },
     { start: 30.7, text: 'Mưa trôi cả bầu Trời nắng ', end: 33.5 },
     { start: 33.5, text: 'Trượt theo những nỗi buồn ', end: 36.81 },
     { start: 37.17, text: 'Thấm ướt lệ sầu môi đắng ', end: 40.04 },
