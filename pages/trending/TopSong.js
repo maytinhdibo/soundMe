@@ -146,7 +146,7 @@ export default class TopSong extends Component {
             >
               <ImageBackground
                 blurRadius={32}
-                source={require("../../assets/thanhlam.jpg")}
+                source={require("../../assets/huongtram.jpg")}
                 style={{ width: "100%", height: "100%" }}
               >
                 <View

@@ -36,12 +36,12 @@ export class AppContextProvider extends Component {
     presentPosition: 0,
     searchValue: "",
     repeat: false,
-    title: "Chia tay hoàng hôn",
+    title: "Em gái mưa",
     artist: {
-      name: "Thanh Lam",
+      name: "Hương Tràm",
       id: 1
     },
-    songImage: require("./assets/thanhlam.jpg"),
+    songImage: require("./assets/huongtram.jpg"),
     albumName: "Album Hồng Nhung",
 
     updateState: someDict => {

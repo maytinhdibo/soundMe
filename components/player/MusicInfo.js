@@ -7,7 +7,7 @@ import {
   Text,
   View,
   ScrollView,
-  Image
+  Image,
 } from "react-native";
 
 import MeIcon from "../../icons/MeIcon";
@@ -18,7 +18,6 @@ import { playerStyle } from "../../styles/playerStyle";
 import { textStyle } from "../../styles/textStyle";
 
 import CardView from "react-native-cardview";
-
 
 export default class MusicInfo extends Component {
   secondToMinuteString = second => {
@@ -32,7 +31,6 @@ export default class MusicInfo extends Component {
     return (
       <View style={{ flex: 1 }}>
         <View style={playerStyle.header}>
-
           <View
             style={{
               flex: 1,
@@ -43,9 +41,8 @@ export default class MusicInfo extends Component {
               Thông tin
             </Text>
           </View>
-
         </View>
-{/* <Text>Bài hát: Chia Tay Hoàng Hôn</Text>
+        {/* <Text>Bài hát: Chia Tay Hoàng Hôn</Text>
 <Text>Ca sĩ: NSƯT Thanh Lam</Text>
 <Text>Nhạc sĩ: Thuận Yến</Text> */}
       </View>

@@ -20,8 +20,9 @@ export const playerStyle = StyleSheet.create({
   },
   coverImage: {
     alignSelf: "center",
-    height: Math.round(Dimensions.get("window").width) * 0.65,
-    width: "65%",
+    height: Math.round(Dimensions.get("window").width) * 0.70,
+    width: "70%",
+    elevation:9
     // resizeMode: "cover",
     // borderRadius: 27
   },
