@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   TextInput,
   Image,
+  KeyboardAvoidingView
 } from "react-native";
 
 import MeIcon from "../../icons/MeIcon";
