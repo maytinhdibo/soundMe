@@ -146,7 +146,7 @@ export default class TopSong extends Component {
             >
               <ImageBackground
                 blurRadius={32}
-                source={require("../../assets/huongtram.jpg")}
+                source={require("../../assets/thanhlam.jpg")}
                 style={{ width: "100%", height: "100%" }}
               >
                 <View
@@ -159,14 +159,14 @@ export default class TopSong extends Component {
                     // justifyContent:"center"
                   }}
                 >
-                  <CardView
+                  <View
                     style={{
                       marginTop: 12,
                       height: 120,
                       width: 120,
+                      borderRadius:12,
+                      overflow:"hidden"
                     }}
-                    cardElevation={2}
-                    cornerRadius={12}
                   >
                     <Image
                       source={require("../../assets/thanhlam.jpg")}
@@ -176,7 +176,7 @@ export default class TopSong extends Component {
                         resizeMode: "cover",
                       }}
                     />
-                  </CardView>
+                  </View>
                   <View style={{ paddingHorizontal: 16 }}>
                     <Text
                       style={[
@@ -184,9 +184,9 @@ export default class TopSong extends Component {
                           fontSize: 18,
                           color: "#fff",
                           paddingBottom: 3,
-                          textShadowColor: "rgba(0, 0, 0, 0.2)",
-                          textShadowOffset: { width: -1, height: 1 },
-                          textShadowRadius: 6,
+                          // textShadowColor: "rgba(0, 0, 0, 0.2)",
+                          // textShadowOffset: { width: -1, height: 1 },
+                          // textShadowRadius: 6,
                         },
                         textStyle.bold,
                       ]}
@@ -199,9 +199,9 @@ export default class TopSong extends Component {
                           fontSize: 13,
                           color: "#fff",
                           paddingBottom: 3,
-                          textShadowColor: "rgba(0, 0, 0, 0.2)",
-                          textShadowOffset: { width: -1, height: 1 },
-                          textShadowRadius: 6,
+                          // textShadowColor: "rgba(0, 0, 0, 0.2)",
+                          // textShadowOffset: { width: -1, height: 1 },
+                          // textShadowRadius: 6,
                         },
                         textStyle.bold,
                       ]}
@@ -214,9 +214,9 @@ export default class TopSong extends Component {
                           fontSize: 13,
                           color: "#fff",
                           paddingBottom: 3,
-                          textShadowColor: "rgba(0, 0, 0, 0.2)",
-                          textShadowOffset: { width: -1, height: 1 },
-                          textShadowRadius: 6,
+                          // textShadowColor: "rgba(0, 0, 0, 0.2)",
+                          // textShadowOffset: { width: -1, height: 1 },
+                          // textShadowRadius: 6,
                         },
                         textStyle.bold,
                       ]}

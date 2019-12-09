@@ -11,13 +11,13 @@ export default class SliderItem extends Component {
     const { isActive } = this.props;
     return (
       <View style={{ flex: 1, padding:12, paddingBottom:42}}>
-        <CardView cardElevation={6} cornerRadius={16} style={{flex:1}}>
+        <View cardElevation={6} cornerRadius={16} style={{flex:1,elevation:3,borderRadius:12,overflow:"hidden"}}>
       <ImageBackground
         source={this.props.image}
         style={{ flex: 1, flexDirection:"row", overflow: "hidden" }}
       >
         <Text
-          style={[{
+        style={[{
             color: this.context.theme.colorPrimary,
             margin: 9,
             backgroundColor: this.context.theme.backgroundColorSecondary,
@@ -30,7 +30,7 @@ export default class SliderItem extends Component {
           #trending0{this.props.index}
         </Text>
       </ImageBackground>
-      </CardView>
+      </View>
       </View>
     );
   }

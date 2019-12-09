@@ -28,6 +28,7 @@ import meHeart from "../icons/icon-pack/meHeart";
 
 import { AppConsumer, ThemeContext } from "../AppContextProvider";
 import PlayerBar from "../components/player/PlayerBar";
+import meHeartFill from "../icons/icon-pack/meHeartFill";
 const HEADER_EXPANDED_HEIGHT = 270;
 const HEADER_COLLAPSED_HEIGHT = 0;
 
