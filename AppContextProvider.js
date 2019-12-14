@@ -35,7 +35,7 @@ export class AppContextProvider extends Component {
     startValue: 0,
     presentPosition: 0,
     searchValue: "",
-    repeat: false,
+    repeat: true,
     title: "Em gái mưa",
     artist: {
       name: "Hương Tràm",

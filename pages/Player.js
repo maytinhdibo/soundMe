@@ -29,7 +29,7 @@ import MusicMain from "../components/player/MusicMain";
 import CardView from "react-native-cardview";
 import MusicInfo from "../components/player/MusicInfo";
 import MusicLyric from "../components/player/MusicLyric";
-import { AppConsumer,ThemeContext } from "../AppContextProvider";
+import { AppConsumer, ThemeContext } from "../AppContextProvider";
 import meRepeat from "../icons/icon-pack/meRepeat";
 import meShuffle from "../icons/icon-pack/meShuffle";
 import meNext from "../icons/icon-pack/meNext";
@@ -44,34 +44,25 @@ export default class Player extends Component {
     };
   }
 
-
   async componentDidMount() {
     // console.log("START PROPS");
     // console.log(this.props);
     // console.log("ExND PROPS");
 
-    this.props.navigation.addListener(
-      "willBlur",
-      payload => {
-        //change return with theme (assign for duchm)
-        StatusBar.setBarStyle(this.context.theme.barColor);
-      }
-    );
-    this.props.navigation.addListener(
-      "willFocus",
-      payload => {
-        // StatusBar.setBarStyle("light-content");
-      }
-    );
+    this.props.navigation.addListener("willBlur", payload => {
+      //change return with theme (assign for duchm)
+      StatusBar.setBarStyle(this.context.theme.barColor);
+    });
+    this.props.navigation.addListener("willFocus", payload => {
+      // StatusBar.setBarStyle("light-content");
+    });
   }
 
-  onPlayBtn = () =>{
+  onPlayBtn = () => {
     let x = this.state.something;
-    this.setState(
-      {something:!x}
-    )
-    this.context.onPlayBtn()
-  }
+    this.setState({ something: !x });
+    this.context.onPlayBtn();
+  };
 
   renderPlayerPlayPause = () => {
     let playing = this.context.playing;
@@ -80,6 +71,24 @@ export default class Player extends Component {
       <MeIcon size={20} color="#fff" icon={mePause} />
     ) : (
       <MeIcon size={20} color="#fff" icon={mePlay} />
+    );
+  };
+
+  renderRepeat = () => {
+    let repeat = this.context.repeat;
+
+    return repeat == true ? (
+      <MeIcon
+        size={25}
+        color={this.context.theme.buttonColor}
+        icon={meRepeat}
+      />
+    ) : (
+      <MeIcon
+        size={25}
+        color="#828282"
+        icon={meRepeat}
+      />
     );
   };
 
@@ -115,7 +124,12 @@ export default class Player extends Component {
             source={appConsumer.songImage}
             style={{ width: "100%", height: "100%" }}
           >
-            <View style={{ flex: 1, backgroundColor: this.context.theme.backgroundColorPlayer }}>
+            <View
+              style={{
+                flex: 1,
+                backgroundColor: this.context.theme.backgroundColorPlayer
+              }}
+            >
               <View style={playerStyle.overlay}>
                 <Swiper index={0} loop={false} showsPagination={false}>
                   {/* <MusicInfo /> */}
@@ -168,7 +182,8 @@ export default class Player extends Component {
                     paddingTop: 30,
                     marginBottom: -75,
                     flexDirection: "row",
-                    backgroundColor: this.context.theme.backgroundColorSecondary,
+                    backgroundColor: this.context.theme
+                      .backgroundColorSecondary,
                     justifyContent: "space-evenly",
                     alignItems: "flex-start"
                   }}
@@ -182,7 +197,11 @@ export default class Player extends Component {
                       margin: 9
                     }}
                   >
-                    <MeIcon size={25} color={this.context.theme.buttonColor} icon={meShuffle} />
+                    <MeIcon
+                      size={25}
+                      color={this.context.theme.buttonColor}
+                      icon={meShuffle}
+                    />
                   </View>
                   <View
                     style={{
@@ -193,7 +212,11 @@ export default class Player extends Component {
                       margin: 9
                     }}
                   >
-                    <MeIcon size={20} color={this.context.theme.buttonColor} icon={mePrevious} />
+                    <MeIcon
+                      size={20}
+                      color={this.context.theme.buttonColor}
+                      icon={mePrevious}
+                    />
                   </View>
                   <View
                     style={{
@@ -212,7 +235,11 @@ export default class Player extends Component {
                       margin: 9
                     }}
                   >
-                    <MeIcon size={20} color={this.context.theme.buttonColor} icon={meNext} />
+                    <MeIcon
+                      size={20}
+                      color={this.context.theme.buttonColor}
+                      icon={meNext}
+                    />
                   </View>
                   <View
                     style={{
@@ -223,7 +250,16 @@ export default class Player extends Component {
                       margin: 9
                     }}
                   >
-                    <MeIcon size={25} color={this.context.theme.buttonColor} icon={meRepeat} />
+                    <TouchableOpacity
+                      onPress={() => {
+                        this.context.updateState({
+                          repeat: !this.context.repeat
+                        });
+                        console.log("repeat = " + this.context.repeat);
+                      }}
+                    >
+                      {this.renderRepeat()}
+                    </TouchableOpacity>
                   </View>
                 </CardView>
               </View>
