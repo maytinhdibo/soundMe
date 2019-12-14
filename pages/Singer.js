@@ -244,7 +244,8 @@ export default class Singer extends Component {
               >
                 <TouchableOpacity
                   onPress={() => {
-                    alert("ahihi");
+                    this.context.loadMusic();
+                    this.context.play();
                   }}
                 >
                   <View
