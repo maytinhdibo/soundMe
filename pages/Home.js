@@ -291,27 +291,24 @@ class NewHome extends Component {
                   >
                     <View name="fake-margin" style={{ width: 7 }} />
                     <PlaylistItem
-                      imgUrl={require("../assets/nuocmat.jpg")}
+                      imgUrl={require("../assets/playlists/nuocmat.jpg")}
                       name={"Nửa hồn thương đau"}
                       actorName={"Thu Phương"}
                     />
                     <PlaylistItem
-                      imgUrl={{
-                        uri:
-                          "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg",
-                      }}
+                      imgUrl={require("../assets/playlists/nhanduyen.jpg")}
                       name={"Giấc mộng trong mơ"}
                       actorName={"Hồng Nhung"}
                     />
                     <PlaylistItem
-                      imgUrl={require("../assets/nuocmat.jpg")}
-                      name={"Con đi đâu để thấy hoa bay"}
-                      actorName={"Nhiều ca sĩ"}
+                      imgUrl={require("../assets/playlists/m52.jpg")}
+                      name={"Cô Gái M52 (Single)"}
+                      actorName={"HuyR,Tùng Viu"}
                     />
                     <PlaylistItem
-                      imgUrl={require("../assets/nuocmat.jpg")}
-                      name={"Đi đu đưa đi"}
-                      actorName={"Tuấn Hưng"}
+                      imgUrl={require("../assets/playlists/hongnhanbacphan.jpg")}
+                      name={"Hồng Nhan Bạc Phận"}
+                      actorName={"Jack,Liam"}
                     />
                     <View name="fake-margin" style={{ width: 7 }} />
                   </ScrollView>

@@ -45,26 +45,18 @@ export default class TopPlaylist extends Component {
 
   render() {
     const items = [
-      { name: "TURQUOISE", code: "#1abc9c" , image: require("../../assets/nuocmat.jpg"), actorName: ""},
+      { name: "Nửa hồn thương đau", code: "#1abc9c" , image: require("../../assets/playlists/nuocmat.jpg"), actorName: "Thu Phuơng"},
+      { name: "Giấc mộng trong mơ", code: "#1abc9c" , image: require("../../assets/playlists/nhanduyen.jpg"), actorName: "Hồng Nhung"},
+      { name: "Cô Gái M52 (Single)", code: "#1abc9c" , image: require("../../assets/playlists/m52.jpg"), actorName: "HuyR,Tùng Viu"},
+      { name: "Hồng Nhan Bạc Phận", code: "#1abc9c" , image: require("../../assets/playlists/hongnhanbacphan.jpg"), actorName: "Jack,Liam"},
+      { name: "Tình Khúc Trịnh Công Sơn Vol 2", code: "#1abc9c" , image: require("../../assets/playlists/trinhcongson.jpg"), actorName: "V.A"},
+      { name: "Faded", code: "#1abc9c" , image: require("../../assets/playlists/faded.jpg"), actorName: "Alan Walker"},
+      { name: "Cô Gái Mở Đường", code: "#1abc9c" , image: require("../../assets/playlists/cogaimoduong.jpg"), actorName: "Cẩm Ly,Quốc Đại"},
+      { name: "Tuyển Tập Baby Shark", code: "#1abc9c" , image: require("../../assets/playlists/babyshark.jpg"), actorName: "Tốp Ca"},
+
+      // { name: "Sống lại thời 8x 9x", code: "#1abc9c" , image: require("../../assets/playlists/8x9x.jpg"), actorName: "V.A"},     
+      // { name: "Đồi Thông Hai Mộ", code: "#1abc9c" , image: require("../../assets/playlists/doithong2mo.jpg"), actorName: "Đoàn Việt Phương"},
       // { name: "EMERALD", code: "#2ecc71" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "PETER RIVER", code: "#3498db" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "AMETHYST", code: "#9b59b6" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "WET ASPHALT", code: "#34495e" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "GREEN SEA", code: "#16a085" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "NEPHRITIS", code: "#27ae60" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "BELIZE HOLE", code: "#2980b9" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "WISTERIA", code: "#8e44ad" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "MIDNIGHT BLUE", code: "#2c3e50" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "SUN FLOWER", code: "#f1c40f" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "CARROT", code: "#e67e22" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "ALIZARIN", code: "#e74c3c" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "CLOUDS", code: "#ecf0f1" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "CONCRETE", code: "#95a5a6" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "ORANGE", code: "#f39c12" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "PUMPKIN", code: "#d35400" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "POMEGRANATE", code: "#c0392b" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "SILVER", code: "#bdc3c7" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
-      // { name: "ASBESTOS", code: "#7f8c8d" , imageUrl: "../../assets/nuocmat.jpg", actorName: ""},
     ];
     return (
       <AppConsumer>
@@ -114,8 +106,8 @@ export default class TopPlaylist extends Component {
                 <PlaylistItem
                   navigation={this.props.navigation}
                   imgUrl={item.image}
-                  name={"Nửa hồn thương đau"}
-                  actorName={"Thu Phương"}
+                  name={item.name}
+                  actorName={item.actorName}
                 />
               )}
             />
