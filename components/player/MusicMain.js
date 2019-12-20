@@ -26,6 +26,7 @@ import Modal from "react-native-translucent-modal";
 import CardView from "react-native-cardview";
 import meArrowDown from "../../icons/icon-pack/meArrowDown";
 import meHeart from "../../icons/icon-pack/meHeart";
+import meHeartFill from "../../icons/icon-pack/meHeartFill"
 import meAddPlaylist from "../../icons/icon-pack/meAddPlaylist";
 import { ScrollView } from "react-native-gesture-handler";
 
@@ -86,7 +87,8 @@ export default class MusicMain extends Component {
     super(props);
     this.state = {
       isGeeseSeason: true,
-      addModal: false
+      addModal: false,
+      like: false
     };
   }
 
@@ -424,11 +426,13 @@ export default class MusicMain extends Component {
               />
               </TouchableOpacity>
 
-              <MeIcon
-                size={25}
-                color={this.context.theme.buttonColor}
-                icon={meHeart}
-              />
+              <TouchableOpacity onPress={()=>{this.setState({liked:!this.state.liked})}}>
+                <MeIcon
+                  size={25}
+                  color={this.context.theme.buttonColor}
+                  icon={this.state.liked ? meHeartFill : meHeart}
+                />
+              </TouchableOpacity>              
             </View>
           </View>
         )}
