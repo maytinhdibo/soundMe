@@ -47,25 +47,25 @@ export default class TopArtist extends Component {
   render() {
     const items = [
       { name: "Huơng Tràm", image: require("../../assets/artists/huongtram.jpg"), id: 1 },
-      { name: "Thu Phương", image:"https://znews-photo.zadn.vn/w660/Uploaded/oqivovbt/2017_09_08/Ha_Anh_Tuan_5.jpg", id: 1 },
-      { name: "Hà Trần", image:"https://images.vov.vn/Uploaded/gyJ8yPVAEwcWKoZvAlyuA/2017_06_08/ha_tran_YFTO.gif", id: 1 },
-      { name: "Tuấn Ngọc", image:"https://nguoi-noi-tieng.com/photo/tieu-su-ca-si-tuan-ngoc-5316.jpg", id: 1 },
-      { name: "NSƯT Thanh Lam", image:"https://vcdn-giaitri.vnecdn.net/2018/07/18/thanhlamtop2-1531881678_1200x0.jpg", id: 1 },
-      { name: "Thu Phương", image:"https://cdnmedia.thethaovanhoa.vn/2016/09/15/14/56/Thu-P-anh-D-MiOu.jpg", id: 1 },
-      { name: "Đức Phúc", image:"https://yt3.ggpht.com/a/AGF-l7-qp1PZfTFYbssFxGXEh1EwfLZll40l8ArijQ=s900-c-k-c0xffffffff-no-rj-mo", id: 1 },
-      { name: "Hồng Nhung", image:"https://vcdn-giaitri.vnecdn.net/2019/02/28/Hong-Nhung-1-1765-1551330844.jpg", id: 1 },
-      { name: "Taylor Swift", image:"http://kenh14cdn.com/crop/640_360/2019/11/15/taylor-swift-time-100-2019-082-157379879271782036850-crop-15737994789651578406810.jpg", id: 1 },
-      { name: "Tuấn Hưng", image:"https://saobiz.net/wp-content/uploads/2017/03/gia-the-cua-tuan-hung-2.jpg", id: 1 },
-      { name: "Hương Giang Idol", image:"https://ss-images.catscdn.vn/w500/2019/05/19/5222855/hg1.jpg", id: 1 },
-      { name: "Trần Thái Hòa", image:"https://avatar-nct.nixcdn.com/playlist/2013/11/07/2/e/6/4/1383813758511_500.jpg", id: 1 },
-      { name: "Thiên Tôn", image:"https://zmp3-photo-fbcrawler.zadn.vn/covers/e/7/e725c182b3fc1442e381728521534ee0_1382095162.jpg", id: 1 },
-      { name: "Trinh Thăng Binh", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/5/9/7/c/597c5594c732d3857de91b16156f7f32.jpg", id: 1 },
-      { name: "Chi Dân", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/d/6/5/b/d65b7cbb1aebec4e63566c5087e183b1.jpg", id: 1 },
-      { name: "Mr Siro", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/e/1/1/2/e1120261421cfec7513423222b0ca94c.jpg", id: 1 },
-      { name: "JustaTee", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/7/c/7cdddb737643f7197a0b21886cd328e0_1509951099.jpg", id: 1 },
-      { name: "OnlyC", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/6/d/d/a/6dda1e6d7690c4c43ed97d6150619495.jpg", id: 1 },
-      { name: "Đàm Vĩnh Hưng", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/6/f/9/5/6f95a5545394cf4b65830cab489788e8.jpg", id: 1 },
-      { name: "Soobin Hoàng Sơn", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/8/b/4/c/8b4c040a3f0a64672e8dad7078aff3d1.jpg", id: 1 },
+      { name: "Trinh Thăng Binh", image: require("../../assets/artists/trinhthangbinh.jpg"), id: 1 },
+      { name: "Chi Dân", image: require("../../assets/artists/chidan.jpg"), id: 1 },
+      { name: "Mr Siro", image: require("../../assets/artists/mrsiro.jpg"), id: 1 },
+      { name: "Jack", image: require("../../assets/artists/jack.jpg"), id: 1 },
+      { name: "Alan Walker", image: require("../../assets/artists/alan.jpg"), id: 1 },
+      { name: "Martin Garrix", image: require("../../assets/artists/martin.jpg"), id: 1 },
+      { name: "Trịnh Đình Quang", image: require("../../assets/artists/trinhdinhquang.jpg"), id: 1 },
+      { name: "Hiền Hồ", image: require("../../assets/artists/hienho.jpg"), id: 1 },
+      { name: "Sơn Tùng M-TP", image: require("../../assets/artists/mtp.jpg"), id: 1 },
+      { name: "Tuấn Hưng", image: require("../../assets/artists/tuanhung.jpg"), id: 1 },
+      { name: "OSAD", image: require("../../assets/artists/osad.jpg"), id: 1 },
+      { name: "Phi Nhung", image: require("../../assets/artists/phinhung.jpg"), id: 1 },
+      { name: "Cẩm Ly", image: require("../../assets/artists/camly.jpg"), id: 1 },
+      { name: "Bích Phương", image: require("../../assets/artists/bichphuong.jpg"), id: 1 },
+      { name: "Phương Ly", image: require("../../assets/artists/phuongly.jpg"), id: 1 },
+      { name: "Chi Pu", image: require("../../assets/artists/chipu.jpg"), id: 1 },
+      { name: "Bùi Anh Tuấn", image: require("../../assets/artists/buianhtuan.jpg"), id: 1 },
+      { name: "Thùy Chi", image: require("../../assets/artists/thuychi.jpg"), id: 1 },
+      // { name: "Thu Phương", image:{uri: "https://znews-photo.zadn.vn/w660/Uploaded/oqivovbt/2017_09_08/Ha_Anh_Tuan_5.jpg"}, id: 1 },
     ];
     return (
       <AppConsumer>
@@ -114,7 +114,7 @@ export default class TopArtist extends Component {
               renderItem={({ item, index }) => (
                 <ArtistItem
                   navigation={this.props.navigation}
-                  imgUrl={{uri: item.image}}
+                  imgUrl={item.image}
                   name={item.name}
                 />
                 // <View
