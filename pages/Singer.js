@@ -25,6 +25,7 @@ import meArrowLeft from "../icons/icon-pack/meArrowLeft";
 import meShare from "../icons/icon-pack/meShare";
 import mePlay from "../icons/icon-pack/mePlay";
 import meHeart from "../icons/icon-pack/meHeart";
+import meHeartFill from "../icons/icon-pack/meHeartFill"
 
 import { AppConsumer, ThemeContext } from "../AppContextProvider";
 import SectionTitle from "../components/home/SectionTitle";
@@ -39,6 +40,7 @@ export default class Singer extends Component {
     super(props);
     this.state = {
       searchValue: "",
+      followed: false
     };
     this.state = {
       scrollY: new Animated.Value(0),
@@ -117,9 +119,9 @@ export default class Singer extends Component {
               }
               rightComponent={
                 <View style={{ flexDirection: "row" }}>
-                  <TouchableOpacity style={{ width: 50, alignItems: "center" }}>
+                  {/* <TouchableOpacity style={{ width: 50, alignItems: "center" }}>
                     <MeIcon size={20} color={"#fff"} icon={meHeart} />
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                   <TouchableOpacity
                     style={{ width: 50, alignItems: "center" }}
                     onPress={() => this.onShare()}

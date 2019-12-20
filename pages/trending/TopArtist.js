@@ -46,6 +46,7 @@ export default class TopArtist extends Component {
 
   render() {
     const items = [
+      { name: "Huơng Tràm", image:"huongtram.jpg", id: 1 },
       { name: "Thu Phương", image:"https://znews-photo.zadn.vn/w660/Uploaded/oqivovbt/2017_09_08/Ha_Anh_Tuan_5.jpg", id: 1 },
       { name: "Hà Trần", image:"https://images.vov.vn/Uploaded/gyJ8yPVAEwcWKoZvAlyuA/2017_06_08/ha_tran_YFTO.gif", id: 1 },
       { name: "Tuấn Ngọc", image:"https://nguoi-noi-tieng.com/photo/tieu-su-ca-si-tuan-ngoc-5316.jpg", id: 1 },
@@ -58,14 +59,13 @@ export default class TopArtist extends Component {
       { name: "Hương Giang Idol", image:"https://ss-images.catscdn.vn/w500/2019/05/19/5222855/hg1.jpg", id: 1 },
       { name: "Trần Thái Hòa", image:"https://avatar-nct.nixcdn.com/playlist/2013/11/07/2/e/6/4/1383813758511_500.jpg", id: 1 },
       { name: "Thiên Tôn", image:"https://zmp3-photo-fbcrawler.zadn.vn/covers/e/7/e725c182b3fc1442e381728521534ee0_1382095162.jpg", id: 1 },
-      { name: "Thu Phương", image:"", id: 1 },
-      { name: "Thu Phương", image:"", id: 1 },
-      { name: "Thu Phương", image:"", id: 1 },
-      { name: "Thu Phương", image:"", id: 1 },
-      { name: "Thu Phương", image:"", id: 1 },
-      { name: "Thu Phương", image:"", id: 1 },
-      { name: "Thu Phương", image:"", id: 1 },
-      { name: "Thu Phương", image:"", id: 1 },
+      { name: "Trinh Thăng Binh", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/5/9/7/c/597c5594c732d3857de91b16156f7f32.jpg", id: 1 },
+      { name: "Chi Dân", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/d/6/5/b/d65b7cbb1aebec4e63566c5087e183b1.jpg", id: 1 },
+      { name: "Mr Siro", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/e/1/1/2/e1120261421cfec7513423222b0ca94c.jpg", id: 1 },
+      { name: "JustaTee", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/7/c/7cdddb737643f7197a0b21886cd328e0_1509951099.jpg", id: 1 },
+      { name: "OnlyC", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/6/d/d/a/6dda1e6d7690c4c43ed97d6150619495.jpg", id: 1 },
+      { name: "Đàm Vĩnh Hưng", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/6/f/9/5/6f95a5545394cf4b65830cab489788e8.jpg", id: 1 },
+      { name: "Soobin Hoàng Sơn", image:"https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/avatars/8/b/4/c/8b4c040a3f0a64672e8dad7078aff3d1.jpg", id: 1 },
     ];
     return (
       <AppConsumer>

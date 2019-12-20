@@ -26,6 +26,7 @@ import meArrowLeft from "../../icons/icon-pack/meArrowLeft";
 import meShare from "../../icons/icon-pack/meShare";
 import mePlay from "../../icons/icon-pack/mePlay";
 import meHeart from "../../icons/icon-pack/meHeart";
+import meHeartFill from "../../icons/icon-pack/meHeartFill"
 
 import { AppConsumer, ThemeContext } from "../../AppContextProvider";
 

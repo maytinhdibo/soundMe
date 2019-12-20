@@ -37,6 +37,7 @@ class Playlist extends Component {
     super(props);
     this.state = {
       searchValue: "",
+      liked: false
     };
     this.state = {
       scrollY: new Animated.Value(0),
@@ -115,8 +116,8 @@ class Playlist extends Component {
               }
               rightComponent={
                 <View style={{ flexDirection: "row" }}>
-                  <TouchableOpacity style={{ width: 50, alignItems: "center" }}>
-                    <MeIcon size={20} color={"#fff"} icon={meHeart} />
+                  <TouchableOpacity style={{ width: 50, alignItems: "center" }} onPress={()=>{this.setState({liked:!this.state.liked})}}>
+                    <MeIcon size={20} color={"#fff"} icon={this.state.liked ? meHeartFill : meHeart} />
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={{ width: 50, alignItems: "center" }}
