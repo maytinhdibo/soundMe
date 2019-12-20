@@ -205,7 +205,7 @@ export default class Singer extends Component {
                         textStyle.bold,
                       ]}
                     >
-                      Theo dõi
+                      {this.state.followed ? "Đang theo dõi" : "Theo dõi"}
                     </Text>
                   </TouchableOpacity>
                 </CardView>
@@ -246,8 +246,9 @@ export default class Singer extends Component {
               >
                 <TouchableOpacity
                   onPress={() => {
-                    this.context.loadMusic();
-                    this.context.play();
+                    this.setState({ followed: !this.state.followed })
+                    // this.context.loadMusic();
+                    // this.context.play();
                   }}
                 >
                   <View

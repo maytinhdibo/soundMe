@@ -2,8 +2,8 @@ export default {
     items : [
         // { name: "Nước mắt em lau bằng tình yêu mới", code: "#1abc9c" , image: require("../../assets/playlists/nuocmat.jpg"), actorName: "Thu Phuơng"},
         { name: "Nhân duyên", code: "#1abc9c" , image: require("../../assets/playlists/nhanduyen.jpg"), actorName: "Phạm Quỳnh Anh"},
-        { name: "Cô Gái M52 (Single)", code: "#1abc9c" , image: require("../../assets/playlists/m52.jpg"), actorName: "HuyR,Tùng Viu"},
-        { name: "Hồng Nhan Bạc Phận", code: "#1abc9c" , image: require("../../assets/playlists/hongnhanbacphan.jpg"), actorName: "Jack,Liam"},
+        { name: "Cô Gái M52 (Single)", code: "#1abc9c" , image: require("../../assets/playlists/m52.jpg"), actorName: "HuyR, Tùng Viu"},
+        { name: "Hồng Nhan Bạc Phận", code: "#1abc9c" , image: require("../../assets/playlists/hongnhanbacphan.jpg"), actorName: "Jack, Liam"},
         { name: "Tình Khúc Trịnh Công Sơn Vol 2", code: "#1abc9c" , image: require("../../assets/playlists/trinhcongson.jpg"), actorName: "V.A"},
         { name: "Faded", code: "#1abc9c" , image: require("../../assets/playlists/faded.jpg"), actorName: "Alan Walker"},
         { name: "Cô Gái Mở Đường", code: "#1abc9c" , image: require("../../assets/playlists/cogaimoduong.jpg"), actorName: "Cẩm Ly,Quốc Đại"},
