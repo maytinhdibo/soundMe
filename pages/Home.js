@@ -343,6 +343,7 @@ class NewHome extends Component {
                         <ArtistItem
                           imgUrl={item.image}
                           name={item.name}
+                          numberLike={item.numberLike}
                         />
                       );
                     })}

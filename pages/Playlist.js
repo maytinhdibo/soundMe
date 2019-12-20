@@ -150,12 +150,12 @@ class Playlist extends Component {
             >
               <View style={{ alignItems: "center" }}>
                 <Text style={[{ fontSize: 32, color: "#fff" }, textStyle.bold]}>
-                  Hoàng
+                  {this.context.albumState.albumName}
                 </Text>
                 <Text
                   style={[{ fontSize: 20, color: "#fff" }, textStyle.regular]}
                 >
-                  Hoàng Thùy Linh
+                  {this.context.albumState.albumActor}
                 </Text>
                 <CardView
                   style={{
@@ -167,10 +167,7 @@ class Playlist extends Component {
                   cornerRadius={32}
                 >
                   <Image
-                    source={{
-                      uri:
-                        "https://i.scdn.co/image/7be436d24a08969d8724edc8c0e290a4b5624fff",
-                    }}
+                    source={this.context.albumState.songImage}
                     style={{
                       height: "100%",
                       width: "100%",

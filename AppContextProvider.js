@@ -43,6 +43,31 @@ export class AppContextProvider extends Component {
     },
     songImage: require("./assets/huongtram.jpg"),
     albumName: "Album Hồng Nhung",
+  
+    albumState :  {
+      albumName : "Nguoi hay quen em di",
+      albumActor : "abc",
+      songImage: require("./assets/huongtram.jpg"),
+      changeAlbumState: (albumName, albumActor, songImage) => {
+        this.state.albumState.albumName = albumName
+        this.state.albumState.albumActor = albumActor
+        this.state.albumState.songImage = songImage
+      },
+    },
+
+    artistState :  {
+      artistName : "Huong Tram",
+      artistNumberLike : "1.2tr",
+      songImage: require("./assets/huongtram.jpg"),
+      changeArtistState: (image, numberLike, artistName) => {
+        this.state.artistState.songImage = image
+        this.state.artistState.artistNumberLike = numberLike
+        this.state.artistState.artistName = artistName
+        // this.setState({  songImage: image, artistNumberLike: numberLike, actorName: artistName})
+      },
+    },
+
+    
 
     updateState: someDict => {
       this.setState(someDict);
@@ -256,9 +281,9 @@ export class AppContextProvider extends Component {
  
   };
   render() {
-    const { theme } = this.state;
+    const { theme, artistState , albumState} = this.state;
     return (
-      <Context.Provider value={this.state} theme={theme}>
+      <Context.Provider value={this.state} theme={theme} artistState={artistState} albumState={albumState}>
         {this.props.children}
       </Context.Provider>
     );

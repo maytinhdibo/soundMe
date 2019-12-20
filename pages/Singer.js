@@ -153,10 +153,10 @@ export default class Singer extends Component {
             >
               <View style={{ alignItems: "center" }}>
                 <Text style={[{ fontSize: 30, color: "#fff" }, textStyle.bold]}>
-                  Hoàng Thùy Linh
+                  {this.context.artistState.artistName}
                 </Text>
                 <Text style={[{ fontSize: 14, color: "#fff" }, textStyle.bold]}>
-                  1.2tr người thích
+                  {this.context.artistState.artistNumberLike} người thích
                 </Text>
                 <CardView
                   style={{
@@ -168,10 +168,7 @@ export default class Singer extends Component {
                   cornerRadius={100}
                 >
                   <Image
-                    source={{
-                      uri:
-                        "https://i.scdn.co/image/7be436d24a08969d8724edc8c0e290a4b5624fff",
-                    }}
+                    source={this.context.artistState.songImage}
                     style={{
                       height: "100%",
                       width: "100%",

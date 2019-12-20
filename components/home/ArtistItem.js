@@ -12,7 +12,11 @@ class ArtistItem extends Component {
   }
   render() {
     return (
-      <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate("Singer")}>
+      <TouchableWithoutFeedback onPress={() => {
+          this.context.artistState.changeArtistState(this.props.imgUrl, this.props.numberLike, this.props.name)
+          this.props.navigation.navigate("Singer")
+        }
+      }>
       <Animatable.View
         animation="bounceInRight"
         easing="ease-out"
