@@ -46,7 +46,7 @@ export default class TopArtist extends Component {
 
   render() {
     const items = [
-      { name: "Huơng Tràm", image:"huongtram.jpg", id: 1 },
+      { name: "Huơng Tràm", image: require("../../assets/artists/huongtram.jpg"), id: 1 },
       { name: "Thu Phương", image:"https://znews-photo.zadn.vn/w660/Uploaded/oqivovbt/2017_09_08/Ha_Anh_Tuan_5.jpg", id: 1 },
       { name: "Hà Trần", image:"https://images.vov.vn/Uploaded/gyJ8yPVAEwcWKoZvAlyuA/2017_06_08/ha_tran_YFTO.gif", id: 1 },
       { name: "Tuấn Ngọc", image:"https://nguoi-noi-tieng.com/photo/tieu-su-ca-si-tuan-ngoc-5316.jpg", id: 1 },
