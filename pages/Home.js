@@ -32,6 +32,9 @@ import { getStatusBarHeight } from "react-native-status-bar-height";
 import SectionBadge from "../components/home/SectionBadge";
 import { commonStyle } from "../styles/commonStyle";
 import { ThemeContext, AppConsumer } from "../AppContextProvider";
+import artists from "../assets/data/artists";
+import playlists from "../assets/data/playlists"
+import topmusic from "../assets/data/topmusic"
 // import {Body, Header, List, ListItem as Item, ScrollableTab, Tab, Tabs, Title} from "native-base";
 
 const NAVBAR_HEIGHT = 50;
@@ -290,26 +293,16 @@ class NewHome extends Component {
                     showsHorizontalScrollIndicator={false}
                   >
                     <View name="fake-margin" style={{ width: 7 }} />
-                    <PlaylistItem
-                      imgUrl={require("../assets/playlists/nuocmat.jpg")}
-                      name={"Nửa hồn thương đau"}
-                      actorName={"Thu Phương"}
-                    />
-                    <PlaylistItem
-                      imgUrl={require("../assets/playlists/nhanduyen.jpg")}
-                      name={"Giấc mộng trong mơ"}
-                      actorName={"Hồng Nhung"}
-                    />
-                    <PlaylistItem
-                      imgUrl={require("../assets/playlists/m52.jpg")}
-                      name={"Cô Gái M52 (Single)"}
-                      actorName={"HuyR,Tùng Viu"}
-                    />
-                    <PlaylistItem
-                      imgUrl={require("../assets/playlists/hongnhanbacphan.jpg")}
-                      name={"Hồng Nhan Bạc Phận"}
-                      actorName={"Jack,Liam"}
-                    />
+                    {playlists.items.slice(0,5).map((item, key) => {
+                      return (
+                        <PlaylistItem
+                          imgUrl={item.image}
+                          name={item.name}
+                          actorName={item.actorName}
+                        />
+                      );
+                    })}
+
                     <View name="fake-margin" style={{ width: 7 }} />
                   </ScrollView>
                 </View>
@@ -320,29 +313,16 @@ class NewHome extends Component {
                   <SectionTitle title={"Top thịnh hành"} />
                 </TouchableOpacity>
                 <View>
-                  <SongItem
-                    imgUrl={require("../assets/nuocmat.jpg")}
-                    name={"Nửa hồn thương đau"}
-                    actorName={"Thu Phương"}
-                  />
-                  <SongItem
-                    imgUrl={{
-                      uri:
-                        "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg",
-                    }}
-                    name={"Giấc mộng trong mơ"}
-                    actorName={"Hồng Nhung"}
-                  />
-                  <SongItem
-                    imgUrl={require("../assets/nuocmat.jpg")}
-                    name={"Con đi đâu để thấy hoa bay"}
-                    actorName={"Nhiều ca sĩ"}
-                  />
-                  <SongItem
-                    imgUrl={require("../assets/nuocmat.jpg")}
-                    name={"Đi đu đưa đi"}
-                    actorName={"Tuấn Hưng"}
-                  />
+
+                  {topmusic.items.slice(0,5).map((item, key) => {
+                    return (
+                      <SongItem
+                        imgUrl={item.image}
+                        name={item.name}
+                        actorName={item.actorName}
+                      />
+                    );
+                  })}
                 </View>
 
                 <TouchableOpacity
@@ -358,26 +338,14 @@ class NewHome extends Component {
                   >
                     <View name="fake-margin" style={{ width: 7 }} />
 
-                    <ArtistItem
-                      imgUrl={require("../assets/nuocmat.jpg")}
-                      name={"Thu Phương"}
-                    />
-                    <ArtistItem
-                      imgUrl={{
-                        uri:
-                          "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg",
-                      }}
-                      name={"Hồng Nhung"}
-                    />
-                    <ArtistItem
-                      imgUrl={require("../assets/nuocmat.jpg")}
-                      name={"Tuấn Hưng"}
-                    />
-                    <ArtistItem
-                      imgUrl={require("../assets/nuocmat.jpg")}
-                      name={"Bích Phương"}
-                    />
-
+                    {artists.items.slice(0,6).map((item, key) => {
+                      return (
+                        <ArtistItem
+                          imgUrl={item.image}
+                          name={item.name}
+                        />
+                      );
+                    })}
                     <View name="fake-margin" style={{ width: 7 }} />
                   </ScrollView>
                 </View>
