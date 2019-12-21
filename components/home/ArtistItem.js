@@ -13,7 +13,7 @@ class ArtistItem extends Component {
   render() {
     return (
       <TouchableWithoutFeedback onPress={() => {
-          this.context.artistState.changeArtistState(this.props.imgUrl, this.props.numberLike, this.props.name)
+          this.context.artistState.changeArtistState(this.props.imgUrl, this.props.numberLike, this.props.name, this.props.playlists)
           this.props.navigation.navigate("Singer")
         }
       }>

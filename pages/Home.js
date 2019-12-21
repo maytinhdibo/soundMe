@@ -299,6 +299,7 @@ class NewHome extends Component {
                           imgUrl={item.image}
                           name={item.name}
                           actorName={item.actorName}
+                          subplaylists={item.subplaylists}
                         />
                       );
                     })}
@@ -344,6 +345,7 @@ class NewHome extends Component {
                           imgUrl={item.image}
                           name={item.name}
                           numberLike={item.numberLike}
+                          playlists={item.playlists}
                         />
                       );
                     })}

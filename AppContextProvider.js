@@ -48,10 +48,12 @@ export class AppContextProvider extends Component {
       albumName : "Nguoi hay quen em di",
       albumActor : "abc",
       songImage: require("./assets/huongtram.jpg"),
-      changeAlbumState: (albumName, albumActor, songImage) => {
+      subplaylists: [],
+      changeAlbumState: (albumName, albumActor, songImage, subplaylists) => {
         this.state.albumState.albumName = albumName
         this.state.albumState.albumActor = albumActor
         this.state.albumState.songImage = songImage
+        this.state.albumState.subplaylists = subplaylists
       },
     },
 
@@ -59,10 +61,12 @@ export class AppContextProvider extends Component {
       artistName : "Huong Tram",
       artistNumberLike : "1.2tr",
       songImage: require("./assets/huongtram.jpg"),
-      changeArtistState: (image, numberLike, artistName) => {
+      playlists: [],
+      changeArtistState: (image, numberLike, artistName, playlists) => {
         this.state.artistState.songImage = image
         this.state.artistState.artistNumberLike = numberLike
         this.state.artistState.artistName = artistName
+        this.state.artistState.playlists = playlists
         // this.setState({  songImage: image, artistNumberLike: numberLike, actorName: artistName})
       },
     },

@@ -13,7 +13,7 @@ class PlaylistItem extends Component {
   render() {
     return (
       <TouchableWithoutFeedback onPress={() => {
-        this.context.albumState.changeAlbumState(this.props.name, this.props.actorName, this.props.imgUrl)
+        this.context.albumState.changeAlbumState(this.props.name, this.props.actorName, this.props.imgUrl, this.props.subplaylists)
         this.props.navigation.navigate("Playlist")
       }}>
       <Animatable.View
