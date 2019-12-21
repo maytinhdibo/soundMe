@@ -155,7 +155,7 @@ class SongRoute extends Component {
   }
 
   createNewPlaylist = () => {
-    this.context.libraryState.createNewPlaylist(this.state.playlistName)
+    this.context.createNewPlaylist(this.state.playlistName)
     this.setState({playlistName: "", addModal: false})
   }
 
@@ -279,7 +279,7 @@ class SongRoute extends Component {
             <TouchableWithoutFeedback
               style={{ height: 100, width: 100, backgroundColor: "#421" }}
               onPress={() => {
-                this.context.libraryState.changeLibraryState(item.playlist)
+                this.context.changeLibraryState(item.playlist)
                 this.props.navigation.navigate("PersonalPlaylist")
               }}
             >
