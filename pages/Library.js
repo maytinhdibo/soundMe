@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   Image,
+  ScrollView,
   TouchableWithoutFeedback,
 } from "react-native";
 import { searchStyle } from "../styles/searchStyle";
@@ -20,6 +21,10 @@ import Modal from "react-native-translucent-modal";
 import Swiper from "react-native-swiper";
 import { commonStyle } from "../styles/commonStyle";
 import {ThemeContext} from "../AppContextProvider";
+import artists from "../assets/data/artists"
+import playlists from "../assets/data/playlists"
+import libraryData from "../assets/data/libraryData"
+
 class PlayListLibItem extends Component {
   render() {
     return (
@@ -145,8 +150,15 @@ class SongRoute extends Component {
     super(props);
     this.state = {
       addModal: false,
+      playlistName: ""
     };
   }
+
+  createNewPlaylist = () => {
+    this.context.libraryState.createNewPlaylist(this.state.playlistName)
+    this.setState({playlistName: "", addModal: false})
+  }
+
   render() {
     return (
       <View style={{ padding: 7, paddingHorizontal: 16 }}>
@@ -203,6 +215,8 @@ class SongRoute extends Component {
                       ]}
                       placeholderTextColor="#999" 
                       placeholder={"Tên danh sách mới..."}
+                      value={this.state.playlistName}
+                      onChangeText={(playlistName) => this.setState({playlistName})}
                     />
                     <View
                       style={{
@@ -214,7 +228,7 @@ class SongRoute extends Component {
                       <TouchableOpacity
                         style={{ padding: 6, paddingHorizontal: 9 }}
                       >
-                        <Text style={[{color: this.context.theme.colorPrimary},textStyle.bold]}>Tạo mới</Text>
+                        <Text style={[{color: this.context.theme.colorPrimary},textStyle.bold]} onPress={()=>{this.createNewPlaylist()}}>Tạo mới</Text>
                       </TouchableOpacity>
                       <TouchableOpacity
                         style={{ padding: 6, paddingHorizontal: 9 }}
@@ -259,30 +273,22 @@ class SongRoute extends Component {
             </Text>
           </View>
         </TouchableWithoutFeedback>
-
-        <TouchableWithoutFeedback
-          style={{ height: 100, width: 100, backgroundColor: "#421" }}
-          onPress={() => this.props.navigation.navigate("PersonalPlaylist")}
-        >
-          <View>
-            <PlayListLibItem count={10} name={"Nhạc buồn"} />
-          </View>
-        </TouchableWithoutFeedback>
-
-        <TouchableWithoutFeedback
-          onPress={() => this.props.navigation.navigate("PersonalPlaylist")}
-        >
-          <View>
-            <PlayListLibItem count={5} name={"Vinahouse quẩy tung chảo"} />
-          </View>
-        </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback
-          onPress={() => this.props.navigation.navigate("PersonalPlaylist")}
-        >
-          <View>
-            <PlayListLibItem count={2} name={"Oppa Idol"} />
-          </View>
-        </TouchableWithoutFeedback>
+        
+        {libraryData.data.map((item, key) => {
+          return (
+            <TouchableWithoutFeedback
+              style={{ height: 100, width: 100, backgroundColor: "#421" }}
+              onPress={() => {
+                this.context.libraryState.changeLibraryState(item.playlist)
+                this.props.navigation.navigate("PersonalPlaylist")
+              }}
+            >
+              <View>
+                <PlayListLibItem count={item.playlist.length} name={item.playlistName} imgUrl={item.image}/>
+              </View>
+            </TouchableWithoutFeedback>
+          )
+        })}
       </View>
     );
   }
@@ -290,34 +296,31 @@ class SongRoute extends Component {
 SongRoute.contextType=ThemeContext;
 
 const ArtistRoute = () => (
-  <View style={{ padding: 7, paddingHorizontal: 16 }}>
-    <ArtistLibItem name={"Thu Phương"} follower={1340} />
-    <ArtistLibItem name={"Bích Phương"} follower={540} />
-    <ArtistLibItem name={"Trúc Nhân"} follower={2340} />
-  </View>
+  <ScrollView>
+    <View style={{ padding: 7, paddingHorizontal: 16 }}>
+      {artists.items.map((item, key) => {
+        return (<ArtistLibItem name={item.name} follower={item.numberLike} imgUrl={item.image}/>)
+      })}
+    </View>
+  </ScrollView>
+  
 );
 
 const AlbumRoute = () => (
-  <View style={{ padding: 7, paddingHorizontal: 16 }}>
-    <AlbumLibItem
-      imgUrl={require("../assets/nuocmat.jpg")}
-      artist="Hoàng Thùy Linh"
-      name={"Hoàng"}
-    />
-    <AlbumLibItem
-      imgUrl={{
-        uri:
-          "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg",
-      }}
-      artist="Nhiều ca sĩ"
-      name={"Tiếng Hát Thiên Thai"}
-    />
-    <AlbumLibItem
-      imgUrl={require("../assets/nuocmat.jpg")}
-      artist="Tâm 9"
-      name={"Mỹ Tâm"}
-    />
-  </View>
+  <ScrollView>
+    <View style={{ padding: 7, paddingHorizontal: 16 }}>
+      {playlists.items.map((item, key) => {
+        return (
+        <AlbumLibItem
+          key={key}
+          imgUrl={item.image}
+          artist={item.actorName}
+          name={item.name}
+        />)
+      })}
+      
+    </View>
+  </ScrollView>
 );
 
 class Tabs extends Component {

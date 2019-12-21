@@ -21,14 +21,15 @@ import MeIcon from "../icons/MeIcon";
 import meTrash from "../icons/icon-pack/meTrash";
 import meArrowLeft from "../icons/icon-pack/meArrowLeft";
 
-import { AppConsumer } from "../AppContextProvider";
+import { AppConsumer, ThemeContext } from "../AppContextProvider";
 
-export default class PersonalPlaylist extends Component {
+class PersonalPlaylist extends Component {
   constructor(props) {
     super(props);
     this.state = {
       removeModal: false,
     };
+    // console.log(appConsummer)
   }
   async componentDidMount() {
     const willBlurSubscription = this.props.navigation.addListener(
@@ -187,36 +188,17 @@ export default class PersonalPlaylist extends Component {
                 backgroundColor: appConsumer.theme.backgroundColorPrimary,
               }}
             >
-              <SongItem
-                idx={1}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={2}
-                name="Duyên Dương"
-                actorName="Hoàng Thùy Linh"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
-              <SongItem
-                idx={3}
-                name="Duyên Âm"
-                actorName="Hoàng Thùy Linh ft Binz"
-              />
+              {appConsumer.libraryState.subplaylist.map((item, key) => {
+                return (
+                  <SongItem
+                    idx={key + 1}
+                    name={item.name}
+                    actorName={item.actorName}
+                    time={item.time}
+                  />
+                )
+              })}
+              
             </ScrollView>
           </View>
         )}
@@ -224,3 +206,6 @@ export default class PersonalPlaylist extends Component {
     );
   }
 }
+PersonalPlaylist.contextType = ThemeContext
+
+export default (PersonalPlaylist)

@@ -6,6 +6,7 @@ import SoundPlayer from "react-native-sound-player";
 import MusicControl from "react-native-music-control";
 
 import changeNavigationBarColor from 'react-native-navigation-bar-color';
+import libraryData from "./assets/data/libraryData"
 
 export class AppContextProvider extends Component {
   state = {
@@ -71,7 +72,16 @@ export class AppContextProvider extends Component {
       },
     },
 
-    
+    libraryState : {
+      playlist: libraryData.data,
+      subplaylist: [],
+      changeLibraryState: (subplaylist) => {
+        this.state.libraryState.subplaylist = subplaylist
+      },
+      createNewPlaylist: (name) => {
+        this.state.libraryState.playlist.push({playlistName: name, playlist: []})
+      }
+    },
 
     updateState: someDict => {
       this.setState(someDict);
@@ -285,9 +295,9 @@ export class AppContextProvider extends Component {
  
   };
   render() {
-    const { theme, artistState , albumState} = this.state;
+    const { theme, artistState , albumState, libraryState} = this.state;
     return (
-      <Context.Provider value={this.state} theme={theme} artistState={artistState} albumState={albumState}>
+      <Context.Provider value={this.state} theme={theme} artistState={artistState} albumState={albumState} libraryState={libraryState}>
         {this.props.children}
       </Context.Provider>
     );

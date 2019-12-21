@@ -54,30 +54,30 @@ export default {
           { name: "Em gái mưa", time: 345 , actorName: "V.A"},
           { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
         ]  },
-        { name: "Cẩm Ly",numberLike: "500k", image: require("../../assets/artists/camly.jpg"), id: 1, playlists: [
-          { name: "Em gái mưa", time: 345 , actorName: "V.A"},
-          { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
-        ]  },
-        { name: "Bích Phương",numberLike: "450k", image: require("../../assets/artists/bichphuong.jpg"), id: 1, playlists: [
-          { name: "Em gái mưa", time: 345 , actorName: "V.A"},
-          { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
-        ]  },
-        { name: "Phương Ly",numberLike: "400k", image: require("../../assets/artists/phuongly.jpg"), id: 1, playlists: [
-          { name: "Em gái mưa", time: 345 , actorName: "V.A"},
-          { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
-        ]  },
-        { name: "Chi Pu",numberLike: "350k", image: require("../../assets/artists/chipu.jpg"), id: 1, playlists: [
-          { name: "Em gái mưa", time: 345 , actorName: "V.A"},
-          { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
-        ]  },
-        { name: "Bùi Anh Tuấn",numberLike: "300k", image: require("../../assets/artists/buianhtuan.jpg"), id: 1, playlists: [
-          { name: "Em gái mưa", time: 345 , actorName: "V.A"},
-          { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
-        ]  },
-        { name: "Thùy Chi",numberLike: "250k", image: require("../../assets/artists/thuychi.jpg"), id: 1, playlists: [
-          { name: "Em gái mưa", time: 345 , actorName: "V.A"},
-          { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
-        ]  },
+        // { name: "Cẩm Ly",numberLike: "500k", image: require("../../assets/artists/camly.jpg"), id: 1, playlists: [
+        //   { name: "Em gái mưa", time: 345 , actorName: "V.A"},
+        //   { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
+        // ]  },
+        // { name: "Bích Phương",numberLike: "450k", image: require("../../assets/artists/bichphuong.jpg"), id: 1, playlists: [
+        //   { name: "Em gái mưa", time: 345 , actorName: "V.A"},
+        //   { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
+        // ]  },
+        // { name: "Phương Ly",numberLike: "400k", image: require("../../assets/artists/phuongly.jpg"), id: 1, playlists: [
+        //   { name: "Em gái mưa", time: 345 , actorName: "V.A"},
+        //   { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
+        // ]  },
+        // { name: "Chi Pu",numberLike: "350k", image: require("../../assets/artists/chipu.jpg"), id: 1, playlists: [
+        //   { name: "Em gái mưa", time: 345 , actorName: "V.A"},
+        //   { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
+        // ]  },
+        // { name: "Bùi Anh Tuấn",numberLike: "300k", image: require("../../assets/artists/buianhtuan.jpg"), id: 1, playlists: [
+        //   { name: "Em gái mưa", time: 345 , actorName: "V.A"},
+        //   { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
+        // ]  },
+        // { name: "Thùy Chi",numberLike: "250k", image: require("../../assets/artists/thuychi.jpg"), id: 1, playlists: [
+        //   { name: "Em gái mưa", time: 345 , actorName: "V.A"},
+        //   { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
+        // ]  },
         // { name: "Thu Phương", image:{uri: "https://znews-photo.zadn.vn/w660/Uploaded/oqivovbt/2017_09_08/Ha_Anh_Tuan_5.jpg"}, id: 1 },
       ]
 }
