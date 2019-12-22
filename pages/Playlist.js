@@ -94,7 +94,7 @@ class Playlist extends Component {
       outputRange: [1, 0],
       extrapolate: "clamp",
     });
-
+    console.log(this.context.albumState.subplaylists)
     const headerTitle = "HEADER";
     return (
       <AppConsumer>
@@ -261,6 +261,7 @@ class Playlist extends Component {
                       time={item.time}
                       name={item.name}
                       actorName={item.actorName}
+                      imgUrl={item.image}
                     />);
                   })}
                 </View>

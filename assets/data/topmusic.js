@@ -4,6 +4,7 @@ export default {
         { name: "Sai Lầm Của Anh", time: 345 , image: require("../../assets/topmusic/sailamcuaanh.jpg"), actorName: "Đình Dũng"},
         { name: "Đi đu đưa đi", time: 300 , image: require("../../assets/topmusic/diduduadi.jpg"), actorName: "Bích Phương"},
         { name: "Bánh Mì Không", time: 234 , image: require("../../assets/topmusic/banhmikhong.jpg"), actorName: "Đạt G, DuUyen"},
+        { name: "Sóng gió", time: 234 , image: require("../../assets/topmusic/songio.jpg"), actorName: "JACK, K-ICM"},
         { name: "Em Một Mình Quen Rồi", time: 298 , image: require("../../assets/topmusic/emmotminhquenroi.jpg"), actorName: "Dương Hoàng Yến, Thanh Hưng"},
         { name: "Simple Love", time: 312 , image: require("../../assets/topmusic/simplelove.jpg"), actorName: "Obito, Seachains, Davis"},     
         { name: "Vì Yêu Cứ Đâm Đầu", time: 305 , image: require("../../assets/topmusic/viyeucudamdau.jpg"), actorName: "MIN"},     

@@ -37,14 +37,27 @@ export class AppContextProvider extends Component {
     presentPosition: 0,
     searchValue: "",
     repeat: true,
-    title: "Em gái mưa",
-    artist: {
-      name: "Hương Tràm",
-      id: 1
+
+    songState: {
+      title: "Em gái mưa",
+      artist: {
+        name: "Hương Tràm",
+        id: 1
+      },
+      songImage: require("./assets/huongtram.jpg"),
     },
-    songImage: require("./assets/huongtram.jpg"),
+    changeSongState: (title, artist, songImage) => {
+      this.setState({songState: {
+        title: title,
+        artist: {
+          name: artist
+        },
+        songImage: songImage
+      }})
+    },
+
     albumName: "Album Hồng Nhung",
-  
+    
     albumState :  {
       albumName : "Nguoi hay quen em di",
       albumActor : "abc",
@@ -167,9 +180,9 @@ export class AppContextProvider extends Component {
 
       //show notification
       MusicControl.setNowPlaying({
-        title: this.state.title,
+        title: this.state.songState.title,
         artwork: this.state.songImage, // URL or RN's image require()
-        artist: this.state.artist.name,
+        artist: this.state.songState.artist.name,
         album: this.state.albumName,
         genre: "Post-disco, Rhythm and Blues, Funk, Dance-pop",
         duration: this.state.duration, // (Seconds)

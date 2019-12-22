@@ -121,7 +121,7 @@ export default class Player extends Component {
         {appConsumer => (
           <ImageBackground
             blurRadius={34}
-            source={appConsumer.songImage}
+            source={appConsumer.songState.songImage}
             style={{ width: "100%", height: "100%" }}
           >
             <View

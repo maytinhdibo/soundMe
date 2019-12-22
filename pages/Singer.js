@@ -283,6 +283,7 @@ export default class Singer extends Component {
                       time={item.time}
                       name={item.name}
                       actorName={this.context.artistState.artistName}
+                      imgUrl={item.image}
                     />);
                   })}
 

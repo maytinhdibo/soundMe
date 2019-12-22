@@ -15,6 +15,7 @@ export default class SongResultItem extends Component {
 
   onSongPressed = () => {
     console.log("Song in playlist pressed");
+    this.context.changeSongState(this.props.name, this.props.actorName, this.props.imgUrl)
     this.context.loadMusic();
     this.context.play();
   };

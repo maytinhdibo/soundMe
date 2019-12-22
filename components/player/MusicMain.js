@@ -29,6 +29,7 @@ import meHeart from "../../icons/icon-pack/meHeart";
 import meHeartFill from "../../icons/icon-pack/meHeartFill"
 import meAddPlaylist from "../../icons/icon-pack/meAddPlaylist";
 import { ScrollView } from "react-native-gesture-handler";
+import libraryData from "../../assets/data/libraryData"
 
 class PlayListLibItem extends Component {
   render() {
@@ -106,6 +107,11 @@ export default class MusicMain extends Component {
     SoundPlayer.play();
     this.context.updateState({ playing: true });
   };
+
+  addMusicToLib = (key) =>{
+    this.context.libraryState.playlist[key].playlist.push({name: this.context.songState.title, actorName: this.context.songState.artist.name, time: 300},)
+    this.setState({addModal: false})
+  }
 
   render() {
     return (
@@ -196,11 +202,13 @@ export default class MusicMain extends Component {
                         </View>
 
                         <ScrollView style={{marginTop: 9, maxHeight:150}}>
-                          <PlayListLibItem count={10} name={"Nhạc buồn"} />
-                          <PlayListLibItem
-                            count={10}
-                            name={"Nhạc giao hưởng"}
-                          />
+                          {libraryData.data.map((item, key) => {
+                            return (
+                              <TouchableOpacity key={key} onPress={()=>this.addMusicToLib(key)}>
+                                <PlayListLibItem count={item.playlist.lenth} name={item.playlistName} count={item.playlist.length}/>
+                              </TouchableOpacity>
+                            )
+                          })}
                         </ScrollView>
 
                         <View
@@ -290,7 +298,7 @@ export default class MusicMain extends Component {
                   { color: this.context.theme.colorPrimary },
                 ]}
               >
-                {appConsumer.title}
+                {appConsumer.songState.title}
               </Text>
               <Text
                 style={[
@@ -299,7 +307,7 @@ export default class MusicMain extends Component {
                   { color: this.context.theme.colorPrimary },
                 ]}
               >
-                {appConsumer.artist["name"]}
+                {appConsumer.songState.artist["name"]}
               </Text>
 
               <View
@@ -309,7 +317,7 @@ export default class MusicMain extends Component {
                 ]}
               >
                 <Image
-                  source={appConsumer.songImage}
+                  source={appConsumer.songState.songImage}
                   style={{ width: "100%", height: "100%", resizeMode: "cover" }}
                 />
               </View>

@@ -1,30 +1,30 @@
 export default {
     items : [
         { name: "Hương Tràm", numberLike: "1.2tr", image: require("../../assets/artists/huongtram.jpg"), id: 1, playlists: [
-          { name: "Em gái mưa", time: 345 , actorName: "V.A"},
-          { name: "Duyên mình lỡ", time: 310 , actorName: "V.A"},
+          { name: "Em gái mưa", time: 345 , actorName: "V.A", image: require("../../assets/artists/huongtram.jpg")},
+          { name: "Duyên mình lỡ", time: 310 , actorName: "V.A", image: require("../../assets/artists/huongtram.jpg")},
         ] },
         { name: "Trinh Thăng Binh",numberLike: "1.1tr", image: require("../../assets/artists/trinhthangbinh.jpg"), id: 1, playlists: [
-          { name: "Người ấy", time: 345 , actorName: "V.A"},
-          { name: "Tâm sự tuổi 30", time: 310 , actorName: "V.A"},
+          { name: "Người ấy", time: 345 , actorName: "V.A", image: require("../../assets/artists/trinhthangbinh.jpg")},
+          { name: "Tâm sự tuổi 30", time: 310 , actorName: "V.A", image: require("../../assets/artists/trinhthangbinh.jpg")},
         ]  },
         { name: "Chi Dân",numberLike: "1tr", image: require("../../assets/artists/chidan.jpg"), id: 1, playlists: [
-          { name: "Điều anh biết", time: 345 , actorName: "V.A"},
-          { name: "Có được không em", time: 310 , actorName: "V.A"},
+          { name: "Điều anh biết", time: 345 , actorName: "V.A", image: require("../../assets/artists/chidan.jpg")},
+          { name: "Có được không em", time: 310 , actorName: "V.A", image: require("../../assets/artists/chidan.jpg")},
         ]  },
         { name: "Mr Siro",numberLike: "1.2tr", image: require("../../assets/artists/mrsiro.jpg"), id: 1, playlists: [
-          { name: "Một Bước Yêu Vạn Dặm Đau", time: 345 , actorName: "V.A"},
-          { name: "Bức Tranh Từ Nước Mắt", time: 310 , actorName: "V.A"},
+          { name: "Một Bước Yêu Vạn Dặm Đau", time: 345 , actorName: "V.A", image: require("../../assets/artists/mrsiro.jpg")},
+          { name: "Bức Tranh Từ Nước Mắt", time: 310 , actorName: "V.A", image: require("../../assets/artists/mrsiro.jpg")},
         ]  },
         { name: "Jack",numberLike: "950k", image: require("../../assets/artists/jack.jpg"), id: 1, playlists: [
-          { name: "Sóng Gió", time: 345 , actorName: "V.A"},
-          { name: "Em Gì Ơi", time: 310 , actorName: "V.A"},
-          { name: "Bạc Phận", time: 310 , actorName: "V.A"},
+          { name: "Sóng Gió", time: 345 , actorName: "V.A", image: require("../../assets/artists/jack.jpg")},
+          { name: "Em Gì Ơi", time: 310 , actorName: "V.A", image: require("../../assets/artists/jack.jpg")},
+          { name: "Bạc Phận", time: 310 , actorName: "V.A", image: require("../../assets/artists/jack.jpg")},
           { name: "Sao Em Vô Tình", time: 310 , actorName: "V.A"},
         ]  },
         { name: "Alan Walker",numberLike: "900k", image: require("../../assets/artists/alan.jpg"), id: 1, playlists: [
-          { name: "Faded", time: 345 , actorName: "V.A"},
-          { name: "Alone", time: 310 , actorName: "V.A"},
+          { name: "Faded", time: 345 , actorName: "V.A", image: require("../../assets/artists/alan.jpg")},
+          { name: "Alone", time: 310 , actorName: "V.A", image: require("../../assets/artists/alan.jpg")},
         ]  },
         { name: "Martin Garrix",numberLike: "850k", image: require("../../assets/artists/martin.jpg"), id: 1, playlists: [
           { name: "Em gái mưa", time: 345 , actorName: "V.A"},

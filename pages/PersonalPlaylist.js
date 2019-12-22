@@ -195,6 +195,7 @@ class PersonalPlaylist extends Component {
                     name={item.name}
                     actorName={item.actorName}
                     time={item.time}
+                    // imgUrl={item.image}
                   />
                 )
               })}

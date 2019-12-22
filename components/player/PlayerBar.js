@@ -87,7 +87,7 @@ class SongItem extends Component {
                   marqueeOnStart
                   loop
                 >
-                  {appConsumer.title}
+                  {appConsumer.songState.title}
                 </MarqueeText>
 
                 <Text
@@ -96,7 +96,7 @@ class SongItem extends Component {
                     { fontSize: 12, color: appConsumer.theme.colorSecondary },
                   ]}
                 >
-                  {appConsumer.artist["name"]}
+                  {appConsumer.songState.artist["name"]}
                 </Text>
               </TouchableOpacity>
               <View
