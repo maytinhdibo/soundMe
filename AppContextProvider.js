@@ -49,13 +49,15 @@ export class AppContextProvider extends Component {
       albumName : "Nguoi hay quen em di",
       albumActor : "abc",
       songImage: require("./assets/huongtram.jpg"),
-      subplaylists: [],
-      changeAlbumState: (albumName, albumActor, songImage, subplaylists) => {
-        this.state.albumState.albumName = albumName
-        this.state.albumState.albumActor = albumActor
-        this.state.albumState.songImage = songImage
-        this.state.albumState.subplaylists = subplaylists
-      },
+      subplaylists: [], 
+    },
+    changeAlbumState : (albumName, albumActor, songImage, subplaylists) => {
+      this.setState({albumState : {
+        albumName: albumName,
+        albumActor: albumActor,
+        songImage: songImage,
+        subplaylists: subplaylists
+      }})
     },
 
     artistState :  {
@@ -63,26 +65,25 @@ export class AppContextProvider extends Component {
       artistNumberLike : "1.2tr",
       songImage: require("./assets/huongtram.jpg"),
       playlists: [],
-      changeArtistState: (image, numberLike, artistName, playlists) => {
-        this.state.artistState.songImage = image
-        this.state.artistState.artistNumberLike = numberLike
-        this.state.artistState.artistName = artistName
-        this.state.artistState.playlists = playlists
-        // this.setState({  songImage: image, artistNumberLike: numberLike, actorName: artistName})
-      },
+    },
+    changeArtistState: (image, numberLike, artistName, playlists) => {
+      this.setState({artistState: {  songImage: image, artistNumberLike: numberLike, artistName: artistName, playlists:playlists}});
     },
 
     libraryState : {
       playlist: libraryData.data,
       subplaylist: [],
-      changeLibraryState: (subplaylist) => {
-        this.state.libraryState.subplaylist = subplaylist
-      },
-      createNewPlaylist: (name) => {
-        this.state.libraryState.playlist.push({playlistName: name, playlist: []})
-      }
     },
-
+    changeLibraryState: (subplaylist) => {
+      // this.state.libraryState.subplaylist = subplaylist;
+      this.setState({libraryState: {subplaylist:subplaylist}});
+    },
+    createNewPlaylist: (name) => {
+      // this.state.libraryState.playlist.push({playlistName: name, playlist: []});
+      let newListState =  this.state.libraryState.playlist;
+      newListState.push({playlistName: name, playlist: []});
+      this.setState({libraryState: {playlist: newListState}});
+    },
     updateState: someDict => {
       this.setState(someDict);
     },
