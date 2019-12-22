@@ -1,5 +1,6 @@
 import React, { Component, useRef } from "react";
 import {
+  ToastAndroid,
   Animated,
   Dimensions,
   Slider,
@@ -111,6 +112,11 @@ export default class MusicMain extends Component {
   addMusicToLib = (key) =>{
     this.context.libraryState.playlist[key].playlist.push({name: this.context.songState.title, actorName: this.context.songState.artist.name, time: 300},)
     this.setState({addModal: false})
+    ToastAndroid.showWithGravity(
+      "Đã thêm bài hát vào danh sách phát "+this.context.libraryState.playlist[key].playlistName,
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM
+    );
   }
 
   render() {
