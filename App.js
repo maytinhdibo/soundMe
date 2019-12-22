@@ -25,6 +25,8 @@ import Profile from "./pages/Profile";
 import Playlist from "./pages/Playlist";
 import Player from "./pages/Player";
 import Login from "./pages/Login";
+import LoginByPhone from "./pages/LoginByPhone";
+import OTPInput from "./pages/OTPInput";
 //trending
 import TopPlaylist from "./pages/trending/TopPlaylist";
 import TopSong from "./pages/trending/TopSong";
@@ -126,6 +128,30 @@ const ProfileNavigator = createStackNavigator({
 
   
 });
+
+const LoginNavigator = createStackNavigator({
+  Login: {
+    screen: Login,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  LoginByPhone: {
+    screen:LoginByPhone,
+    navigationOptions:{
+        header: null,
+     
+    },
+  },
+  OTPInput: {
+    screen:OTPInput,
+    navigationOptions:{
+        header: null,
+     
+    },
+  },
+});
+
 const AppNavigator = createBottomTabNavigator(
   {
     "Khám phá": {
@@ -251,7 +277,7 @@ const AppTopLevelNavigator = createStackNavigator(
 {
   AppNavigator:AppNavigator,
   Player:Player,
-  Login:Login,
+  Login:LoginNavigator,
   Playlist: {
     screen: Playlist,
     navigationOptions: {
