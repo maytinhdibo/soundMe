@@ -52,19 +52,26 @@ class Login extends Component {
             </View> */}
 
 
-            <TouchableOpacity style={styles.buttonFace}>
-              {/* <MeIcon size={2} color={"#fff"} icon={meArrowLeft} /> */}
-              
+            <TouchableOpacity 
+              onPress={() => this.props.navigation.navigate("AppNavigator")}
+              style={styles.buttonFace}
+            >
               <MeIcon style={styles.icon} icon={mePlay} size={25} color="blue" />
               <View style={styles.viewtextbutton}><Text style={styles.buttonText}>Facebook</Text></View>
             </TouchableOpacity>
            
-            <TouchableOpacity style={styles.buttonGoogle}>
+            <TouchableOpacity 
+              onPress={() => this.props.navigation.navigate("AppNavigator")}
+              style={styles.buttonGoogle}
+            >
               <MeIcon style={styles.icon} icon={mePlay} size={25} color="blue" />
               <View style={styles.viewtextbutton}><Text style={styles.buttonText}>Google+</Text></View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.buttonDt}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("LoginByPhone")}
+              style={styles.buttonDt}
+            >
               <MeIcon style={styles.icon} icon={mePlay} size={25} color="blue" />
               <View style={styles.viewtextbutton}><Text style={styles.buttonText}>Đăng nhập với SĐT</Text></View>
             </TouchableOpacity>
@@ -139,12 +146,13 @@ const styles = StyleSheet.create({
     height: 45,
     width: 350,
     borderRadius: 30,
+    marginTop: 30,
     margin: 3,
   },
   buttonGoogle:{
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F60F36',
+    backgroundColor: '#EE0000',
     borderWidth: 0.5,
     borderColor: '#fff',
     height: 45,
@@ -155,7 +163,7 @@ const styles = StyleSheet.create({
   buttonDt:{
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F07D94',
+    backgroundColor: '#ff6666',
     borderWidth: 0.5,
     borderColor: '#fff',
     height: 45,
