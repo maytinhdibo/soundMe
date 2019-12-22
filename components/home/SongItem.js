@@ -12,7 +12,7 @@ export default class SongItem extends Component {
 
   songPressed = () => {
     console.log("Song pressed");
-    this.context.changeSongState(this.props.name, this.props.actorName, this.props.imgUrl)
+    this.context.changeSongState(this.props.name, this.props.actorName, this.props.imgUrl || require("../../assets/huongtram.jpg"))
     this.context.loadMusic();
     this.context.play();
   };
