@@ -132,7 +132,7 @@ export default class Singer extends Component {
               }
               titleComponent={
                 <Animated.View
-                  style={{ paddingLeft: 50, opacity: headerTitleOpacity }}
+                  style={{  opacity: headerTitleOpacity }}
                 >
                   <Text
                     style={[{ fontSize: 18, color: "#fff" }, textStyle.bold]}

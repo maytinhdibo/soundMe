@@ -5546,6 +5546,13 @@ react-native-hide-with-keyboard@^1.2.1:
   resolved "https://registry.yarnpkg.com/react-native-hide-with-keyboard/-/react-native-hide-with-keyboard-1.2.1.tgz#9e7b03832e8b2b18e999646dc25686487ce72974"
   integrity sha512-O3aI0TkfHLaWO3bjO8bDXgOZ/R/K+Ca8CaXOyHJT71eQlyp2CnycUIa/qHUGkXbVpqjt0hZC7k+MUAer82UOaQ==
 
+react-native-keyboard-view-space@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-keyboard-view-space/-/react-native-keyboard-view-space-1.0.2.tgz#2bd2268390f0e429069e3034aab91c8c29e5ddb7"
+  integrity sha512-ZgzkrugktgHvOeiazOV5mdTn1LBdkBbuJhOMVwSmLNrb2ytB6bQJFlxAoAiTd3tRM9i8BlMsPMefxEdpbxdcpw==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native-marquee@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/react-native-marquee/-/react-native-marquee-0.3.2.tgz#e86fcfe9ea2036637b079d4af0d19f92195aeef2"
@@ -5574,6 +5581,13 @@ react-native-navigation-bar-color@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-navigation-bar-color/-/react-native-navigation-bar-color-1.0.0.tgz#04ff752a58049af93ceea9ccf266b8d3fbc6514a"
   integrity sha512-djBE0zSp+JT65VeUm4UpIpr9DA9SpE9YTLwDAcqkWfB9JI8l3djSx+SmrIYfc7dUs216Y6qo2dr0qR3+M5qbOQ==
+
+react-native-next-input@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/react-native-next-input/-/react-native-next-input-0.0.9.tgz#d6c03db56e8a941150018cf8f9ae83fb298f7c94"
+  integrity sha512-Ytlg1dxmLkSfkOb2HDzTcnCmqclTHk9DjSu4UElXOrzJhiE3tgCl6eA8ENdbL08uSJS5VFN2IEWFUtFd0lPAZw==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-native-paper@^2.16.0:
   version "2.16.0"
