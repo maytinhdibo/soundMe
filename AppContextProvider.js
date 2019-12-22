@@ -52,7 +52,7 @@ export class AppContextProvider extends Component {
         artist: {
           name: artist
         },
-        songImage: songImage
+        songImage: songImage  || require("./assets/huongtram.jpg")
       }})
     },
 
