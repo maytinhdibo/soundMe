@@ -137,7 +137,7 @@ export default class Singer extends Component {
                   <Text
                     style={[{ fontSize: 18, color: "#fff" }, textStyle.bold]}
                   >
-                    Hoàng Thùy Linh
+                    {/* Hoàng Thùy Linh */}
                   </Text>
                 </Animated.View>
               }

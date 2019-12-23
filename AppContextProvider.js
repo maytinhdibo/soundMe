@@ -91,11 +91,32 @@ export class AppContextProvider extends Component {
       // this.state.libraryState.subplaylist = subplaylist;
       this.setState({libraryState: {subplaylist:subplaylist}});
     },
+    addMusicToLibrary: (key) => {
+      // console.log(this.state.libraryState)
+      let newLib = this.state.libraryState.playlist
+      newLib[key].playlist.push({name: this.state.songState.title, actorName: this.state.songState.artist.name})
+      // this.setState({libraryState: { playlist : newLib}})
+      // console.log(this.state.libraryState)
+    },
+
+    icons : [
+      require("./assets/icon-album/0-03.png"),
+      require("./assets/icon-album/1-03.png"),
+      require("./assets/icon-album/2-03.png"),
+      require("./assets/icon-album/3-03.png"),
+      require("./assets/icon-album/4-03.png"),
+      require("./assets/icon-album/5-03.png"),
+      require("./assets/icon-album/6-03.png"),
+      require("./assets/icon-album/7-03.png"),
+      require("./assets/icon-album/8-03.png"),
+      require("./assets/icon-album/9-03.png"),
+    ],
     createNewPlaylist: (name) => {
       // this.state.libraryState.playlist.push({playlistName: name, playlist: []});
       let newListState =  this.state.libraryState.playlist;
-      newListState.push({playlistName: name, playlist: []});
-      this.setState({libraryState: {playlist: newListState}});
+      newListState.push({playlistName: name, playlist: [], image: this.state.icons[Math.floor(Math.random() * 10)]});
+      // console.log(name)
+      // this.setState({libraryState: {playlist: newListState}});
     },
     updateState: someDict => {
       this.setState(someDict);

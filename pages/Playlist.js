@@ -134,7 +134,7 @@ class Playlist extends Component {
                   <Text
                     style={[{ fontSize: 18, color: "#fff" }, textStyle.bold]}
                   >
-                    Hoàng
+                    {/* Hoàng */}
                   </Text>
                 </Animated.View>
               }

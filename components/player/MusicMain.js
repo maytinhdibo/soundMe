@@ -51,7 +51,7 @@ class PlayListLibItem extends Component {
           }}
         >
           <Image
-            source={this.props.imgUrl || require("../../assets/music.png")}
+            source={this.props.imgUrl || require("../../assets/sm3-01.png")}
             style={{
               height: "100%",
               width: "100%",
@@ -110,7 +110,8 @@ export default class MusicMain extends Component {
   };
 
   addMusicToLib = (key) =>{
-    this.context.libraryState.playlist[key].playlist.push({name: this.context.songState.title, actorName: this.context.songState.artist.name, time: 300},)
+    // this.context.libraryState.playlist[key].playlist.push({name: this.context.songState.title, actorName: this.context.songState.artist.name, time: 300},)
+    this.context.addMusicToLibrary(key)
     this.setState({addModal: false})
     ToastAndroid.showWithGravity(
       "Đã thêm bài hát vào danh sách phát "+this.context.libraryState.playlist[key].playlistName,
