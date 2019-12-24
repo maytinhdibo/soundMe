@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {
+  ToastAndroid,
   Text,
   View,
   TextInput,
@@ -42,7 +43,7 @@ class PlayListLibItem extends Component {
           }}
         >
           <Image
-            source={this.props.imgUrl || require("../assets/music.png")}
+            source={this.props.imgUrl || require("../assets/sm3-01.png")}
             style={{
               height: "100%",
               width: "100%",
@@ -82,7 +83,7 @@ class AlbumLibItem extends Component {
           }}
         >
           <Image
-            source={this.props.imgUrl || require("../assets/music.png")}
+            source={this.props.imgUrl || require("../assets/sm3-01.png")}
             style={{
               height: "100%",
               width: "100%",
@@ -157,6 +158,11 @@ class SongRoute extends Component {
   createNewPlaylist = () => {
     this.context.createNewPlaylist(this.state.playlistName)
     this.setState({playlistName: "", addModal: false})
+    ToastAndroid.showWithGravity(
+      "Đã tạo danh sách phát "+this.context.libraryState.playlist[this.context.libraryState.playlist.length-1].playlistName,
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM
+    );
   }
 
   render() {
