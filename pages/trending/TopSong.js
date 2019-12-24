@@ -149,6 +149,7 @@ export default class TopSong extends Component {
               {topmusic.items.slice(0,1).map((item, key) => {
                 return (
                   <ImageBackground
+                    key={key}
                     blurRadius={32}
                     source={item.image}
                     style={{ width: "100%", height: "100%" }}
@@ -266,6 +267,7 @@ export default class TopSong extends Component {
                 {topmusic.items.map((item, key) => {
                     return (
                       <SongItem
+                        key={key}
                         imgUrl={item.image}
                         name={item.name}
                         actorName={item.actorName}

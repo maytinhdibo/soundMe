@@ -192,6 +192,7 @@ class PersonalPlaylist extends Component {
                 return (
                   <SongItem
                     idx={key + 1}
+                    key={key}
                     name={item.name}
                     actorName={item.actorName}
                     time={item.time}

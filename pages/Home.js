@@ -35,6 +35,7 @@ import { ThemeContext, AppConsumer } from "../AppContextProvider";
 import artists from "../assets/data/artists";
 import playlists from "../assets/data/playlists"
 import topmusic from "../assets/data/topmusic"
+import slider from "../assets/data/slider"
 // import {Body, Header, List, ListItem as Item, ScrollableTab, Tab, Tabs, Title} from "native-base";
 
 const NAVBAR_HEIGHT = 50;
@@ -255,29 +256,15 @@ class NewHome extends Component {
                       ></View>
                     }
                   >
-                    <SliderItem
-                      index={1}
-                      image={{
-                        uri:
-                          "https://avatar-nct.nixcdn.com/mv/2019/10/23/f/2/2/5/1571805287222_840.jpg",
-                      }}
-                    />
-
-                    <SliderItem
-                      index={1}
-                      image={{
-                        uri:
-                          "https://avatar-nct.nixcdn.com/mv/2019/10/17/d/f/d/6/1571316241353_840.jpg",
-                      }}
-                    />
-
-                    <SliderItem
-                      index={1}
-                      image={{
-                        uri:
-                          "https://avatar-nct.nixcdn.com/mv/2019/10/21/b/3/9/8/1571633065834_840.jpg",
-                      }}
-                    />
+                    {slider.data.map((item, key) => {
+                      return (
+                      <SliderItem
+                        key={key}
+                        index={item.index}
+                        image={item.image}
+                      />
+                      )
+                    })}
                   </Swiper>
                 </View>
 
@@ -296,6 +283,7 @@ class NewHome extends Component {
                     {playlists.items.slice(0,5).map((item, key) => {
                       return (
                         <PlaylistItem
+                          key={key}
                           imgUrl={item.image}
                           name={item.name}
                           actorName={item.actorName}
@@ -318,6 +306,7 @@ class NewHome extends Component {
                   {topmusic.items.slice(0,5).map((item, key) => {
                     return (
                       <SongItem
+                        key={key}
                         imgUrl={item.image}
                         name={item.name}
                         actorName={item.actorName}
@@ -342,6 +331,7 @@ class NewHome extends Component {
                     {artists.items.slice(0,6).map((item, key) => {
                       return (
                         <ArtistItem
+                          key={key}
                           imgUrl={item.image}
                           name={item.name}
                           numberLike={item.numberLike}

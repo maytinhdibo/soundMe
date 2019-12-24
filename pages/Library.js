@@ -288,6 +288,7 @@ class SongRoute extends Component {
                 this.context.changeLibraryState(item.playlist)
                 this.props.navigation.navigate("PersonalPlaylist")
               }}
+              key={key}
             >
               <View>
                 <PlayListLibItem count={item.playlist.length} name={item.playlistName} imgUrl={item.image}/>
@@ -305,7 +306,7 @@ const ArtistRoute = () => (
   <ScrollView>
     <View style={{ padding: 7, paddingHorizontal: 16 }}>
       {artists.items.map((item, key) => {
-        return (<ArtistLibItem name={item.name} follower={item.numberLike} imgUrl={item.image}/>)
+        return (<ArtistLibItem name={item.name} follower={item.numberLike} imgUrl={item.image} key={key}/>)
       })}
     </View>
   </ScrollView>
@@ -337,6 +338,7 @@ class Tabs extends Component {
         {routes.map((route, index) => {
           return (
             <TouchableWithoutFeedback
+              key={index}
               onPress={() => {
                 const delta = index - this.props.index;
                 if (delta != 0) this.props.swipeTo(delta);

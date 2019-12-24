@@ -47,59 +47,67 @@ export class AppContextProvider extends Component {
       songImage: require("./assets/huongtram.jpg"),
     },
     changeSongState: (title, artist, songImage) => {
-      this.setState({songState: {
-        title: title,
-        artist: {
-          name: artist
-        },
-        songImage: songImage  || require("./assets/huongtram.jpg")
-      }})
+
+      this.setState({
+        songState: {
+          title: title,
+          artist: {
+            name: artist
+          },
+          songImage: songImage || require("./assets/huongtram.jpg")
+        }
+      });
+      this.state.showControlNotif();
     },
 
     albumName: "Album Hồng Nhung",
-    
-    albumState :  {
-      albumName : "Nguoi hay quen em di",
-      albumActor : "abc",
+
+    albumState: {
+      albumName: "Nguoi hay quen em di",
+      albumActor: "abc",
       songImage: require("./assets/huongtram.jpg"),
-      subplaylists: [], 
+      subplaylists: [],
     },
-    changeAlbumState : (albumName, albumActor, songImage, subplaylists) => {
-      this.setState({albumState : {
-        albumName: albumName,
-        albumActor: albumActor,
-        songImage: songImage,
-        subplaylists: subplaylists
-      }})
+    changeAlbumState: (albumName, albumActor, songImage, subplaylists) => {
+      this.setState({
+        albumState: {
+          albumName: albumName,
+          albumActor: albumActor,
+          songImage: songImage || require("./assets/huongtram.jpg"),
+          subplaylists: subplaylists
+        }
+      })
+      this.state.showControlNotif();
     },
 
-    artistState :  {
-      artistName : "Huong Tram",
-      artistNumberLike : "1.2tr",
+    artistState: {
+      artistName: "Huong Tram",
+      artistNumberLike: "1.2tr",
       songImage: require("./assets/huongtram.jpg"),
       playlists: [],
     },
     changeArtistState: (image, numberLike, artistName, playlists) => {
-      this.setState({artistState: {  songImage: image, artistNumberLike: numberLike, artistName: artistName, playlists:playlists}});
+      this.setState({ artistState: { songImage: image , artistNumberLike: numberLike, artistName: artistName, playlists: playlists } });
+      this.state.showControlNotif();
     },
 
-    libraryState : {
+    libraryState: {
       playlist: libraryData.data,
       subplaylist: [],
     },
     changeLibraryState: (subplaylist) => {
       // this.state.libraryState.subplaylist = subplaylist;
-      this.setState({libraryState: {subplaylist:subplaylist}});
+      this.setState({ libraryState: { subplaylist: subplaylist } });
     },
     addMusicToLibrary: (key) => {
       // console.log(this.state.libraryState)
       let newLib = this.state.libraryState.playlist
-      newLib[key].playlist.push({name: this.state.songState.title, actorName: this.state.songState.artist.name})
+      newLib[key].playlist.push({ name: this.state.songState.title, actorName: this.state.songState.artist.name })
       // this.setState({libraryState: { playlist : newLib}})
       // console.log(this.state.libraryState)
     },
 
-    icons : [
+    icons: [
       require("./assets/icon-album/0-03.png"),
       require("./assets/icon-album/1-03.png"),
       require("./assets/icon-album/2-03.png"),
@@ -113,8 +121,8 @@ export class AppContextProvider extends Component {
     ],
     createNewPlaylist: (name) => {
       // this.state.libraryState.playlist.push({playlistName: name, playlist: []});
-      let newListState =  this.state.libraryState.playlist;
-      newListState.push({playlistName: name, playlist: [], image: this.state.icons[Math.floor(Math.random() * 10)]});
+      let newListState = this.state.libraryState.playlist;
+      newListState.push({ playlistName: name, playlist: [], image: this.state.icons[Math.floor(Math.random() * 10)] });
       // console.log(name)
       // this.setState({libraryState: {playlist: newListState}});
     },
@@ -152,9 +160,9 @@ export class AppContextProvider extends Component {
       });
 
       this.setState({ playing: true });
-      if (!this.state.notifShowing) {
-        this.state.showControlNotif();
-      }
+      // if (!this.state.notifShowing) {
+      this.state.showControlNotif();
+      // }
       console.log("play pressed");
       console.log("state playing now is: " + this.state.playing);
 
@@ -193,7 +201,7 @@ export class AppContextProvider extends Component {
     },
 
     showControlNotif: () => {
-        this.state.configNotification()
+      this.state.configNotification()
       //change state in context
       this.setState({
         notifShowing: true
@@ -202,8 +210,8 @@ export class AppContextProvider extends Component {
       //show notification
       MusicControl.setNowPlaying({
         title: this.state.songState.title,
-        artwork: this.state.songImage, // URL or RN's image require()
-        artist: this.state.songState.artist.name,
+        artwork: this.state.songState.songImage, // URL or RN's image require()
+        artist: this.state.songState.artist["name"],
         album: this.state.albumName,
         genre: "Post-disco, Rhythm and Blues, Funk, Dance-pop",
         duration: this.state.duration, // (Seconds)
@@ -251,56 +259,56 @@ export class AppContextProvider extends Component {
       console.log("CLOSE NOTIFICATION");
       this.state.pause();
       MusicControl.stopControl();
-      this.setState({notifShowing:false})
+      this.setState({ notifShowing: false })
     },
-    configNotification:()=>{
-        MusicControl.enableBackgroundMode(true);
+    configNotification: () => {
+      MusicControl.enableBackgroundMode(true);
 
-        MusicControl.on("play", () => {
-          this.state.play();
-        });
-    
-        // on iOS this event will also be triggered by audio router change events
-        // happening when headphones are unplugged or a bluetooth audio peripheral disconnects from the device
-        MusicControl.on("pause", () => {
-          this.state.pause();
-        });
-    
-        MusicControl.on("stop", () => {
-          this.state.onFinishPlay();
-        });
-    
-        MusicControl.on("nextTrack", () => {
-          this.state.onNextTrack();
-        });
-    
-        MusicControl.on("previousTrack", () => {
-          this.state.onPreviousTrack();
-        });
-    
-        MusicControl.on("skipForward", () => {
-          this.state.onCloseNotification();
-        });
-    
-        // Basic Controls
-        MusicControl.enableControl("play", true);
-        MusicControl.enableControl("pause", true);
-        MusicControl.enableControl("stop", false);
-        MusicControl.enableControl("nextTrack", true);
-        MusicControl.enableControl("previousTrack", true);
-        // Changing track position on lockscreen
-        MusicControl.enableControl("changePlaybackPosition", true);
-    
-        // Seeking
-        MusicControl.enableControl("seekForward", false); // iOS only
-        MusicControl.enableControl("seekBackward", false); // iOS only
-        MusicControl.enableControl("seek", true); // Android only
-        MusicControl.enableControl("skipForward", true);
-        MusicControl.enableControl("skipBackward", false);
-    
-        // Default - Allow user to close notification on swipe when audio is paused
-        MusicControl.enableControl("closeNotification", true, { when: "always" });
-        // MusicControl.enableControl('closeNotification', true, {when: 'always'})
+      MusicControl.on("play", () => {
+        this.state.play();
+      });
+
+      // on iOS this event will also be triggered by audio router change events
+      // happening when headphones are unplugged or a bluetooth audio peripheral disconnects from the device
+      MusicControl.on("pause", () => {
+        this.state.pause();
+      });
+
+      MusicControl.on("stop", () => {
+        this.state.onFinishPlay();
+      });
+
+      MusicControl.on("nextTrack", () => {
+        this.state.onNextTrack();
+      });
+
+      MusicControl.on("previousTrack", () => {
+        this.state.onPreviousTrack();
+      });
+
+      MusicControl.on("skipForward", () => {
+        this.state.onCloseNotification();
+      });
+
+      // Basic Controls
+      MusicControl.enableControl("play", true);
+      MusicControl.enableControl("pause", true);
+      MusicControl.enableControl("stop", false);
+      MusicControl.enableControl("nextTrack", true);
+      MusicControl.enableControl("previousTrack", true);
+      // Changing track position on lockscreen
+      MusicControl.enableControl("changePlaybackPosition", true);
+
+      // Seeking
+      MusicControl.enableControl("seekForward", false); // iOS only
+      MusicControl.enableControl("seekBackward", false); // iOS only
+      MusicControl.enableControl("seek", true); // Android only
+      MusicControl.enableControl("skipForward", true);
+      MusicControl.enableControl("skipBackward", false);
+
+      // Default - Allow user to close notification on swipe when audio is paused
+      MusicControl.enableControl("closeNotification", true, { when: "always" });
+      // MusicControl.enableControl('closeNotification', true, {when: 'always'})
     }
   };
 
@@ -327,10 +335,10 @@ export class AppContextProvider extends Component {
       }
     );
 
- 
+
   };
   render() {
-    const { theme, artistState , albumState, libraryState} = this.state;
+    const { theme, artistState, albumState, libraryState } = this.state;
     return (
       <Context.Provider value={this.state} theme={theme} artistState={artistState} albumState={albumState} libraryState={libraryState}>
         {this.props.children}

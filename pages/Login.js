@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, { Component } from "react";
 // import Logo from './src/VNU-UET.jpg';
 // import BackgroundImage from './src/BG.jpg';
 // import IconUser from './src/user.png';
@@ -14,19 +14,35 @@ import {
   ImageBackground,
   TouchableOpacity,
   KeyboardAvoidingView
-} from 'react-native';
+} from "react-native";
+import { textStyle } from "../styles/textStyle";
+import meFacebook from "../icons/icon-pack/meFacebook";
+import meGoogle from "../icons/icon-pack/meGoogle";
+import mePhone from "../icons/icon-pack/mePhone";
+import { getStatusBarHeight } from "react-native-status-bar-height";
 
 class Login extends Component {
   render() {
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <View>
-          <View style={styles.logoContainer}>
-            <Image style={styles.logo} source={require('../assets/musiccover.png')} />
+        <View
+        style={{
+          height: getStatusBarHeight(),
+          backgroundColor:"rgba(111,111,111,0.5)"}}>
           </View>
-          <View style={styles.viewtext}><Text style={styles.title}>SoundMe</Text></View>
-        </View>    
-        
+
+          <View style={[styles.logoContainer, { marginLeft: -6 }]}>
+            <Image
+              style={styles.logo}
+              source={require("../assets/sm-01.png")}
+            />
+          </View>
+          <View style={styles.viewtext}>
+            <Text style={[styles.title, textStyle.regular]}>soundMe</Text>
+          </View>
+        </View>
+
         <View>
           <View style={styles.formContainer}>
             {/* <View style={styles.inputContainer}>
@@ -51,31 +67,62 @@ class Login extends Component {
                 secureTextEntry />
             </View> */}
 
-
-            <TouchableOpacity 
+            <TouchableOpacity
               onPress={() => this.props.navigation.navigate("AppNavigator")}
               style={styles.buttonFace}
             >
-              <MeIcon style={styles.icon} icon={mePlay} size={25} color="blue" />
-              <View style={styles.viewtextbutton}><Text style={styles.buttonText}>Facebook</Text></View>
+              <MeIcon
+                style={styles.icon}
+                icon={meFacebook}
+                size={25}
+                color="#fff"
+              />
+              <View style={styles.viewtextbutton}>
+                <Text style={[textStyle.medium, styles.buttonText]}>
+                  Facebook
+                </Text>
+              </View>
             </TouchableOpacity>
-           
-            <TouchableOpacity 
+
+            <TouchableOpacity
               onPress={() => this.props.navigation.navigate("AppNavigator")}
               style={styles.buttonGoogle}
             >
-              <MeIcon style={styles.icon} icon={mePlay} size={25} color="blue" />
-              <View style={styles.viewtextbutton}><Text style={styles.buttonText}>Google+</Text></View>
+              <MeIcon
+                style={styles.icon}
+                icon={meGoogle}
+                size={25}
+                color="blue"
+              />
+              <View style={styles.viewtextbutton}>
+                <Text
+                  style={[
+                    textStyle.medium,
+                    styles.buttonText,
+                    { color: "#000" }
+                  ]}
+                >
+                  Google ID
+                </Text>
+              </View>
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("LoginByPhone")}
               style={styles.buttonDt}
             >
-              <MeIcon style={styles.icon} icon={mePlay} size={25} color="blue" />
-              <View style={styles.viewtextbutton}><Text style={styles.buttonText}>Đăng nhập với SĐT</Text></View>
+              <MeIcon
+                style={styles.icon}
+                icon={mePhone}
+                size={24}
+                color="#eee"
+              />
+              <View style={styles.viewtextbutton}>
+                <Text style={[textStyle.medium, styles.buttonText]}>
+                  Đăng nhập với SĐT
+                </Text>
+              </View>
             </TouchableOpacity>
-            
           </View>
         </View>
       </KeyboardAvoidingView>
@@ -84,37 +131,41 @@ class Login extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: "#fff"
   },
   logoContainer: {
     height: 300,
+    alignItems: "center"
   },
-  viewtext:{
-    justifyContent: 'center',
-    alignItems: 'center',
+  viewtext: {
+    justifyContent: "center",
+    alignItems: "center"
   },
-  viewtextbutton:{
-    flex:0.8,
-    flexDirection: 'row',
-    alignItems: 'center',
-    textAlign: 'center',
+  viewtextbutton: {
+    flex: 0.8,
+    flexDirection: "row",
+    alignItems: "center",
+    textAlign: "center"
   },
   logo: {
-    position: 'absolute',
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    alignSelf: 'center',
-    top: 175,
+    position: "absolute",
+    width: 150,
+    height: 150,
+    // borderColor: 'gray',
+    // borderWidth: 0.5,
+    alignSelf: "center",
+    top: 160
   },
   title: {
     fontSize: 26,
-    fontWeight: 'bold',
-    justifyContent: 'center',
-    alignItems: 'center',
+    fontWeight: "bold",
+    justifyContent: "center",
+    alignItems: "center"
   },
   formContainer: {
-    padding: 30,
+    // padding: 30,
+    justifyContent: "center",
+    alignItems: "center"
   },
   // inputContainer: {
   //   flexDirection: 'row',
@@ -127,7 +178,7 @@ const styles = StyleSheet.create({
   // },
   icon: {
     padding: 10,
-    margin: 5,
+    margin: 5
   },
   // input: {
   //   height: 50,
@@ -138,45 +189,47 @@ const styles = StyleSheet.create({
 
   // },
   buttonFace: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#485a96',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#485a96",
     borderWidth: 0.5,
-    borderColor: '#fff',
+    borderColor: "#fff",
     height: 45,
     width: 350,
     borderRadius: 30,
-    marginTop: 30,
-    margin: 3,
+    marginTop: 36,
+    margin: 3
   },
-  buttonGoogle:{
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#EE0000',
-    borderWidth: 0.5,
-    borderColor: '#fff',
+  buttonGoogle: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#fff",
+    borderWidth:1,
+    borderColor: "#ddd",
     height: 45,
     width: 350,
     borderRadius: 30,
     margin: 3,
+    marginTop: 6
   },
-  buttonDt:{
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#ff6666',
+  buttonDt: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#ff6666",
     borderWidth: 0.5,
-    borderColor: '#fff',
+    borderColor: "#eee",
     height: 45,
     width: 350,
     borderRadius: 30,
     margin: 3,
+    marginTop: 6
   },
   buttonText: {
-    flex: 1,
-    color: '#fff',
+    color: "#fff",
     fontSize: 16,
-    textAlign: 'center',
-    paddingVertical:10,
+    textAlign: "center",
+    paddingVertical: 10,
+    flex: 1
   }
 });
 
