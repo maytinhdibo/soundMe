@@ -152,14 +152,10 @@ class Profile extends Component {
               cardElevation={2}
             >
               <Image
-                source={{
-                  uri: this.state.login
-                    ? "https://i.scdn.co/image/7be436d24a08969d8724edc8c0e290a4b5624fff"
-                    : "https://haulixdaily.com/wp-content/uploads/2018/08/tumblr_inline_pe4i0bR0o21s24py6_540.png",
-                }}
+                source={require('../assets/sm-01.png')}
                 style={{
-                  height: 60,
-                  width: 60,
+                  height: 70,
+                  width: 70,
                   resizeMode: "cover",
                   borderRadius: 9,
                 }}
