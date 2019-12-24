@@ -52,7 +52,7 @@ export class AppContextProvider extends Component {
         artist: {
           name: artist
         },
-        songImage: songImage  || require("./assets/huongtram.jpg")
+        songImage: require("./assets/huongtram.jpg")
       }})
     },
 
@@ -202,7 +202,7 @@ export class AppContextProvider extends Component {
       //show notification
       MusicControl.setNowPlaying({
         title: this.state.songState.title,
-        artwork: this.state.songImage, // URL or RN's image require()
+        artwork: require("./assets/huongtram.jpg"), // URL or RN's image require()
         artist: this.state.songState.artist.name,
         album: this.state.albumName,
         genre: "Post-disco, Rhythm and Blues, Funk, Dance-pop",

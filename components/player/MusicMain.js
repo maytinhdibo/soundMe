@@ -257,7 +257,7 @@ export default class MusicMain extends Component {
                 }}
               >
                 <MeIcon
-                  size={25}
+                  size={23}
                   color={this.context.theme.colorPrimary}
                   icon={meArrowDown}
                 />
