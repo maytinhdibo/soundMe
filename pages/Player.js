@@ -40,7 +40,8 @@ export default class Player extends Component {
     super(props);
     this.state = {
       curLine: "...",
-      something: false
+      something: false,
+      shuff:true
     };
   }
 
@@ -70,8 +71,8 @@ export default class Player extends Component {
     return playing == true ? (
       <MeIcon size={20} color="#fff" icon={mePause} />
     ) : (
-      <MeIcon size={20} color="#fff" icon={mePlay} />
-    );
+        <MeIcon size={20} color="#fff" icon={mePlay} />
+      );
   };
 
   renderRepeat = () => {
@@ -84,12 +85,29 @@ export default class Player extends Component {
         icon={meRepeat}
       />
     ) : (
+        <MeIcon
+          size={25}
+          color="#828282"
+          icon={meRepeat}
+        />
+      );
+  };
+  renderShuffle = () => {
+    let repeat = this.state.shuff;
+
+    return repeat == true ? (
       <MeIcon
         size={25}
-        color="#828282"
-        icon={meRepeat}
+        color={this.context.theme.buttonColor}
+        icon={meShuffle}
       />
-    );
+    ) : (
+        <MeIcon
+          size={25}
+          color="#828282"
+          icon={meRepeat}
+        />
+      );
   };
 
   onShare = async () => {
@@ -197,75 +215,79 @@ export default class Player extends Component {
                       margin: 9
                     }}
                   >
-                    <MeIcon
-                      size={25}
-                      color={this.context.theme.buttonColor}
-                      icon={meShuffle}
-                    />
-                  </View>
-                  <View
-                    style={{
-                      justifyContent: "center",
-                      alignItems: "center",
-                      width: 50,
-                      height: 50,
-                      margin: 9
-                    }}
-                  >
-                    <MeIcon
-                      size={20}
-                      color={this.context.theme.buttonColor}
-                      icon={mePrevious}
-                    />
-                  </View>
-                  <View
-                    style={{
-                      // backgroundColor: "#2980cc",
-                      width: 50,
-                      height: 50
-                    }}
-                  ></View>
-
-                  <View
-                    style={{
-                      justifyContent: "center",
-                      alignItems: "center",
-                      width: 50,
-                      height: 50,
-                      margin: 9
-                    }}
-                  >
-                    <MeIcon
-                      size={20}
-                      color={this.context.theme.buttonColor}
-                      icon={meNext}
-                    />
-                  </View>
-                  <View
-                    style={{
-                      justifyContent: "center",
-                      alignItems: "center",
-                      width: 50,
-                      height: 50,
-                      margin: 9
-                    }}
-                  >
                     <TouchableOpacity
                       onPress={() => {
-                        this.context.updateState({
-                          repeat: !this.context.repeat
-                        });
-                        console.log("repeat = " + this.context.repeat);
-                      }}
-                    >
-                      {this.renderRepeat()}
+                        shuff = this.state.shuff
+                        this.state.setState{ 'shuff': !shuff }
+             }}
+           >
+                      {this.renderShuffle()}
                     </TouchableOpacity>
                   </View>
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: 50,
+                    height: 50,
+                    margin: 9
+                  }}
+                >
+                  <MeIcon
+                    size={20}
+                    color={this.context.theme.buttonColor}
+                    icon={mePrevious}
+                  />
+                </View>
+                <View
+                  style={{
+                    // backgroundColor: "#2980cc",
+                    width: 50,
+                    height: 50
+                  }}
+                ></View>
+
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: 50,
+                    height: 50,
+                    margin: 9
+                  }}
+                >
+                  <MeIcon
+                    size={20}
+                    color={this.context.theme.buttonColor}
+                    icon={meNext}
+                  />
+                </View>
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: 50,
+                    height: 50,
+                    margin: 9
+                  }}
+                >
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.context.updateState({
+                        repeat: !this.context.repeat
+                      });
+                      console.log("repeat = " + this.context.repeat);
+                    }}
+                  >
+                    {this.renderRepeat()}
+                  </TouchableOpacity>
+                </View>
                 </CardView>
-              </View>
+            </View>
             </View>
           </ImageBackground>
-        )}
+    )
+  }
       </AppConsumer>
     );
   }
