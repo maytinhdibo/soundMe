@@ -31,9 +31,12 @@ import { AppConsumer, ThemeContext } from "../AppContextProvider";
 import SectionTitle from "../components/home/SectionTitle";
 import PlaylistItem from "../components/singer/PlaylistItem";
 import PlayerBar from "../components/player/PlayerBar";
+import playlistItem from "../assets/data/playlistItem"
 
 const HEADER_EXPANDED_HEIGHT = 250;
 const HEADER_COLLAPSED_HEIGHT = 0;
+
+
 
 export default class Singer extends Component {
   constructor(props) {
@@ -298,27 +301,16 @@ export default class Singer extends Component {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                   >
-                    <PlaylistItem
-                      navigation={this.props.navigation}
-                      imgUrl={require("../assets/nuocmat.jpg")}
-                      name={"Nhân Duyên"}
-                    />
-                    <PlaylistItem
-                      navigation={this.props.navigation}
-                      imgUrl={{
-                        uri:
-                          "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg",
-                      }}
-                      name={"Tìm Lại Giấc Mơ"}
-                    />
-                    <PlaylistItem
-                      navigation={this.props.navigation}
-                      imgUrl={{
-                        uri:
-                          "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg",
-                      }}
-                      name={"Đánh Rơi Bên Hồ"}
-                    />
+                    {playlistItem.data.map((item, key) => {
+                      return (
+                        <PlaylistItem
+                          key={key}
+                          navigation={this.props.navigation}
+                          imgUrl={item.image}
+                          name={item.name}
+                        />
+                      )
+                    })}
                   </ScrollView>
                 </View>
               </View>
