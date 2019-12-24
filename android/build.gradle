@@ -11,6 +11,7 @@ buildscript {
         google()
         jcenter()
     }
+
     dependencies {
         classpath("com.android.tools.build:gradle:3.4.2")
 
@@ -18,7 +19,6 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-
 allprojects {
     repositories {
         mavenLocal()
