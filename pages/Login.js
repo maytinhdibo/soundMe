@@ -15,6 +15,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView
 } from 'react-native';
+import { textStyle } from '../styles/textStyle';
 
 class Login extends Component {
   render() {
@@ -57,7 +58,7 @@ class Login extends Component {
               style={styles.buttonFace}
             >
               <MeIcon style={styles.icon} icon={mePlay} size={25} color="blue" />
-              <View style={styles.viewtextbutton}><Text style={styles.buttonText}>Facebook</Text></View>
+              <View style={styles.viewtextbutton}><Text style={[textStyle.medium, styles.buttonText]}>Facebook</Text></View>
             </TouchableOpacity>
            
             <TouchableOpacity 
@@ -114,7 +115,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   formContainer: {
-    padding: 30,
+    // padding: 30,
+    justifyContent:"center",
+    alignItems:"center"
   },
   // inputContainer: {
   //   flexDirection: 'row',
@@ -172,11 +175,11 @@ const styles = StyleSheet.create({
     margin: 3,
   },
   buttonText: {
-    flex: 1,
     color: '#fff',
     fontSize: 16,
     textAlign: 'center',
     paddingVertical:10,
+    flex:1
   }
 });
 
