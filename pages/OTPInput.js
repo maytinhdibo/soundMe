@@ -18,15 +18,23 @@ class OtpVerification extends PureComponent {
 	constructor(props) {
 		super(props)
 		//this.phoneInstance = this.props.navigation.state.params.phoneInstance
+		this.state = {
+			text1: [],
+		}
 	}
 
-
 	verifyOTP = value => {
-		
+		if(this.state.text1[0] == 1 && this.state.text1[1] == 2 && this.state.text1[2] == 3 &&
+			this.state.text1[3] == 4 && this.state.text1[4] == 5 && this.state.text1[5] == 6){
+			this.props.navigation.navigate("AppNavigator")
+		}
+
+		// CUONG them vao xu li OTP sai
 	}
 
 	otpInputHandler = (combinedValueArray, currentValue, refForTheCurrentValue) => {
 		console.log(combinedValueArray, currentValue, refForTheCurrentValue)
+		this.setState({text1: combinedValueArray})
 	}
 
 	render() {
@@ -68,7 +76,7 @@ class OtpVerification extends PureComponent {
 							/> */}
 							<TouchableOpacity
 								style={styles.button}
-								onPress={() => this.props.navigation.navigate("AppNavigator")}
+								onPress={this.verifyOTP}
 							>
 								<Text style={styles.buttonText}>Tiếp tục</Text>
 							</TouchableOpacity>
