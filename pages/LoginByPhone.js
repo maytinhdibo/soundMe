@@ -10,12 +10,19 @@ import {
   Alert,
   Image
 } from 'react-native';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 export default class LoginByPhone extends Component {
 
   render() {
     return (
       <View style={styles.container}>
+         <View
+        style={{
+          height: getStatusBarHeight(),
+          backgroundColor:"rgba(111,111,111,0.5)"}}>
+          </View>
+          
         <View style={styles.inputContainer}>
           <MeIcon style={[styles.icon, styles.inputIcon]} icon={mePlay} size={25} color="blue" />
           <TextInput style={styles.inputs}
@@ -46,9 +53,10 @@ export default class LoginByPhone extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#B0E0E6',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    flexDirection:"column"
+    // backgroundColor: '#B0E0E6',
   },
   inputContainer: {
       borderBottomColor: '#F5FCFF',

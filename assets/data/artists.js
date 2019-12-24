@@ -3,8 +3,8 @@ export default {
         { name: "Hương Tràm", numberLike: "1.2tr", image: require("../../assets/artists/huongtram.jpg"), id: 1, playlists: [
           { name: "Em gái mưa", time: 345 , actorName: "Hương Tràm", image: require("../../assets/artists/huongtram.jpg")},
           { name: "Duyên mình lỡ", time: 310 , actorName: "Hương Tràm", image: require("../../assets/artists/huongtram.jpg")},
-          { name: "Ngốc", time: 310 , actorName: "Hương Tràm", image: require("../../assets/artists/huongtram.jpg")},
-          { name: "Người từng yêu anh rất sâu nặng", time: 310 , actorName: "Hương Tràm", image: require("../../assets/artists/huongtram.jpg")},
+          { name: "Ngốc", time: 372 , actorName: "Hương Tràm", image: require("../../assets/artists/huongtram.jpg")},
+          { name: "Người từng yêu anh rất sâu nặng", time: 350 , actorName: "Hương Tràm", image: require("../../assets/artists/huongtram.jpg")},
         ] },
         { name: "Jack",numberLike: "950k", image: require("../../assets/artists/jack.jpg"), id: 1, playlists: [
           { name: "Sóng Gió", time: 345 , actorName: "V.A", image: require("../../assets/artists/jack.jpg")},
@@ -12,7 +12,7 @@ export default {
           { name: "Bạc Phận", time: 310 , actorName: "V.A", image: require("../../assets/artists/jack.jpg")},
           { name: "Sao Em Vô Tình", time: 310 , actorName: "V.A"},
         ]  },
-        { name: "Trinh Thăng Binh",numberLike: "1.1tr", image: require("../../assets/artists/trinhthangbinh.jpg"), id: 1, playlists: [
+        { name: "Thanh Lam",numberLike: "1.1tr", image: require("../../assets/artists/thanhlam.jpg"), id: 1, playlists: [
           { name: "Người ấy", time: 345 , actorName: "Trinh Thăng Binh", image: require("../../assets/artists/trinhthangbinh.jpg")},
           { name: "Tâm sự tuổi 30", time: 310 , actorName: "Trinh Thăng Binh", image: require("../../assets/artists/trinhthangbinh.jpg")},
         ]  },

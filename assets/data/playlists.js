@@ -1,20 +1,22 @@
 export default {
     items : [
-        { name: "Nhân duyên", code: "#1abc9c" , image: require("../../assets/playlists/nhanduyen.jpg"), actorName: "Phạm Quỳnh Anh", subplaylists: [
-          { name: "Bài hát thứ nhất từ danh sách nhân duyên", time: 345 , actorName: "V.A" , image: require("../../assets/playlists/nhanduyen.jpg")},
-          { name: "Bài hát thứ hai từ danh sách nhân duyên", time: 300 , actorName: "V.A" , image: require("../../assets/playlists/nhanduyen.jpg")},
-          { name: "Bài hát thứ ba từ danh sách nhân duyên", time: 310 , actorName: "V.A" , image: require("../../assets/playlists/nhanduyen.jpg")},
-          { name: "Bài hát thứ bốn từ danh sách nhân duyên", time: 290 , actorName: "V.A" , image: require("../../assets/playlists/nhanduyen.jpg")},
-          { name: "Bài hát thứ năm từ danh sách nhân duyên", time: 320 , actorName: "V.A" , image: require("../../assets/playlists/nhanduyen.jpg")},
+        { name: "Nhạc Trịnh", code: "#1abc9c" , image: require("../../assets/playlists/hongnhung.jpg"), actorName: "Hồng Nhung", subplaylists: [
+          { name: "Một Cõi Đi Về", time: 345 , actorName: "Hồng Nhung" , image: require("../../assets/playlists/hongnhung.jpg")},
+          { name: "Như Cánh Vạc Bay", time: 300 , actorName: "Quang Dũng" , image: require("../../assets/playlists/hongnhung.jpg")},
+          { name: "Tuổi Đá Buồn", time: 310 , actorName: "Thu Phương" , image: require("../../assets/playlists/hongnhung.jpg")},
+          { name: "Để Gió Cuốn Đi", time: 290 , actorName: "Nhiều Ca Sĩ" , image: require("../../assets/playlists/hongnhung.jpg")},
+          { name: "Nối Vòng Tay Lớn", time: 320 , actorName: "V.A" , image: require("../../assets/playlists/hongnhung.jpg")},
+          { name: "Ru Ta Ngậm Ngùi", time: 320 , actorName: "Cẩm Vân" , image: require("../../assets/playlists/hongnhung.jpg")},
+          { name: "Mưa Hồng", time: 390 , actorName: "Tuấn Ngọc" , image: require("../../assets/playlists/hongnhung.jpg")},
         ]},
-        { name: "Cô Gái M52 (Single)", code: "#1abc9c" , image: require("../../assets/playlists/m52.jpg"), actorName: "HuyR, Tùng Viu",  subplaylists: [
-          { name: "Bài hát thứ nhất từ danh sách Cô Gái M52", time: 345 , actorName: "V.A", image: require("../../assets/playlists/m52.jpg")},
-          { name: "Bài hát thứ hai từ danh sách Cô Gái M52", time: 300 , actorName: "V.A", image: require("../../assets/playlists/m52.jpg")},
-          { name: "Bài hát thứ ba từ danh sách Cô Gái M52", time: 310 , actorName: "V.A", image: require("../../assets/playlists/m52.jpg")},
-          { name: "Bài hát thứ bốn từ danh sách Cô Gái M52", time: 290 , actorName: "V.A", image: require("../../assets/playlists/m52.jpg")},
-          { name: "Bài hát thứ năm từ danh sách Cô Gái M52", time: 320 , actorName: "V.A", image: require("../../assets/playlists/m52.jpg")},
+        { name: "Song Ca Trẻ", code: "#1abc9c" , image: require("../../assets/playlists/songca.jpg"), actorName: "Nhiều Ca Sĩ",  subplaylists: [
+          { name: "Cô Gái M52", time: 345 , actorName: "Nhiều Ca Sĩ", image: require("../../assets/playlists/m52.jpg")},
+          { name: "Trời Giấu Trời Mang Đi", time: 300 , actorName: "ViruSs", image: require("../../assets/playlists/m52.jpg")},
+          { name: "Bạc Phậm", time: 310 , actorName: "Jack, K-ICM", image: require("../../assets/playlists/m52.jpg")},
+          { name: "Nghe Nói Anh Sắp Kết Hôn Rồi", time: 290 , actorName: "Văn Mai Hương, Bùi Anh Tuấn", image: require("../../assets/playlists/m52.jpg")},
+          { name: "Cơn Mưa Tình Yêu", time: 320 , actorName: "Hà Anh Tuấn", image: require("../../assets/playlists/m52.jpg")},
         ]},
-        { name: "Hồng Nhan Bạc Phận", code: "#1abc9c" , image: require("../../assets/playlists/hongnhanbacphan.jpg"), actorName: "Jack, Liam", subplaylists: [
+        { name: "Square Up", code: "#1abc9c" , image: require("../../assets/playlists/blackpink.jpg"), actorName: "Black Pink", subplaylists: [
           { name: "Bài hát thứ nhất từ danh sách Hồng Nhan Bạc Phận", time: 345 , actorName: "V.A", image: require("../../assets/playlists/hongnhanbacphan.jpg")},
           { name: "Bài hát thứ hai từ danh sách Hồng Nhan Bạc Phận", time: 300 , actorName: "V.A", image: require("../../assets/playlists/hongnhanbacphan.jpg")},
           { name: "Bài hát thứ ba từ danh sách Hồng Nhan Bạc Phận", time: 310 , actorName: "V.A", image: require("../../assets/playlists/hongnhanbacphan.jpg")},
