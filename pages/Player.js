@@ -105,7 +105,7 @@ export default class Player extends Component {
         <MeIcon
           size={25}
           color="#828282"
-          icon={meRepeat}
+          icon={meShuffle}
         />
       );
   };
@@ -218,7 +218,7 @@ export default class Player extends Component {
                     <TouchableOpacity
                       onPress={() => {
                         shuff = this.state.shuff
-                        this.state.setState{ 'shuff': !shuff }
+                        this.setState({ 'shuff': !shuff })
              }}
            >
                       {this.renderShuffle()}
