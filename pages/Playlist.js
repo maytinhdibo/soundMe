@@ -135,6 +135,7 @@ class Playlist extends Component {
                     style={[{ fontSize: 18, color: "#fff" }, textStyle.bold]}
                   >
                     {/* Hoàng */}
+                    {this.context.albumState.albumName}
                   </Text>
                 </Animated.View>
               }
@@ -258,6 +259,7 @@ class Playlist extends Component {
                     return (
                     <SongItem
                       idx={key + 1}
+                      key={key}
                       time={item.time}
                       name={item.name}
                       actorName={item.actorName}

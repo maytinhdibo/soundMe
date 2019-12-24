@@ -138,6 +138,7 @@ export default class Singer extends Component {
                     style={[{ fontSize: 18, color: "#fff" }, textStyle.bold]}
                   >
                     {/* Hoàng Thùy Linh */}
+                    {this.context.artistState.artistName}
                   </Text>
                 </Animated.View>
               }
@@ -280,6 +281,7 @@ export default class Singer extends Component {
                     return (
                     <SongItem
                       idx={key + 1}
+                      key={key}
                       time={item.time}
                       name={item.name}
                       actorName={this.context.artistState.artistName}
