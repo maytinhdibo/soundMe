@@ -23,7 +23,7 @@ class Login extends Component {
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <View>
           <View style={styles.logoContainer}>
-            <Image style={styles.logo} source={require('../assets/musiccover.png')} />
+            <Image style={styles.logo} source={require('../assets/sm-01.png')} />
           </View>
           <View style={styles.viewtext}><Text style={styles.title}>SoundMe</Text></View>
         </View>    
@@ -102,11 +102,12 @@ const styles = StyleSheet.create({
   },
   logo: {
     position: 'absolute',
-    width: 120,
-    height: 120,
-    borderRadius: 60,
+    width: 150,
+    height: 150,
+    //borderColor: 'gray',
+    //borderWidth: 0.5,
     alignSelf: 'center',
-    top: 175,
+    top: 160,
   },
   title: {
     fontSize: 26,
