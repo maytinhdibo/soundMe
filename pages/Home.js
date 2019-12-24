@@ -232,7 +232,7 @@ class NewHome extends Component {
                   <Swiper
                     autoplay={true}
                     autoplayTimeout={3}
-                    autoplayDirection={false}
+                    autoplayDirection={true}
                     dot={
                       <View
                         style={{
