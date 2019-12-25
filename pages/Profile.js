@@ -11,7 +11,7 @@ import {
   Button,
   Switch,
   Image,
-  AsyncStorage,
+  AsyncStorage
 } from "react-native";
 import { homeStyle } from "../styles/homeStyle";
 import { getStatusBarHeight } from "react-native-status-bar-height";
@@ -60,7 +60,7 @@ class ThemeChooseItem extends Component {
                     this.props.value == this.props.currentTheme
                       ? appConsumer.theme.backgroundColorPrimary
                       : "rgba(111,111,111,0.3)",
-                  marginBottom: 2,
+                  marginBottom: 2
                 }}
               >
                 <MeIcon
@@ -76,7 +76,7 @@ class ThemeChooseItem extends Component {
               <Text
                 style={[
                   { color: appConsumer.theme.colorPrimary, fontSize: 13 },
-                  textStyle.medium,
+                  textStyle.medium
                 ]}
               >
                 {title}
@@ -98,7 +98,7 @@ class Profile extends Component {
       theme: 0,
       switchValue: true,
       themePanel: false,
-      login: true,
+      login: true
     };
   }
   componentDidMount = async () => {
@@ -115,7 +115,7 @@ class Profile extends Component {
             showsVerticalScrollIndicator={false}
             style={{
               flex: 1,
-              backgroundColor: appConsumer.theme.backgroundColorPrimary,
+              backgroundColor: appConsumer.theme.backgroundColorPrimary
             }}
           >
             <View
@@ -124,7 +124,7 @@ class Profile extends Component {
                 paddingLeft: 12,
                 paddingRight: 9,
                 marginBottom: 2,
-                paddingTop: getStatusBarHeight(),
+                paddingTop: getStatusBarHeight()
               }}
             >
               <View style={{ flex: 1 }}>
@@ -132,7 +132,7 @@ class Profile extends Component {
                   style={[
                     { color: appConsumer.theme.colorPrimary },
                     commonStyle.header,
-                    textStyle.bold,
+                    textStyle.bold
                   ]}
                 >
                   Cài đặt
@@ -146,22 +146,18 @@ class Profile extends Component {
                 margin: 15,
                 alignItems: "center",
                 padding: 9,
-                flexDirection: "row",
+                flexDirection: "row"
               }}
               cornerRadius={12}
               cardElevation={2}
             >
               <Image
-                source={{
-                  uri: this.state.login
-                    ? "https://i.scdn.co/image/7be436d24a08969d8724edc8c0e290a4b5624fff"
-                    : "https://haulixdaily.com/wp-content/uploads/2018/08/tumblr_inline_pe4i0bR0o21s24py6_540.png",
-                }}
+                source={require("../assets/sm-01.png")}
                 style={{
-                  height: 60,
-                  width: 60,
+                  height: 57,
+                  width: 57,
                   resizeMode: "cover",
-                  borderRadius: 9,
+                  borderRadius: 9
                 }}
               />
               {this.state.login ? (
@@ -169,7 +165,7 @@ class Profile extends Component {
                   <Text
                     style={[
                       textStyle.bold,
-                      { fontSize: 15, color: appConsumer.theme.colorPrimary },
+                      { fontSize: 15, color: appConsumer.theme.colorPrimary }
                     ]}
                   >
                     Cường Trần
@@ -178,9 +174,9 @@ class Profile extends Component {
                     style={[
                       {
                         color: appConsumer.theme.colorPrimary,
-                        opacity: 0.75,
+                        opacity: 0.75
                       },
-                      textStyle.regular,
+                      textStyle.regular
                     ]}
                   >
                     iammaytinhdibo@gmail.com
@@ -188,16 +184,19 @@ class Profile extends Component {
                 </View>
               ) : (
                 <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate("Login")}
+                  onPress={() => {
+                    this.setState({ login: true });
+                    this.props.navigation.navigate("Login");
+                  }}
                   style={{ padding: 16, flex: 1 }}
                 >
                   <Text
                     style={[
                       {
                         color: appConsumer.theme.colorPrimary,
-                        fontSize: 16,
+                        fontSize: 16
                       },
-                      textStyle.bold,
+                      textStyle.bold
                     ]}
                   >
                     Đăng nhập hoặc đăng ký
@@ -226,9 +225,9 @@ class Profile extends Component {
                   marginLeft: 15,
                   fontSize: 20,
                   paddingVertical: 9,
-                  color: appConsumer.theme.colorPrimary,
+                  color: appConsumer.theme.colorPrimary
                 },
-                textStyle.bold,
+                textStyle.bold
               ]}
             >
               Hệ thống
@@ -238,7 +237,7 @@ class Profile extends Component {
               style={{
                 marginHorizontal: 15,
                 borderRadius: 12,
-                overflow: "hidden",
+                overflow: "hidden"
               }}
             >
               <TouchableOpacity
@@ -281,8 +280,8 @@ class Profile extends Component {
                 style={[
                   listStyle.item,
                   {
-                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
-                  },
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary
+                  }
                 ]}
               >
                 <View>
@@ -290,7 +289,7 @@ class Profile extends Component {
                     style={[
                       listStyle.label,
                       textStyle.medium,
-                      { color: appConsumer.theme.colorPrimary },
+                      { color: appConsumer.theme.colorPrimary }
                     ]}
                   >
                     Giao diện
@@ -300,7 +299,7 @@ class Profile extends Component {
                   <Text
                     style={[
                       textStyle.regular,
-                      { color: appConsumer.theme.colorPrimary },
+                      { color: appConsumer.theme.colorPrimary }
                     ]}
                   >
                     {theme[this.state.theme]}
@@ -315,7 +314,7 @@ class Profile extends Component {
                   padding: 12,
                   marginTop: -2,
                   justifyContent: "center",
-                  backgroundColor: appConsumer.theme.backgroundColorSecondary,
+                  backgroundColor: appConsumer.theme.backgroundColorSecondary
                 }}
               >
                 <ThemeChooseItem
@@ -383,15 +382,15 @@ class Profile extends Component {
                   listStyle.item,
                   {
                     backgroundColor: appConsumer.theme.backgroundColorSecondary,
-                    alignItems: "center",
-                  },
+                    alignItems: "center"
+                  }
                 ]}
               >
                 <Text
                   style={[
                     listStyle.label,
                     textStyle.medium,
-                    { color: appConsumer.theme.colorPrimary },
+                    { color: appConsumer.theme.colorPrimary }
                   ]}
                 >
                   Thông báo đẩy
@@ -399,11 +398,11 @@ class Profile extends Component {
                 <Switch
                   trackColor={{
                     false: "rgba(0,0,0,0.1)",
-                    true: "rgba(200,41,45,0.2)",
+                    true: "rgba(200,41,45,0.2)"
                   }}
                   thumbColor={appConsumer.theme.buttonColor}
                   style={{
-                    marginRight: -6,
+                    marginRight: -6
                   }}
                   value={this.state.switchValue}
                   onValueChange={value => {
@@ -416,15 +415,15 @@ class Profile extends Component {
                 style={[
                   listStyle.item,
                   {
-                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
-                  },
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary
+                  }
                 ]}
               >
                 <Text
                   style={[
                     listStyle.label,
                     textStyle.medium,
-                    { color: appConsumer.theme.colorPrimary },
+                    { color: appConsumer.theme.colorPrimary }
                   ]}
                 >
                   Xóa lịch sử tìm kiếm
@@ -438,9 +437,9 @@ class Profile extends Component {
                   marginLeft: 15,
                   fontSize: 20,
                   paddingVertical: 9,
-                  color: appConsumer.theme.colorPrimary,
+                  color: appConsumer.theme.colorPrimary
                 },
-                textStyle.bold,
+                textStyle.bold
               ]}
             >
               Thông tin
@@ -451,22 +450,22 @@ class Profile extends Component {
                 marginHorizontal: 15,
                 borderRadius: 12,
                 marginBottom: 12,
-                overflow: "hidden",
+                overflow: "hidden"
               }}
             >
               <TouchableOpacity
                 style={[
                   listStyle.item,
                   {
-                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
-                  },
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary
+                  }
                 ]}
               >
                 <Text
                   style={[
                     listStyle.label,
                     textStyle.medium,
-                    { color: appConsumer.theme.colorPrimary },
+                    { color: appConsumer.theme.colorPrimary }
                   ]}
                 >
                   Điều khoản sử dụng
@@ -477,15 +476,15 @@ class Profile extends Component {
                 style={[
                   listStyle.item,
                   {
-                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
-                  },
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary
+                  }
                 ]}
               >
                 <Text
                   style={[
                     listStyle.label,
                     textStyle.medium,
-                    { color: appConsumer.theme.colorPrimary },
+                    { color: appConsumer.theme.colorPrimary }
                   ]}
                 >
                   Đội ngũ phát triển
@@ -496,15 +495,15 @@ class Profile extends Component {
                 style={[
                   listStyle.item,
                   {
-                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
-                  },
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary
+                  }
                 ]}
               >
                 <Text
                   style={[
                     listStyle.label,
                     textStyle.medium,
-                    { color: appConsumer.theme.colorPrimary },
+                    { color: appConsumer.theme.colorPrimary }
                   ]}
                 >
                   Góp ý, báo lỗi
@@ -515,15 +514,15 @@ class Profile extends Component {
                 style={[
                   listStyle.item,
                   {
-                    backgroundColor: appConsumer.theme.backgroundColorSecondary,
-                  },
+                    backgroundColor: appConsumer.theme.backgroundColorSecondary
+                  }
                 ]}
               >
                 <Text
                   style={[
                     listStyle.label,
                     textStyle.medium,
-                    { color: appConsumer.theme.colorPrimary },
+                    { color: appConsumer.theme.colorPrimary }
                   ]}
                 >
                   Phiên bản
@@ -533,7 +532,7 @@ class Profile extends Component {
                   <Text
                     style={[
                       textStyle.regular,
-                      { color: appConsumer.theme.colorPrimary },
+                      { color: appConsumer.theme.colorPrimary }
                     ]}
                   >
                     1.0.1
@@ -552,15 +551,15 @@ const listStyle = StyleSheet.create({
   item: {
     padding: 12,
     marginBottom: 0.5,
-    flexDirection: "row",
+    flexDirection: "row"
   },
   label: {
     flex: 1,
-    fontSize: 16,
+    fontSize: 16
   },
   action: {
     flex: 1,
-    flexDirection: "row-reverse",
-  },
+    flexDirection: "row-reverse"
+  }
 });
 export default withNavigation(Profile);
