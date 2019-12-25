@@ -5,7 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
-  TextInput,
+  TextInput
 } from "react-native";
 import { searchStyle } from "../styles/searchStyle";
 import { getStatusBarHeight } from "react-native-status-bar-height";
@@ -21,13 +21,13 @@ import RecommendTag from "../components/search/RecommendTag";
 import SongResultItem from "../components/search/SongResultItem";
 import ArtistResultItem from "../components/search/ArtistResultItem";
 import { commonStyle } from "../styles/commonStyle";
-import {ThemeContext} from "../AppContextProvider";
+import { ThemeContext } from "../AppContextProvider";
 import meClose from "../icons/icon-pack/meClose";
 export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchValue: "",
+      searchValue: ""
     };
     this.inputText = React.createRef();
   }
@@ -54,7 +54,7 @@ export default class Search extends Component {
           flex: 1,
           paddingTop:
             this.state.searchValue.length == 0 ? getStatusBarHeight() : 0,
-            backgroundColor:this.context.theme.backgroundColorPrimary,
+          backgroundColor: this.context.theme.backgroundColorPrimary
         }}
       >
         <View
@@ -63,45 +63,62 @@ export default class Search extends Component {
             paddingLeft: 12,
             paddingRight: 9,
             display: this.state.searchValue.length == 0 ? "flex" : "none",
-            backgroundColor:this.context.theme.backgroundColorPrimary
+            backgroundColor: this.context.theme.backgroundColorPrimary
           }}
         >
           <View
             style={{
-              flex: 1,
+              flex: 1
             }}
           >
-            <Text style={[commonStyle.header, textStyle.bold,{color:this.context.theme.colorPrimary}]}>Tìm kiếm</Text>
+            <Text
+              style={[
+                commonStyle.header,
+                textStyle.bold,
+                { color: this.context.theme.colorPrimary }
+              ]}
+            >
+              Tìm kiếm
+            </Text>
           </View>
         </View>
 
         <View
-          style={[{
-            flexDirection: "row",     
-            backgroundColor: "rgba(200,200,200,0.3)",
-          },this.state.searchValue.length == 0?{
-            marginTop :  10,
-            paddingTop:0,
-            margin: 16,
-            borderRadius: 15
-          }:{
-            margin: 0,
-            marginTop:  0,
-            paddingTop: getStatusBarHeight(),
-            borderRadius: 0,
-            borderBottomWidth:1,
-            borderBottomColor:this.context.theme.backgroundColorPrimary,
-          }]}
+          style={[
+            {
+              flexDirection: "row",
+              backgroundColor: "rgba(200,200,200,0.3)"
+            },
+            this.state.searchValue.length == 0
+              ? {
+                  marginTop: 10,
+                  paddingTop: 0,
+                  margin: 16,
+                  borderRadius: 15
+                }
+              : {
+                  margin: 0,
+                  marginTop: 0,
+                  paddingTop: getStatusBarHeight(),
+                  borderRadius: 0,
+                  borderBottomWidth: 1,
+                  borderBottomColor: this.context.theme.backgroundColorPrimary
+                }
+          ]}
         >
           <View
             style={{
               width: 40,
               alignItems: "flex-end",
               justifyContent: "center",
-              display: this.state.searchValue.length == 0 ? "none" : "flex",
+              display: this.state.searchValue.length == 0 ? "none" : "flex"
             }}
           >
-            <MeIcon size={20} color={this.context.theme.colorPrimary} icon={meSearch} />
+            <MeIcon
+              size={20}
+              color={this.context.theme.colorPrimary}
+              icon={meSearch}
+            />
           </View>
           <TextInput
             autoCapitalize="none"
@@ -116,9 +133,9 @@ export default class Search extends Component {
                 borderWidth: 0,
                 fontSize: 16,
                 padding: 12,
-                paddingHorizontal: 15,
+                paddingHorizontal: 15
               },
-              textStyle.medium,
+              textStyle.medium
             ]}
             onChangeText={text => this.setState({ searchValue: text })}
             value={this.state.searchValue}
@@ -129,7 +146,7 @@ export default class Search extends Component {
               style={{
                 width: 45,
                 alignItems: "center",
-                justifyContent: "center",
+                justifyContent: "center"
               }}
             >
               <View
@@ -139,7 +156,7 @@ export default class Search extends Component {
                   borderRadius: 12.5,
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor: "rgba(11,11,11,0.3)",
+                  backgroundColor: "rgba(11,11,11,0.3)"
                 }}
               >
                 <MeIcon size={8} color="#fff" icon={meClose} />
@@ -153,7 +170,7 @@ export default class Search extends Component {
               flexDirection: "row",
               flexWrap: "wrap",
               paddingTop: 6,
-              paddingHorizontal: 16,
+              paddingHorizontal: 16
             }}
           >
             <RecommendTag onRecommend={this.recommend} content="EDM" />
@@ -165,23 +182,33 @@ export default class Search extends Component {
             />
             <RecommendTag onRecommend={this.recommend} content="Lối cũ ta về" />
           </View>
-        ) : (
+        ) : this.state.searchValue.indexOf("edm") == -1 ? (
           <ScrollView
             style={{
               flex: 1,
               padding: 12,
               paddingHorizontal: 14,
               alignContent: "flex-start",
-              flexDirection: "column",
+              flexDirection: "column"
             }}
           >
-            <Text style={[textStyle.bold, { fontSize: 18, marginBottom: 9, color: this.context.theme.colorPrimary }]}>
+            <Text> {this.state.searchValue.indexOf("edm")}</Text>
+            <Text
+              style={[
+                textStyle.bold,
+                {
+                  fontSize: 18,
+                  marginBottom: 9,
+                  color: this.context.theme.colorPrimary
+                }
+              ]}
+            >
               Bài hát
             </Text>
             <SongResultItem
               imgUrl={{
                 uri:
-                  "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg",
+                  "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg"
               }}
               name={"Giấc mộng trong mơ"}
               actorName={"Hồng Nhung"}
@@ -192,20 +219,29 @@ export default class Search extends Component {
               actorName={"Nhiều ca sĩ"}
             />
             <SongResultItem
-              imgUrl={require("../assets/nuocmat.jpg")}
+              imgUrl={require("../assets/playlists/songca.jpg")}
               name={"Mùa thu lá xanh"}
               actorName={"Thùy Trinh"}
             />
             <SongResultItem
               imgUrl={{
                 uri:
-                  "https://avatar-nct.nixcdn.com/singer/avatar/2017/09/15/b/8/c/8/1505490332212.jpg",
+                  "https://avatar-nct.nixcdn.com/singer/avatar/2017/09/15/b/8/c/8/1505490332212.jpg"
               }}
               name={"Đi đu đưa đi"}
               actorName={"Tuấn Hưng"}
             />
 
-            <Text style={[textStyle.bold, { fontSize: 18, marginBottom: 9 ,color: this.context.theme.colorPrimary}]}>
+            <Text
+              style={[
+                textStyle.bold,
+                {
+                  fontSize: 18,
+                  marginBottom: 9,
+                  color: this.context.theme.colorPrimary
+                }
+              ]}
+            >
               Album
             </Text>
             <ScrollView
@@ -214,20 +250,20 @@ export default class Search extends Component {
               horizontal={true}
             >
               <AlbumResultItem
-                imgUrl={require("../assets/nuocmat.jpg")}
-                name={"Đi đu đưa đi"}
-                actorName={"Tuấn Hưng"}
+                imgUrl={require("../assets/playlists/hongnhung.jpg")}
+                name={"Để Gió Cuốn Đi"}
+                actorName={"Hồng Nhung"}
               />
               <AlbumResultItem
                 imgUrl={{
                   uri:
-                    "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg",
+                    "https://photo-resize-zmp3.zadn.vn/w480_r1x1_jpeg/cover/2/1/4/b/214b84c68b94865dbc8e908f75449c79.jpg"
                 }}
-                name={"Đi đu đưa đi"}
-                actorName={"Tuấn Hưng"}
+                name={"Nhạc Không Tuổi"}
+                actorName={"Nhiều ca sĩ"}
               />
               <AlbumResultItem
-                imgUrl={require("../assets/nuocmat.jpg")}
+                imgUrl={require("../assets/playlists/babyshark.jpg")}
                 name={"Con đi đâu để thấy hoa bay"}
                 actorName={"Nhiều ca sĩ"}
               />
@@ -235,7 +271,12 @@ export default class Search extends Component {
             <Text
               style={[
                 textStyle.bold,
-                { fontSize: 18, marginTop: 9, marginBottom: 9, color: this.context.theme.colorPrimary },
+                {
+                  fontSize: 18,
+                  marginTop: 9,
+                  marginBottom: 9,
+                  color: this.context.theme.colorPrimary
+                }
               ]}
             >
               Nghệ sĩ
@@ -254,10 +295,24 @@ export default class Search extends Component {
                 imgUrl={require("../assets/thuphuong.jpg")}
               />
             </ScrollView>
+            <Text>Ca sĩ</Text>
           </ScrollView>
+        ) : (
+          <Text
+            style={[
+              textStyle.regular,
+              {
+                color: this.context.theme.colorPrimary,
+                padding: 9,
+                fontSize: 16
+              }
+            ]}
+          >
+            Thật tiếc, không có kết quả nào phù hợp...
+          </Text>
         )}
       </View>
     );
   }
 }
-Search.contextType=ThemeContext;
+Search.contextType = ThemeContext;

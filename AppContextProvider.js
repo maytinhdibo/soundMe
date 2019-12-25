@@ -86,8 +86,8 @@ export class AppContextProvider extends Component {
       songImage: require("./assets/huongtram.jpg"),
       playlists: [],
     },
-    changeArtistState: (image, numberLike, artistName, playlists) => {
-      this.setState({ artistState: { songImage: image , artistNumberLike: numberLike, artistName: artistName, playlists: playlists } });
+    changeArtistState: async (image, numberLike, artistName, playlists) => {
+      await this.setState({ artistState: { songImage: image , artistNumberLike: numberLike, artistName: artistName, playlists: playlists } });
       this.state.showControlNotif();
     },
 
