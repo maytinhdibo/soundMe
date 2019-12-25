@@ -90,10 +90,27 @@ export default class MusicMain extends Component {
     this.state = {
       isGeeseSeason: true,
       addModal: false,
-      like: false
+      like: false,
+      playlistName: ""
     };
   }
 
+  createNewPlaylist = () => {
+    this.context.createNewPlaylist(this.state.playlistName)
+    this.context.addMusicToLibrary(this.context.libraryState.playlist.length-1)
+    this.setState({playlistName: "", addModal: false})
+    ToastAndroid.showWithGravity(
+      "Đã thêm vào danh sách phát "+this.context.libraryState.playlist[this.context.libraryState.playlist.length-1].playlistName,
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM
+    );
+    
+    // ToastAndroid.showWithGravity(
+    //   "Đã thêm bài hát vào danh sách phát "+this.context.libraryState.playlist[this.context.libraryState.playlist.length-1].playlistName,
+    //   ToastAndroid.SHORT,
+    //   ToastAndroid.BOTTOM
+    // );
+  }
   secondToMinuteString = second => {
     if (second > 0) {
       let i = parseInt(second);
@@ -173,6 +190,7 @@ export default class MusicMain extends Component {
                         </Text>
 
                         <View style={{ flexDirection: "row" }}>
+                        
                           <TextInput
                             style={[
                               {
@@ -186,6 +204,8 @@ export default class MusicMain extends Component {
                             ]}
                             placeholderTextColor="#999"
                             placeholder={"Tên danh sách mới..."}
+                            value={this.state.playlistName}
+                            onChangeText={(playlistName) => this.setState({playlistName})}
                           />
                           <View
                             style={{
@@ -197,14 +217,17 @@ export default class MusicMain extends Component {
                               borderRadius: 6,
                             }}
                           >
-                            <Text
-                              style={[
-                                { fontSize: 24, color: "#aaa", marginTop: -6 },
-                                textStyle.regular,
-                              ]}
-                            >
-                              +
-                            </Text>
+                            <TouchableOpacity>
+                              <Text onPress={()=>{this.createNewPlaylist()}}
+                                style={[
+                                  { fontSize: 24, color: "#aaa", marginTop: -6 },
+                                  textStyle.regular,
+                                ]}
+                              >
+                                +
+                              </Text>
+                            </TouchableOpacity>
+                            
                           </View>
                         </View>
 
@@ -212,7 +235,7 @@ export default class MusicMain extends Component {
                           {libraryData.data.map((item, key) => {
                             return (
                               <TouchableOpacity key={key} onPress={()=>this.addMusicToLib(key)}>
-                                <PlayListLibItem count={item.playlist.lenth} name={item.playlistName} count={item.playlist.length}/>
+                                <PlayListLibItem name={item.playlistName} count={item.playlist.length}/>
                               </TouchableOpacity>
                             )
                           })}

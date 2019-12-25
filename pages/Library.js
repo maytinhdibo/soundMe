@@ -285,6 +285,7 @@ class SongRoute extends Component {
             <TouchableWithoutFeedback
               style={{ height: 100, width: 100, backgroundColor: "#421" }}
               onPress={() => {
+                console.log("lib pressed")
                 this.context.changeLibraryState(item.playlist)
                 this.props.navigation.navigate("PersonalPlaylist")
               }}

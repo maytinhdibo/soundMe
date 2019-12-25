@@ -36,6 +36,7 @@ import artists from "../assets/data/artists";
 import playlists from "../assets/data/playlists"
 import topmusic from "../assets/data/topmusic"
 import slider from "../assets/data/slider"
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 // import {Body, Header, List, ListItem as Item, ScrollableTab, Tab, Tabs, Title} from "native-base";
 
 const NAVBAR_HEIGHT = 50;
@@ -77,7 +78,7 @@ class NewHome extends Component {
       } else {
         this.badgeView.getNode().scrollTo({ x: 0, animated: true });
       }
-    } catch {}
+    } catch { }
   }
 
   render() {
@@ -147,12 +148,12 @@ class NewHome extends Component {
                   alignSelf: "center",
                 }}
               >
-                <TouchableOpacity onPress={()=>this.props.navigation.navigate('Tìm kiếm')}>
-                <MeIcon
-                  icon={meSearch}
-                  size={22}
-                  color={this.context.theme.colorPrimary}
-                />
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Tìm kiếm')}>
+                  <MeIcon
+                    icon={meSearch}
+                    size={22}
+                    color={this.context.theme.colorPrimary}
+                  />
                 </TouchableOpacity>
               </View>
             </View>
@@ -258,11 +259,17 @@ class NewHome extends Component {
                   >
                     {slider.data.map((item, key) => {
                       return (
-                      <SliderItem
-                        key={key}
-                        index={item.index}
-                        image={item.image}
-                      />
+
+                        <SliderItem
+                          key={key}
+                          index={item.index}
+                          image={item.image}
+                          onPress={
+                            () => {
+                              console.log("hihi")
+                            }
+                          }
+                        />
                       )
                     })}
                   </Swiper>
@@ -280,7 +287,7 @@ class NewHome extends Component {
                     showsHorizontalScrollIndicator={false}
                   >
                     <View name="fake-margin" style={{ width: 7 }} />
-                    {playlists.items.slice(0,5).map((item, key) => {
+                    {playlists.items.slice(0, 5).map((item, key) => {
                       return (
                         <PlaylistItem
                           key={key}
@@ -303,7 +310,7 @@ class NewHome extends Component {
                 </TouchableOpacity>
                 <View>
 
-                  {topmusic.items.slice(0,5).map((item, key) => {
+                  {topmusic.items.slice(0, 5).map((item, key) => {
                     return (
                       <SongItem
                         key={key}
@@ -328,7 +335,7 @@ class NewHome extends Component {
                   >
                     <View name="fake-margin" style={{ width: 7 }} />
 
-                    {artists.items.slice(0,6).map((item, key) => {
+                    {artists.items.slice(0, 6).map((item, key) => {
                       return (
                         <ArtistItem
                           key={key}
