@@ -164,7 +164,7 @@ export default class Search extends Component {
             </TouchableOpacity>
           ) : null}
         </View>
-        {this.state.searchValue.length == 0? (
+        {this.state.searchValue.length == 0 ? (
           <View
             style={{
               flexDirection: "row",
@@ -182,9 +182,7 @@ export default class Search extends Component {
             />
             <RecommendTag onRecommend={this.recommend} content="Lối cũ ta về" />
           </View>
-        ) : (
-        
-          this.state.searchValue.indexOf("edm")!=1 ?
+        ) : this.state.searchValue.indexOf("edm") == -1 ? (
           <ScrollView
             style={{
               flex: 1,
@@ -194,6 +192,7 @@ export default class Search extends Component {
               flexDirection: "column"
             }}
           >
+            <Text> {this.state.searchValue.indexOf("edm")}</Text>
             <Text
               style={[
                 textStyle.bold,
@@ -295,12 +294,23 @@ export default class Search extends Component {
                 name="Ngọc Khuê"
                 imgUrl={require("../assets/thuphuong.jpg")}
               />
-            
             </ScrollView>
             <Text>Ca sĩ</Text>
           </ScrollView>
-        :<Text style={[textStyle.regular,{color: this.context.theme.colorPrimary,
-        padding:9, fontSize:16}]}>Thật tiếc, không có kết quả nào phù hợp...</Text>)}
+        ) : (
+          <Text
+            style={[
+              textStyle.regular,
+              {
+                color: this.context.theme.colorPrimary,
+                padding: 9,
+                fontSize: 16
+              }
+            ]}
+          >
+            Thật tiếc, không có kết quả nào phù hợp...
+          </Text>
+        )}
       </View>
     );
   }
