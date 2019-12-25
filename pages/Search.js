@@ -192,7 +192,7 @@ export default class Search extends Component {
               flexDirection: "column"
             }}
           >
-            <Text> {this.state.searchValue.indexOf("edm")}</Text>
+            {/* <Text> {this.state.searchValue.indexOf("edm")}</Text> */}
             <Text
               style={[
                 textStyle.bold,

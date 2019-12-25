@@ -217,16 +217,16 @@ export default class MusicMain extends Component {
                               borderRadius: 6,
                             }}
                           >
-                            <TouchableOpacity>
-                              <Text onPress={()=>{this.createNewPlaylist()}}
-                                style={[
-                                  { fontSize: 24, color: "#aaa", marginTop: -6 },
-                                  textStyle.regular,
-                                ]}
-                              >
-                                +
-                              </Text>
-                            </TouchableOpacity>
+                          <TouchableOpacity>
+                            <Text onPress={()=>{this.createNewPlaylist()}}
+                              style={[
+                                { fontSize: 24, color: "#aaa", marginTop: -6 },
+                                textStyle.regular,
+                              ]}
+                            >
+                              +
+                            </Text>
+                          </TouchableOpacity>
                             
                           </View>
                         </View>
@@ -235,7 +235,7 @@ export default class MusicMain extends Component {
                           {libraryData.data.map((item, key) => {
                             return (
                               <TouchableOpacity key={key} onPress={()=>this.addMusicToLib(key)}>
-                                <PlayListLibItem name={item.playlistName} count={item.playlist.length}/>
+                                <PlayListLibItem name={item.playlistName} count={item.playlist.length} imgUrl={item.image}/>
                               </TouchableOpacity>
                             )
                           })}
