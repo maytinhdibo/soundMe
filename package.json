@@ -11,7 +11,7 @@
   "dependencies": {
     "lrc-parser": "^1.0.1",
     "react": "16.9.0",
-    "react-native": "0.61.5",
+    "react-native": "0.62.3",
     "react-native-android-dialog-picker": "^0.0.2",
     "react-native-cardview": "^2.0.5",
     "react-native-hide-with-keyboard": "^1.2.1",
